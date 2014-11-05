@@ -1,0 +1,7 @@
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/Mantle" "${PODS_ROOT}/Headers/Public/XHTransformation" /usr/include/libxml2
+LIBRARY_SEARCH_PATHS = "$(PODS_ROOT)/XHTransformation/XHTransformation"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AFNetworking" -isystem "${PODS_ROOT}/Headers/Public/Mantle" -isystem "${PODS_ROOT}/Headers/Public/XHTransformation"
+OTHER_LDFLAGS = -ObjC -l"Pods-kinoafisha-AFNetworking" -l"Pods-kinoafisha-Mantle" -l"Pods-kinoafisha-XHTransformation" -l"exslt" -l"pcre" -l"xml2" -l"xslt" -framework "CoreGraphics" -framework "Foundation" -framework "MobileCoreServices" -framework "Security" -framework "SystemConfiguration"
+OTHER_LIBTOOLFLAGS = $(OTHER_LDFLAGS)
+PODS_ROOT = ${SRCROOT}/Pods

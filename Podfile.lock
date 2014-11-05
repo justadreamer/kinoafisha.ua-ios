@@ -1,0 +1,60 @@
+PODS:
+  - AFNetworking (2.4.1):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+    - AFNetworking/UIKit
+  - AFNetworking/NSURLConnection (2.4.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.4.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.4.1)
+  - AFNetworking/Security (2.4.1)
+  - AFNetworking/Serialization (2.4.1)
+  - AFNetworking/UIKit (2.4.1):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - Mantle (1.5.1):
+    - Mantle/extobjc
+  - Mantle/extobjc (1.5.1)
+  - XHTransformation (0.1):
+    - XHTransformation/AFNetworking
+    - XHTransformation/AFNetworking
+    - XHTransformation/Base
+    - XHTransformation/Base
+    - XHTransformation/Mantle
+    - XHTransformation/Mantle
+  - XHTransformation/AFNetworking (0.1):
+    - AFNetworking
+    - XHTransformation/AFNetworking
+    - XHTransformation/Base
+    - XHTransformation/Mantle
+  - XHTransformation/Base (0.1):
+    - XHTransformation/AFNetworking
+    - XHTransformation/Base
+    - XHTransformation/Mantle
+  - XHTransformation/Mantle (0.1):
+    - Mantle
+    - XHTransformation/AFNetworking
+    - XHTransformation/Base
+    - XHTransformation/Mantle
+
+DEPENDENCIES:
+  - XHTransformation (from `git@github.com:justadreamer/iOS-XSLT-HTMLScraper.git`)
+
+EXTERNAL SOURCES:
+  XHTransformation:
+    :git: git@github.com:justadreamer/iOS-XSLT-HTMLScraper.git
+
+SPEC CHECKSUMS:
+  AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
+  Mantle: d7c5ac734579ec751c58fecbf56189853056c58c
+  XHTransformation: 51dfd0713dbcae95ded2e519332998011a162431
+
+COCOAPODS: 0.34.4
