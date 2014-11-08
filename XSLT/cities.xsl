@@ -18,7 +18,7 @@
       <xsl:for-each select="//ul[@class='cities-list']/li/a">
         {
           "name":"<xsl:value-of select="."/>",
-          "link":"<xsl:call-template name="tpl_prepend_href_with_base_url"><xsl:with-param name="href" select="./@href"></xsl:with-param></xsl:call-template>"
+          "link":"<xsl:call-template name="tpl_prepend_url"><xsl:with-param name="href" select="./@href"></xsl:with-param></xsl:call-template>"
         }
         <xsl:if test="position()!=last()">,</xsl:if>
       </xsl:for-each>
