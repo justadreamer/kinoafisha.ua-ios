@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B9BA677C8C648B835BC62CC9"
+               BlueprintIdentifier = "6DB0F660DCC13188DEAED7ED"
                BuildableName = "libPods-kinoafisha-XHTransformation.a"
                BlueprintName = "Pods-kinoafisha-XHTransformation"
                ReferencedContainer = "container:Pods.xcodeproj">

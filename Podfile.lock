@@ -23,23 +23,29 @@ PODS:
   - Mantle (1.5.1):
     - Mantle/extobjc
   - Mantle/extobjc (1.5.1)
-  - XHTransformation (0.1):
+  - XHTransformation (0.1.2):
     - XHTransformation/AFNetworking
     - XHTransformation/AFNetworking
     - XHTransformation/Base
     - XHTransformation/Base
+    - XHTransformation/libxslt-with-plugins
     - XHTransformation/Mantle
     - XHTransformation/Mantle
-  - XHTransformation/AFNetworking (0.1):
+  - XHTransformation/AFNetworking (0.1.2):
     - AFNetworking
     - XHTransformation/AFNetworking
     - XHTransformation/Base
     - XHTransformation/Mantle
-  - XHTransformation/Base (0.1):
+  - XHTransformation/Base (0.1.2):
+    - XHTransformation/AFNetworking
+    - XHTransformation/Base
+    - XHTransformation/libxslt-with-plugins
+    - XHTransformation/Mantle
+  - XHTransformation/libxslt-with-plugins (0.1.2):
     - XHTransformation/AFNetworking
     - XHTransformation/Base
     - XHTransformation/Mantle
-  - XHTransformation/Mantle (0.1):
+  - XHTransformation/Mantle (0.1.2):
     - Mantle
     - XHTransformation/AFNetworking
     - XHTransformation/Base
@@ -55,6 +61,6 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
   Mantle: d7c5ac734579ec751c58fecbf56189853056c58c
-  XHTransformation: 51dfd0713dbcae95ded2e519332998011a162431
+  XHTransformation: 0d37d3c0a75c3c5690b13fbc9e99236c7ade59b2
 
 COCOAPODS: 0.34.4

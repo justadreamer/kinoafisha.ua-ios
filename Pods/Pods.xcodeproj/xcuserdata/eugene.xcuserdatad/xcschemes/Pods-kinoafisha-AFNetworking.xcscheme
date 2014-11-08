@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CF032F43C63C2FD7C4ED4B32"
+               BlueprintIdentifier = "94712497BF713673A57BE471"
                BuildableName = "libPods-kinoafisha-AFNetworking.a"
                BlueprintName = "Pods-kinoafisha-AFNetworking"
                ReferencedContainer = "container:Pods.xcodeproj">

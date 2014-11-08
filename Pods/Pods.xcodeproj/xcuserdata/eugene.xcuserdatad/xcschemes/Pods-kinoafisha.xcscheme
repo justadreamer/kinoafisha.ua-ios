@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "24C7C396246344F4D758BF16"
+               BlueprintIdentifier = "93E7A96DEC9511E71AF0139D"
                BuildableName = "libPods-kinoafisha.a"
                BlueprintName = "Pods-kinoafisha"
                ReferencedContainer = "container:Pods.xcodeproj">

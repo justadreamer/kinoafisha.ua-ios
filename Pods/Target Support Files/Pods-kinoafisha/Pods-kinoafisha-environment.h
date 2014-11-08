@@ -64,23 +64,29 @@
 #define COCOAPODS_POD_AVAILABLE_XHTransformation
 #define COCOAPODS_VERSION_MAJOR_XHTransformation 0
 #define COCOAPODS_VERSION_MINOR_XHTransformation 1
-#define COCOAPODS_VERSION_PATCH_XHTransformation 0
+#define COCOAPODS_VERSION_PATCH_XHTransformation 2
 
 // XHTransformation/AFNetworking
 #define COCOAPODS_POD_AVAILABLE_XHTransformation_AFNetworking
 #define COCOAPODS_VERSION_MAJOR_XHTransformation_AFNetworking 0
 #define COCOAPODS_VERSION_MINOR_XHTransformation_AFNetworking 1
-#define COCOAPODS_VERSION_PATCH_XHTransformation_AFNetworking 0
+#define COCOAPODS_VERSION_PATCH_XHTransformation_AFNetworking 2
 
 // XHTransformation/Base
 #define COCOAPODS_POD_AVAILABLE_XHTransformation_Base
 #define COCOAPODS_VERSION_MAJOR_XHTransformation_Base 0
 #define COCOAPODS_VERSION_MINOR_XHTransformation_Base 1
-#define COCOAPODS_VERSION_PATCH_XHTransformation_Base 0
+#define COCOAPODS_VERSION_PATCH_XHTransformation_Base 2
 
 // XHTransformation/Mantle
 #define COCOAPODS_POD_AVAILABLE_XHTransformation_Mantle
 #define COCOAPODS_VERSION_MAJOR_XHTransformation_Mantle 0
 #define COCOAPODS_VERSION_MINOR_XHTransformation_Mantle 1
-#define COCOAPODS_VERSION_PATCH_XHTransformation_Mantle 0
+#define COCOAPODS_VERSION_PATCH_XHTransformation_Mantle 2
+
+// XHTransformation/libxslt-with-plugins
+#define COCOAPODS_POD_AVAILABLE_XHTransformation_libxslt_with_plugins
+#define COCOAPODS_VERSION_MAJOR_XHTransformation_libxslt_with_plugins 0
+#define COCOAPODS_VERSION_MINOR_XHTransformation_libxslt_with_plugins 1
+#define COCOAPODS_VERSION_PATCH_XHTransformation_libxslt_with_plugins 2
 

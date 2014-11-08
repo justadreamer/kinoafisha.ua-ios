@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "718A9D6A25264798696DBF67"
+               BlueprintIdentifier = "8461F1134BF28877FBD4A645"
                BuildableName = "libPods-kinoafisha-Mantle.a"
                BlueprintName = "Pods-kinoafisha-Mantle"
                ReferencedContainer = "container:Pods.xcodeproj">
