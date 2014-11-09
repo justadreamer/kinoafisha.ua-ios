@@ -27,7 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"Я нахожусь в";
+    self.navigationItem.title = @"Киноафиша города";
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -53,7 +53,7 @@
     XHMantleModelAdapter *adapter = [[XHMantleModelAdapter alloc] initWithModelClass:[City class]];
     XHTransformationHTMLResponseSerializer *serializer = [XHTransformationHTMLResponseSerializer serializerWithXHTransformation:transformation params:@{@"baseURL":Q(KinoAfishaBaseURL)} modelAdapter:adapter];
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:KinoAfishaBaseURL]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[KinoAfishaBaseURL stringByAppendingString:@"/cinema"]]];
     self.operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     self.operation.responseSerializer = serializer;
     
@@ -61,8 +61,11 @@
     [self.operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         [SVProgressHUD dismiss];
         weakSelf.cities = responseObject;
-        if (weakSelf.cities.count) {
-            [City setSelectedCity:weakSelf.cities[0]];
+        if (weakSelf.cities.count && ![City selectedCity]) {
+            City* defaultSelection = [weakSelf.cities find:^BOOL(City *city) {
+                return city.isDefaultSelection;
+            }];
+            [City setSelectedCity:defaultSelection];
         }
         [weakSelf redisplayData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -76,6 +79,10 @@
 
 - (void) redisplayData {
     [self.tableView reloadData];
+    NSIndexPath *indexPath = [self indexPathForCurrentSelection];
+    if (indexPath) {
+        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
 }
 
 #pragma mark - Table view data source
@@ -108,11 +115,20 @@
 
 #pragma mark -
 
-- (UITableViewCell *) cellForCurrentSelection {
-    UITableViewCell *cell = nil;
+- (NSIndexPath *) indexPathForCurrentSelection {
+    NSIndexPath *indexPath = nil;
     if ([City selectedCity]) {
         NSUInteger idx = [self.cities indexOfObject:[City selectedCity]];
-        cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:idx inSection:0]];
+        indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
+    }
+    return indexPath;
+}
+
+- (UITableViewCell *) cellForCurrentSelection {
+    UITableViewCell *cell = nil;
+    NSIndexPath *indexPath = [self indexPathForCurrentSelection];
+    if (indexPath) {
+        cell = [self.tableView cellForRowAtIndexPath:indexPath];
     }
     return cell;
 }

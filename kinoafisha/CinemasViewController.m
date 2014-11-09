@@ -6,11 +6,20 @@
 //  Copyright (c) 2014 justadreamer. All rights reserved.
 //
 
+#import "Global.h"
+#import "XHAll.h"
+
 #import "CinemasViewController.h"
 #import "City.h"
+#import "Cinema.h"
+#import "CinemasContainer.h"
+#import "SVProgressHUD.h"
+
 
 @interface CinemasViewController ()
 @property (nonatomic,strong) City *city;
+@property (nonatomic,strong) AFHTTPRequestOperation *operation;
+@property (nonatomic,strong) CinemasContainer *cinemasContainer;
 @end
 
 @implementation CinemasViewController
@@ -27,40 +36,61 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    if (![self.city isEqual:[City selectedCity]]) {
+        self.city = [City selectedCity];
+        [self loadData];
+    }
 }
 
 - (void) loadData {
+    self.operation.completionBlock = nil;
+    [self.operation cancel];
+
+    NSURL *XSLURL = [[NSBundle mainBundle] URLForResource:@"cinemas" withExtension:@"xsl"];
+    XHTransformation *transformation = [[XHTransformation alloc] initWithXSLTURL:XSLURL];
+    XHMantleModelAdapter *adapter = [[XHMantleModelAdapter alloc] initWithModelClass:[CinemasContainer class]];
+    XHTransformationHTMLResponseSerializer *serializer = [XHTransformationHTMLResponseSerializer serializerWithXHTransformation:transformation params:@{@"baseURL":Q(KinoAfishaBaseURL)} modelAdapter:adapter];
+
+    NSURLRequest *request = [NSURLRequest requestWithURL:self.city.cinemaURL];
+    self.operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    self.operation.responseSerializer = serializer;
+
+    __typeof(self) __weak weakSelf = self;
+    [self.operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [SVProgressHUD dismiss];
+        weakSelf.cinemasContainer = responseObject;
+        [weakSelf redisplayData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [SVProgressHUD dismiss];
+        NSLog(@"%@",error);
+    }];
     
+    [SVProgressHUD showWithStatus:@"Загрузка..."];
+    [self.operation start];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void) redisplayData {
+    [self.tableView reloadData];
+    self.title = [NSString stringWithFormat:@"Кинотеатры %@",self.cinemasContainer.cityName];
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return self.cinemasContainer.cinemas.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CinemaCell" forIndexPath:indexPath];
+    Cinema *cinema = self.cinemasContainer.cinemas[indexPath.row];
+    cell.textLabel.text = cinema.name;
     return cell;
 }
-*/
 
 /*
 // Override to support conditional editing of the table view.

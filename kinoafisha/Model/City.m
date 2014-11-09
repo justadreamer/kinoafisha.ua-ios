@@ -7,7 +7,6 @@
 //
 
 #import "City.h"
-#import "NSValueTransformer+MTLPredefinedTransformerAdditions.h"
 
 static City *gSelectedCity;
 
@@ -17,7 +16,8 @@ static City *gSelectedCity;
     return @{
              @"name":@"name",
              @"cinemaURL":@"link_cinema",
-             @"filmURL":@"link_kinoafisha"
+             @"filmURL":@"link_kinoafisha",
+             @"isDefaultSelection":@"is_default_selection"
              };
 }
 
@@ -27,6 +27,10 @@ static City *gSelectedCity;
 
 + (NSValueTransformer *)filmURLJSONTransformer {
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+}
+
++ (NSValueTransformer *)isDefaultSelectionJSONTransformer {
+    return [NSValueTransformer valueTransformerForName:MTLBooleanValueTransformerName];
 }
 
 + (City *) selectedCity {

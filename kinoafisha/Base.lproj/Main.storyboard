@@ -34,7 +34,7 @@
         <!--Root View Controller-->
         <scene sceneID="ugT-eu-WiA">
             <objects>
-                <tableViewController id="1pU-F4-yPe" sceneMemberID="viewController">
+                <tableViewController id="1pU-F4-yPe" customClass="CinemasViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="RKg-jr-QPf">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -58,11 +58,11 @@
             </objects>
             <point key="canvasLocation" x="1942" y="448"/>
         </scene>
-        <!--Города-->
+        <!--Город-->
         <scene sceneID="aiI-XT-x55">
             <objects>
                 <navigationController id="l5g-5s-JhH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Города" id="bez-xf-5a3"/>
+                    <tabBarItem key="tabBarItem" title="Город" id="bez-xf-5a3"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tFd-4H-dsN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

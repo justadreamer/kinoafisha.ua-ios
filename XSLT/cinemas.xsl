@@ -18,6 +18,7 @@
 
 <xsl:template match="/">
   {
+    "city_name":"<xsl:call-template name="tpl_sanitize"><xsl:with-param name="text" select="//span[@class='select' and @id='cities']/span/span"/></xsl:call-template>",
     "cinemas":[
       <xsl:for-each select="//div[@class='list-cinema']/div[@class='item']">
         {

@@ -25,6 +25,9 @@
 		44B2EE961A0F9118000AFC00 /* tpl_schedule.xsl in Resources */ = {isa = PBXBuildFile; fileRef = 44B2EE851A0F9118000AFC00 /* tpl_schedule.xsl */; };
 		44B2EE991A0F925D000AFC00 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B2EE981A0F925D000AFC00 /* City.m */; };
 		44B2EEA11A0FD1BE000AFC00 /* CinemasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B2EEA01A0FD1BE000AFC00 /* CinemasViewController.m */; };
+		44B2EEA41A0FD562000AFC00 /* Cinema.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B2EEA31A0FD562000AFC00 /* Cinema.m */; };
+		44B2EEA71A0FD74A000AFC00 /* CinemasContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B2EEA61A0FD74A000AFC00 /* CinemasContainer.m */; };
+		44B2EEB21A10002C000AFC00 /* CinemaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B2EEB11A10002C000AFC00 /* CinemaCell.m */; };
 		9F2F60FC7961C6B9A6F855D3 /* libPods-kinoafisha.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDBD344A5E1DC2EC06B7B3F4 /* libPods-kinoafisha.a */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +58,12 @@
 		44B2EE9E1A0FA207000AFC00 /* Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
 		44B2EE9F1A0FD1BE000AFC00 /* CinemasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CinemasViewController.h; sourceTree = "<group>"; };
 		44B2EEA01A0FD1BE000AFC00 /* CinemasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CinemasViewController.m; sourceTree = "<group>"; };
+		44B2EEA21A0FD562000AFC00 /* Cinema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Cinema.h; path = Model/Cinema.h; sourceTree = "<group>"; };
+		44B2EEA31A0FD562000AFC00 /* Cinema.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Cinema.m; path = Model/Cinema.m; sourceTree = "<group>"; };
+		44B2EEA51A0FD74A000AFC00 /* CinemasContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CinemasContainer.h; path = Model/CinemasContainer.h; sourceTree = "<group>"; };
+		44B2EEA61A0FD74A000AFC00 /* CinemasContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CinemasContainer.m; path = Model/CinemasContainer.m; sourceTree = "<group>"; };
+		44B2EEB01A10002C000AFC00 /* CinemaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CinemaCell.h; sourceTree = "<group>"; };
+		44B2EEB11A10002C000AFC00 /* CinemaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CinemaCell.m; sourceTree = "<group>"; };
 		DDBD344A5E1DC2EC06B7B3F4 /* libPods-kinoafisha.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-kinoafisha.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F992382DC43E8364EEEFF699 /* Pods-kinoafisha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kinoafisha.release.xcconfig"; path = "Pods/Target Support Files/Pods-kinoafisha/Pods-kinoafisha.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,6 +112,7 @@
 				44B2EE731A0F9118000AFC00 /* XSLT */,
 				44B2EE6F1A0F9024000AFC00 /* Model */,
 				44B2EE6E1A0F901C000AFC00 /* Controller */,
+				44B2EEAF1A10002C000AFC00 /* TableViewCell */,
 				4451294F1A09FF0D000364E1 /* AppDelegate.h */,
 				445129501A09FF0D000364E1 /* AppDelegate.m */,
 				445129551A09FF0D000364E1 /* Main.storyboard */,
@@ -139,6 +149,10 @@
 			children = (
 				44B2EE971A0F925D000AFC00 /* City.h */,
 				44B2EE981A0F925D000AFC00 /* City.m */,
+				44B2EEA21A0FD562000AFC00 /* Cinema.h */,
+				44B2EEA31A0FD562000AFC00 /* Cinema.m */,
+				44B2EEA51A0FD74A000AFC00 /* CinemasContainer.h */,
+				44B2EEA61A0FD74A000AFC00 /* CinemasContainer.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -159,6 +173,15 @@
 			);
 			path = XSLT;
 			sourceTree = SOURCE_ROOT;
+		};
+		44B2EEAF1A10002C000AFC00 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				44B2EEB01A10002C000AFC00 /* CinemaCell.h */,
+				44B2EEB11A10002C000AFC00 /* CinemaCell.m */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
 		};
 		67B2D7D4FA4D134CF6ED29C7 /* Pods */ = {
 			isa = PBXGroup;
@@ -286,9 +309,12 @@
 			files = (
 				445129511A09FF0D000364E1 /* AppDelegate.m in Sources */,
 				44B2EE721A0F905D000AFC00 /* CitiesViewController.m in Sources */,
+				44B2EEA41A0FD562000AFC00 /* Cinema.m in Sources */,
 				44B2EE991A0F925D000AFC00 /* City.m in Sources */,
+				44B2EEB21A10002C000AFC00 /* CinemaCell.m in Sources */,
 				4451294E1A09FF0D000364E1 /* main.m in Sources */,
 				44B2EEA11A0FD1BE000AFC00 /* CinemasViewController.m in Sources */,
+				44B2EEA71A0FD74A000AFC00 /* CinemasContainer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
