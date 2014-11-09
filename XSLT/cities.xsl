@@ -13,12 +13,16 @@
 <xi:include href="tpl_sanitize.xsl" />
 
 <xsl:template match="/">
+  <xsl:variable name="kinoafishaURL"><xsl:value-of select="$baseURL" /><xsl:value-of select="'/kinoafisha'" /></xsl:variable>
+  <xsl:variable name="cinemaURL"><xsl:value-of select="$baseURL" /><xsl:value-of select="'/cinema'" /></xsl:variable>
   {
     "cities":[
       <xsl:for-each select="//ul[@class='cities-list']/li/a">
+        <xsl:variable name="city" select="regexp:match(./@href,'/[^/]*/$','')"/>
         {
           "name":"<xsl:value-of select="."/>",
-          "link":"<xsl:call-template name="tpl_prepend_url"><xsl:with-param name="href" select="./@href"></xsl:with-param></xsl:call-template>"
+          "link_cinema":"<xsl:value-of select="$cinemaURL"/><xsl:value-of select="$city"/>",
+          "link_kinoafisha":"<xsl:value-of select="$kinoafishaURL"/><xsl:value-of select="$city"/>"
         }
         <xsl:if test="position()!=last()">,</xsl:if>
       </xsl:for-each>
