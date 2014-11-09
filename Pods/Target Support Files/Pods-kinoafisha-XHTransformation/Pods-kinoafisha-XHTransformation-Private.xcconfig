@@ -1,6 +1,6 @@
 #include "Pods-kinoafisha-XHTransformation.xcconfig"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Build" "${PODS_ROOT}/Headers/Build/XHTransformation" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/Mantle" "${PODS_ROOT}/Headers/Public/SVProgressHUD" "${PODS_ROOT}/Headers/Public/XHTransformation" ${PODS_KINOAFISHA_XHTRANSFORMATION_HEADER_SEARCH_PATHS}
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Build" "${PODS_ROOT}/Headers/Build/XHTransformation" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/Mantle" "${PODS_ROOT}/Headers/Public/ObjectiveSugar" "${PODS_ROOT}/Headers/Public/SVProgressHUD" "${PODS_ROOT}/Headers/Public/XHTransformation" ${PODS_KINOAFISHA_XHTRANSFORMATION_HEADER_SEARCH_PATHS}
 LIBRARY_SEARCH_PATHS = ${PODS_KINOAFISHA_XHTRANSFORMATION_LIBRARY_SEARCH_PATHS}
 OTHER_LDFLAGS = ${PODS_KINOAFISHA_XHTRANSFORMATION_OTHER_LDFLAGS} -ObjC
 PODS_ROOT = ${SRCROOT}
