@@ -1,5 +1,7 @@
 #import <Foundation/Foundation.h>
 
+extern NSString  * const XHErrorDomain;
+
 @interface XHTransformation : NSObject
 
 - (instancetype) init NS_UNAVAILABLE;

@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "XHTransformation"
-  s.version          = "0.1.2"
+  s.version          = "0.1.3"
   s.summary          = "A wrapper over XSLT with a couple useful additions to allow you easily scrape HTML into JSON object"
   s.license          = { :type => "MIT", :file => "LICENSE.txt" }
   s.author           = { "Eugene Dorfman" => "eugene.dorfman@gmail.com" }  
