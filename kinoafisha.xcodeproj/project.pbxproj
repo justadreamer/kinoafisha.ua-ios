@@ -9,22 +9,24 @@
 /* Begin PBXBuildFile section */
 		4451294E1A09FF0D000364E1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4451294D1A09FF0D000364E1 /* main.m */; };
 		445129511A09FF0D000364E1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 445129501A09FF0D000364E1 /* AppDelegate.m */; };
-		445129541A09FF0D000364E1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 445129531A09FF0D000364E1 /* ViewController.m */; };
 		445129571A09FF0D000364E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 445129551A09FF0D000364E1 /* Main.storyboard */; };
 		445129591A09FF0D000364E1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 445129581A09FF0D000364E1 /* Images.xcassets */; };
 		4451295C1A09FF0D000364E1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4451295A1A09FF0D000364E1 /* LaunchScreen.xib */; };
+		44B2EE721A0F905D000AFC00 /* CitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B2EE711A0F905D000AFC00 /* CitiesViewController.m */; };
+		44B2EE861A0F9118000AFC00 /* cinemas.xsl in Resources */ = {isa = PBXBuildFile; fileRef = 44B2EE741A0F9118000AFC00 /* cinemas.xsl */; };
+		44B2EE871A0F9118000AFC00 /* cities.xsl in Resources */ = {isa = PBXBuildFile; fileRef = 44B2EE751A0F9118000AFC00 /* cities.xsl */; };
+		44B2EE8D1A0F9118000AFC00 /* films.xsl in Resources */ = {isa = PBXBuildFile; fileRef = 44B2EE7C1A0F9118000AFC00 /* films.xsl */; };
+		44B2EE8E1A0F9118000AFC00 /* single_cinema.xsl in Resources */ = {isa = PBXBuildFile; fileRef = 44B2EE7D1A0F9118000AFC00 /* single_cinema.xsl */; };
+		44B2EE8F1A0F9118000AFC00 /* single_film.xsl in Resources */ = {isa = PBXBuildFile; fileRef = 44B2EE7E1A0F9118000AFC00 /* single_film.xsl */; };
+		44B2EE921A0F9118000AFC00 /* tpl_attributes.xsl in Resources */ = {isa = PBXBuildFile; fileRef = 44B2EE811A0F9118000AFC00 /* tpl_attributes.xsl */; };
+		44B2EE931A0F9118000AFC00 /* tpl_prepend_url.xsl in Resources */ = {isa = PBXBuildFile; fileRef = 44B2EE821A0F9118000AFC00 /* tpl_prepend_url.xsl */; };
+		44B2EE941A0F9118000AFC00 /* tpl_rating_votes.xsl in Resources */ = {isa = PBXBuildFile; fileRef = 44B2EE831A0F9118000AFC00 /* tpl_rating_votes.xsl */; };
+		44B2EE951A0F9118000AFC00 /* tpl_sanitize.xsl in Resources */ = {isa = PBXBuildFile; fileRef = 44B2EE841A0F9118000AFC00 /* tpl_sanitize.xsl */; };
+		44B2EE961A0F9118000AFC00 /* tpl_schedule.xsl in Resources */ = {isa = PBXBuildFile; fileRef = 44B2EE851A0F9118000AFC00 /* tpl_schedule.xsl */; };
+		44B2EE991A0F925D000AFC00 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B2EE981A0F925D000AFC00 /* City.m */; };
+		44B2EEA11A0FD1BE000AFC00 /* CinemasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B2EEA01A0FD1BE000AFC00 /* CinemasViewController.m */; };
 		9F2F60FC7961C6B9A6F855D3 /* libPods-kinoafisha.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDBD344A5E1DC2EC06B7B3F4 /* libPods-kinoafisha.a */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		445129621A09FF0D000364E1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 445129401A09FF0D000364E1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 445129471A09FF0D000364E1;
-			remoteInfo = kinoafisha;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0BF14987EA5F812207CE86EC /* Pods-kinoafisha.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kinoafisha.debug.xcconfig"; path = "Pods/Target Support Files/Pods-kinoafisha/Pods-kinoafisha.debug.xcconfig"; sourceTree = "<group>"; };
@@ -33,12 +35,26 @@
 		4451294D1A09FF0D000364E1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4451294F1A09FF0D000364E1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		445129501A09FF0D000364E1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		445129521A09FF0D000364E1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		445129531A09FF0D000364E1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		445129561A09FF0D000364E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		445129581A09FF0D000364E1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4451295B1A09FF0D000364E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		445129611A09FF0D000364E1 /* kinoafishaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = kinoafishaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		44B2EE701A0F905D000AFC00 /* CitiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CitiesViewController.h; path = Controller/CitiesViewController.h; sourceTree = "<group>"; };
+		44B2EE711A0F905D000AFC00 /* CitiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CitiesViewController.m; path = Controller/CitiesViewController.m; sourceTree = "<group>"; };
+		44B2EE741A0F9118000AFC00 /* cinemas.xsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cinemas.xsl; sourceTree = "<group>"; };
+		44B2EE751A0F9118000AFC00 /* cities.xsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = cities.xsl; sourceTree = "<group>"; };
+		44B2EE7C1A0F9118000AFC00 /* films.xsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = films.xsl; sourceTree = "<group>"; };
+		44B2EE7D1A0F9118000AFC00 /* single_cinema.xsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = single_cinema.xsl; sourceTree = "<group>"; };
+		44B2EE7E1A0F9118000AFC00 /* single_film.xsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = single_film.xsl; sourceTree = "<group>"; };
+		44B2EE811A0F9118000AFC00 /* tpl_attributes.xsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = tpl_attributes.xsl; sourceTree = "<group>"; };
+		44B2EE821A0F9118000AFC00 /* tpl_prepend_url.xsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = tpl_prepend_url.xsl; sourceTree = "<group>"; };
+		44B2EE831A0F9118000AFC00 /* tpl_rating_votes.xsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = tpl_rating_votes.xsl; sourceTree = "<group>"; };
+		44B2EE841A0F9118000AFC00 /* tpl_sanitize.xsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = tpl_sanitize.xsl; sourceTree = "<group>"; };
+		44B2EE851A0F9118000AFC00 /* tpl_schedule.xsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = tpl_schedule.xsl; sourceTree = "<group>"; };
+		44B2EE971A0F925D000AFC00 /* City.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = City.h; path = Model/City.h; sourceTree = "<group>"; };
+		44B2EE981A0F925D000AFC00 /* City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = City.m; path = Model/City.m; sourceTree = "<group>"; };
+		44B2EE9E1A0FA207000AFC00 /* Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
+		44B2EE9F1A0FD1BE000AFC00 /* CinemasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CinemasViewController.h; sourceTree = "<group>"; };
+		44B2EEA01A0FD1BE000AFC00 /* CinemasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CinemasViewController.m; sourceTree = "<group>"; };
 		DDBD344A5E1DC2EC06B7B3F4 /* libPods-kinoafisha.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-kinoafisha.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F992382DC43E8364EEEFF699 /* Pods-kinoafisha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kinoafisha.release.xcconfig"; path = "Pods/Target Support Files/Pods-kinoafisha/Pods-kinoafisha.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -49,13 +65,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F2F60FC7961C6B9A6F855D3 /* libPods-kinoafisha.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4451295E1A09FF0D000364E1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,7 +93,6 @@
 			isa = PBXGroup;
 			children = (
 				445129481A09FF0D000364E1 /* kinoafisha.app */,
-				445129611A09FF0D000364E1 /* kinoafishaTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -92,14 +100,16 @@
 		4451294A1A09FF0D000364E1 /* kinoafisha */ = {
 			isa = PBXGroup;
 			children = (
+				44B2EE731A0F9118000AFC00 /* XSLT */,
+				44B2EE6F1A0F9024000AFC00 /* Model */,
+				44B2EE6E1A0F901C000AFC00 /* Controller */,
 				4451294F1A09FF0D000364E1 /* AppDelegate.h */,
 				445129501A09FF0D000364E1 /* AppDelegate.m */,
-				445129521A09FF0D000364E1 /* ViewController.h */,
-				445129531A09FF0D000364E1 /* ViewController.m */,
 				445129551A09FF0D000364E1 /* Main.storyboard */,
 				445129581A09FF0D000364E1 /* Images.xcassets */,
 				4451295A1A09FF0D000364E1 /* LaunchScreen.xib */,
 				4451294B1A09FF0D000364E1 /* Supporting Files */,
+				44B2EE9E1A0FA207000AFC00 /* Global.h */,
 			);
 			path = kinoafisha;
 			sourceTree = "<group>";
@@ -112,6 +122,43 @@
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
+		};
+		44B2EE6E1A0F901C000AFC00 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				44B2EE701A0F905D000AFC00 /* CitiesViewController.h */,
+				44B2EE711A0F905D000AFC00 /* CitiesViewController.m */,
+				44B2EE9F1A0FD1BE000AFC00 /* CinemasViewController.h */,
+				44B2EEA01A0FD1BE000AFC00 /* CinemasViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		44B2EE6F1A0F9024000AFC00 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				44B2EE971A0F925D000AFC00 /* City.h */,
+				44B2EE981A0F925D000AFC00 /* City.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		44B2EE731A0F9118000AFC00 /* XSLT */ = {
+			isa = PBXGroup;
+			children = (
+				44B2EE741A0F9118000AFC00 /* cinemas.xsl */,
+				44B2EE751A0F9118000AFC00 /* cities.xsl */,
+				44B2EE7C1A0F9118000AFC00 /* films.xsl */,
+				44B2EE7D1A0F9118000AFC00 /* single_cinema.xsl */,
+				44B2EE7E1A0F9118000AFC00 /* single_film.xsl */,
+				44B2EE811A0F9118000AFC00 /* tpl_attributes.xsl */,
+				44B2EE821A0F9118000AFC00 /* tpl_prepend_url.xsl */,
+				44B2EE831A0F9118000AFC00 /* tpl_rating_votes.xsl */,
+				44B2EE841A0F9118000AFC00 /* tpl_sanitize.xsl */,
+				44B2EE851A0F9118000AFC00 /* tpl_schedule.xsl */,
+			);
+			path = XSLT;
+			sourceTree = SOURCE_ROOT;
 		};
 		67B2D7D4FA4D134CF6ED29C7 /* Pods */ = {
 			isa = PBXGroup;
@@ -144,24 +191,6 @@
 			productReference = 445129481A09FF0D000364E1 /* kinoafisha.app */;
 			productType = "com.apple.product-type.application";
 		};
-		445129601A09FF0D000364E1 /* kinoafishaTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4451296E1A09FF0D000364E1 /* Build configuration list for PBXNativeTarget "kinoafishaTests" */;
-			buildPhases = (
-				4451295D1A09FF0D000364E1 /* Sources */,
-				4451295E1A09FF0D000364E1 /* Frameworks */,
-				4451295F1A09FF0D000364E1 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				445129631A09FF0D000364E1 /* PBXTargetDependency */,
-			);
-			name = kinoafishaTests;
-			productName = kinoafishaTests;
-			productReference = 445129611A09FF0D000364E1 /* kinoafishaTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -173,10 +202,6 @@
 				TargetAttributes = {
 					445129471A09FF0D000364E1 = {
 						CreatedOnToolsVersion = 6.1;
-					};
-					445129601A09FF0D000364E1 = {
-						CreatedOnToolsVersion = 6.1;
-						TestTargetID = 445129471A09FF0D000364E1;
 					};
 				};
 			};
@@ -194,7 +219,6 @@
 			projectRoot = "";
 			targets = (
 				445129471A09FF0D000364E1 /* kinoafisha */,
-				445129601A09FF0D000364E1 /* kinoafishaTests */,
 			);
 		};
 /* End PBXProject section */
@@ -204,16 +228,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44B2EE931A0F9118000AFC00 /* tpl_prepend_url.xsl in Resources */,
+				44B2EE8E1A0F9118000AFC00 /* single_cinema.xsl in Resources */,
+				44B2EE861A0F9118000AFC00 /* cinemas.xsl in Resources */,
+				44B2EE941A0F9118000AFC00 /* tpl_rating_votes.xsl in Resources */,
+				44B2EE961A0F9118000AFC00 /* tpl_schedule.xsl in Resources */,
 				445129571A09FF0D000364E1 /* Main.storyboard in Resources */,
+				44B2EE871A0F9118000AFC00 /* cities.xsl in Resources */,
+				44B2EE951A0F9118000AFC00 /* tpl_sanitize.xsl in Resources */,
 				4451295C1A09FF0D000364E1 /* LaunchScreen.xib in Resources */,
 				445129591A09FF0D000364E1 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4451295F1A09FF0D000364E1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				44B2EE921A0F9118000AFC00 /* tpl_attributes.xsl in Resources */,
+				44B2EE8D1A0F9118000AFC00 /* films.xsl in Resources */,
+				44B2EE8F1A0F9118000AFC00 /* single_film.xsl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,28 +284,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				445129541A09FF0D000364E1 /* ViewController.m in Sources */,
 				445129511A09FF0D000364E1 /* AppDelegate.m in Sources */,
+				44B2EE721A0F905D000AFC00 /* CitiesViewController.m in Sources */,
+				44B2EE991A0F925D000AFC00 /* City.m in Sources */,
 				4451294E1A09FF0D000364E1 /* main.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4451295D1A09FF0D000364E1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				44B2EEA11A0FD1BE000AFC00 /* CinemasViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		445129631A09FF0D000364E1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 445129471A09FF0D000364E1 /* kinoafisha */;
-			targetProxy = 445129621A09FF0D000364E1 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		445129551A09FF0D000364E1 /* Main.storyboard */ = {
@@ -398,40 +412,6 @@
 			};
 			name = Release;
 		};
-		4451296F1A09FF0D000364E1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = kinoafishaTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/kinoafisha.app/kinoafisha";
-			};
-			name = Debug;
-		};
-		445129701A09FF0D000364E1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = kinoafishaTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/kinoafisha.app/kinoafisha";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -449,15 +429,6 @@
 			buildConfigurations = (
 				4451296C1A09FF0D000364E1 /* Debug */,
 				4451296D1A09FF0D000364E1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4451296E1A09FF0D000364E1 /* Build configuration list for PBXNativeTarget "kinoafishaTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4451296F1A09FF0D000364E1 /* Debug */,
-				445129701A09FF0D000364E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

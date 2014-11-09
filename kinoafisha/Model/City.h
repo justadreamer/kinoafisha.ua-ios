@@ -7,7 +7,13 @@
 //
 
 #import "MTLModel.h"
+#import "MTLJSONAdapter.h"
 
-@interface City : MTLModel
+@interface City : MTLModel<MTLJSONSerializing>
+@property (nonatomic,strong) NSString *name;
+@property (nonatomic,strong) NSURL *cinemaURL;
+@property (nonatomic,strong) NSURL *filmURL;
 
++ (City *) selectedCity;
++ (void) setSelectedCity:(City *)city;
 @end
