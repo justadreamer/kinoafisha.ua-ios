@@ -25,7 +25,7 @@ PODS:
   - Mantle/extobjc (1.5.1)
   - ObjectiveSugar (1.1.0)
   - SVProgressHUD (1.0)
-  - XHTransformation (0.1.3):
+  - XHTransformation (0.1.4):
     - XHTransformation/AFNetworking
     - XHTransformation/AFNetworking
     - XHTransformation/Base
@@ -33,21 +33,21 @@ PODS:
     - XHTransformation/libxslt-with-plugins
     - XHTransformation/Mantle
     - XHTransformation/Mantle
-  - XHTransformation/AFNetworking (0.1.3):
+  - XHTransformation/AFNetworking (0.1.4):
     - AFNetworking
     - XHTransformation/AFNetworking
     - XHTransformation/Base
     - XHTransformation/Mantle
-  - XHTransformation/Base (0.1.3):
+  - XHTransformation/Base (0.1.4):
     - XHTransformation/AFNetworking
     - XHTransformation/Base
     - XHTransformation/libxslt-with-plugins
     - XHTransformation/Mantle
-  - XHTransformation/libxslt-with-plugins (0.1.3):
+  - XHTransformation/libxslt-with-plugins (0.1.4):
     - XHTransformation/AFNetworking
     - XHTransformation/Base
     - XHTransformation/Mantle
-  - XHTransformation/Mantle (0.1.3):
+  - XHTransformation/Mantle (0.1.4):
     - Mantle
     - XHTransformation/AFNetworking
     - XHTransformation/Base
@@ -67,6 +67,6 @@ SPEC CHECKSUMS:
   Mantle: d7c5ac734579ec751c58fecbf56189853056c58c
   ObjectiveSugar: f48793f5902c77cfc02a4ce46d2e8ecddcad4dc2
   SVProgressHUD: 5034c6e22b8c2ca3e09402e48d41ed0340aa1c50
-  XHTransformation: e5505cca19e391812641d2d0f653a76916fe84d9
+  XHTransformation: 211b7b3d2cd6b483a21ff66df33d4962b1f47c90
 
 COCOAPODS: 0.34.4
