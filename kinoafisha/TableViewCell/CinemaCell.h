@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class Cinema;
 @interface CinemaCell : UITableViewCell
-
+@property (nonatomic,strong) Cinema *cinema;
 @end

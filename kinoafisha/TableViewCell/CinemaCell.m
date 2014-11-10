@@ -7,6 +7,9 @@
 //
 
 #import "CinemaCell.h"
+#import "Cinema.h"
+#import <UIImageView+AFNetworking.h>
+
 @interface CinemaCell()
 @property (nonatomic,strong) IBOutlet UILabel *titleLabel;
 @property (nonatomic,strong) IBOutlet UIImageView *thumbnailImageView;
@@ -19,14 +22,13 @@
 
 @implementation CinemaCell
 
-- (void)awakeFromNib {
-    // Initialization code
+- (void) setCinema:(Cinema *)cinema {
+    _cinema = cinema;
+    self.titleLabel.text = cinema.name;
+    [self.thumbnailImageView setImageWithURL:self.cinema.thumbnailURL];
+    self.addressLabel.text = self.cinema.address;
+    self.phoneLabel.text = self.cinema.phone;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
 
 @end

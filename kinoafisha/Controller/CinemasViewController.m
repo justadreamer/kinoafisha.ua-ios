@@ -14,7 +14,7 @@
 #import "Cinema.h"
 #import "CinemasContainer.h"
 #import "SVProgressHUD.h"
-
+#import "CinemaCell.h"
 
 @interface CinemasViewController ()
 @property (nonatomic,strong) City *city;
@@ -26,11 +26,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 120;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(loadData)];
 }
 
@@ -86,9 +83,13 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CinemaCell" forIndexPath:indexPath];
+    CinemaCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CinemaCell" forIndexPath:indexPath];
     Cinema *cinema = self.cinemasContainer.cinemas[indexPath.row];
-    cell.textLabel.text = cinema.name;
+    cell.cinema = cinema;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.frame = CGRectMake(0, 0, tableView.frame.size.width, 0);
+    [cell layoutIfNeeded];
+
     return cell;
 }
 
