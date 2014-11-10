@@ -25,7 +25,7 @@
     <xsl:call-template name="tpl_rating_votes"/>,
     <xsl:call-template name="tpl_attributes"/>,
     "description":"<xsl:call-template name="tpl_sanitize"><xsl:with-param name="text" select="//div[@class='description']"/></xsl:call-template>",
-    "cinemas":<xsl:call-template name="tpl_schedule"><xsl:with-param name="entity-name" select="'cinema'" /></xsl:call-template>
+    "schedule":<xsl:call-template name="tpl_schedule"><xsl:with-param name="entity-name" select="'cinema'" /></xsl:call-template>
   }
 </xsl:template>
 

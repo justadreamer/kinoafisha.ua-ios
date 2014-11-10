@@ -18,7 +18,7 @@
 
 <xsl:template match="/">
   {
-    "films":<xsl:call-template name="tpl_schedule"><xsl:with-param name="entity-name" select="'film'" /></xsl:call-template>
+    "schedule":<xsl:call-template name="tpl_schedule"><xsl:with-param name="entity-name" select="'film'" /></xsl:call-template>
   }
 </xsl:template>
 
