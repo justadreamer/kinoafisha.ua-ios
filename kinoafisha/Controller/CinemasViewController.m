@@ -15,6 +15,7 @@
 #import "CinemasContainer.h"
 #import "SVProgressHUD.h"
 #import "CinemaCell.h"
+#import "ScheduleViewController.h"
 
 @interface CinemasViewController ()
 @property (nonatomic,strong) City *city;
@@ -127,14 +128,16 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
+    ScheduleViewController *controller = segue.destinationViewController;
+    Cinema *cinema = self.cinemasContainer.cinemas[[self.tableView indexPathForSelectedRow].row];
+    controller.cinema = cinema;
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end

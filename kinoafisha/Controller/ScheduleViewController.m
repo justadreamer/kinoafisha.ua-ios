@@ -5,53 +5,113 @@
 //  Created by Eugene Dorfman on 11/10/14.
 //  Copyright (c) 2014 justadreamer. All rights reserved.
 //
-
+#import "Global.h"
 #import "ScheduleViewController.h"
-
+#import "ScheduleEntry.h"
+#import <XHTransformation/XHAll.h>
+#import <SVProgressHUD/SVProgressHUD.h>
+#import "ScheduleCinemaRoomCell.h"
+#import "Cinema.h"
 @interface ScheduleViewController ()
-
+@property (nonatomic,strong) AFHTTPRequestOperation *operation;
 @end
 
 @implementation ScheduleViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refresh:)];
+    if (self.cinema) {
+        self.title = self.cinema.name;
+    }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (self.cinema.detailURL && !self.scheduleEntries) {
+        [self loadData];
+    } else if (!self.scheduleEntries.count) {
+        [self displayEmptyView];
+    }
+}
+
+- (void) loadData {
+    self.operation.completionBlock = nil;
+    [self.operation cancel];
+    
+    NSURL *XSLURL = [[NSBundle mainBundle] URLForResource:@"single_cinema" withExtension:@"xsl"];
+    XHTransformation *transformation = [[XHTransformation alloc] initWithXSLTURL:XSLURL];
+    XHMantleModelAdapter *adapter = [[XHMantleModelAdapter alloc] initWithModelClass:[ScheduleEntry class]];
+    XHTransformationHTMLResponseSerializer *serializer = [XHTransformationHTMLResponseSerializer serializerWithXHTransformation:transformation params:@{@"baseURL":Q(KinoAfishaBaseURL)} modelAdapter:adapter];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:self.cinema.detailURL];
+    self.operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    self.operation.responseSerializer = serializer;
+    
+    __typeof(self) __weak weakSelf = self;
+    [self.operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [SVProgressHUD dismiss];
+        weakSelf.scheduleEntries = responseObject;
+        [weakSelf redisplayData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [SVProgressHUD dismiss];
+        NSLog(@"%@",error);
+    }];
+    
+    [SVProgressHUD showWithStatus:@"Загрузка..."];
+    [self.operation start];
+}
+
+- (void) redisplayData {
+    [self.tableView reloadData];
+    if (!self.scheduleEntries.count) {
+        [self displayEmptyView];
+    }
+}
+
+- (void) displayEmptyView {
+    UILabel *emptyView = [[UILabel alloc] initWithFrame:CGRectZero];
+    emptyView.text = @"Нет расписания";
+    [emptyView sizeToFit];
+    emptyView.center = self.view.center;
+    emptyView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    [self.tableView addSubview:emptyView];
+}
+
+- (void) refresh:(UIBarButtonItem *)barButtonItem {
+    [self loadData];
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return self.scheduleEntries.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+    ScheduleEntry *scheduleEntry = self.scheduleEntries[indexPath.row];
+    NSString *identifier = @"ScheduleEntityCell";
+    if (scheduleEntry.type==ScheduleEntryCinemaRoom) {
+        identifier = @"ScheduleCinemaRoomCell";
+    }
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+    if (scheduleEntry.type==ScheduleEntryCinemaRoom) {
+        ScheduleCinemaRoomCell *scheduleCinemaRoomCell = (ScheduleCinemaRoomCell *)cell;
+        scheduleCinemaRoomCell.entry = scheduleEntry;
+    } else {
+        cell.textLabel.numberOfLines = 0;
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:18];
+        cell.textLabel.text = scheduleEntry.title;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+
     return cell;
 }
-*/
 
 /*
 // Override to support conditional editing of the table view.
@@ -87,14 +147,11 @@
 }
 */
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
 }
-*/
 
 @end

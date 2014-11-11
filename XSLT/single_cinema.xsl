@@ -17,9 +17,7 @@
 <xi:include href="tpl_schedule.xsl" />
 
 <xsl:template match="/">
-  {
-    "schedule":<xsl:call-template name="tpl_schedule"><xsl:with-param name="entity-name" select="'film'" /></xsl:call-template>
-  }
+    <xsl:call-template name="tpl_schedule"><xsl:with-param name="entity-name" select="'film'" /></xsl:call-template>
 </xsl:template>
 
 <xsl:template name="tpl_choose_by_prefix_regexp">
