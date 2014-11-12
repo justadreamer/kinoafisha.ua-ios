@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		441ADB1E1A13E6CD00E01CF6 /* FilmDetailHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 441ADB1D1A13E6CD00E01CF6 /* FilmDetailHeaderCell.m */; };
+		441ADB211A13F19D00E01CF6 /* AttributeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 441ADB201A13F19D00E01CF6 /* AttributeCell.m */; };
 		4451294E1A09FF0D000364E1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4451294D1A09FF0D000364E1 /* main.m */; };
 		445129511A09FF0D000364E1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 445129501A09FF0D000364E1 /* AppDelegate.m */; };
 		445129571A09FF0D000364E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 445129551A09FF0D000364E1 /* Main.storyboard */; };
@@ -31,11 +33,18 @@
 		44B2EF831A116CAE000AFC00 /* CinemasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B2EF811A116CAE000AFC00 /* CinemasViewController.m */; };
 		44B2EF861A117299000AFC00 /* ScheduleEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B2EF851A117299000AFC00 /* ScheduleEntry.m */; };
 		44B2EF891A12B57F000AFC00 /* ScheduleCinemaRoomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B2EF881A12B57F000AFC00 /* ScheduleCinemaRoomCell.m */; };
+		44B2EF8C1A12B992000AFC00 /* Film.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B2EF8B1A12B992000AFC00 /* Film.m */; };
+		44B2EF8F1A12BA11000AFC00 /* Attribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B2EF8E1A12BA11000AFC00 /* Attribute.m */; };
+		44B2EF921A12C0F3000AFC00 /* FilmDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B2EF911A12C0F3000AFC00 /* FilmDetailViewController.m */; };
 		9F2F60FC7961C6B9A6F855D3 /* libPods-kinoafisha.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDBD344A5E1DC2EC06B7B3F4 /* libPods-kinoafisha.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0BF14987EA5F812207CE86EC /* Pods-kinoafisha.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kinoafisha.debug.xcconfig"; path = "Pods/Target Support Files/Pods-kinoafisha/Pods-kinoafisha.debug.xcconfig"; sourceTree = "<group>"; };
+		441ADB1C1A13E6CD00E01CF6 /* FilmDetailHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilmDetailHeaderCell.h; sourceTree = "<group>"; };
+		441ADB1D1A13E6CD00E01CF6 /* FilmDetailHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilmDetailHeaderCell.m; sourceTree = "<group>"; };
+		441ADB1F1A13F19D00E01CF6 /* AttributeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributeCell.h; sourceTree = "<group>"; };
+		441ADB201A13F19D00E01CF6 /* AttributeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributeCell.m; sourceTree = "<group>"; };
 		445129481A09FF0D000364E1 /* kinoafisha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kinoafisha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4451294C1A09FF0D000364E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4451294D1A09FF0D000364E1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -73,6 +82,12 @@
 		44B2EF851A117299000AFC00 /* ScheduleEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScheduleEntry.m; path = Model/ScheduleEntry.m; sourceTree = "<group>"; };
 		44B2EF871A12B57F000AFC00 /* ScheduleCinemaRoomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleCinemaRoomCell.h; sourceTree = "<group>"; };
 		44B2EF881A12B57F000AFC00 /* ScheduleCinemaRoomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleCinemaRoomCell.m; sourceTree = "<group>"; };
+		44B2EF8A1A12B992000AFC00 /* Film.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Film.h; path = Model/Film.h; sourceTree = "<group>"; };
+		44B2EF8B1A12B992000AFC00 /* Film.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Film.m; path = Model/Film.m; sourceTree = "<group>"; };
+		44B2EF8D1A12BA11000AFC00 /* Attribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Attribute.h; path = Model/Attribute.h; sourceTree = "<group>"; };
+		44B2EF8E1A12BA11000AFC00 /* Attribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Attribute.m; path = Model/Attribute.m; sourceTree = "<group>"; };
+		44B2EF901A12C0F3000AFC00 /* FilmDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilmDetailViewController.h; path = Controller/FilmDetailViewController.h; sourceTree = "<group>"; };
+		44B2EF911A12C0F3000AFC00 /* FilmDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilmDetailViewController.m; path = Controller/FilmDetailViewController.m; sourceTree = "<group>"; };
 		DDBD344A5E1DC2EC06B7B3F4 /* libPods-kinoafisha.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-kinoafisha.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F992382DC43E8364EEEFF699 /* Pods-kinoafisha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kinoafisha.release.xcconfig"; path = "Pods/Target Support Files/Pods-kinoafisha/Pods-kinoafisha.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -151,6 +166,8 @@
 				44B2EF811A116CAE000AFC00 /* CinemasViewController.m */,
 				44B2EF7E1A116C83000AFC00 /* ScheduleViewController.h */,
 				44B2EF7F1A116C83000AFC00 /* ScheduleViewController.m */,
+				44B2EF901A12C0F3000AFC00 /* FilmDetailViewController.h */,
+				44B2EF911A12C0F3000AFC00 /* FilmDetailViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -162,10 +179,14 @@
 				44B2EE981A0F925D000AFC00 /* City.m */,
 				44B2EEA21A0FD562000AFC00 /* Cinema.h */,
 				44B2EEA31A0FD562000AFC00 /* Cinema.m */,
-				44B2EEA51A0FD74A000AFC00 /* CinemasContainer.h */,
-				44B2EEA61A0FD74A000AFC00 /* CinemasContainer.m */,
+				44B2EF8A1A12B992000AFC00 /* Film.h */,
+				44B2EF8B1A12B992000AFC00 /* Film.m */,
+				44B2EF8D1A12BA11000AFC00 /* Attribute.h */,
+				44B2EF8E1A12BA11000AFC00 /* Attribute.m */,
 				44B2EF841A117299000AFC00 /* ScheduleEntry.h */,
 				44B2EF851A117299000AFC00 /* ScheduleEntry.m */,
+				44B2EEA51A0FD74A000AFC00 /* CinemasContainer.h */,
+				44B2EEA61A0FD74A000AFC00 /* CinemasContainer.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -194,6 +215,10 @@
 				44B2EEB11A10002C000AFC00 /* CinemaCell.m */,
 				44B2EF871A12B57F000AFC00 /* ScheduleCinemaRoomCell.h */,
 				44B2EF881A12B57F000AFC00 /* ScheduleCinemaRoomCell.m */,
+				441ADB1C1A13E6CD00E01CF6 /* FilmDetailHeaderCell.h */,
+				441ADB1D1A13E6CD00E01CF6 /* FilmDetailHeaderCell.m */,
+				441ADB1F1A13F19D00E01CF6 /* AttributeCell.h */,
+				441ADB201A13F19D00E01CF6 /* AttributeCell.m */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -325,13 +350,18 @@
 				44B2EF891A12B57F000AFC00 /* ScheduleCinemaRoomCell.m in Sources */,
 				445129511A09FF0D000364E1 /* AppDelegate.m in Sources */,
 				44B2EE721A0F905D000AFC00 /* CitiesViewController.m in Sources */,
+				44B2EF8F1A12BA11000AFC00 /* Attribute.m in Sources */,
 				44B2EEA41A0FD562000AFC00 /* Cinema.m in Sources */,
+				44B2EF921A12C0F3000AFC00 /* FilmDetailViewController.m in Sources */,
 				44B2EE991A0F925D000AFC00 /* City.m in Sources */,
 				44B2EEB21A10002C000AFC00 /* CinemaCell.m in Sources */,
 				4451294E1A09FF0D000364E1 /* main.m in Sources */,
+				441ADB1E1A13E6CD00E01CF6 /* FilmDetailHeaderCell.m in Sources */,
 				44B2EF801A116C83000AFC00 /* ScheduleViewController.m in Sources */,
 				44B2EF861A117299000AFC00 /* ScheduleEntry.m in Sources */,
+				44B2EF8C1A12B992000AFC00 /* Film.m in Sources */,
 				44B2EEA71A0FD74A000AFC00 /* CinemasContainer.m in Sources */,
+				441ADB211A13F19D00E01CF6 /* AttributeCell.m in Sources */,
 				44B2EF831A116CAE000AFC00 /* CinemasViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

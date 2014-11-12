@@ -12,6 +12,8 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "ScheduleCinemaRoomCell.h"
 #import "Cinema.h"
+#import "FilmDetailViewController.h"
+
 @interface ScheduleViewController ()
 @property (nonatomic,strong) AFHTTPRequestOperation *operation;
 @end
@@ -20,8 +22,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refresh:)];
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
     if (self.cinema) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refresh:)];
         self.title = self.cinema.name;
     }
 }
@@ -107,51 +110,31 @@
         cell.textLabel.numberOfLines = 0;
         cell.textLabel.font = [UIFont boldSystemFontOfSize:18];
         cell.textLabel.text = scheduleEntry.title;
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        if (scheduleEntry.type==ScheduleEntryFilm) {
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
     }
+    cell.frame = CGRectMake(0, 0, tableView.frame.size.width, 0);
+    [cell layoutIfNeeded];
 
     return cell;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
+    ScheduleEntry *entry = self.scheduleEntries[[self.tableView indexPathForSelectedRow].row];
+    if (entry.URL) {
+        FilmDetailViewController *controller = segue.destinationViewController;
+        controller.title = entry.title;
+        controller.filmURL = entry.URL;
+    }
+}
+
+- (BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    ScheduleEntry *entry = self.scheduleEntries[[self.tableView indexPathForSelectedRow].row];
+    return entry.type==ScheduleEntryFilm;
 }
 
 @end
