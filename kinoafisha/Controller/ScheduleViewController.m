@@ -22,6 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.estimatedRowHeight = 44.0;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     if (self.cinema) {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refresh:)];
@@ -114,7 +115,7 @@
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
     }
-    cell.frame = CGRectMake(0, 0, tableView.frame.size.width, 0);
+    cell.frame = CGRectMake(0, 0, tableView.frame.size.width, self.tableView.estimatedRowHeight);
     [cell layoutIfNeeded];
 
     return cell;

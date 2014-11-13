@@ -14,12 +14,14 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
         @"title":@"title",
+        @"subtitle":@"subtitle",
         @"thumbnailURL":@"thumbnail",
         @"rating":@"rating",
         @"votesCount":@"votes_count",
         @"attributes":@"attributes",
         @"descr":@"description",
-        @"scheduleEntries":@"schedule"
+        @"scheduleEntries":@"schedule",
+        @"detailURL":@"detail_url"
         };
 }
 
@@ -34,4 +36,9 @@
 + (NSValueTransformer *)scheduleEntriesJSONTransformer {
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:ScheduleEntry.class];
 }
+
++ (NSValueTransformer *)detailURLJSONTransformer {
+    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+}
+
 @end

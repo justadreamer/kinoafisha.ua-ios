@@ -36,6 +36,8 @@
     [super viewWillAppear:animated];
     if (![self.city isEqual:[City selectedCity]]) {
         self.city = [City selectedCity];
+        self.cinemasContainer = nil;
+        [self redisplayData];
         [self loadData];
     }
 }
@@ -69,7 +71,11 @@
 
 - (void) redisplayData {
     [self.tableView reloadData];
-    self.title = [NSString stringWithFormat:@"Кинотеатры %@",self.cinemasContainer.cityName];
+    if ([self.cinemasContainer.cityName length]) {
+        self.title = [NSString stringWithFormat:@"Кинотеатры %@",self.cinemasContainer.cityName];
+    } else {
+        self.title = @"Кинотеатры";
+    }
 }
 
 #pragma mark - Table view data source

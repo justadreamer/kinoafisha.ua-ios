@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		441ADB1E1A13E6CD00E01CF6 /* FilmDetailHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 441ADB1D1A13E6CD00E01CF6 /* FilmDetailHeaderCell.m */; };
 		441ADB211A13F19D00E01CF6 /* AttributeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 441ADB201A13F19D00E01CF6 /* AttributeCell.m */; };
+		441C77931A1560BA00F9499E /* ukraine.png in Resources */ = {isa = PBXBuildFile; fileRef = 441C77911A1560BA00F9499E /* ukraine.png */; };
 		4451294E1A09FF0D000364E1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4451294D1A09FF0D000364E1 /* main.m */; };
 		445129511A09FF0D000364E1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 445129501A09FF0D000364E1 /* AppDelegate.m */; };
 		445129571A09FF0D000364E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 445129551A09FF0D000364E1 /* Main.storyboard */; };
@@ -36,6 +37,8 @@
 		44B2EF8C1A12B992000AFC00 /* Film.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B2EF8B1A12B992000AFC00 /* Film.m */; };
 		44B2EF8F1A12BA11000AFC00 /* Attribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B2EF8E1A12BA11000AFC00 /* Attribute.m */; };
 		44B2EF921A12C0F3000AFC00 /* FilmDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B2EF911A12C0F3000AFC00 /* FilmDetailViewController.m */; };
+		44C54DA61A153D4800AF22AD /* FilmsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C54DA51A153D4800AF22AD /* FilmsViewController.m */; };
+		44C54DA91A154BC900AF22AD /* FilmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C54DA81A154BC900AF22AD /* FilmCell.m */; };
 		9F2F60FC7961C6B9A6F855D3 /* libPods-kinoafisha.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDBD344A5E1DC2EC06B7B3F4 /* libPods-kinoafisha.a */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +48,7 @@
 		441ADB1D1A13E6CD00E01CF6 /* FilmDetailHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilmDetailHeaderCell.m; sourceTree = "<group>"; };
 		441ADB1F1A13F19D00E01CF6 /* AttributeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributeCell.h; sourceTree = "<group>"; };
 		441ADB201A13F19D00E01CF6 /* AttributeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributeCell.m; sourceTree = "<group>"; };
+		441C77921A1560BA00F9499E /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = Base.lproj/ukraine.png; sourceTree = "<group>"; };
 		445129481A09FF0D000364E1 /* kinoafisha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kinoafisha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4451294C1A09FF0D000364E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4451294D1A09FF0D000364E1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -88,6 +92,10 @@
 		44B2EF8E1A12BA11000AFC00 /* Attribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Attribute.m; path = Model/Attribute.m; sourceTree = "<group>"; };
 		44B2EF901A12C0F3000AFC00 /* FilmDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilmDetailViewController.h; path = Controller/FilmDetailViewController.h; sourceTree = "<group>"; };
 		44B2EF911A12C0F3000AFC00 /* FilmDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilmDetailViewController.m; path = Controller/FilmDetailViewController.m; sourceTree = "<group>"; };
+		44C54DA41A153D4800AF22AD /* FilmsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilmsViewController.h; path = Controller/FilmsViewController.h; sourceTree = "<group>"; };
+		44C54DA51A153D4800AF22AD /* FilmsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilmsViewController.m; path = Controller/FilmsViewController.m; sourceTree = "<group>"; };
+		44C54DA71A154BC900AF22AD /* FilmCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilmCell.h; sourceTree = "<group>"; };
+		44C54DA81A154BC900AF22AD /* FilmCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilmCell.m; sourceTree = "<group>"; };
 		DDBD344A5E1DC2EC06B7B3F4 /* libPods-kinoafisha.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-kinoafisha.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F992382DC43E8364EEEFF699 /* Pods-kinoafisha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kinoafisha.release.xcconfig"; path = "Pods/Target Support Files/Pods-kinoafisha/Pods-kinoafisha.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,6 +118,14 @@
 				DDBD344A5E1DC2EC06B7B3F4 /* libPods-kinoafisha.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		441C77901A15607E00F9499E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				441C77911A1560BA00F9499E /* ukraine.png */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		4451293F1A09FF0D000364E1 = {
@@ -142,6 +158,7 @@
 				445129551A09FF0D000364E1 /* Main.storyboard */,
 				445129581A09FF0D000364E1 /* Images.xcassets */,
 				4451295A1A09FF0D000364E1 /* LaunchScreen.xib */,
+				441C77901A15607E00F9499E /* Resources */,
 				4451294B1A09FF0D000364E1 /* Supporting Files */,
 				44B2EE9E1A0FA207000AFC00 /* Global.h */,
 			);
@@ -168,6 +185,8 @@
 				44B2EF7F1A116C83000AFC00 /* ScheduleViewController.m */,
 				44B2EF901A12C0F3000AFC00 /* FilmDetailViewController.h */,
 				44B2EF911A12C0F3000AFC00 /* FilmDetailViewController.m */,
+				44C54DA41A153D4800AF22AD /* FilmsViewController.h */,
+				44C54DA51A153D4800AF22AD /* FilmsViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -219,6 +238,8 @@
 				441ADB1D1A13E6CD00E01CF6 /* FilmDetailHeaderCell.m */,
 				441ADB1F1A13F19D00E01CF6 /* AttributeCell.h */,
 				441ADB201A13F19D00E01CF6 /* AttributeCell.m */,
+				44C54DA71A154BC900AF22AD /* FilmCell.h */,
+				44C54DA81A154BC900AF22AD /* FilmCell.m */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -302,6 +323,7 @@
 				4451295C1A09FF0D000364E1 /* LaunchScreen.xib in Resources */,
 				445129591A09FF0D000364E1 /* Images.xcassets in Resources */,
 				44B2EE921A0F9118000AFC00 /* tpl_attributes.xsl in Resources */,
+				441C77931A1560BA00F9499E /* ukraine.png in Resources */,
 				44B2EE8D1A0F9118000AFC00 /* films.xsl in Resources */,
 				44B2EE8F1A0F9118000AFC00 /* single_film.xsl in Resources */,
 			);
@@ -348,6 +370,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44B2EF891A12B57F000AFC00 /* ScheduleCinemaRoomCell.m in Sources */,
+				44C54DA61A153D4800AF22AD /* FilmsViewController.m in Sources */,
 				445129511A09FF0D000364E1 /* AppDelegate.m in Sources */,
 				44B2EE721A0F905D000AFC00 /* CitiesViewController.m in Sources */,
 				44B2EF8F1A12BA11000AFC00 /* Attribute.m in Sources */,
@@ -361,6 +384,7 @@
 				44B2EF861A117299000AFC00 /* ScheduleEntry.m in Sources */,
 				44B2EF8C1A12B992000AFC00 /* Film.m in Sources */,
 				44B2EEA71A0FD74A000AFC00 /* CinemasContainer.m in Sources */,
+				44C54DA91A154BC900AF22AD /* FilmCell.m in Sources */,
 				441ADB211A13F19D00E01CF6 /* AttributeCell.m in Sources */,
 				44B2EF831A116CAE000AFC00 /* CinemasViewController.m in Sources */,
 			);
@@ -369,6 +393,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		441C77911A1560BA00F9499E /* ukraine.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				441C77921A1560BA00F9499E /* Base */,
+			);
+			name = ukraine.png;
+			sourceTree = "<group>";
+		};
 		445129551A09FF0D000364E1 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -422,7 +454,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -457,7 +489,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

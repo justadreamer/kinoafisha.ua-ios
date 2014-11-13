@@ -18,20 +18,19 @@
 <xi:include href="tpl_attributes.xsl" />
 
 <xsl:template match="/">
-  {
-    "films":[
+    [
       <xsl:for-each select="//div[@class='item' and .//h3]">
         {
           "title":"<xsl:call-template name="tpl_sanitize"><xsl:with-param name="text" select=".//h3"/></xsl:call-template>",
+          "subtitle":"<xsl:call-template name="tpl_sanitize"><xsl:with-param name="text" select=".//div[@class='countries']"/></xsl:call-template>",
           "thumbnail":"<xsl:call-template name="tpl_prepend_url"><xsl:with-param name="href" select=".//a[contains(@class,'photo')]/img/@src"/></xsl:call-template>",
-          "countries":"<xsl:call-template name="tpl_sanitize"><xsl:with-param name="text" select=".//div[@class='countries']"/></xsl:call-template>",
+          "detail_url":"<xsl:call-template name="tpl_prepend_url"><xsl:with-param name="href" select=".//h3//a/@href"/></xsl:call-template>",
           <xsl:call-template name="tpl_rating_votes"/>,
           <xsl:call-template name="tpl_attributes"/>
         }
         <xsl:if test="position()!=last()">,</xsl:if>
       </xsl:for-each>
-    ]    
-  }
+    ]
 </xsl:template>
 
 </xsl:stylesheet>

@@ -10,7 +10,9 @@
 
 @interface Film : MTLModel<MTLJSONSerializing>
 @property (nonatomic,strong) NSString *title;
+@property (nonatomic,strong) NSString *subtitle;
 @property (nonatomic,strong) NSURL *thumbnailURL;
+@property (nonatomic,strong) NSURL *detailURL;
 @property (nonatomic,strong) NSString *rating;
 @property (nonatomic,strong) NSString *votesCount;
 @property (nonatomic,strong) NSArray *attributes;
