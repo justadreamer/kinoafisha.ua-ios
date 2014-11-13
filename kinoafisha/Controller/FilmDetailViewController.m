@@ -43,7 +43,8 @@
     XHMantleModelAdapter *adapter = [[XHMantleModelAdapter alloc] initWithModelClass:[Film class]];
     XHTransformationHTMLResponseSerializer *serializer = [XHTransformationHTMLResponseSerializer serializerWithXHTransformation:transformation params:@{@"baseURL":Q(KinoAfishaBaseURL)} modelAdapter:adapter];
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:self.filmURL];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:self.filmURL];
+    [request setValue:UA forHTTPHeaderField:@"User-Agent"];
     self.operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     self.operation.responseSerializer = serializer;
     
