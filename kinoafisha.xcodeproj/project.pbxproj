@@ -9,7 +9,12 @@
 /* Begin PBXBuildFile section */
 		441ADB1E1A13E6CD00E01CF6 /* FilmDetailHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 441ADB1D1A13E6CD00E01CF6 /* FilmDetailHeaderCell.m */; };
 		441ADB211A13F19D00E01CF6 /* AttributeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 441ADB201A13F19D00E01CF6 /* AttributeCell.m */; };
-		441C77931A1560BA00F9499E /* ukraine.png in Resources */ = {isa = PBXBuildFile; fileRef = 441C77911A1560BA00F9499E /* ukraine.png */; };
+		441C77A21A15683F00F9499E /* info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 441C779A1A15683F00F9499E /* info@2x.png */; };
+		441C77A31A15683F00F9499E /* cinema@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 441C779C1A15683F00F9499E /* cinema@2x.png */; };
+		441C77A41A15683F00F9499E /* film@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 441C779E1A15683F00F9499E /* film@2x.png */; };
+		441C77A51A15683F00F9499E /* ukraine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 441C77A01A15683F00F9499E /* ukraine@2x.png */; };
+		441C77A81A156CF500F9499E /* credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 441C77A61A156CF500F9499E /* credits.html */; };
+		441C77AB1A156D5700F9499E /* CreditsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 441C77AA1A156D5700F9499E /* CreditsViewController.m */; };
 		4451294E1A09FF0D000364E1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4451294D1A09FF0D000364E1 /* main.m */; };
 		445129511A09FF0D000364E1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 445129501A09FF0D000364E1 /* AppDelegate.m */; };
 		445129571A09FF0D000364E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 445129551A09FF0D000364E1 /* Main.storyboard */; };
@@ -48,7 +53,13 @@
 		441ADB1D1A13E6CD00E01CF6 /* FilmDetailHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilmDetailHeaderCell.m; sourceTree = "<group>"; };
 		441ADB1F1A13F19D00E01CF6 /* AttributeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributeCell.h; sourceTree = "<group>"; };
 		441ADB201A13F19D00E01CF6 /* AttributeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributeCell.m; sourceTree = "<group>"; };
-		441C77921A1560BA00F9499E /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = Base.lproj/ukraine.png; sourceTree = "<group>"; };
+		441C779B1A15683F00F9499E /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Base.lproj/info@2x.png"; sourceTree = "<group>"; };
+		441C779D1A15683F00F9499E /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Base.lproj/cinema@2x.png"; sourceTree = "<group>"; };
+		441C779F1A15683F00F9499E /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Base.lproj/film@2x.png"; sourceTree = "<group>"; };
+		441C77A11A15683F00F9499E /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Base.lproj/ukraine@2x.png"; sourceTree = "<group>"; };
+		441C77A71A156CF500F9499E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/credits.html; sourceTree = "<group>"; };
+		441C77A91A156D5700F9499E /* CreditsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreditsViewController.h; path = Controller/CreditsViewController.h; sourceTree = "<group>"; };
+		441C77AA1A156D5700F9499E /* CreditsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreditsViewController.m; path = Controller/CreditsViewController.m; sourceTree = "<group>"; };
 		445129481A09FF0D000364E1 /* kinoafisha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kinoafisha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4451294C1A09FF0D000364E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4451294D1A09FF0D000364E1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -123,7 +134,11 @@
 		441C77901A15607E00F9499E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				441C77911A1560BA00F9499E /* ukraine.png */,
+				441C77A61A156CF500F9499E /* credits.html */,
+				441C779A1A15683F00F9499E /* info@2x.png */,
+				441C779C1A15683F00F9499E /* cinema@2x.png */,
+				441C779E1A15683F00F9499E /* film@2x.png */,
+				441C77A01A15683F00F9499E /* ukraine@2x.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -187,6 +202,8 @@
 				44B2EF911A12C0F3000AFC00 /* FilmDetailViewController.m */,
 				44C54DA41A153D4800AF22AD /* FilmsViewController.h */,
 				44C54DA51A153D4800AF22AD /* FilmsViewController.m */,
+				441C77A91A156D5700F9499E /* CreditsViewController.h */,
+				441C77AA1A156D5700F9499E /* CreditsViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -312,6 +329,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				441C77A51A15683F00F9499E /* ukraine@2x.png in Resources */,
+				441C77A41A15683F00F9499E /* film@2x.png in Resources */,
 				44B2EE931A0F9118000AFC00 /* tpl_prepend_url.xsl in Resources */,
 				44B2EE8E1A0F9118000AFC00 /* single_cinema.xsl in Resources */,
 				44B2EE861A0F9118000AFC00 /* cinemas.xsl in Resources */,
@@ -323,9 +342,11 @@
 				4451295C1A09FF0D000364E1 /* LaunchScreen.xib in Resources */,
 				445129591A09FF0D000364E1 /* Images.xcassets in Resources */,
 				44B2EE921A0F9118000AFC00 /* tpl_attributes.xsl in Resources */,
-				441C77931A1560BA00F9499E /* ukraine.png in Resources */,
+				441C77A31A15683F00F9499E /* cinema@2x.png in Resources */,
 				44B2EE8D1A0F9118000AFC00 /* films.xsl in Resources */,
+				441C77A21A15683F00F9499E /* info@2x.png in Resources */,
 				44B2EE8F1A0F9118000AFC00 /* single_film.xsl in Resources */,
+				441C77A81A156CF500F9499E /* credits.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,6 +391,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44B2EF891A12B57F000AFC00 /* ScheduleCinemaRoomCell.m in Sources */,
+				441C77AB1A156D5700F9499E /* CreditsViewController.m in Sources */,
 				44C54DA61A153D4800AF22AD /* FilmsViewController.m in Sources */,
 				445129511A09FF0D000364E1 /* AppDelegate.m in Sources */,
 				44B2EE721A0F905D000AFC00 /* CitiesViewController.m in Sources */,
@@ -393,12 +415,44 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		441C77911A1560BA00F9499E /* ukraine.png */ = {
+		441C779A1A15683F00F9499E /* info@2x.png */ = {
 			isa = PBXVariantGroup;
 			children = (
-				441C77921A1560BA00F9499E /* Base */,
+				441C779B1A15683F00F9499E /* Base */,
 			);
-			name = ukraine.png;
+			name = "info@2x.png";
+			sourceTree = "<group>";
+		};
+		441C779C1A15683F00F9499E /* cinema@2x.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				441C779D1A15683F00F9499E /* Base */,
+			);
+			name = "cinema@2x.png";
+			sourceTree = "<group>";
+		};
+		441C779E1A15683F00F9499E /* film@2x.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				441C779F1A15683F00F9499E /* Base */,
+			);
+			name = "film@2x.png";
+			sourceTree = "<group>";
+		};
+		441C77A01A15683F00F9499E /* ukraine@2x.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				441C77A11A15683F00F9499E /* Base */,
+			);
+			name = "ukraine@2x.png";
+			sourceTree = "<group>";
+		};
+		441C77A61A156CF500F9499E /* credits.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				441C77A71A156CF500F9499E /* Base */,
+			);
+			name = credits.html;
 			sourceTree = "<group>";
 		};
 		445129551A09FF0D000364E1 /* Main.storyboard */ = {
@@ -512,6 +566,7 @@
 			baseConfigurationReference = F992382DC43E8364EEEFF699 /* Pods-kinoafisha.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eugene Dorfman (J89XB832R3)";
 				INFOPLIST_FILE = kinoafisha/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
