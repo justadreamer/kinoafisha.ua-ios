@@ -510,7 +510,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -558,6 +557,7 @@
 				INFOPLIST_FILE = kinoafisha/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "c14a580b-aded-49a6-8925-b9857d81fffe";
 			};
 			name = Debug;
 		};
@@ -570,6 +570,7 @@
 				INFOPLIST_FILE = kinoafisha/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "1ca913e8-640a-4757-bf99-9cf3bb8014e1";
 			};
 			name = Release;
 		};
