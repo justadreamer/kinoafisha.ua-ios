@@ -1,0 +1,37 @@
+queue:
+    - xcode
+    - clean
+    - bump_version
+    - build
+    - pack_ipa
+    - copy_ipa
+
+
+default: &default
+    platform:       ios
+    using_pods:     true
+    project_dir:    .
+    profile:
+        file:       "~/Downloads/kinoafisha_distrib.mobileprovision"
+    xcode:
+        enabled:    true
+        version:    v6
+    bump_version:
+        enabled:    true
+        push:       true
+        up_mver:    false
+    build:
+        configuration:  Release
+        sdk:            iphoneos
+        workspace:
+            name:       kinoafisha
+            scheme:     kinoafisha
+    pack_ipa:
+        enabled:    true
+        naming:
+            prefix:
+            append_version: true
+    copy_ipa:
+        enabled:    true
+        output_dir: ~/Downloads/
+        clear_old:  false
