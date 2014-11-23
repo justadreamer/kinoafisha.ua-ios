@@ -9,7 +9,8 @@
 #import "FilmDetailViewController.h"
 #import "Film.h"
 #import "Global.h"
-#import <XHTransformation/XHAll.h>
+#import <AFNetworking/AFNetworking.h>
+#import <SkyScraper/SkyScraper.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "FilmDetailHeaderCell.h"
 #import "Attribute.h"
@@ -39,9 +40,9 @@
     [self.operation cancel];
     
     NSURL *XSLURL = [[NSBundle mainBundle] URLForResource:@"single_film" withExtension:@"xsl"];
-    XHTransformation *transformation = [[XHTransformation alloc] initWithXSLTURL:XSLURL];
-    XHMantleModelAdapter *adapter = [[XHMantleModelAdapter alloc] initWithModelClass:[Film class]];
-    XHTransformationHTMLResponseSerializer *serializer = [XHTransformationHTMLResponseSerializer serializerWithXHTransformation:transformation params:@{@"baseURL":Q(KinoAfishaBaseURL)} modelAdapter:adapter];
+    SkyXSLTransformation *transformation = [[SkyXSLTransformation alloc] initWithXSLTURL:XSLURL];
+    SkyMantleModelAdapter *adapter = [[SkyMantleModelAdapter alloc] initWithModelClass:[Film class]];
+    SkyHTMLResponseSerializer *serializer = [SkyHTMLResponseSerializer serializerWithXSLTransformation:transformation params:@{@"baseURL":Q(KinoAfishaBaseURL)} modelAdapter:adapter];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:self.filmURL];
     [request setValue:UA forHTTPHeaderField:@"User-Agent"];

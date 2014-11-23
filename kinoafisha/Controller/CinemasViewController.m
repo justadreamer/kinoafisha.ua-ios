@@ -7,8 +7,8 @@
 //
 
 #import "Global.h"
-#import "XHAll.h"
-
+#import <SkyScraper/SkyScraper.h>
+#import <AFNetworking/AFNetworking.h>
 #import "CinemasViewController.h"
 #import "City.h"
 #import "Cinema.h"
@@ -47,9 +47,9 @@
     [self.operation cancel];
 
     NSURL *XSLURL = [[NSBundle mainBundle] URLForResource:@"cinemas" withExtension:@"xsl"];
-    XHTransformation *transformation = [[XHTransformation alloc] initWithXSLTURL:XSLURL];
-    XHMantleModelAdapter *adapter = [[XHMantleModelAdapter alloc] initWithModelClass:[CinemasContainer class]];
-    XHTransformationHTMLResponseSerializer *serializer = [XHTransformationHTMLResponseSerializer serializerWithXHTransformation:transformation params:@{@"baseURL":Q(KinoAfishaBaseURL)} modelAdapter:adapter];
+    SkyXSLTransformation *transformation = [[SkyXSLTransformation alloc] initWithXSLTURL:XSLURL];
+    SkyMantleModelAdapter *adapter = [[SkyMantleModelAdapter alloc] initWithModelClass:[CinemasContainer class]];
+    SkyHTMLResponseSerializer *serializer = [SkyHTMLResponseSerializer serializerWithXSLTransformation:transformation params:@{@"baseURL":Q(KinoAfishaBaseURL)} modelAdapter:adapter];
 
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:self.city.cinemaURL];
     [request setValue:UA forHTTPHeaderField:@"User-Agent"];

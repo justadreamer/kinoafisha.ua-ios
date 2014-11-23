@@ -8,10 +8,12 @@
 
 #import "Global.h"
 #import "CitiesViewController.h"
-#import "XHAll.h"
+#import <SkyScraper/SkyScraper.h>
+#import <ObjectiveSugar/ObjectiveSugar.h>
+#import <AFNetworking/AFNetworking.h>
 #import "SVProgressHUD.h"
 #import "City.h"
-#import <ObjectiveSugar/ObjectiveSugar.h>
+
 
 @interface CitiesViewController ()
 @property (nonatomic,strong) NSArray *cities;
@@ -49,9 +51,9 @@
     [self.operation cancel];
 
     NSURL *citiesXSLURL = [[NSBundle mainBundle] URLForResource:@"cities" withExtension:@"xsl"];
-    XHTransformation *transformation = [[XHTransformation alloc] initWithXSLTURL:citiesXSLURL];
-    XHMantleModelAdapter *adapter = [[XHMantleModelAdapter alloc] initWithModelClass:[City class]];
-    XHTransformationHTMLResponseSerializer *serializer = [XHTransformationHTMLResponseSerializer serializerWithXHTransformation:transformation params:@{@"baseURL":Q(KinoAfishaBaseURL)} modelAdapter:adapter];
+    SkyXSLTransformation *transformation = [[SkyXSLTransformation alloc] initWithXSLTURL:citiesXSLURL];
+    SkyMantleModelAdapter *adapter = [[SkyMantleModelAdapter alloc] initWithModelClass:[City class]];
+    SkyHTMLResponseSerializer *serializer = [SkyHTMLResponseSerializer serializerWithXSLTransformation:transformation params:@{@"baseURL":Q(KinoAfishaBaseURL)} modelAdapter:adapter];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[KinoAfishaBaseURL stringByAppendingString:@"/cinema"]]];
     [request setValue:UA forHTTPHeaderField:@"User-Agent"];
