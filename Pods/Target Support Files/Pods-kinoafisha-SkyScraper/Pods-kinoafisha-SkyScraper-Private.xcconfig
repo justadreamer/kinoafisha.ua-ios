@@ -1,0 +1,6 @@
+#include "Pods-kinoafisha-SkyScraper.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Build" "${PODS_ROOT}/Headers/Build/SkyScraper" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/Mantle" "${PODS_ROOT}/Headers/Public/ObjectiveSugar" "${PODS_ROOT}/Headers/Public/SVProgressHUD" "${PODS_ROOT}/Headers/Public/SkyScraper" ${PODS_KINOAFISHA_SKYSCRAPER_HEADER_SEARCH_PATHS}
+LIBRARY_SEARCH_PATHS = ${PODS_KINOAFISHA_SKYSCRAPER_LIBRARY_SEARCH_PATHS}
+OTHER_LDFLAGS = ${PODS_KINOAFISHA_SKYSCRAPER_OTHER_LDFLAGS} -ObjC
+PODS_ROOT = ${SRCROOT}

@@ -1,1 +1,0 @@
-../../../XHTransformation/libxslt/xsltlocale.h

@@ -24,49 +24,39 @@ PODS:
     - Mantle/extobjc
   - Mantle/extobjc (1.5.1)
   - ObjectiveSugar (1.1.0)
-  - SVProgressHUD (1.0)
-  - XHTransformation (0.1.4):
-    - XHTransformation/AFNetworking
-    - XHTransformation/AFNetworking
-    - XHTransformation/Base
-    - XHTransformation/Base
-    - XHTransformation/libxslt-with-plugins
-    - XHTransformation/Mantle
-    - XHTransformation/Mantle
-  - XHTransformation/AFNetworking (0.1.4):
-    - AFNetworking
-    - XHTransformation/AFNetworking
-    - XHTransformation/Base
-    - XHTransformation/Mantle
-  - XHTransformation/Base (0.1.4):
-    - XHTransformation/AFNetworking
-    - XHTransformation/Base
-    - XHTransformation/libxslt-with-plugins
-    - XHTransformation/Mantle
-  - XHTransformation/libxslt-with-plugins (0.1.4):
-    - XHTransformation/AFNetworking
-    - XHTransformation/Base
-    - XHTransformation/Mantle
-  - XHTransformation/Mantle (0.1.4):
+  - SkyScraper (0.1):
+    - SkyScraper/AFNetworking2
+    - SkyScraper/Base
+    - SkyScraper/Base
+    - SkyScraper/libxslt-with-plugins
+    - SkyScraper/Mantle
+  - SkyScraper/AFNetworking2 (0.1):
+    - AFNetworking (~> 2.4.1)
+    - SkyScraper/Base
+  - SkyScraper/Base (0.1):
+    - SkyScraper/Base
+    - SkyScraper/libxslt-with-plugins
+  - SkyScraper/libxslt-with-plugins (0.1):
+    - SkyScraper/Base
+  - SkyScraper/Mantle (0.1):
     - Mantle
-    - XHTransformation/AFNetworking
-    - XHTransformation/Base
-    - XHTransformation/Mantle
+    - SkyScraper/Base
+  - SVProgressHUD (1.0)
 
 DEPENDENCIES:
   - ObjectiveSugar
+  - SkyScraper (from `https://github.com/justadreamer/SkyScraper`)
   - SVProgressHUD
-  - XHTransformation (from `git@github.com:justadreamer/iOS-XSLT-HTMLScraper.git`)
 
 EXTERNAL SOURCES:
-  XHTransformation:
-    :git: git@github.com:justadreamer/iOS-XSLT-HTMLScraper.git
+  SkyScraper:
+    :git: https://github.com/justadreamer/SkyScraper
 
 SPEC CHECKSUMS:
   AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
   Mantle: d7c5ac734579ec751c58fecbf56189853056c58c
   ObjectiveSugar: f48793f5902c77cfc02a4ce46d2e8ecddcad4dc2
+  SkyScraper: b13a93ce197e529b7425518a24d668981962d76a
   SVProgressHUD: 5034c6e22b8c2ca3e09402e48d41ed0340aa1c50
-  XHTransformation: 211b7b3d2cd6b483a21ff66df33d4962b1f47c90
 
 COCOAPODS: 0.34.4

@@ -1,1 +1,0 @@
-../../../XHTransformation/libxslt/numbersInternals.h

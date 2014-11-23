@@ -89,7 +89,7 @@ A different license may apply to other ressources included in this package,
 including Joseph Wain's Glyphish Icons. Please consult their 
 respective headers for the terms of their individual licenses.
 
-## XHTransformation
+## SkyScraper
 
 Copyright (c) 2014 Eugene Dorfman 
 

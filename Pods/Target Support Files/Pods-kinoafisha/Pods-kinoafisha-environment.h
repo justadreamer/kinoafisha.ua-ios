@@ -72,33 +72,33 @@
 #define COCOAPODS_VERSION_MINOR_SVProgressHUD 0
 #define COCOAPODS_VERSION_PATCH_SVProgressHUD 0
 
-// XHTransformation
-#define COCOAPODS_POD_AVAILABLE_XHTransformation
-#define COCOAPODS_VERSION_MAJOR_XHTransformation 0
-#define COCOAPODS_VERSION_MINOR_XHTransformation 1
-#define COCOAPODS_VERSION_PATCH_XHTransformation 4
+// SkyScraper
+#define COCOAPODS_POD_AVAILABLE_SkyScraper
+#define COCOAPODS_VERSION_MAJOR_SkyScraper 0
+#define COCOAPODS_VERSION_MINOR_SkyScraper 1
+#define COCOAPODS_VERSION_PATCH_SkyScraper 0
 
-// XHTransformation/AFNetworking
-#define COCOAPODS_POD_AVAILABLE_XHTransformation_AFNetworking
-#define COCOAPODS_VERSION_MAJOR_XHTransformation_AFNetworking 0
-#define COCOAPODS_VERSION_MINOR_XHTransformation_AFNetworking 1
-#define COCOAPODS_VERSION_PATCH_XHTransformation_AFNetworking 4
+// SkyScraper/AFNetworking2
+#define COCOAPODS_POD_AVAILABLE_SkyScraper_AFNetworking2
+#define COCOAPODS_VERSION_MAJOR_SkyScraper_AFNetworking2 0
+#define COCOAPODS_VERSION_MINOR_SkyScraper_AFNetworking2 1
+#define COCOAPODS_VERSION_PATCH_SkyScraper_AFNetworking2 0
 
-// XHTransformation/Base
-#define COCOAPODS_POD_AVAILABLE_XHTransformation_Base
-#define COCOAPODS_VERSION_MAJOR_XHTransformation_Base 0
-#define COCOAPODS_VERSION_MINOR_XHTransformation_Base 1
-#define COCOAPODS_VERSION_PATCH_XHTransformation_Base 4
+// SkyScraper/Base
+#define COCOAPODS_POD_AVAILABLE_SkyScraper_Base
+#define COCOAPODS_VERSION_MAJOR_SkyScraper_Base 0
+#define COCOAPODS_VERSION_MINOR_SkyScraper_Base 1
+#define COCOAPODS_VERSION_PATCH_SkyScraper_Base 0
 
-// XHTransformation/Mantle
-#define COCOAPODS_POD_AVAILABLE_XHTransformation_Mantle
-#define COCOAPODS_VERSION_MAJOR_XHTransformation_Mantle 0
-#define COCOAPODS_VERSION_MINOR_XHTransformation_Mantle 1
-#define COCOAPODS_VERSION_PATCH_XHTransformation_Mantle 4
+// SkyScraper/Mantle
+#define COCOAPODS_POD_AVAILABLE_SkyScraper_Mantle
+#define COCOAPODS_VERSION_MAJOR_SkyScraper_Mantle 0
+#define COCOAPODS_VERSION_MINOR_SkyScraper_Mantle 1
+#define COCOAPODS_VERSION_PATCH_SkyScraper_Mantle 0
 
-// XHTransformation/libxslt-with-plugins
-#define COCOAPODS_POD_AVAILABLE_XHTransformation_libxslt_with_plugins
-#define COCOAPODS_VERSION_MAJOR_XHTransformation_libxslt_with_plugins 0
-#define COCOAPODS_VERSION_MINOR_XHTransformation_libxslt_with_plugins 1
-#define COCOAPODS_VERSION_PATCH_XHTransformation_libxslt_with_plugins 4
+// SkyScraper/libxslt-with-plugins
+#define COCOAPODS_POD_AVAILABLE_SkyScraper_libxslt_with_plugins
+#define COCOAPODS_VERSION_MAJOR_SkyScraper_libxslt_with_plugins 0
+#define COCOAPODS_VERSION_MINOR_SkyScraper_libxslt_with_plugins 1
+#define COCOAPODS_VERSION_PATCH_SkyScraper_libxslt_with_plugins 0
 
