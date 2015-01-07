@@ -89,6 +89,8 @@
 		44C54DA71A154BC900AF22AD /* FilmCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilmCell.h; sourceTree = "<group>"; };
 		44C54DA81A154BC900AF22AD /* FilmCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilmCell.m; sourceTree = "<group>"; };
 		44E4D61B1A5DC90100A89982 /* XSLT */ = {isa = PBXFileReference; lastKnownFileType = folder; path = XSLT; sourceTree = SOURCE_ROOT; };
+		44E4D61D1A5DD08300A89982 /* S3Secrets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = S3Secrets.h; sourceTree = "<group>"; };
+		44E4D61E1A5DD09900A89982 /* S3Secrets_Example.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = S3Secrets_Example.h; path = ../S3Secrets_Example.h; sourceTree = "<group>"; };
 		DDBD344A5E1DC2EC06B7B3F4 /* libPods-kinoafisha.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-kinoafisha.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F992382DC43E8364EEEFF699 /* Pods-kinoafisha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kinoafisha.release.xcconfig"; path = "Pods/Target Support Files/Pods-kinoafisha/Pods-kinoafisha.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -158,6 +160,8 @@
 				441C77901A15607E00F9499E /* Resources */,
 				4451294B1A09FF0D000364E1 /* Supporting Files */,
 				44B2EE9E1A0FA207000AFC00 /* Global.h */,
+				44E4D61D1A5DD08300A89982 /* S3Secrets.h */,
+				44E4D61E1A5DD09900A89982 /* S3Secrets_Example.h */,
 			);
 			path = kinoafisha;
 			sourceTree = "<group>";

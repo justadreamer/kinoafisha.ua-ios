@@ -2,3 +2,4 @@
 *.xcuserdatad
 build/*
 Pods/Headers/Build/*
+S3Secrets.h
