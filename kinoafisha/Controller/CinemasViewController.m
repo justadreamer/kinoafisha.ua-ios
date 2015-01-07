@@ -16,6 +16,7 @@
 #import "SVProgressHUD.h"
 #import "CinemaCell.h"
 #import "ScheduleViewController.h"
+#import "AppDelegate.h"
 
 @interface CinemasViewController ()
 @property (nonatomic,strong) City *city;
@@ -46,7 +47,7 @@
     self.operation.completionBlock = nil;
     [self.operation cancel];
 
-    NSURL *XSLURL = [[NSBundle mainBundle] URLForResource:@"cinemas" withExtension:@"xsl"];
+    NSURL *XSLURL = [AD.s3SyncManager URLForResource:@"cinemas" withExtension:@"xsl"];
     SkyXSLTransformation *transformation = [[SkyXSLTransformation alloc] initWithXSLTURL:XSLURL];
     SkyMantleModelAdapter *adapter = [[SkyMantleModelAdapter alloc] initWithModelClass:[CinemasContainer class]];
     SkyHTMLResponseSerializer *serializer = [SkyHTMLResponseSerializer serializerWithXSLTransformation:transformation params:@{@"baseURL":Q(KinoAfishaBaseURL)} modelAdapter:adapter];

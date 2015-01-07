@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SkyS3Sync/SkyS3Sync.h>
 
+#define AD ((AppDelegate *)[UIApplication sharedApplication].delegate)
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (strong, nonatomic) SkyS3SyncManager *s3SyncManager;
 
 @end
 

@@ -17,6 +17,7 @@
 #import <ObjectiveSugar.h>
 #import "AttributeCell.h"
 #import "ScheduleViewController.h"
+#import "AppDelegate.h"
 
 @interface FilmDetailViewController ()
 @property (nonatomic,strong) Film *film;
@@ -39,7 +40,7 @@
     self.operation.completionBlock = nil;
     [self.operation cancel];
     
-    NSURL *XSLURL = [[NSBundle mainBundle] URLForResource:@"single_film" withExtension:@"xsl"];
+    NSURL *XSLURL = [AD.s3SyncManager URLForResource:@"single_film" withExtension:@"xsl"];
     SkyXSLTransformation *transformation = [[SkyXSLTransformation alloc] initWithXSLTURL:XSLURL];
     SkyMantleModelAdapter *adapter = [[SkyMantleModelAdapter alloc] initWithModelClass:[Film class]];
     SkyHTMLResponseSerializer *serializer = [SkyHTMLResponseSerializer serializerWithXSLTransformation:transformation params:@{@"baseURL":Q(KinoAfishaBaseURL)} modelAdapter:adapter];

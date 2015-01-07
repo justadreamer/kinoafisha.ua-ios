@@ -14,6 +14,7 @@
 #import "ScheduleCinemaRoomCell.h"
 #import "Cinema.h"
 #import "FilmDetailViewController.h"
+#import "AppDelegate.h"
 
 @interface ScheduleViewController ()
 @property (nonatomic,strong) AFHTTPRequestOperation *operation;
@@ -44,7 +45,7 @@
     self.operation.completionBlock = nil;
     [self.operation cancel];
     
-    NSURL *XSLURL = [[NSBundle mainBundle] URLForResource:@"single_cinema" withExtension:@"xsl"];
+    NSURL *XSLURL = [AD.s3SyncManager URLForResource:@"single_cinema" withExtension:@"xsl"];
     SkyXSLTransformation *transformation = [[SkyXSLTransformation alloc] initWithXSLTURL:XSLURL];
     SkyMantleModelAdapter *adapter = [[SkyMantleModelAdapter alloc] initWithModelClass:[ScheduleEntry class]];
     SkyHTMLResponseSerializer *serializer = [SkyHTMLResponseSerializer serializerWithXSLTransformation:transformation params:@{@"baseURL":Q(KinoAfishaBaseURL)} modelAdapter:adapter];

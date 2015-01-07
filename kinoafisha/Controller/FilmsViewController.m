@@ -15,6 +15,7 @@
 #import "City.h"
 #import "FilmDetailViewController.h"
 #import "FilmCell.h"
+#import "AppDelegate.h"
 
 @interface FilmsViewController ()
 @property (nonatomic,strong) NSArray *films;
@@ -45,7 +46,7 @@
     self.operation.completionBlock = nil;
     [self.operation cancel];
     
-    NSURL *XSLURL = [[NSBundle mainBundle] URLForResource:@"films" withExtension:@"xsl"];
+    NSURL *XSLURL = [AD.s3SyncManager URLForResource:@"films" withExtension:@"xsl"];
     SkyXSLTransformation *transformation = [[SkyXSLTransformation alloc] initWithXSLTURL:XSLURL];
     SkyMantleModelAdapter *adapter = [[SkyMantleModelAdapter alloc] initWithModelClass:[Film class]];
     SkyHTMLResponseSerializer *serializer = [SkyHTMLResponseSerializer serializerWithXSLTransformation:transformation params:@{@"baseURL":Q(KinoAfishaBaseURL)} modelAdapter:adapter];

@@ -13,7 +13,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import "SVProgressHUD.h"
 #import "City.h"
-
+#import "AppDelegate.h"
 
 @interface CitiesViewController ()
 @property (nonatomic,strong) NSArray *cities;
@@ -50,7 +50,7 @@
     self.operation.completionBlock = nil;
     [self.operation cancel];
 
-    NSURL *citiesXSLURL = [[NSBundle mainBundle] URLForResource:@"cities" withExtension:@"xsl"];
+    NSURL *citiesXSLURL = [AD.s3SyncManager URLForResource:@"cities" withExtension:@"xsl"];
     SkyXSLTransformation *transformation = [[SkyXSLTransformation alloc] initWithXSLTURL:citiesXSLURL];
     SkyMantleModelAdapter *adapter = [[SkyMantleModelAdapter alloc] initWithModelClass:[City class]];
     SkyHTMLResponseSerializer *serializer = [SkyHTMLResponseSerializer serializerWithXSLTransformation:transformation params:@{@"baseURL":Q(KinoAfishaBaseURL)} modelAdapter:adapter];
