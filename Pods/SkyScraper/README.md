@@ -56,41 +56,45 @@ The spec will be moved into the main Specs repository eventually, but for now th
 
 Below is an example boilerplace code needed to apply an XSLT transformation and get a JSON from an HTML data.  We assume that you have got an HTML document represented with ```NSData *html``` object and have an XSLT transformation ```scraping.xsl``` in the application resources:
 
-	NSBundle *bundle = [NSBundle bundleForClass:self.class];
-	NSURL *XSLURL = [bundle URLForResource:@"scraping" withExtension:@"xsl"];
-    SkyXSLTransformation *transformation = [[SkyXSLTransformation alloc] initWithXSLTURL:XSLURL];
-    
-	id result = [transformation JSONObjectFromHTMLData:html withParams:nil error:&error];
-	NSLog(@"%@",result);
-	
+```objective-c
+NSBundle *bundle = [NSBundle bundleForClass:self.class];
+NSURL *XSLURL = [bundle URLForResource:@"scraping" withExtension:@"xsl"];
+SkyXSLTransformation *transformation = [[SkyXSLTransformation alloc] initWithXSLTURL:XSLURL];
+
+id result = [transformation JSONObjectFromHTMLData:html withParams:nil error:&error];
+NSLog(@"%@",result);
+```
 
 
 ##Example usage with AFNetworking '~> 2'
 
 Below is an example boilerplate code you need to download the HTML document and acquire the JSON representation of your application data models.  It is assumed that you have defined an ```NSURL *URL``` object pointing at target HTML document on the web.  It is also assumed that somewhere in the application resource bundle you have ```scraping.xsl``` file with the XSLT transformation to convert HTML into JSON.
 
-		#import <SkyScraper/SkyScraper.h>
-		//...
-		
-	    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-	    
-	    NSURL *localXSLURL = [[NSBundle mainBundle] URLForResource:@"scraping" withExtension:@"xsl"];
-	    
-	    SkyXSLTransformation *transformation = [[SkyXSLTransformation alloc] initWithXSLTURL:localXSLURL];
-	    
-	    SkyHTMLResponseSerializer *serializer = [SkyHTMLResponseSerializer serializerWithXSLTransformation:transformation params:nil modelAdapter:nil];
-	    
-	    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-	    operation.responseSerializer = serializer;
+```objective-c
 
-	    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-	        NSLog(@"%@",responseObject);
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        	NSLog(@"%@",error);
-        }];
-    	
-    	[operation start];
-    	
+	#import <SkyScraper/SkyScraper.h>
+	//...
+	
+	NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+	
+	NSURL *localXSLURL = [[NSBundle mainBundle] URLForResource:@"scraping" withExtension:@"xsl"];
+	
+	SkyXSLTransformation *transformation = [[SkyXSLTransformation alloc] initWithXSLTURL:localXSLURL];
+	
+	SkyHTMLResponseSerializer *serializer = [SkyHTMLResponseSerializer serializerWithXSLTransformation:transformation params:nil modelAdapter:nil];
+	
+	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+	operation.responseSerializer = serializer;
+	
+	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+	    NSLog(@"%@",responseObject);
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+	    NSLog(@"%@",error);
+	}];
+	
+	[operation start];
+
+```    	
     	
 Here the transformation object has been utilized within the response serializer object, used by AFHTTPRequestOperation to deserialize the response.
 
@@ -99,9 +103,10 @@ Here the transformation object has been utilized within the response serializer 
 
 The basic setup is all the same as in the previous example, the difference is only in that we instantiate and initialize a Mantle model adapter and pass it to the response serializer factory method.  The response serializer the will use the model adapter to deserialize the parsed JSON object into the application data object - an instance of Model.class.
 
-		SkyMantleModelAdapter *modelAdapter = [[SkyMantleModelAdapter alloc] initWithModelClass:Model.class];
-	    SkyHTMLResponseSerializer *serializer = [SkyHTMLResponseSerializer serializerWithXSLTransformation:transformation params:nil modelAdapter:modelAdapter];
-
+```objective-c
+SkyMantleModelAdapter *modelAdapter = [[SkyMantleModelAdapter alloc] initWithModelClass:Model.class];
+SkyHTMLResponseSerializer *serializer = [SkyHTMLResponseSerializer serializerWithXSLTransformation:transformation params:nil modelAdapter:modelAdapter];
+```
 
 ##Library features
 
