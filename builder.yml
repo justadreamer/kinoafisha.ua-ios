@@ -12,7 +12,7 @@ default: &default
     using_pods:     true
     project_dir:    .
     profile:
-        file:       "~/Downloads/kinoafisha_distrib.mobileprovision"
+        file:       "~/projects/kinoafisha/provisioning/kinoafisha_distrib.mobileprovision"
     xcode:
         enabled:    true
         version:    v6
