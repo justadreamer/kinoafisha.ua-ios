@@ -63,7 +63,9 @@
     __typeof(self) __weak weakSelf = self;
     [self.operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         [SVProgressHUD dismiss];
-        weakSelf.cities = responseObject;
+        NSArray *cities = responseObject;
+        cities = [cities sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
+        weakSelf.cities = cities;
         if (weakSelf.cities.count && ![City selectedCity]) {
             City* defaultSelection = [weakSelf.cities find:^BOOL(City *city) {
                 return city.isDefaultSelection;

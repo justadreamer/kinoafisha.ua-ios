@@ -18,15 +18,13 @@
   [
     <xsl:for-each select="//ul[@class='cities-list']/li">
       <xsl:variable name="city" select="regexp:match(./a/@href,'/[^/]*/$','')"/>
-      <xsl:if test="position()!=1">
-        {
-          "name":"<xsl:value-of select="./a"/>",
-          "link_cinema":"<xsl:value-of select="$cinemaURL"/><xsl:value-of select="$city"/>",
-          "link_kinoafisha":"<xsl:value-of select="$kinoafishaURL"/><xsl:value-of select="$city"/>",
-          "is_default_selection":<xsl:choose><xsl:when test="./@class='current'">true</xsl:when><xsl:otherwise>false</xsl:otherwise></xsl:choose>
-        }
-        <xsl:if test="position()!=last()">,</xsl:if>
-      </xsl:if>
+      {
+        "name":"<xsl:value-of select="./a"/>",
+        "link_cinema":"<xsl:value-of select="$cinemaURL"/><xsl:value-of select="$city"/>",
+        "link_kinoafisha":"<xsl:value-of select="$kinoafishaURL"/><xsl:value-of select="$city"/>",
+        "is_default_selection":<xsl:choose><xsl:when test="./@class='current'">true</xsl:when><xsl:otherwise>false</xsl:otherwise></xsl:choose>
+      }
+      <xsl:if test="position()!=last()">,</xsl:if>
     </xsl:for-each>
   ]
 </xsl:template>
