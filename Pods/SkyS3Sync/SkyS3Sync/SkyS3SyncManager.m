@@ -17,9 +17,11 @@
 
 #import "SkyS3ResourceData.h"
 
+NSString * const SkyS3SyncDidFinishSyncNotification = @"SkyS3SyncDidFinishSyncNotification";
 NSString * const SkyS3SyncDidUpdateResourceNotification = @"SkyS3SyncDidUpdateResource";
 NSString * const SkyS3ResourceFileName = @"SkyS3ResourceFileName";
 NSString * const SkyS3ResourceURL = @"SkyS3ResourceURL";
+
 
 @interface SkyS3SyncManager ()
 /**
@@ -209,7 +211,7 @@ NSString * const SkyS3ResourceURL = @"SkyS3ResourceURL";
     } failure:^(NSError *error) {
         @strongify(self);
         [self.class log:@"error = %@", error];
-        self.syncInProgress = NO;
+        [self finishSync];
     }];
 }
 
@@ -219,16 +221,10 @@ NSString * const SkyS3ResourceURL = @"SkyS3ResourceURL";
     __block NSUInteger completedCounter = 0;
 
     @weakify(self);
-    void (^finishSyncing)() = ^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            @strongify(self);
-            self.syncInProgress = NO;
-        });
-    };
-
     void(^completedBlock)() = ^{
         if (++completedCounter == remoteResources.count) {
-            finishSyncing();
+            @strongify(self);
+            [self finishSync];
         };
     };
 
@@ -260,7 +256,7 @@ NSString * const SkyS3ResourceURL = @"SkyS3ResourceURL";
     }];
 
     if (remoteResources.count == 0) {
-        finishSyncing();
+        [self finishSync];
     }
 }
 
@@ -272,6 +268,15 @@ NSString * const SkyS3ResourceURL = @"SkyS3ResourceURL";
                                                                      SkyS3ResourceFileName:resourceFileName,
                                                                      SkyS3ResourceURL:[self URLForResourceWithFileName:resourceFileName]
                                                                      }];
+    });
+}
+
+- (void) finishSync {
+    @weakify(self);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        @strongify(self);
+        self.syncInProgress = NO;
+        [[NSNotificationCenter defaultCenter] postNotificationName:SkyS3SyncDidFinishSyncNotification object:self];
     });
 }
 

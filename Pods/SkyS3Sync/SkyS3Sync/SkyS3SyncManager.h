@@ -7,9 +7,34 @@
 //
 
 #import <Foundation/Foundation.h>
-
+/**
+ *  Posted when a particular resource is updated with the userInfo containing keys:
+ *
+ *  SkyS3ResourceFileName - the filename (with extension) of the resource that has
+ *  been updated
+ * 
+ *  SkyS3ResourceURL - the local file URL of the resource that has just been updated
+ */
 extern NSString * const SkyS3SyncDidUpdateResourceNotification;
+
+/**
+ *  Posted when the syncing has finished (either all appropriate resources
+ *  have been updated, or there are no updates, or there was a network failure
+ */
+extern NSString * const SkyS3SyncDidFinishSyncNotification;
+
+/**
+ *  This key is part of userInfo dictionary for the 
+ *  SkyS3SyncDidUpdateResourceNotification, contains the filename (with extension) of the resource that has
+ *  been updated
+ */
 extern NSString * const SkyS3ResourceFileName;
+
+/**
+ *  This key is part of the userInfo dictionary for the 
+ *  SkyS3SyncDidUpdateResourceNotification, contains the local file URL of the 
+ *  resource that has just been updated
+ */
 extern NSString * const SkyS3ResourceURL;
 
 /**
