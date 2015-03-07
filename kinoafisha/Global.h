@@ -13,3 +13,6 @@
 #define Q(x) [NSString stringWithFormat:@"'%@'",x]
 #define UA @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36"
 #endif
+
+#define DidChangeCityNotification @"DidChangeCityNotification"
+#define CityKey @"City"

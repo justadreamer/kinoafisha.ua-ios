@@ -8,24 +8,17 @@
 
 #import "Global.h"
 #import "CitiesViewController.h"
-#import <SkyScraper/SkyScraper.h>
+#import "CitiesViewModel.h"
+
 #import <ObjectiveSugar/ObjectiveSugar.h>
-#import <AFNetworking/AFNetworking.h>
-#import "SVProgressHUD.h"
-#import "City.h"
-#import "AppDelegate.h"
+#import <SVProgressHUD/SVProgressHUD.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @interface CitiesViewController ()
-@property (nonatomic,strong) NSArray *cities;
-@property (nonatomic,strong) AFHTTPRequestOperation *operation;
+@property (nonatomic,strong) CitiesViewModel *viewModel;
 @end
 
 @implementation CitiesViewController
-
-- (void) dealloc {
-    self.operation.completionBlock = nil;
-    [self.operation cancel];
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,52 +28,31 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(loadData)];
+    self.viewModel = [CitiesViewModel new];
+
+    [RACObserve(self.viewModel,isLoading) subscribeNext:^(NSNumber *isLoading) {
+        if ([isLoading boolValue]) {
+            [SVProgressHUD showWithStatus:@"Загрузка..."];
+        } else {
+            [SVProgressHUD dismiss];
+        }
+    }];
+
+    [RACObserve(self.viewModel, self.cities) subscribeNext:^(NSArray *cities) {
+        if (cities) {
+            [self redisplayData];
+        }
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if (!self.cities) {
-        [self loadData];
+    if (!self.viewModel.cities) {
+        [self.viewModel loadData];
     }
 }
 
 #pragma mark -
-
-- (void) loadData {
-    self.operation.completionBlock = nil;
-    [self.operation cancel];
-
-    NSURL *citiesXSLURL = [AD.s3SyncManager URLForResource:@"cities" withExtension:@"xsl"];
-    SkyXSLTransformation *transformation = [[SkyXSLTransformation alloc] initWithXSLTURL:citiesXSLURL];
-    SkyMantleModelAdapter *adapter = [[SkyMantleModelAdapter alloc] initWithModelClass:[City class]];
-    SkyHTMLResponseSerializer *serializer = [SkyHTMLResponseSerializer serializerWithXSLTransformation:transformation params:@{@"baseURL":Q(KinoAfishaBaseURL)} modelAdapter:adapter];
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[KinoAfishaBaseURL stringByAppendingString:@"/cinema"]]];
-    [request setValue:UA forHTTPHeaderField:@"User-Agent"];
-    self.operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    self.operation.responseSerializer = serializer;
-    
-    __typeof(self) __weak weakSelf = self;
-    [self.operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [SVProgressHUD dismiss];
-        NSArray *cities = responseObject;
-        cities = [cities sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
-        weakSelf.cities = cities;
-        if (weakSelf.cities.count && ![City selectedCity]) {
-            City* defaultSelection = [weakSelf.cities find:^BOOL(City *city) {
-                return city.isDefaultSelection;
-            }];
-            [City setSelectedCity:defaultSelection];
-        }
-        [weakSelf redisplayData];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [SVProgressHUD dismiss];
-        NSLog(@"%@",error);
-    }];
-
-    [SVProgressHUD showWithStatus:@"Загрузка..."];
-    [self.operation start];
-}
 
 - (void) redisplayData {
     [self.tableView reloadData];
@@ -97,14 +69,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.cities.count;
+    return self.viewModel.cities.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CityCell" forIndexPath:indexPath];
-    City *city = self.cities[indexPath.row];
-    cell.textLabel.text = city.name;
-    cell.accessoryType = [[City selectedCity] isEqual:city] ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+    cell.textLabel.text = [self.viewModel cityCaptionAtIndex:indexPath.row];
+    cell.accessoryType = [self.viewModel isCurrentCityAtIndex:indexPath.row] ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     return cell;
 }
 
@@ -113,7 +84,7 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self cellForCurrentSelection].accessoryType = UITableViewCellAccessoryNone;
-    [City setSelectedCity:self.cities[indexPath.row]];
+    [self.viewModel setSelectedCityIndex:indexPath.row];
     [self cellForCurrentSelection].accessoryType = UITableViewCellAccessoryCheckmark;
     [self.tabBarController.viewControllers each:^(UIViewController *controller) {
         if ([controller isKindOfClass:[UINavigationController class]]) {
@@ -121,17 +92,15 @@
             [navController popToRootViewControllerAnimated:NO];
         }
     }];
+    [[NSNotificationCenter defaultCenter] postNotificationName:DidChangeCityNotification object:nil userInfo:@{CityKey:self.viewModel.selectedCity}];
     [self.tabBarController setSelectedIndex:1];
 }
 
 #pragma mark -
 
 - (NSIndexPath *) indexPathForCurrentSelection {
-    NSIndexPath *indexPath = nil;
-    if ([City selectedCity]) {
-        NSUInteger idx = [self.cities indexOfObject:[City selectedCity]];
-        indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
-    }
+    NSUInteger idx = [self.viewModel indexForCurrentSelection];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
     return indexPath;
 }
 

@@ -15,6 +15,8 @@
 		441C77A51A15683F00F9499E /* ukraine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 441C77A01A15683F00F9499E /* ukraine@2x.png */; };
 		441C77A81A156CF500F9499E /* credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 441C77A61A156CF500F9499E /* credits.html */; };
 		441C77AB1A156D5700F9499E /* CreditsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 441C77AA1A156D5700F9499E /* CreditsViewController.m */; };
+		443AAABC1A62AE4B00F2A188 /* CitiesViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 443AAABB1A62AE4B00F2A188 /* CitiesViewModel.m */; };
+		443AAAC11A630A2B00F2A188 /* CinemasViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 443AAAC01A630A2B00F2A188 /* CinemasViewModel.m */; };
 		4451294E1A09FF0D000364E1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4451294D1A09FF0D000364E1 /* main.m */; };
 		445129511A09FF0D000364E1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 445129501A09FF0D000364E1 /* AppDelegate.m */; };
 		445129571A09FF0D000364E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 445129551A09FF0D000364E1 /* Main.storyboard */; };
@@ -51,6 +53,10 @@
 		441C77A71A156CF500F9499E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/credits.html; sourceTree = "<group>"; };
 		441C77A91A156D5700F9499E /* CreditsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreditsViewController.h; path = Controller/CreditsViewController.h; sourceTree = "<group>"; };
 		441C77AA1A156D5700F9499E /* CreditsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreditsViewController.m; path = Controller/CreditsViewController.m; sourceTree = "<group>"; };
+		443AAABA1A62AE4B00F2A188 /* CitiesViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CitiesViewModel.h; path = Controller/CitiesViewModel.h; sourceTree = "<group>"; };
+		443AAABB1A62AE4B00F2A188 /* CitiesViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CitiesViewModel.m; path = Controller/CitiesViewModel.m; sourceTree = "<group>"; };
+		443AAABF1A630A2B00F2A188 /* CinemasViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CinemasViewModel.h; path = Controller/CinemasViewModel.h; sourceTree = "<group>"; };
+		443AAAC01A630A2B00F2A188 /* CinemasViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CinemasViewModel.m; path = Controller/CinemasViewModel.m; sourceTree = "<group>"; };
 		445129481A09FF0D000364E1 /* kinoafisha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kinoafisha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4451294C1A09FF0D000364E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4451294D1A09FF0D000364E1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -127,6 +133,28 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		443AAABD1A62AE5800F2A188 /* Cities */ = {
+			isa = PBXGroup;
+			children = (
+				44B2EE701A0F905D000AFC00 /* CitiesViewController.h */,
+				44B2EE711A0F905D000AFC00 /* CitiesViewController.m */,
+				443AAABA1A62AE4B00F2A188 /* CitiesViewModel.h */,
+				443AAABB1A62AE4B00F2A188 /* CitiesViewModel.m */,
+			);
+			name = Cities;
+			sourceTree = "<group>";
+		};
+		443AAABE1A630A0900F2A188 /* Cinemas */ = {
+			isa = PBXGroup;
+			children = (
+				44B2EF821A116CAE000AFC00 /* CinemasViewController.h */,
+				44B2EF811A116CAE000AFC00 /* CinemasViewController.m */,
+				443AAABF1A630A2B00F2A188 /* CinemasViewModel.h */,
+				443AAAC01A630A2B00F2A188 /* CinemasViewModel.m */,
+			);
+			name = Cinemas;
+			sourceTree = "<group>";
+		};
 		4451293F1A09FF0D000364E1 = {
 			isa = PBXGroup;
 			children = (
@@ -178,10 +206,8 @@
 		44B2EE6E1A0F901C000AFC00 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				44B2EE701A0F905D000AFC00 /* CitiesViewController.h */,
-				44B2EE711A0F905D000AFC00 /* CitiesViewController.m */,
-				44B2EF821A116CAE000AFC00 /* CinemasViewController.h */,
-				44B2EF811A116CAE000AFC00 /* CinemasViewController.m */,
+				443AAABD1A62AE5800F2A188 /* Cities */,
+				443AAABE1A630A0900F2A188 /* Cinemas */,
 				44B2EF7E1A116C83000AFC00 /* ScheduleViewController.h */,
 				44B2EF7F1A116C83000AFC00 /* ScheduleViewController.m */,
 				44B2EF901A12C0F3000AFC00 /* FilmDetailViewController.h */,
@@ -366,7 +392,9 @@
 				44B2EF861A117299000AFC00 /* ScheduleEntry.m in Sources */,
 				44B2EF8C1A12B992000AFC00 /* Film.m in Sources */,
 				44B2EEA71A0FD74A000AFC00 /* CinemasContainer.m in Sources */,
+				443AAAC11A630A2B00F2A188 /* CinemasViewModel.m in Sources */,
 				44C54DA91A154BC900AF22AD /* FilmCell.m in Sources */,
+				443AAABC1A62AE4B00F2A188 /* CitiesViewModel.m in Sources */,
 				441ADB211A13F19D00E01CF6 /* AttributeCell.m in Sources */,
 				44B2EF831A116CAE000AFC00 /* CinemasViewController.m in Sources */,
 			);
