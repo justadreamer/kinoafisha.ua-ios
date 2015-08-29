@@ -18,14 +18,11 @@
 #import "AppDelegate.h"
 #import <libextobjc/extobjc.h>
 #import "ScheduleViewModel.h"
+#import "BaseViewModel+Protected.h"
 
 @interface CinemasViewModel ()
 @property (nonatomic,strong) AFHTTPRequestOperation *operation;
-@property (nonatomic,assign,readwrite) BOOL isLoading;
 @property (nonatomic,strong,readwrite) NSString *title;
-@property (nonatomic,assign,readwrite) NSUInteger cinemasCount;
-@property (nonatomic,strong,readwrite) NSArray *cinema;
-@property (nonatomic,strong) CinemasContainer *cinemasContainer;
 @end
 
 @implementation CinemasViewModel
@@ -39,47 +36,38 @@
 
 - (void) setCity:(City *)city {
     _city = city;
-    [self loadData];
-}
-
-- (void) loadData {
-    self.operation.completionBlock = nil;
-    [self.operation cancel];
-    
-    NSURL *XSLURL = [AD.s3SyncManager URLForResource:@"cinemas" withExtension:@"xsl"];
-    SkyXSLTransformation *transformation = [[SkyXSLTransformation alloc] initWithXSLTURL:XSLURL];
-    SkyMantleModelAdapter *adapter = [[SkyMantleModelAdapter alloc] initWithModelClass:[CinemasContainer class]];
-    SkyHTMLResponseSerializer *serializer = [SkyHTMLResponseSerializer serializerWithXSLTransformation:transformation params:@{@"baseURL":Q(KinoAfishaBaseURL)} modelAdapter:adapter];
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:self.city.cinemaURL];
-    [request setValue:UA forHTTPHeaderField:@"User-Agent"];
-    self.operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    self.operation.responseSerializer = serializer;
-
-    self.isLoading = YES;
-    @weakify(self);
-    [self.operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        @strongify(self);
-        self.isLoading = NO;
-        self.cinemasContainer = responseObject;
-        if ([self.cinemasContainer.cityName length]) {
-            self.title = [NSString stringWithFormat:@"Кинотеатры %@",self.cinemasContainer.cityName];
-        } else {
-            self.title = @"Кинотеатры";
-        }
-        self.cinemasCount = self.cinemasContainer.cinemas.count;
-        self.cinema = self.cinemasContainer.cinemas;
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        @strongify(self);
-        self.isLoading = NO;
-        NSLog(@"%@",error);
-    }];
-    
-    [self.operation start];
+    if ([city.name length]) {
+        self.title = [NSString stringWithFormat:@"Кинотеатры %@",city.name];
+    } else {
+        self.title = @"Кинотеатры";
+    }
+    self.dataModel = nil;
 }
 
 - (ScheduleViewModel *) scheduleViewModelForCinemaAtIndex:(NSUInteger)idx {
-    Cinema *cinema = self.cinema[idx];
+    Cinema *cinema = self.cinemas[idx];
     return [[ScheduleViewModel alloc] initWithCinema:cinema];
 }
+
+- (NSArray *) cinemas {
+    return self.dataModel;
+}
+
+#pragma mark - BaseViewModel overrides
+- (NSString *)XSLTName {
+    return @"cinemas";
+}
+
+- (NSURL *) URL {
+    return self.city.cinemaURL;
+}
+
+- (Class) dataModelClass {
+    return CinemasContainer.class;
+}
+
+- (id) processLoadedDataModel:(nullable CinemasContainer *)cinemasContainer {
+    return cinemasContainer.cinemas;
+}
+
 @end

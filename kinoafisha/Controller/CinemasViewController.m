@@ -27,7 +27,7 @@
     [super viewDidLoad];
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 120;
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self.viewModel action:@selector(loadData)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self.viewModel action:@selector(loadDataModel)];
 
     self.viewModel = [[CinemasViewModel alloc] initWithCity:[City  selectedCity]];
 
@@ -47,10 +47,15 @@
     
     RAC(self,title) = RACObserve(self, viewModel.title);
     
-    [RACObserve(self.viewModel, cinema) subscribeNext:^(id x) {
+    [RACObserve(self.viewModel, dataModel) subscribeNext:^(id x) {
         @strongify(self);
         [self redisplayData];
     }];
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.viewModel loadDataModel];
 }
 
 - (void) redisplayData {
@@ -64,13 +69,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.viewModel.cinemasCount;
+    return self.viewModel.cinemas.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CinemaCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CinemaCell" forIndexPath:indexPath];
-    Cinema *cinema = self.viewModel.cinema[indexPath.row];
+    Cinema *cinema = self.viewModel.cinemas[indexPath.row];
     cell.cinema = cinema;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.frame = CGRectMake(0, 0, tableView.frame.size.width, 0);

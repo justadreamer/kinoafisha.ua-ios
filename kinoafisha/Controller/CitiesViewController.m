@@ -27,7 +27,7 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(loadData)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(loadDataModel)];
     self.viewModel = [CitiesViewModel new];
 
     [RACObserve(self.viewModel,isLoading) subscribeNext:^(NSNumber *isLoading) {
@@ -38,8 +38,8 @@
         }
     }];
 
-    [RACObserve(self.viewModel, self.cities) subscribeNext:^(NSArray *cities) {
-        if (cities) {
+    [RACObserve(self.viewModel, dataModel) subscribeNext:^(id dataModel) {
+        if (dataModel) {
             [self redisplayData];
         }
     }];
@@ -48,7 +48,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if (!self.viewModel.cities) {
-        [self.viewModel loadData];
+        [self.viewModel loadDataModel];
     }
 }
 

@@ -7,14 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseViewModel.h"
 
 @class City;
-@interface CitiesViewModel : NSObject
-@property (nonatomic,strong) NSArray *cities;
-@property (nonatomic,assign) BOOL isLoading;
+@interface CitiesViewModel : BaseViewModel
+@property (nonatomic,strong,readonly) NSArray *cities;
 @property (nonatomic,strong,readonly) City *selectedCity;
 
-- (void) loadData;
 - (void) setSelectedCityIndex:(NSUInteger)index;
 - (NSString *) cityCaptionAtIndex:(NSUInteger)index;
 - (BOOL) isCurrentCityAtIndex:(NSUInteger)index;

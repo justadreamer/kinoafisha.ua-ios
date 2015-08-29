@@ -11,16 +11,14 @@
 @class City;
 @class CinemasContainer;
 @class ScheduleViewModel;
+#import "BaseViewModel.h"
 
-@interface CinemasViewModel : NSObject
+@interface CinemasViewModel : BaseViewModel
 @property (nonatomic,strong) City *city;
-@property (nonatomic,assign,readonly) BOOL isLoading;
 @property (nonatomic,strong,readonly) NSString *title;
-@property (nonatomic,assign,readonly) NSUInteger cinemasCount;
-@property (nonatomic,strong,readonly) NSArray *cinema;
+@property (nonatomic,strong,readonly) NSArray *cinemas;
 
 - (instancetype) initWithCity:(City *)city;
-- (void) loadData;
 - (ScheduleViewModel *) scheduleViewModelForCinemaAtIndex:(NSUInteger)idx;
 
 @end

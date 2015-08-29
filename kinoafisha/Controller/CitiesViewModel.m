@@ -9,61 +9,15 @@
 #import "Global.h"
 #import "CitiesViewModel.h"
 #import <ObjectiveSugar/ObjectiveSugar.h>
-#import <AFNetworking/AFNetworking.h>
-#import <SkyScraper/SkyScraper.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
-
+#import "BaseViewModel+Protected.h"
 #import "City.h"
-#import "AppDelegate.h"
 
 @interface CitiesViewModel ()
-@property (nonatomic,strong) AFHTTPRequestOperation *operation;
 @property (nonatomic,strong,readwrite) City *selectedCity;
 @end
 
 @implementation CitiesViewModel
-- (void) dealloc {
-    self.operation.completionBlock = nil;
-    [self.operation cancel];
-}
-
-- (void) loadData {
-    self.operation.completionBlock = nil;
-    [self.operation cancel];
-    
-    NSURL *citiesXSLURL = [AD.s3SyncManager URLForResource:@"cities" withExtension:@"xsl"];
-    SkyXSLTransformation *transformation = [[SkyXSLTransformation alloc] initWithXSLTURL:citiesXSLURL];
-    SkyMantleModelAdapter *adapter = [[SkyMantleModelAdapter alloc] initWithModelClass:[City class]];
-    SkyHTMLResponseSerializer *serializer = [SkyHTMLResponseSerializer serializerWithXSLTransformation:transformation params:@{@"baseURL":Q(KinoAfishaBaseURL)} modelAdapter:adapter];
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[KinoAfishaBaseURL stringByAppendingString:@"/cinema"]]];
-    [request setValue:UA forHTTPHeaderField:@"User-Agent"];
-    self.operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    self.operation.responseSerializer = serializer;
-    
-    @weakify(self);
-    self.isLoading = YES;
-    [self.operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSArray *cities = responseObject;
-        cities = [cities sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
-        if (cities.count && ![City selectedCity]) {
-            City* defaultSelection = [cities find:^BOOL(City *city) {
-                return city.isDefaultSelection;
-            }];
-            [City setSelectedCity:defaultSelection];
-        }
-        @strongify(self);
-        self.cities = cities;
-        self.isLoading = NO;
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        @strongify(self);
-        self.isLoading = NO;
-        NSLog(@"%@",error);
-    }];
-
-    [self.operation start];
-
-}
 
 - (void) setSelectedCityIndex:(NSUInteger)index {
     [City setSelectedCity:self.cities[index]];
@@ -84,4 +38,31 @@
     return [self.cities indexOfObject:[City selectedCity]];
 }
 
+- (NSArray *)cities {
+    return self.dataModel;
+}
+
+#pragma mark - BaseViewModel overrides
+- (NSString *)XSLTName {
+    return @"cities";
+}
+
+- (NSURL *) URL {
+    return [NSURL URLWithString:[KinoAfishaBaseURL stringByAppendingString:@"/cinema"]];
+}
+
+- (Class) dataModelClass {
+    return City.class;
+}
+
+- (nullable id) processLoadedDataModel:(nullable NSArray*)cities {
+    cities = [cities sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
+    if (cities.count && ![City selectedCity]) {
+        City* defaultSelection = [cities find:^BOOL(City *city) {
+            return city.isDefaultSelection;
+        }];
+        [City setSelectedCity:defaultSelection];
+    }
+    return cities;
+}
 @end
