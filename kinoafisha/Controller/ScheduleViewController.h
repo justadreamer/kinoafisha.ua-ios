@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class Cinema;
+@class ScheduleViewModel;
 @interface ScheduleViewController : UITableViewController
-@property (nonatomic,strong) Cinema *cinema;
-@property (nonatomic,strong) NSArray *scheduleEntries;
+@property (nonatomic,strong) ScheduleViewModel *viewModel;
 @end

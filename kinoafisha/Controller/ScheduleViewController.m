@@ -8,16 +8,16 @@
 #import "Global.h"
 #import "ScheduleViewController.h"
 #import "ScheduleEntry.h"
-#import <AFNetworking/AFNetworking.h>
-#import <SkyScraper/SkyScraper.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "ScheduleCinemaRoomCell.h"
 #import "Cinema.h"
 #import "FilmDetailViewController.h"
-#import "AppDelegate.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import "ScheduleViewModel.h"
+#import <libextobjc/extobjc.h>
 
 @interface ScheduleViewController ()
-@property (nonatomic,strong) AFHTTPRequestOperation *operation;
+@property (nonatomic,strong) UIView *emptyView;
 @end
 
 @implementation ScheduleViewController
@@ -26,67 +26,64 @@
     [super viewDidLoad];
     self.tableView.estimatedRowHeight = 44.0;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    if (self.cinema) {
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refresh:)];
-        self.title = self.cinema.name;
-    }
+    
+    RAC(self,title) = RACObserve(self,viewModel.title);
+
+    @weakify(self)
+    [RACObserve(self,viewModel.isLoading) subscribeNext:^(id isLoading) {
+        @strongify(self)
+        if ([isLoading boolValue]) {
+            [self removeEmptyView];
+            [SVProgressHUD showWithStatus:@"Загрузка..."];
+        } else {
+            [SVProgressHUD dismiss];
+        }
+    }];
+
+    [RACObserve(self, viewModel.scheduleEntries) subscribeNext:^(id x) {
+        @strongify(self);
+        [self redisplayData];
+    }];
+
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refresh:)];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if (self.cinema.detailURL && !self.scheduleEntries) {
-        [self loadData];
-    } else if (!self.scheduleEntries.count) {
-        [self displayEmptyView];
-    }
-}
-
-- (void) loadData {
-    self.operation.completionBlock = nil;
-    [self.operation cancel];
-    
-    NSURL *XSLURL = [AD.s3SyncManager URLForResource:@"single_cinema" withExtension:@"xsl"];
-    SkyXSLTransformation *transformation = [[SkyXSLTransformation alloc] initWithXSLTURL:XSLURL];
-    SkyMantleModelAdapter *adapter = [[SkyMantleModelAdapter alloc] initWithModelClass:[ScheduleEntry class]];
-    SkyHTMLResponseSerializer *serializer = [SkyHTMLResponseSerializer serializerWithXSLTransformation:transformation params:@{@"baseURL":Q(KinoAfishaBaseURL)} modelAdapter:adapter];
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:self.cinema.detailURL];
-    [request setValue:UA forHTTPHeaderField:@"User-Agent"];
-    self.operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    self.operation.responseSerializer = serializer;
-    
-    __typeof(self) __weak weakSelf = self;
-    [self.operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [SVProgressHUD dismiss];
-        weakSelf.scheduleEntries = responseObject;
-        [weakSelf redisplayData];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [SVProgressHUD dismiss];
-        NSLog(@"%@",error);
-    }];
-    
-    [SVProgressHUD showWithStatus:@"Загрузка..."];
-    [self.operation start];
+    [self.viewModel loadData];
 }
 
 - (void) redisplayData {
     [self.tableView reloadData];
-    if (!self.scheduleEntries.count) {
+    if (!self.viewModel.scheduleEntries.count) {
         [self displayEmptyView];
+    } else {
+        [self removeEmptyView];
     }
 }
 
+- (UIView *)emptyView {
+    if (!_emptyView) {
+        UILabel *emptyView = [[UILabel alloc] initWithFrame:CGRectZero];
+        emptyView.text = @"Нет расписания";
+        [emptyView sizeToFit];
+        emptyView.center = self.view.center;
+        emptyView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+        self.emptyView = emptyView;
+    }
+    return _emptyView;
+}
+
 - (void) displayEmptyView {
-    UILabel *emptyView = [[UILabel alloc] initWithFrame:CGRectZero];
-    emptyView.text = @"Нет расписания";
-    [emptyView sizeToFit];
-    emptyView.center = self.view.center;
-    emptyView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    [self.tableView addSubview:emptyView];
+    [self.tableView addSubview:self.emptyView];
+}
+
+- (void) removeEmptyView {
+    [self.emptyView removeFromSuperview];
 }
 
 - (void) refresh:(UIBarButtonItem *)barButtonItem {
-    [self loadData];
+    [self.viewModel loadData];
 }
 
 #pragma mark - Table view data source
@@ -96,12 +93,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.scheduleEntries.count;
+    return self.viewModel.scheduleEntries.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ScheduleEntry *scheduleEntry = self.scheduleEntries[indexPath.row];
+    ScheduleEntry *scheduleEntry = self.viewModel.scheduleEntries[indexPath.row];
     NSString *identifier = @"ScheduleEntityCell";
     if (scheduleEntry.type==ScheduleEntryCinemaRoom) {
         identifier = @"ScheduleCinemaRoomCell";
@@ -128,7 +125,7 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    ScheduleEntry *entry = self.scheduleEntries[[self.tableView indexPathForSelectedRow].row];
+    ScheduleEntry *entry = self.viewModel.scheduleEntries[[self.tableView indexPathForSelectedRow].row];
     if (entry.URL) {
         FilmDetailViewController *controller = segue.destinationViewController;
         controller.title = entry.title;
@@ -137,7 +134,7 @@
 }
 
 - (BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
-    ScheduleEntry *entry = self.scheduleEntries[[self.tableView indexPathForSelectedRow].row];
+    ScheduleEntry *entry = self.viewModel.scheduleEntries[[self.tableView indexPathForSelectedRow].row];
     return entry.type==ScheduleEntryFilm;
 }
 

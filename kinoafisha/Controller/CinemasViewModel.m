@@ -17,6 +17,7 @@
 #import "CinemasContainer.h"
 #import "AppDelegate.h"
 #import <libextobjc/extobjc.h>
+#import "ScheduleViewModel.h"
 
 @interface CinemasViewModel ()
 @property (nonatomic,strong) AFHTTPRequestOperation *operation;
@@ -77,4 +78,8 @@
     [self.operation start];
 }
 
+- (ScheduleViewModel *) scheduleViewModelForCinemaAtIndex:(NSUInteger)idx {
+    Cinema *cinema = self.cinema[idx];
+    return [[ScheduleViewModel alloc] initWithCinema:cinema];
+}
 @end

@@ -7,8 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+
 @class City;
 @class CinemasContainer;
+@class ScheduleViewModel;
+
 @interface CinemasViewModel : NSObject
 @property (nonatomic,strong) City *city;
 @property (nonatomic,assign,readonly) BOOL isLoading;
@@ -18,4 +21,6 @@
 
 - (instancetype) initWithCity:(City *)city;
 - (void) loadData;
+- (ScheduleViewModel *) scheduleViewModelForCinemaAtIndex:(NSUInteger)idx;
+
 @end

@@ -85,9 +85,9 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     ScheduleViewController *controller = segue.destinationViewController;
-    Cinema *cinema = self.viewModel.cinema[[self.tableView indexPathForSelectedRow].row];
-    controller.cinema = cinema;
-    // Pass the selected object to the new view controller.
+    NSUInteger idx = [self.tableView indexPathForSelectedRow].row;
+    ScheduleViewModel *scheduleViewModel = [self.viewModel scheduleViewModelForCinemaAtIndex:idx];
+    controller.viewModel = scheduleViewModel;
 }
 
 

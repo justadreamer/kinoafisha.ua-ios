@@ -18,6 +18,7 @@
 #import "AttributeCell.h"
 #import "ScheduleViewController.h"
 #import "AppDelegate.h"
+#import "ScheduleViewModel.h"
 
 @interface FilmDetailViewController ()
 @property (nonatomic,strong) Film *film;
@@ -110,8 +111,8 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     ScheduleViewController *scheduleViewController = (ScheduleViewController *)segue.destinationViewController;
-    scheduleViewController.title = self.film.title;
-    scheduleViewController.scheduleEntries = self.film.scheduleEntries;
+    ScheduleViewModel *scheduleViewModel = [[ScheduleViewModel alloc] initWithFilm:self.film];
+    scheduleViewController.viewModel = scheduleViewModel;
 }
 
 @end
