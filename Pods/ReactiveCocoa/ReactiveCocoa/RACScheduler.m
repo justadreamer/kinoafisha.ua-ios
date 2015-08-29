@@ -7,7 +7,6 @@
 //
 
 #import "RACScheduler.h"
-#import "RACBacktrace.h"
 #import "RACCompoundDisposable.h"
 #import "RACDisposable.h"
 #import "RACImmediateScheduler.h"
@@ -199,7 +198,9 @@ NSString * const RACSchedulerCurrentSchedulerKey = @"RACSchedulerCurrentSchedule
 	RACScheduler *previousScheduler = RACScheduler.currentScheduler;
 	NSThread.currentThread.threadDictionary[RACSchedulerCurrentSchedulerKey] = self;
 
-	block();
+	@autoreleasepool {
+		block();
+	}
 
 	if (previousScheduler != nil) {
 		NSThread.currentThread.threadDictionary[RACSchedulerCurrentSchedulerKey] = previousScheduler;

@@ -72,11 +72,12 @@ NSString * const SkyS3ResourceURL = @"SkyS3ResourceURL";
 #pragma mark - public methods:
 - (instancetype) initWithS3AccessKey:(NSString *)accessKey secretKey:(NSString *)secretKey bucketName:(NSString *)bucketName originalResourcesDirectory:(NSURL *)originalResourcesDirectory {
     if (self = [super init]) {
-        self.dispatchQueue = dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0);
+        self.dispatchQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
         self.S3AccessKey = accessKey;
         self.S3SecretKey = secretKey;
         self.S3BucketName = bucketName;
         self.originalResourcesDirectory = originalResourcesDirectory;
+        self.remoteSyncEnabled = YES;
     }
     return self;
 }
@@ -162,7 +163,11 @@ NSString * const SkyS3ResourceURL = @"SkyS3ResourceURL";
     NSAssert(self.originalResourcesDirectory, @"originalResourcesDirectory not set");
 
     [self doOriginalResourcesCopying];
-    [self doAmazonS3Sync];
+    if (self.remoteSyncEnabled) {
+        [self doAmazonS3Sync];
+    } else {
+        [self finishSync];
+    }
 }
 
 - (void) doOriginalResourcesCopying {
@@ -233,9 +238,7 @@ NSString * const SkyS3ResourceURL = @"SkyS3ResourceURL";
                                                                 YES) lastObject];
 
     NSURL *cachesURL = [NSURL fileURLWithPath:cachesPath];
-    remoteResources = [[remoteResources reject:^BOOL(SkyS3ResourceData *resource) {
-        return [resource.lastModifiedDate timeIntervalSinceDate:[self.class modificationDateForURL:resource.localURL]]<0;
-    }] reject:^BOOL(SkyS3ResourceData *resource) {
+    remoteResources = [remoteResources reject:^BOOL(SkyS3ResourceData *resource) {
         return [resource.etag isEqualToString:[self md5ForURL:resource.localURL]];
     }];
 
@@ -247,9 +250,9 @@ NSString * const SkyS3ResourceURL = @"SkyS3ResourceURL";
         [self.amazonS3Manager getObjectWithPath:resource.name outputStream:stream progress:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
         } success:^(id responseObject) {
             [self copyFrom:tmpURL to:resource.localURL];
-            completedBlock();
             [self.class log:@"did update %@",resource.name];
             [self postDidUpdateNotificationWithResource:resource.name];
+            completedBlock();
         } failure:^(NSError *error) {
             completedBlock();
         }];

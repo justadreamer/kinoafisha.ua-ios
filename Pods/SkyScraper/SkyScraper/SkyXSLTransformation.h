@@ -3,6 +3,14 @@
 extern NSString  * const SkyScraperErrorDomain;
 
 @interface SkyXSLTransformation : NSObject
+/**
+ *  XSLT stylesheet URL if it was initialized with 'initWithXSLTURL:' method
+ */
+@property (nonatomic,strong,readonly) NSURL* xsltURL;
+/**
+ *  set to YES to replace named entities with characters and decimal entities with hex equivalents (NO by default)
+ */
+@property (nonatomic,assign) BOOL replaceXMLEntities;
 
 - (instancetype) init NS_UNAVAILABLE;
 
@@ -51,4 +59,27 @@ extern NSString  * const SkyScraperErrorDomain;
  */
 - (id) JSONObjectFromHTMLData:(NSData *)html withParams:(NSDictionary *)params error:(NSError * __autoreleasing *)error;
 
+/**
+ *  A convenience method that internally applies the transfomration to xml 
+ *  data
+ *
+ *  @param xml    xml NSData represenation
+ *  @param params params dictionary
+ *  @param error  an out param containing NSError object
+ *
+ *  @return returns NSString representation of transformed xml data
+ */
+- (NSString *) stringFromXMLData:(NSData *)xml withParams:(NSDictionary *) params error:(NSError * __autoreleasing *)error;
+
+/**
+ *  A convenience method that internally applies the transformation to xml 
+ *  data
+ *
+ *  @param xml    xml NSData representation
+ *  @param params params dictionary
+ *  @param error  an out param containing NSError object
+ *
+ *  @return returns NSString representation of transformed xml data
+ */
+- (id) JSONObjectFromXMLData:(NSData *)xml withParams:(NSDictionary *)params error:(NSError * __autoreleasing *)error;
 @end

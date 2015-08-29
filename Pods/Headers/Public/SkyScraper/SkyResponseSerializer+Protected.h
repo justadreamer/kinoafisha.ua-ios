@@ -1,0 +1,1 @@
+../../../SkyScraper/SkyScraper/SkyResponseSerializer+Protected.h

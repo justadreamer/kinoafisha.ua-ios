@@ -1,0 +1,98 @@
+{
+  "name": "SkyScraper",
+  "version": "0.22",
+  "summary": "An Objective-C wrapper over libxslt with a couple of useful additions, created to allow easy HTML scraping with data represented in JSON format with the following deserialization into application models",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE.txt"
+  },
+  "authors": {
+    "Eugene Dorfman": "eugene.dorfman@gmail.com"
+  },
+  "source": {
+    "git": "git@github.com:justadreamer/SkyScraper.git",
+    "tag": "0.22"
+  },
+  "platforms": {
+    "ios": "7.0"
+  },
+  "requires_arc": true,
+  "homepage": "https://github.com/justadreamer/SkyScraper",
+  "default_subspecs": "All",
+  "subspecs": [
+    {
+      "name": "All",
+      "dependencies": {
+        "SkyScraper/AFNetworking2": [
+
+        ],
+        "SkyScraper/Mantle": [
+
+        ]
+      }
+    },
+    {
+      "name": "Base",
+      "source_files": [
+        "SkyScraper/SkyScraper.h",
+        "SkyScraper/SkyXSLTransformation.{h,m}",
+        "SkyScraper/SkyXSLTParams.{h,m}",
+        "SkyScraper/SkyModelAdapter.h"
+      ],
+      "xcconfig": {
+        "HEADER_SEARCH_PATHS": "/usr/include/libxml2 "
+      },
+      "libraries": [
+        "xml2",
+        "iconv"
+      ],
+      "dependencies": {
+        "SkyScraper/libxslt-with-plugins": [
+
+        ]
+      }
+    },
+    {
+      "name": "libxslt-with-plugins",
+      "vendored_libraries": "libxslt-with-plugins/libxslt-with-plugins.a",
+      "public_header_files": [
+        "libxslt/*.h",
+        "libexslt/*.h"
+      ],
+      "preserve_paths": [
+        "libxslt/*.h",
+        "libexslt/*.h"
+      ]
+    },
+    {
+      "name": "AFNetworking2",
+      "dependencies": {
+        "SkyScraper/Base": [
+
+        ],
+        "AFNetworking": [
+          "~> 2.4.1"
+        ]
+      },
+      "source_files": [
+        "SkyScraper/SkyResponseSerializer+Protected.h",
+        "SkyScraper/SkyHTMLResponseSerializer.{h,m}",
+        "SkyScraper/SkyXMLResponseSerializer.{h,m}",
+        "SkyScraper/SkyJSONResponseSerializer.{h,m}",
+        "SkyScraper/SkyResponseSerializer.{h,m}"
+      ]
+    },
+    {
+      "name": "Mantle",
+      "dependencies": {
+        "SkyScraper/Base": [
+
+        ],
+        "Mantle": [
+
+        ]
+      },
+      "source_files": "SkyScraper/SkyMantleModelAdapter.{h,m}"
+    }
+  ]
+}

@@ -55,6 +55,13 @@ extern NSString * const SkyS3ResourceURL;
 @property (nonatomic,readonly) NSURL *syncDirectoryURL;
 
 /**
+ *  By default YES, and in case the remote file differs in md5 from local - it will be pulled. 
+ *  Set to NO if you like to only sync with local resources - convenient for debugging and testing
+ *  locally, should not be set to NO for production environment.
+ */
+@property (nonatomic,assign) BOOL remoteSyncEnabled;
+
+/**
  *  Designated initializer
  *
  *  @param accessKey                  Amazon S3 Access Key

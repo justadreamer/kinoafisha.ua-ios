@@ -17,7 +17,7 @@
     if ([JSONObject isKindOfClass:[NSDictionary class]]) {
         model = [MTLJSONAdapter modelOfClass:self.modelClass fromJSONDictionary:JSONObject error:error];
     } else if ([JSONObject isKindOfClass:[NSArray class]]) {
-        model = [MTLJSONAdapter modelsOfClass:self.modelClass fromJSONArray:JSONObject error:error                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ];
+        model = [MTLJSONAdapter modelsOfClass:self.modelClass fromJSONArray:JSONObject error:error];
     } else {
         *error = [NSError errorWithDomain:SkyScraperErrorDomain code:101 userInfo:@{NSLocalizedDescriptionKey:@"JSONObject of the unsupported type"}];
     }

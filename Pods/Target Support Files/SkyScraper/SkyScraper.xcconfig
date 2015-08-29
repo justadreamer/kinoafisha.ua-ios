@@ -1,0 +1,3 @@
+SKYSCRAPER_HEADER_SEARCH_PATHS = /usr/include/libxml2 
+SKYSCRAPER_LIBRARY_SEARCH_PATHS = "$(PODS_ROOT)/SkyScraper/libxslt-with-plugins"
+SKYSCRAPER_OTHER_LDFLAGS = -l"iconv" -l"xml2" -l"xslt-with-plugins"

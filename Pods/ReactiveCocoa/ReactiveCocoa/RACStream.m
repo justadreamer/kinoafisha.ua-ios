@@ -105,10 +105,10 @@
 - (instancetype)combinePreviousWithStart:(id)start reduce:(id (^)(id previous, id next))reduceBlock {
 	NSCParameterAssert(reduceBlock != NULL);
 	return [[[self
-		scanWithStart:[RACTuple tupleWithObjects:start, nil]
+		scanWithStart:RACTuplePack(start)
 		reduce:^(RACTuple *previousTuple, id next) {
 			id value = reduceBlock(previousTuple[0], next);
-			return [RACTuple tupleWithObjects:next ?: RACTupleNil.tupleNil, value ?: RACTupleNil.tupleNil, nil];
+			return RACTuplePack(next, value);
 		}]
 		map:^(RACTuple *tuple) {
 			return tuple[1];
@@ -176,9 +176,13 @@
 		__block NSUInteger taken = 0;
 
 		return ^ id (id value, BOOL *stop) {
-			if (++taken >= count) *stop = YES;
-
-			return [class return:value];
+			if (taken < count) {
+				++taken;
+				if (taken == count) *stop = YES;
+				return [class return:value];
+			} else {
+				return nil;
+			}
 		};
 	}] setNameWithFormat:@"[%@] -take: %lu", self.name, (unsigned long)count];
 }
@@ -325,7 +329,7 @@
 
 	return [[self skipUntilBlock:^ BOOL (id x) {
 		return !predicate(x);
-	}] setNameWithFormat:@"[%@] -skipUntilBlock:", self.name];
+	}] setNameWithFormat:@"[%@] -skipWhileBlock:", self.name];
 }
 
 - (instancetype)distinctUntilChanged {

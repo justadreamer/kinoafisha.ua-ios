@@ -61,39 +61,39 @@ PODS:
     - libextobjc/RuntimeExtensions
   - libextobjc/RuntimeExtensions (0.4.1)
   - libextobjc/UmbrellaHeader (0.4.1)
-  - Mantle (1.5.3):
-    - Mantle/extobjc (= 1.5.3)
-  - Mantle/extobjc (1.5.3)
+  - Mantle (2.0.4):
+    - Mantle/extobjc (= 2.0.4)
+  - Mantle/extobjc (2.0.4)
   - ObjectiveSugar (1.1.0)
-  - Ono (1.1.3)
-  - ReactiveCocoa (2.4.2):
-    - ReactiveCocoa/UI (= 2.4.2)
-  - ReactiveCocoa/Core (2.4.2):
+  - Ono (1.2.2)
+  - ReactiveCocoa (2.5):
+    - ReactiveCocoa/UI (= 2.5)
+  - ReactiveCocoa/Core (2.5):
     - ReactiveCocoa/no-arc
-  - ReactiveCocoa/no-arc (2.4.2)
-  - ReactiveCocoa/UI (2.4.2):
+  - ReactiveCocoa/no-arc (2.5)
+  - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
-  - SkyS3Sync (0.2):
+  - SkyS3Sync (0.6):
     - AFAmazonS3Manager (~> 3.0.0)
     - AFOnoResponseSerializer (~> 1.0.0)
     - FileMD5Hash (~> 2.0)
     - libextobjc (~> 0.4.1)
     - ObjectiveSugar (~> 1.1.0)
-  - SkyScraper (0.2):
-    - SkyScraper/AFNetworking2 (= 0.2)
-    - SkyScraper/Base (= 0.2)
-    - SkyScraper/libxslt-with-plugins (= 0.2)
-    - SkyScraper/Mantle (= 0.2)
-  - SkyScraper/AFNetworking2 (0.2):
+  - SkyScraper (0.22):
+    - SkyScraper/All (= 0.22)
+  - SkyScraper/AFNetworking2 (0.22):
     - AFNetworking (~> 2.4.1)
     - SkyScraper/Base
-  - SkyScraper/Base (0.2):
+  - SkyScraper/All (0.22):
+    - SkyScraper/AFNetworking2
+    - SkyScraper/Mantle
+  - SkyScraper/Base (0.22):
     - SkyScraper/libxslt-with-plugins
-  - SkyScraper/libxslt-with-plugins (0.2)
-  - SkyScraper/Mantle (0.2):
+  - SkyScraper/libxslt-with-plugins (0.22)
+  - SkyScraper/Mantle (0.22):
     - Mantle
     - SkyScraper/Base
-  - SVProgressHUD (1.1.2)
+  - SVProgressHUD (1.1.3)
 
 DEPENDENCIES:
   - ObjectiveSugar (~> 1.1)
@@ -110,24 +110,24 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   SkyS3Sync:
-    :commit: b91502cf837084daf0a124ef034ffa2a93ff0546
+    :commit: fe0b0c955087dde019c158fb852561b39014231d
     :git: https://github.com/justadreamer/SkyS3Sync
   SkyScraper:
-    :commit: fc5ec90930a8190a7a8adc62b7fb38a36f842cef
+    :commit: 50f3af3564b44f352af375abcfd433260cbb13cf
     :git: https://github.com/justadreamer/SkyScraper
 
 SPEC CHECKSUMS:
-  AFAmazonS3Manager: 9c1305de1f4cea1d2f4e5fed6b86539dc9f08f43
-  AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
-  AFOnoResponseSerializer: 7da7ac6a1cff0eb46894602ca884e903f95087d8
-  FileMD5Hash: 297c3ee6e7b800a198b6c372b6b7641cab5cf12c
-  libextobjc: d6146fce3ebea986b7f75fcb4c967639200b88b0
-  Mantle: 8d84cacd6c2a69ff6fbce985a2b51298a5495de3
-  ObjectiveSugar: f48793f5902c77cfc02a4ce46d2e8ecddcad4dc2
-  Ono: cf5cb37c76225200d6f063e4189c15b4b6c9d5fe
-  ReactiveCocoa: 8418a82b67af2f1b7587baf29c329040a23c2063
-  SkyS3Sync: 8457c7e68fbb76b970c49958c1f4add606854ba1
-  SkyScraper: 4e1ad546a321f210bc54c6100bd07dfb8a769feb
-  SVProgressHUD: da7a49e789af645d9279ffbca62318945a832438
+  AFAmazonS3Manager: de099a082182cd24babd3516b301f6460c8669d4
+  AFNetworking: 41d45d2c14219af0fa5addf3cfd433a002c13c9f
+  AFOnoResponseSerializer: c02c8bef1d6742ac68f33ecaed41826c9657bc33
+  FileMD5Hash: 3ed69cc19a21ff4d30ae8833fc104275ad2c7de0
+  libextobjc: a650fc1bf489a3d3a9bc2e621efa3e1006fc5471
+  Mantle: 6bee68168423948be0c0c5924832bf3af188e099
+  ObjectiveSugar: a6a25f23d657c19df0a0b972466d5b5ca9f5295c
+  Ono: 80b1c686777d3f6d5d5ce6fcac8a74afef4ca197
+  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+  SkyS3Sync: aa5bb65c3cbbd77df273c9444e0c51be26d88dc7
+  SkyScraper: 2e8e76442818dab4d5ec93183b98d0655933a9f5
+  SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.38.2
