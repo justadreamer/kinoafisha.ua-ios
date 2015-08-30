@@ -72,4 +72,8 @@
 - (nullable id)processLoadedDataModel:(nullable id)dataModel {
     return dataModel;
 }
+
+- (NSString *)loadingIndicatorMessage {
+    return @"Загрузка...";
+}
 @end

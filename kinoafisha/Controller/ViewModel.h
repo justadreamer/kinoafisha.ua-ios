@@ -12,6 +12,7 @@
 //base class handles those
 @property (nullable,nonatomic,strong) id dataModel;
 @property (nonatomic,assign) BOOL isLoading;
+- (NSString * __nullable) loadingIndicatorMessage;
 - (void) loadDataModel;
 
 @end

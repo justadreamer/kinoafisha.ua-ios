@@ -14,9 +14,8 @@
 #import "FilmDetailViewController.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "ScheduleViewModel.h"
-#import <libextobjc/extobjc.h>
-
-@interface ScheduleViewController ()
+#import "UIViewController+ViewModel.h"
+@interface ScheduleViewController ()<ViewModelSupport>
 @property (nonatomic,strong) UIView *emptyView;
 @end
 
@@ -26,31 +25,17 @@
     [super viewDidLoad];
     self.tableView.estimatedRowHeight = 44.0;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    
-    RAC(self,title) = RACObserve(self,viewModel.title);
-
-    @weakify(self)
-    [RACObserve(self,viewModel.isLoading) subscribeNext:^(id isLoading) {
-        @strongify(self)
-        if ([isLoading boolValue]) {
-            [self removeEmptyView];
-            [SVProgressHUD showWithStatus:@"Загрузка..."];
-        } else {
-            [SVProgressHUD dismiss];
-        }
-    }];
-
-    [RACObserve(self, viewModel.scheduleEntries) subscribeNext:^(id x) {
-        @strongify(self);
-        [self redisplayData];
-    }];
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refresh:)];
+    
+    RAC(self,title) = RACObserve(self,viewModel.title);
+    
+    [self defineDefaultBindings];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.viewModel loadData];
+    [self.viewModel loadDataModel];
 }
 
 - (void) redisplayData {
@@ -83,7 +68,7 @@
 }
 
 - (void) refresh:(UIBarButtonItem *)barButtonItem {
-    [self.viewModel loadData];
+    [self.viewModel loadDataModel];
 }
 
 #pragma mark - Table view data source

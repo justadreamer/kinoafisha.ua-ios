@@ -14,8 +14,9 @@
 #import "CinemasViewModel.h"
 #import "City.h"
 #import <libextobjc/extobjc.h>
+#import "UIViewController+ViewModel.h"
 
-@interface CinemasViewController ()
+@interface CinemasViewController ()<ViewModelSupport>
 @end
 
 @implementation CinemasViewController
@@ -37,20 +38,9 @@
         self.viewModel.city = notification.userInfo[CityKey];
     }];
 
-    [RACObserve(self.viewModel,isLoading) subscribeNext:^(id value) {
-        if ([value boolValue]) {
-            [SVProgressHUD showWithStatus:@"Загрузка..."];
-        } else {
-            [SVProgressHUD dismiss];
-        }
-    }];
-    
     RAC(self,title) = RACObserve(self, viewModel.title);
     
-    [RACObserve(self.viewModel, dataModel) subscribeNext:^(id x) {
-        @strongify(self);
-        [self redisplayData];
-    }];
+    [self defineDefaultBindings];
 }
 
 - (void) viewWillAppear:(BOOL)animated {

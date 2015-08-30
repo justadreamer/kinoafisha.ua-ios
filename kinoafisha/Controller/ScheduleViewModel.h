@@ -7,17 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseViewModel.h"
 @class Cinema;
 @class Film;
-@interface ScheduleViewModel : NSObject
+@interface ScheduleViewModel : BaseViewModel
 @property (nonatomic,strong) Cinema *cinema;
 @property (nonatomic,strong) Film *film;
-@property (nonatomic,strong) NSArray *scheduleEntries;
+@property (nonatomic,strong,readonly) NSArray *scheduleEntries;
 @property (nonatomic,strong) NSString *title;
-
-@property (nonatomic,assign,readonly) BOOL isLoading;
 
 - (instancetype) initWithCinema:(Cinema *)cinema;
 - (instancetype) initWithFilm:(Film *)film;
-- (void) loadData;
 @end

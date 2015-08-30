@@ -12,9 +12,9 @@
 
 #import <ObjectiveSugar/ObjectiveSugar.h>
 #import <SVProgressHUD/SVProgressHUD.h>
-#import <ReactiveCocoa/ReactiveCocoa.h>
+#import "UIViewController+ViewModel.h"
 
-@interface CitiesViewController ()
+@interface CitiesViewController ()<ViewModelSupport>
 @property (nonatomic,strong) CitiesViewModel *viewModel;
 @end
 
@@ -30,19 +30,7 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(loadDataModel)];
     self.viewModel = [CitiesViewModel new];
 
-    [RACObserve(self.viewModel,isLoading) subscribeNext:^(NSNumber *isLoading) {
-        if ([isLoading boolValue]) {
-            [SVProgressHUD showWithStatus:@"Загрузка..."];
-        } else {
-            [SVProgressHUD dismiss];
-        }
-    }];
-
-    [RACObserve(self.viewModel, dataModel) subscribeNext:^(id dataModel) {
-        if (dataModel) {
-            [self redisplayData];
-        }
-    }];
+    [self defineDefaultBindings];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -100,7 +88,10 @@
 
 - (NSIndexPath *) indexPathForCurrentSelection {
     NSUInteger idx = [self.viewModel indexForCurrentSelection];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
+    NSIndexPath *indexPath = nil;
+    if (idx<self.viewModel.cities.count) {
+        indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
+    }
     return indexPath;
 }
 
