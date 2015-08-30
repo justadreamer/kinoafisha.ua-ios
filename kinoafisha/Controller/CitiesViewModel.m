@@ -9,7 +9,6 @@
 #import "Global.h"
 #import "CitiesViewModel.h"
 #import <ObjectiveSugar/ObjectiveSugar.h>
-#import <ReactiveCocoa/ReactiveCocoa.h>
 #import "BaseViewModel+Protected.h"
 #import "City.h"
 

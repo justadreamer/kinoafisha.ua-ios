@@ -8,17 +8,11 @@
 
 #import "ScheduleViewModel.h"
 #import "Cinema.h"
-#import <AFNetworking/AFNetworking.h>
-#import <SkyScraper/SkyScraper.h>
-#import "AppDelegate.h"
-#import <libextobjc/extobjc.h>
-#import "Global.h"
 #import "ScheduleEntry.h"
 #import "Film.h"
 #import "BaseViewModel+Protected.h"
 
 @interface ScheduleViewModel()
-@property (nonatomic,strong) AFHTTPRequestOperation *operation;
 @end
 
 @implementation ScheduleViewModel

@@ -7,21 +7,15 @@
 //
 
 #import "CinemasViewModel.h"
-#import "Global.h"
 #import "CinemasContainer.h"
 #import "City.h"
-#import <SkyScraper/SkyScraper.h>
-#import <AFNetworking/AFNetworking.h>
 #import "City.h"
 #import "Cinema.h"
 #import "CinemasContainer.h"
-#import "AppDelegate.h"
-#import <libextobjc/extobjc.h>
 #import "ScheduleViewModel.h"
 #import "BaseViewModel+Protected.h"
 
 @interface CinemasViewModel ()
-@property (nonatomic,strong) AFHTTPRequestOperation *operation;
 @property (nonatomic,strong,readwrite) NSString *title;
 @end
 
