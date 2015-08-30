@@ -19,6 +19,9 @@
 #include "S3Secrets.h"
     NSURL *resourcesURL = [[[NSBundle mainBundle] resourceURL] URLByAppendingPathComponent:@"XSLT"];
     self.s3SyncManager = [[SkyS3SyncManager alloc] initWithS3AccessKey:S3AccessKey secretKey:S3SecretKey bucketName:S3BucketName originalResourcesDirectory:resourcesURL];
+#ifdef DEBUG
+    self.s3SyncManager.remoteSyncEnabled = NO;
+#endif
     return YES;
 }
 
