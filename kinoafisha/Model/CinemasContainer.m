@@ -18,7 +18,7 @@
 }
 
 + (NSValueTransformer *) cinemasJSONTransformer {
-    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[Cinema class]];
+    return [MTLJSONAdapter arrayTransformerWithModelClass:[Cinema class]];
 }
 
 @end

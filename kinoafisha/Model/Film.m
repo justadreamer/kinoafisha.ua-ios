@@ -30,11 +30,11 @@
 }
 
 + (NSValueTransformer *)attributesJSONTransformer {
-    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:Attribute.class];
+    return [MTLJSONAdapter arrayTransformerWithModelClass:Attribute.class];
 }
 
 + (NSValueTransformer *)scheduleEntriesJSONTransformer {
-    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:ScheduleEntry.class];
+    return [MTLJSONAdapter arrayTransformerWithModelClass:ScheduleEntry.class];
 }
 
 + (NSValueTransformer *)detailURLJSONTransformer {
