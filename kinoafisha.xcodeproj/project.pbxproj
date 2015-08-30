@@ -189,7 +189,7 @@
 			children = (
 				44E4D61B1A5DC90100A89982 /* XSLT */,
 				44B2EE6F1A0F9024000AFC00 /* Model */,
-				44B2EE6E1A0F901C000AFC00 /* Controller */,
+				44B2EE6E1A0F901C000AFC00 /* UI: Controllers and ViewModels */,
 				44B2EEAF1A10002C000AFC00 /* TableViewCell */,
 				4451294F1A09FF0D000364E1 /* AppDelegate.h */,
 				445129501A09FF0D000364E1 /* AppDelegate.m */,
@@ -265,7 +265,7 @@
 			name = Schedule;
 			sourceTree = "<group>";
 		};
-		44B2EE6E1A0F901C000AFC00 /* Controller */ = {
+		44B2EE6E1A0F901C000AFC00 /* UI: Controllers and ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				446AA6A71B9327BD003B3319 /* Base */,
@@ -276,7 +276,7 @@
 				446AA6A51B93252E003B3319 /* Films */,
 				446AA6A61B93255C003B3319 /* Credits */,
 			);
-			name = Controller;
+			name = "UI: Controllers and ViewModels";
 			sourceTree = "<group>";
 		};
 		44B2EE6F1A0F9024000AFC00 /* Model */ = {
