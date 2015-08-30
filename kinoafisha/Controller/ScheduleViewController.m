@@ -15,6 +15,8 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "ScheduleViewModel.h"
 #import "UIViewController+ViewModel.h"
+#import "FilmDetailViewModel.h"
+
 @interface ScheduleViewController ()<ViewModelSupport>
 @property (nonatomic,strong) UIView *emptyView;
 @end
@@ -114,7 +116,7 @@
     if (entry.URL) {
         FilmDetailViewController *controller = segue.destinationViewController;
         controller.title = entry.title;
-        controller.filmURL = entry.URL;
+        controller.viewModel = [[FilmDetailViewModel alloc] initWithFilmURL:entry.URL];
     }
 }
 

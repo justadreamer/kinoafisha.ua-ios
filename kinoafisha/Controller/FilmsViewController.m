@@ -16,6 +16,7 @@
 #import "FilmDetailViewController.h"
 #import "FilmCell.h"
 #import "AppDelegate.h"
+#import "FilmDetailViewModel.h"
 
 @interface FilmsViewController ()
 @property (nonatomic,strong) NSArray *films;
@@ -102,7 +103,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     FilmDetailViewController *controller = segue.destinationViewController;
     Film *film = self.films[[self.tableView indexPathForSelectedRow].row];
-    controller.filmURL = film.detailURL;
+    controller.viewModel = [[FilmDetailViewModel alloc] initWithFilmURL:film.detailURL];
     controller.title = film.title;
 }
 

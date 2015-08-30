@@ -23,6 +23,7 @@
 		445129591A09FF0D000364E1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 445129581A09FF0D000364E1 /* Images.xcassets */; };
 		4451295C1A09FF0D000364E1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4451295A1A09FF0D000364E1 /* LaunchScreen.xib */; };
 		446AA6AA1B9327F1003B3319 /* UIViewController+ViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 446AA6A91B9327F1003B3319 /* UIViewController+ViewModel.m */; };
+		446AA6AF1B933397003B3319 /* FilmDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 446AA6AE1B933397003B3319 /* FilmDetailViewModel.m */; };
 		4494D0291AAB31DC00C958B1 /* ScheduleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4494D0281AAB31DC00C958B1 /* ScheduleViewModel.m */; };
 		44B2EE721A0F905D000AFC00 /* CitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B2EE711A0F905D000AFC00 /* CitiesViewController.m */; };
 		44B2EE991A0F925D000AFC00 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B2EE981A0F925D000AFC00 /* City.m */; };
@@ -72,6 +73,8 @@
 		446AA6A11B925296003B3319 /* BaseViewModel+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BaseViewModel+Protected.h"; path = "Controller/BaseViewModel+Protected.h"; sourceTree = "<group>"; };
 		446AA6A81B9327F1003B3319 /* UIViewController+ViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+ViewModel.h"; path = "Controller/UIViewController+ViewModel.h"; sourceTree = "<group>"; };
 		446AA6A91B9327F1003B3319 /* UIViewController+ViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+ViewModel.m"; path = "Controller/UIViewController+ViewModel.m"; sourceTree = "<group>"; };
+		446AA6AD1B933397003B3319 /* FilmDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilmDetailViewModel.h; path = Controller/FilmDetailViewModel.h; sourceTree = "<group>"; };
+		446AA6AE1B933397003B3319 /* FilmDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilmDetailViewModel.m; path = Controller/FilmDetailViewModel.m; sourceTree = "<group>"; };
 		4494D0271AAB31DC00C958B1 /* ScheduleViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScheduleViewModel.h; path = Controller/ScheduleViewModel.h; sourceTree = "<group>"; };
 		4494D0281AAB31DC00C958B1 /* ScheduleViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScheduleViewModel.m; path = Controller/ScheduleViewModel.m; sourceTree = "<group>"; };
 		44B2EE701A0F905D000AFC00 /* CitiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CitiesViewController.h; path = Controller/CitiesViewController.h; sourceTree = "<group>"; };
@@ -219,6 +222,8 @@
 			children = (
 				44B2EF901A12C0F3000AFC00 /* FilmDetailViewController.h */,
 				44B2EF911A12C0F3000AFC00 /* FilmDetailViewController.m */,
+				446AA6AD1B933397003B3319 /* FilmDetailViewModel.h */,
+				446AA6AE1B933397003B3319 /* FilmDetailViewModel.m */,
 			);
 			name = "Film Detail";
 			sourceTree = "<group>";
@@ -449,6 +454,7 @@
 				44B2EEB21A10002C000AFC00 /* CinemaCell.m in Sources */,
 				4451294E1A09FF0D000364E1 /* main.m in Sources */,
 				4494D0291AAB31DC00C958B1 /* ScheduleViewModel.m in Sources */,
+				446AA6AF1B933397003B3319 /* FilmDetailViewModel.m in Sources */,
 				441ADB1E1A13E6CD00E01CF6 /* FilmDetailHeaderCell.m in Sources */,
 				44B2EF801A116C83000AFC00 /* ScheduleViewController.m in Sources */,
 				44B2EF861A117299000AFC00 /* ScheduleEntry.m in Sources */,
