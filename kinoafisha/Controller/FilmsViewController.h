@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class FilmsViewModel;
 @interface FilmsViewController : UITableViewController
+@property (nonatomic,strong) FilmsViewModel *viewModel;
 @end
