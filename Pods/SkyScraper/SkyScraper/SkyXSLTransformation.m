@@ -17,12 +17,14 @@
 #import "SkyXSLTransformation.h"
 #import "SkyXSLTParams.h"
 
+typedef NSMutableString* (^ReplaceStringBlockType)(NSString* inString, NSString* regexString, NSString* appendFormat, NSString*(^block)(NSString*value));
 NSString  * const SkyScraperErrorDomain = @"SkyScraperErrorDomain Error Domain";
 
 extern int xmlLoadExtDtdDefaultValue;
 
 @interface SkyXSLTransformation()
 @property (nonatomic,assign) xsltStylesheetPtr stylesheet;
+@property (nonatomic, copy) ReplaceStringBlockType replaceStringBlock;
 @end
 
 void exslt_org_regular_expressions_init();
@@ -64,14 +66,18 @@ void exslt_org_regular_expressions_init();
 
 - (NSData *) transformedDataFromData:(NSData *)data isHTML:(BOOL)isHTML withParams:(NSDictionary *)params error:(NSError * __autoreleasing *)error {
     if (!self.stylesheet) {
-        *error = [NSError errorWithDomain:SkyScraperErrorDomain code:1 userInfo:
-                  @{NSLocalizedFailureReasonErrorKey : @"Either no stylesheet provided, or failed to parse the one provided"}];
+        if (error) {
+            *error = [NSError errorWithDomain:SkyScraperErrorDomain code:1 userInfo:
+                      @{NSLocalizedFailureReasonErrorKey : @"Either no stylesheet provided, or failed to parse the one provided"}];
+        }
         return nil;
     }
     
     if ([data length]==0) {
-        *error = [NSError errorWithDomain:SkyScraperErrorDomain code:2 userInfo:
-                  @{NSLocalizedFailureReasonErrorKey : @"No input HTML provided, or the input is empty"}];
+        if (error) {
+            *error = [NSError errorWithDomain:SkyScraperErrorDomain code:2 userInfo:
+                      @{NSLocalizedFailureReasonErrorKey : @"No input HTML provided, or the input is empty"}];
+        }
         return nil;
     }
     
@@ -81,6 +87,9 @@ void exslt_org_regular_expressions_init();
     }
     if (self.replaceXMLEntities) {
         string = [self replaceEntities:string isHTML:isHTML];
+    }
+    if (self.enableTextareaExpansion) {
+        string = [self fixEmptyTextareaTags:string];
     }
     
     xmlChar *cString = (xmlChar *)[string cStringUsingEncoding:NSUTF8StringEncoding];
@@ -113,7 +122,7 @@ void exslt_org_regular_expressions_init();
             /* dumping bytes of the result */
             xmlChar *buf;
             int size;
-
+            
             xsltSaveResultToString(&buf, &size, res, self.stylesheet);
             
             /* producing result */
@@ -122,13 +131,17 @@ void exslt_org_regular_expressions_init();
             }
             
         } else {
-            *error = [NSError errorWithDomain:SkyScraperErrorDomain code:4 userInfo:
-                      @{NSLocalizedFailureReasonErrorKey : @"Unable to apply stylesheet"}];
+            if (error) {
+                *error = [NSError errorWithDomain:SkyScraperErrorDomain code:4 userInfo:
+                          @{NSLocalizedFailureReasonErrorKey : @"Unable to apply stylesheet"}];
+            }
         }
         
     } else {
-        *error = [NSError errorWithDomain:SkyScraperErrorDomain code:3 userInfo:
-                  @{NSLocalizedFailureReasonErrorKey : @"Unable to create transform context"}];
+        if (error) {
+            *error = [NSError errorWithDomain:SkyScraperErrorDomain code:3 userInfo:
+                      @{NSLocalizedFailureReasonErrorKey : @"Unable to create transform context"}];
+        }
     }
     
     /* freeing all other stuff */
@@ -214,24 +227,9 @@ void exslt_org_regular_expressions_init();
 }
 
 - (NSString*) replaceEntities:(NSString*)string isHTML:(BOOL)isHTML {
-    NSMutableString* (^replaceBlock)(id,id,id,id) = ^NSMutableString*(NSString* inString, NSString* regexString, NSString* appendFormat, NSString*(^block)(NSString*value)) {
-        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regexString
-                                                                               options:NSRegularExpressionCaseInsensitive|NSRegularExpressionDotMatchesLineSeparators error:nil];
-        NSMutableString* mutString = [NSMutableString new];
-        __block NSInteger startPos = 0;
-        [regex enumerateMatchesInString:inString options:0 range:(NSRange){0, inString.length} usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
-            [mutString appendString:[inString substringWithRange:(NSRange){startPos, result.range.location - startPos}]];
-            NSString* value = [inString substringWithRange:[result rangeAtIndex:1]];
-            [mutString appendFormat:appendFormat,block(value)];
-            startPos = result.range.location + result.range.length;
-        }];
-        [mutString appendString:[inString substringWithRange:NSMakeRange(startPos, inString.length-startPos)]];
-        return mutString;
-    };
-    
     if (!isHTML) {
         // this need to be done to fix the issue with XML entities inside the CDATA
-        string = replaceBlock(string,@"<!\\[CDATA\\[(.*?)\\]\\]>",@"<![CDATA[%@]]>",^(NSString*value) {
+        string = self.replaceStringBlock(string,@"<!\\[CDATA\\[(.*?)\\]\\]>",@"<![CDATA[%@]]>",^(NSString*value) {
             value = [value stringByReplacingOccurrencesOfString:@"&quot;" withString:@"\""];
             value = [value stringByReplacingOccurrencesOfString:@"&apos;" withString:@"'"];
             value = [value stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
@@ -242,12 +240,40 @@ void exslt_org_regular_expressions_init();
     }
     
     // replace decimal entities with hex equivalents
-    string = replaceBlock(string,@"&#([a-f0-9]{4,5});",@"&#%@;",^(NSString*value) {
+    string = self.replaceStringBlock(string,@"&#([a-f0-9]{4,5});",@"&#%@;",^(NSString*value) {
         return [NSString stringWithFormat:@"x%lX",(unsigned long)[value integerValue]];
     });
     
     CFStringTransform((__bridge CFMutableStringRef)string, NULL, kCFStringTransformToXMLHex, YES);
     return string;
+}
+
+- (NSString*) fixEmptyTextareaTags:(NSString*)string {
+    return self.replaceStringBlock(string,@"(<textarea.*?</textarea>)",@"%@",^(NSString*value) {
+        return [value stringByReplacingOccurrencesOfString:@"><" withString:@"> <" options:0 range:(NSRange){0,value.length}];
+    });
+}
+
+#pragma mark - Accessors
+
+- (ReplaceStringBlockType) replaceStringBlock {
+    if (!_replaceStringBlock) {
+        _replaceStringBlock = ^NSMutableString*(NSString* inString, NSString* regexString, NSString* appendFormat, NSString*(^block)(NSString*value)) {
+            NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regexString
+                                                                                   options:NSRegularExpressionCaseInsensitive|NSRegularExpressionDotMatchesLineSeparators error:nil];
+            NSMutableString* mutString = [NSMutableString new];
+            __block NSInteger startPos = 0;
+            [regex enumerateMatchesInString:inString options:0 range:(NSRange){0, inString.length} usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+                [mutString appendString:[inString substringWithRange:(NSRange){startPos, result.range.location - startPos}]];
+                NSString* value = [inString substringWithRange:[result rangeAtIndex:1]];
+                [mutString appendFormat:appendFormat,block(value)];
+                startPos = result.range.location + result.range.length;
+            }];
+            [mutString appendString:[inString substringWithRange:NSMakeRange(startPos, inString.length-startPos)]];
+            return mutString;
+        };
+    }
+    return _replaceStringBlock;
 }
 
 @end

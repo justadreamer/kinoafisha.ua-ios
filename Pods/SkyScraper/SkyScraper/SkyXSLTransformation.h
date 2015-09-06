@@ -11,6 +11,10 @@ extern NSString  * const SkyScraperErrorDomain;
  *  set to YES to replace named entities with characters and decimal entities with hex equivalents (NO by default)
  */
 @property (nonatomic,assign) BOOL replaceXMLEntities;
+/**
+ *  set to YES to fix the problem with parsing of empty textarea tags (NO by default) http://habrahabr.ru/post/27666/
+ */
+@property (nonatomic,assign) BOOL enableTextareaExpansion;
 
 - (instancetype) init NS_UNAVAILABLE;
 
@@ -60,7 +64,7 @@ extern NSString  * const SkyScraperErrorDomain;
 - (id) JSONObjectFromHTMLData:(NSData *)html withParams:(NSDictionary *)params error:(NSError * __autoreleasing *)error;
 
 /**
- *  A convenience method that internally applies the transfomration to xml 
+ *  A convenience method that internally applies the transfomration to xml
  *  data
  *
  *  @param xml    xml NSData represenation
@@ -72,7 +76,7 @@ extern NSString  * const SkyScraperErrorDomain;
 - (NSString *) stringFromXMLData:(NSData *)xml withParams:(NSDictionary *) params error:(NSError * __autoreleasing *)error;
 
 /**
- *  A convenience method that internally applies the transformation to xml 
+ *  A convenience method that internally applies the transformation to xml
  *  data
  *
  *  @param xml    xml NSData representation
