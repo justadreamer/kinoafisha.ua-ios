@@ -31,7 +31,7 @@
 #pragma mark - BaseViewModel overrides
 
 - (NSString *)XSLTName {
-    return @"films";
+    return @"films_v2";
 }
 
 - (NSURL *)URL {
