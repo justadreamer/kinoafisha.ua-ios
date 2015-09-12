@@ -10,5 +10,6 @@
 @class City;
 @interface FilmsViewModel : BaseViewModel
 @property (nonatomic,strong,readonly) NSArray *films;
+@property (nonatomic,assign) BOOL needsReload;
 - (instancetype) initWithCity:(City *)city;
 @end

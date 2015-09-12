@@ -10,6 +10,9 @@
 #import "BaseViewModel+Protected.h"
 #import "City.h"
 #import "Film.h"
+#import "ReactiveCocoa.h"
+#import "Global.h"
+#import "extobjc.h"
 
 @interface FilmsViewModel()
 @property (nonatomic,strong) City *city;
@@ -20,12 +23,23 @@
 - (instancetype) initWithCity:(City *)city {
     if (self = [super init]) {
         self.city = city;
+        @weakify(self);
+        [[[NSNotificationCenter defaultCenter] rac_addObserverForName:DidChangeCityNotification object:nil] subscribeNext:^(NSNotification *notification) {
+            @strongify(self);
+            self.city = notification.userInfo[CityKey];
+            self.needsReload = YES;
+        }];
     }
     return self;
 }
 
 - (NSArray *)films {
     return self.dataModel;
+}
+
+- (void) loadDataModel {
+    [super loadDataModel];
+    self.needsReload = NO;
 }
 
 #pragma mark - BaseViewModel overrides

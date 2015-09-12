@@ -28,10 +28,6 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self.viewModel action:@selector(loadDataModel)];
     [self defineDefaultBindings];
-}
-
-- (void) viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
     [self.viewModel loadDataModel];
 }
 
