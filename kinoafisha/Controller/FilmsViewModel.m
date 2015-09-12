@@ -19,6 +19,9 @@
 @end
 
 @implementation FilmsViewModel
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (instancetype) initWithCity:(City *)city {
     if (self = [super init]) {

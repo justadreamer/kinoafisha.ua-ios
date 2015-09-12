@@ -14,16 +14,27 @@
 #import "CinemasContainer.h"
 #import "ScheduleViewModel.h"
 #import "BaseViewModel+Protected.h"
+#import "Global.h"
+#import "ReactiveCocoa.h"
+#import "extobjc.h"
 
 @interface CinemasViewModel ()
 @property (nonatomic,strong,readwrite) NSString *title;
 @end
 
 @implementation CinemasViewModel
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (instancetype) initWithCity:(City *)city {
     if (self = [super init]) {
         self.city = city;
+        @weakify(self);
+        [[[NSNotificationCenter defaultCenter] rac_addObserverForName:DidChangeCityNotification object:nil] subscribeNext:^(NSNotification *notification) {
+            @strongify(self);
+            self.city = notification.userInfo[CityKey];
+        }];
     }
     return self;
 }

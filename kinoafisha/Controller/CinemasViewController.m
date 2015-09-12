@@ -20,9 +20,6 @@
 @end
 
 @implementation CinemasViewController
-- (void) dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,12 +28,6 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self.viewModel action:@selector(loadDataModel)];
 
     self.viewModel = [[CinemasViewModel alloc] initWithCity:[City  selectedCity]];
-
-    @weakify(self);
-    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:DidChangeCityNotification object:nil] subscribeNext:^(NSNotification *notification) {
-        @strongify(self);
-        self.viewModel.city = notification.userInfo[CityKey];
-    }];
 
     RAC(self,title) = RACObserve(self, viewModel.title);
     

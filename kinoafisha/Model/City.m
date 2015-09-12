@@ -7,6 +7,7 @@
 //
 
 #import "City.h"
+#import "Global.h"
 
 static City *gSelectedCity;
 
@@ -39,6 +40,7 @@ static City *gSelectedCity;
 
 + (void) setSelectedCity:(City *)city {
     gSelectedCity = city;
+    [[NSNotificationCenter defaultCenter] postNotificationName:DidChangeCityNotification object:nil userInfo:@{CityKey:city}];
 }
 
 @end
