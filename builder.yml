@@ -14,7 +14,7 @@ default: &default
     using_pods:     true
     project_dir:    .
     profile:
-        file:       "~/projects/kinoafisha/provisioning/kinoafisha_distrib.mobileprovision"
+        file:       "~/projects/kinoafisha/provisioning/kinoafisha_adhoc.mobileprovision"
     xcode:
         enabled:    true
         version:    v7
@@ -52,6 +52,8 @@ default: &default
 
 appstore: &appstore
     <<: *default
+    profile:
+        file:       "~/projects/kinoafisha/provisioning/kinoafisha_appstore.mobileprovision"
     build:
         configuration:  AppStore
     pack_ipa:
