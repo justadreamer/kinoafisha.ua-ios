@@ -17,7 +17,7 @@ default: &default
         file:       "~/projects/kinoafisha/provisioning/kinoafisha_distrib.mobileprovision"
     xcode:
         enabled:    true
-        version:    v6
+        version:    v7
     bump_version:
         enabled:    true
         push:       true
