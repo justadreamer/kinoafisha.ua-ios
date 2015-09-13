@@ -10,6 +10,7 @@ pod 'SVProgressHUD', '~> 1.1'
 pod 'ObjectiveSugar', '~> 1.1'
 pod 'ReactiveCocoa', '~> 2.4'
 pod 'DZNEmptyDataSet'
+pod 'HockeySDK'
 end
 
 
