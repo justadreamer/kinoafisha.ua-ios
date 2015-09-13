@@ -4,7 +4,9 @@ queue:
     - bump_version
     - build
     - pack_ipa
+    - pack_dsym
     - copy_ipa
+    - hockeyapp
 
 
 default: &default
@@ -19,7 +21,8 @@ default: &default
     bump_version:
         enabled:    true
         push:       true
-        up_mver:    false
+        up_mver:    true
+
     build:
         configuration:  Release
         sdk:            iphoneos
@@ -29,9 +32,33 @@ default: &default
     pack_ipa:
         enabled:    true
         naming:
-            prefix:
+            prefix:     "beta"
             append_version: true
-    copy_ipa:
+    pack_dsym:
         enabled:    true
+        copy:       false
+            output_dir: "~/Downloads/"
+
+    copy_ipa:
+        enabled:    false
         output_dir: ~/Downloads/
         clear_old:  false
+
+    hockeyapp:
+        enabled:    true
+        token:      17b8898da41e4988aae14dd6d4b42d87 
+        app_id:     c357110cbce64ba11cc73faa41591897
+        notify:     true
+        download:   true
+
+appstore: &appstore
+    <<: *default
+    build:
+        configuration:  AppStore
+    pack_ipa:
+        naming:
+            prefix:     "store"
+    copy_ipa:
+        enabled:    true
+    hockeyapp:
+        app_id:     5174f2e0c89c16e4c88487ebe5719092
