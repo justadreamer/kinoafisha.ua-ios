@@ -27,6 +27,9 @@ PODS:
     - Ono (~> 1.0)
   - DZNEmptyDataSet (1.7.1)
   - FileMD5Hash (2.0.0)
+  - HockeySDK (3.7.3):
+    - HockeySDK/AllFeaturesLib (= 3.7.3)
+  - HockeySDK/AllFeaturesLib (3.7.3)
   - libextobjc (0.4.1):
     - libextobjc/EXTADT (= 0.4.1)
     - libextobjc/EXTConcreteProtocol (= 0.4.1)
@@ -98,6 +101,7 @@ PODS:
 
 DEPENDENCIES:
   - DZNEmptyDataSet
+  - HockeySDK
   - ObjectiveSugar (~> 1.1)
   - ReactiveCocoa (~> 2.4)
   - SkyS3Sync (from `https://github.com/justadreamer/SkyS3Sync`)
@@ -124,6 +128,7 @@ SPEC CHECKSUMS:
   AFOnoResponseSerializer: c02c8bef1d6742ac68f33ecaed41826c9657bc33
   DZNEmptyDataSet: 2a398066c2bf5848f7f693fb50954b5064debd12
   FileMD5Hash: 3ed69cc19a21ff4d30ae8833fc104275ad2c7de0
+  HockeySDK: a0b915dc081f1ba67782a347220a8623dbe93b8a
   libextobjc: a650fc1bf489a3d3a9bc2e621efa3e1006fc5471
   Mantle: 6bee68168423948be0c0c5924832bf3af188e099
   ObjectiveSugar: a6a25f23d657c19df0a0b972466d5b5ca9f5295c
