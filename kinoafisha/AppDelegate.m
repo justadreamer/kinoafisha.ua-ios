@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <HockeySDK/HockeySDK.h>
 
 @interface AppDelegate ()
 
@@ -21,6 +22,10 @@
     self.s3SyncManager = [[SkyS3SyncManager alloc] initWithS3AccessKey:S3AccessKey secretKey:S3SecretKey bucketName:S3BucketName originalResourcesDirectory:resourcesURL];
 #ifdef DEBUG
     self.s3SyncManager.remoteSyncEnabled = NO;
+#else 
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"c357110cbce64ba11cc73faa41591897"];
+    [[BITHockeyManager sharedHockeyManager] startManager];
+    [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
 #endif
     return YES;
 }
