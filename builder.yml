@@ -37,7 +37,7 @@ default: &default
     pack_dsym:
         enabled:    true
         copy:       false
-            output_dir: "~/Downloads/"
+        output_dir: "~/Downloads/"
 
     copy_ipa:
         enabled:    false
