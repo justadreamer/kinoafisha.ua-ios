@@ -14,10 +14,9 @@
 #import "FilmDetailViewController.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "ScheduleViewModel.h"
-#import "UIViewController+ViewModel.h"
 #import "FilmDetailViewModel.h"
 
-@interface ScheduleViewController ()<ViewModelSupport>
+@interface ScheduleViewController ()
 @property (nonatomic,strong) UIView *emptyView;
 @end
 

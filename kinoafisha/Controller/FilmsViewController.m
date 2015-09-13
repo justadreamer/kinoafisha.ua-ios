@@ -14,9 +14,8 @@
 #import "AppDelegate.h"
 #import "FilmDetailViewModel.h"
 #import "FilmsViewModel.h"
-#import "UIViewController+ViewModel.h"
 
-@interface FilmsViewController ()<ViewModelSupport>
+@interface FilmsViewController ()
 @end
 
 @implementation FilmsViewController

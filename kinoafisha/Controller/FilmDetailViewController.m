@@ -14,10 +14,10 @@
 #import "ScheduleViewController.h"
 #import "AppDelegate.h"
 #import "ScheduleViewModel.h"
-#import "UIViewController+ViewModel.h"
+
 #import "FilmDetailViewModel.h"
 
-@interface FilmDetailViewController ()<ViewModelSupport>
+@interface FilmDetailViewController ()
 @end
 
 @implementation FilmDetailViewController

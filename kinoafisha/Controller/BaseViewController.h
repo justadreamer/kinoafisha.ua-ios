@@ -9,13 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "ViewModel.h"
 
-@protocol ViewModelSupport<NSObject>
-- (id<ViewModel>) viewModel;
-- (void)redisplayData;
-@end
-
-@interface UIViewController (ViewModel)
+@interface BaseViewController : UITableViewController
 //call in viewDidLoad
 - (void)defineDefaultBindings;
+
+/**
+ *  override to return a specific viewModel
+ */
+- (id<ViewModel>)viewModel;
+
+/**
+ *  override with appropriate logic for refreshing the dataset
+ */
+- (void)redisplayData;
 
 @end

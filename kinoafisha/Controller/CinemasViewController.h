@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-@class CinemasViewModel;
+#import "BaseViewController.h"
 
-@interface CinemasViewController : UITableViewController
+@class CinemasViewModel;
+@interface CinemasViewController : BaseViewController
 @property (nonatomic,strong) CinemasViewModel *viewModel;
 @end

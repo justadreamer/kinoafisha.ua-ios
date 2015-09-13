@@ -20,6 +20,7 @@
 @implementation BaseViewModel
 @synthesize isLoading = _isLoading;
 @synthesize dataModel = _dataModel;
+@synthesize error = _error;
 
 - (void) dealloc {
     self.operation.completionBlock = nil;
@@ -42,6 +43,8 @@
     
     @weakify(self);
     self.isLoading = YES;
+    self.error = nil;
+
     [self.operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         @strongify(self);
         self.dataModel = [self processLoadedDataModel:responseObject];
@@ -49,6 +52,7 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         @strongify(self);
         self.isLoading = NO;
+        self.error = error;
         NSLog(@"%@",error);
     }];
     

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 @class Cinema;
 @class ScheduleViewModel;
-@interface ScheduleViewController : UITableViewController
+@interface ScheduleViewController : BaseViewController
 @property (nonatomic,strong) ScheduleViewModel *viewModel;
 @end

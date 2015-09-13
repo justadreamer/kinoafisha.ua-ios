@@ -14,9 +14,8 @@
 #import "CinemasViewModel.h"
 #import "City.h"
 #import <libextobjc/extobjc.h>
-#import "UIViewController+ViewModel.h"
 
-@interface CinemasViewController ()<ViewModelSupport>
+@interface CinemasViewController ()
 @end
 
 @implementation CinemasViewController

@@ -12,9 +12,8 @@
 
 #import <ObjectiveSugar/ObjectiveSugar.h>
 #import <SVProgressHUD/SVProgressHUD.h>
-#import "UIViewController+ViewModel.h"
 
-@interface CitiesViewController ()<ViewModelSupport>
+@interface CitiesViewController ()
 @property (nonatomic,strong) CitiesViewModel *viewModel;
 @end
 

@@ -5,17 +5,13 @@
 //  Created by Eugene Dorfman on 8/30/15.
 //  Copyright (c) 2015 justadreamer. All rights reserved.
 //
-
-#import "UIViewController+ViewModel.h"
+#import "BaseViewController.h"
 #import <objc/runtime.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "BaseViewModel.h"
 
-@interface UIViewController()<ViewModelSupport>
-@end
-
-@implementation UIViewController (ViewModel)
+@implementation BaseViewController
 
 - (void)defineDefaultBindings {
     @weakify(self)
@@ -32,6 +28,14 @@
         @strongify(self)
         [self redisplayData];
     }];
+}
+
+- (void) redisplayData {
+    
+}
+
+- (id<ViewModel>) viewModel {
+    return nil;
 }
 
 @end
