@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "ViewModel.h"
+#import "UIScrollView+EmptyDataSet.h"
 
-@interface BaseViewController : UITableViewController
+@interface BaseViewController : UITableViewController<DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 //call in viewDidLoad
 - (void)defineDefaultBindings;
 
