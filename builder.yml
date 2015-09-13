@@ -21,7 +21,6 @@ default: &default
     bump_version:
         enabled:    true
         push:       true
-        up_mver:    true
 
     build:
         configuration:  Release
