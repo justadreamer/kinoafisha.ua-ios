@@ -26,6 +26,7 @@
 - (instancetype) initWithFilm:(Film *)film {
     if (self = [super init]) {
         self.film = film;
+        self.needsLoading = NO;
     }
     return self;
 }

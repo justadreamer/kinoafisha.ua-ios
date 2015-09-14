@@ -31,10 +31,6 @@
     RAC(self,title) = RACObserve(self, viewModel.title);
     
     [self defineDefaultBindings];
-}
-
-- (void) viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
     [self.viewModel loadDataModel];
 }
 

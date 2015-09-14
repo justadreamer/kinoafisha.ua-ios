@@ -17,7 +17,6 @@
 #import "FilmDetailViewModel.h"
 
 @interface ScheduleViewController ()
-@property (nonatomic,strong) UIView *emptyView;
 @end
 
 @implementation ScheduleViewController
@@ -32,40 +31,11 @@
     RAC(self,title) = RACObserve(self,viewModel.title);
     
     [self defineDefaultBindings];
-}
-
-- (void) viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
     [self.viewModel loadDataModel];
 }
 
 - (void) redisplayData {
     [self.tableView reloadData];
-    if (!self.viewModel.scheduleEntries.count) {
-        [self displayEmptyView];
-    } else {
-        [self removeEmptyView];
-    }
-}
-
-- (UIView *)emptyView {
-    if (!_emptyView) {
-        UILabel *emptyView = [[UILabel alloc] initWithFrame:CGRectZero];
-        emptyView.text = @"Нет расписания";
-        [emptyView sizeToFit];
-        emptyView.center = self.view.center;
-        emptyView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-        self.emptyView = emptyView;
-    }
-    return _emptyView;
-}
-
-- (void) displayEmptyView {
-    [self.tableView addSubview:self.emptyView];
-}
-
-- (void) removeEmptyView {
-    [self.emptyView removeFromSuperview];
 }
 
 - (void) refresh:(UIBarButtonItem *)barButtonItem {

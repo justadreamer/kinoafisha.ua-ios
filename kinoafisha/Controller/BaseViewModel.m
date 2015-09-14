@@ -21,13 +21,25 @@
 @synthesize isLoading = _isLoading;
 @synthesize dataModel = _dataModel;
 @synthesize error = _error;
+@synthesize needsLoading = _needsLoading;
 
 - (void) dealloc {
     self.operation.completionBlock = nil;
     [self.operation cancel];
 }
 
+- (instancetype) init {
+    if (self = [super init]) {
+        self.needsLoading = YES;
+    }
+    return self;
+}
+
 - (void) loadDataModel {
+    if (!self.needsLoading) {
+        return;
+    }
+
     self.operation.completionBlock = nil;
     [self.operation cancel];
     
@@ -80,4 +92,5 @@
 - (NSString *)loadingIndicatorMessage {
     return @"Загрузка...";
 }
+
 @end

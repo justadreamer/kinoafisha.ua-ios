@@ -13,6 +13,7 @@
 @property (nullable,nonatomic,strong) id dataModel;
 @property (nonatomic,assign) BOOL isLoading;
 @property (nullable,nonatomic,strong) NSError *error;
+@property (nonatomic,assign) BOOL needsLoading;
 - (NSString * __nullable) loadingIndicatorMessage;
 - (void) loadDataModel;
 
