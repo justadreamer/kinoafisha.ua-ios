@@ -35,7 +35,6 @@
             @strongify(self);
             self.city = notification.userInfo[CityKey];
             [self loadDataModel];
-            [self performSelector:@selector(crash)];
         }];
     }
     return self;
