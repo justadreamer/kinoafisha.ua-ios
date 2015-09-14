@@ -19,6 +19,8 @@
     NSString *htmlPath = [[NSBundle mainBundle] pathForResource:@"credits" ofType:@"html"];
     NSError *error = nil;
     NSString *html = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:&error];
+    NSString *version = [NSString stringWithFormat:@" %@ (build %@)",[NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"],[NSBundle mainBundle].infoDictionary[(NSString *)kCFBundleVersionKey]];
+    html = [html stringByReplacingOccurrencesOfString:@"%%V%%" withString:version];
     self.webView.delegate = self;
     [self.webView loadHTMLString:html baseURL:nil];
 }
