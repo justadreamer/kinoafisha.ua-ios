@@ -13,7 +13,9 @@
 @property (nullable,nonatomic,strong) id dataModel;
 @property (nonatomic,assign) BOOL isLoading;
 @property (nullable,nonatomic,strong) NSError *error;
-@property (nonatomic,assign) BOOL needsLoading;
+//this is a permanent property, set for a specific data model once, and should not be changed
+//during its lifetime
+@property (nonatomic,assign,readonly) BOOL loadable;
 - (NSString * __nullable) loadingIndicatorMessage;
 - (void) loadDataModel;
 

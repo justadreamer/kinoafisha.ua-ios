@@ -25,13 +25,7 @@
     self.viewModel = [CitiesViewModel new];
 
     [self defineDefaultBindings];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    if (!self.viewModel.cities) {
-        [self.viewModel loadDataModel];
-    }
+    [self.viewModel loadDataModel];
 }
 
 #pragma mark -

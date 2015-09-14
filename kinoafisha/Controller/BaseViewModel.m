@@ -21,22 +21,19 @@
 @synthesize isLoading = _isLoading;
 @synthesize dataModel = _dataModel;
 @synthesize error = _error;
-@synthesize needsLoading = _needsLoading;
+@synthesize loadable = _needsLoading;
 
 - (void) dealloc {
     self.operation.completionBlock = nil;
     [self.operation cancel];
 }
 
-- (instancetype) init {
-    if (self = [super init]) {
-        self.needsLoading = YES;
-    }
-    return self;
+- (BOOL) loadable {
+    return YES;
 }
 
 - (void) loadDataModel {
-    if (!self.needsLoading) {
+    if (!self.loadable) {
         return;
     }
 

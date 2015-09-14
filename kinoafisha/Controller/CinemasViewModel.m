@@ -34,6 +34,7 @@
         [[[NSNotificationCenter defaultCenter] rac_addObserverForName:DidChangeCityNotification object:nil] subscribeNext:^(NSNotification *notification) {
             @strongify(self);
             self.city = notification.userInfo[CityKey];
+            [self loadDataModel];
         }];
     }
     return self;
