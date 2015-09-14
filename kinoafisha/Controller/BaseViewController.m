@@ -50,7 +50,7 @@
 #pragma mark - DZNEmptyDataSetSource
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = @"Загрузка не удалась";
+    NSString *text = [self.viewModel error] ? @"Загрузка не удалась" : @"Нет контента";
     
     NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
                                  NSForegroundColorAttributeName: [UIColor darkGrayColor]};
@@ -59,7 +59,7 @@
 }
 
 - (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = @"Проверьте подключение к Интернету и повторите загрузку.";
+    NSString *text = [self.viewModel error] ? @"Проверьте подключение к Интернету и повторите загрузку." : @"";
     
     NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
     paragraph.lineBreakMode = NSLineBreakByWordWrapping;
@@ -73,6 +73,9 @@
 }
 
 - (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state {
+    if (![self.viewModel error]) {
+        return nil;
+    }
     NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:17.0f]};
     
     return [[NSAttributedString alloc] initWithString:@"Повторить" attributes:attributes];
@@ -84,7 +87,7 @@
 
 #pragma mark - DZNEmptyDataSetDelegate
 - (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView {
-    return self.viewModel.error!=nil;
+    return [self.viewModel error] || [self.viewModel dataModel];
 }
 
 - (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView {
