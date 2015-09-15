@@ -8,13 +8,13 @@
 
 #import "AppDelegate.h"
 #import <HockeySDK/HockeySDK.h>
+#import "Flurry.h"
 
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 #include "S3Secrets.h"
@@ -27,6 +27,8 @@
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
 #endif
+    
+    [Flurry startSession:@"24FBVSP95KGR8493G4MF"];
     return YES;
 }
 

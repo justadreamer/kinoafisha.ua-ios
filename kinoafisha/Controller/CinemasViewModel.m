@@ -17,6 +17,7 @@
 #import "Global.h"
 #import "ReactiveCocoa.h"
 #import "extobjc.h"
+#import "Flurry.h"
 
 @interface CinemasViewModel ()
 @property (nonatomic,strong,readwrite) NSString *title;
@@ -52,6 +53,7 @@
 
 - (ScheduleViewModel *) scheduleViewModelForCinemaAtIndex:(NSUInteger)idx {
     Cinema *cinema = self.cinemas[idx];
+    [Flurry logEvent:@"Schedule for cinema" withParameters:@{@"cinema":cinema.name?:@""}];
     return [[ScheduleViewModel alloc] initWithCinema:cinema];
 }
 

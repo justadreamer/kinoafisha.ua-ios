@@ -7,6 +7,7 @@
 //
 
 #import "CreditsViewController.h"
+#import "Flurry.h"
 
 @interface CreditsViewController ()<UIWebViewDelegate>
 @property (nonatomic,strong) IBOutlet UIWebView *webView;
@@ -24,6 +25,8 @@
     html = [html stringByReplacingOccurrencesOfString:@"%%V%%" withString:version];
     self.webView.delegate = self;
     [self.webView loadHTMLString:html baseURL:nil];
+    
+    [Flurry logEvent:@"viewed credits"];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {

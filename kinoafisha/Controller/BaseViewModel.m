@@ -12,6 +12,7 @@
 #import <libextobjc/extobjc.h>
 #import <AFNetworking/AFNetworking.h>
 #import <SkyScraper/SkyScraper.h>
+#import "Flurry.h"
 
 @interface BaseViewModel()
 @property (nonatomic,strong) AFHTTPRequestOperation *operation;
@@ -58,10 +59,13 @@
         @strongify(self);
         self.dataModel = [self processLoadedDataModel:responseObject];
         self.isLoading = NO;
+        [Flurry logEvent:@"data did load" withParameters:@{@"view_model":NSStringFromClass([self class])}];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         @strongify(self);
         self.isLoading = NO;
         self.error = error;
+        [Flurry logEvent:@"data did fail to load" withParameters:@{@"view_model":NSStringFromClass([self class])}];
+        [Flurry logError:@"data did fail to load" message:@"" error:error];
         NSLog(@"%@",error);
     }];
     
