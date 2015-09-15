@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     NSString *htmlPath = [[NSBundle mainBundle] pathForResource:@"credits" ofType:@"html"];
     NSError *error = nil;
     NSString *html = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:&error];

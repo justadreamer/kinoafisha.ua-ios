@@ -520,24 +520,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pIh-lh-77i">
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dw2-jU-DNO">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="pIh-lh-77i" secondAttribute="trailing" id="Fix-kF-vNF"/>
-                            <constraint firstItem="pIh-lh-77i" firstAttribute="leading" secondItem="Dc2-hK-sTh" secondAttribute="leading" id="UME-aI-YcM"/>
-                            <constraint firstItem="pIh-lh-77i" firstAttribute="top" secondItem="hnr-I2-Lo3" secondAttribute="top" id="WfP-9G-fM3"/>
-                            <constraint firstItem="JTA-p7-t9f" firstAttribute="top" secondItem="pIh-lh-77i" secondAttribute="bottom" id="t2H-xa-oaL"/>
+                            <constraint firstItem="dw2-jU-DNO" firstAttribute="top" secondItem="hnr-I2-Lo3" secondAttribute="bottom" id="6d1-zk-sWX"/>
+                            <constraint firstItem="dw2-jU-DNO" firstAttribute="trailing" secondItem="Dc2-hK-sTh" secondAttribute="trailing" id="7t3-e3-eWV"/>
+                            <constraint firstItem="dw2-jU-DNO" firstAttribute="leading" secondItem="Dc2-hK-sTh" secondAttribute="leading" id="Rx6-UZ-zwo"/>
+                            <constraint firstItem="dw2-jU-DNO" firstAttribute="bottom" secondItem="JTA-p7-t9f" secondAttribute="top" id="bAN-yq-CuH"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="rBO-IV-pEH"/>
                     <navigationItem key="navigationItem" title="Инфо" id="fjn-2P-Pgg"/>
                     <connections>
-                        <outlet property="webView" destination="pIh-lh-77i" id="Q2Z-4w-uhc"/>
+                        <outlet property="webView" destination="dw2-jU-DNO" id="5kg-1m-Xcq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eDD-Lh-UCl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -591,6 +590,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="eBu-sh-2hJ"/>
-        <segue reference="zVe-l7-fu4"/>
+        <segue reference="qL1-R0-gGq"/>
     </inferredMetricsTieBreakers>
 </document>
