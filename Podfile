@@ -11,6 +11,7 @@ pod 'ObjectiveSugar', '~> 1.1'
 pod 'ReactiveCocoa', '~> 2.4'
 pod 'DZNEmptyDataSet'
 pod 'HockeySDK'
+pod 'Flurry-iOS-SDK', '~> 7.1'
 end
 
 
