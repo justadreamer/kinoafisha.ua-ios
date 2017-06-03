@@ -98,12 +98,8 @@ void exslt_org_regular_expressions_init();
     HTML_PARSE_RECOVER | HTML_PARSE_NOERROR | HTML_PARSE_NOWARNING
     : XML_PARSE_RECOVER | XML_PARSE_NOERROR | XML_PARSE_NOWARNING;
     
-    CFStringEncoding cfenc = CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding);
-    CFStringRef cfencstr = CFStringConvertEncodingToIANACharSetName(cfenc);
-    const char *enc = CFStringGetCStringPtr(cfencstr, 0);
-    
-    xmlDocPtr doc = isHTML ? htmlReadDoc(cString, NULL, enc, XSLT_PARSE_OPTIONS | additionalOptions)
-    : xmlReadDoc(cString, NULL, enc, XSLT_PARSE_OPTIONS | additionalOptions);
+    xmlDocPtr doc = isHTML ? htmlReadDoc(cString, NULL, "utf-8", XSLT_PARSE_OPTIONS | additionalOptions)
+    : xmlReadDoc(cString, NULL, "utf-8", XSLT_PARSE_OPTIONS | additionalOptions);
     
     NSData *result = nil;
     xmlDocPtr res = NULL;

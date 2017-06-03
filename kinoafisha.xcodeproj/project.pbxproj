@@ -42,12 +42,11 @@
 		44C54DA91A154BC900AF22AD /* FilmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C54DA81A154BC900AF22AD /* FilmCell.m */; };
 		44C8189B1B91F8A400E538FB /* BaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C8189A1B91F8A400E538FB /* BaseViewModel.m */; };
 		44E4D61C1A5DC90100A89982 /* XSLT in Resources */ = {isa = PBXBuildFile; fileRef = 44E4D61B1A5DC90100A89982 /* XSLT */; };
-		9F2F60FC7961C6B9A6F855D3 /* libPods-kinoafisha.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDBD344A5E1DC2EC06B7B3F4 /* libPods-kinoafisha.a */; };
+		B0DAF7237995C6A3CBEC3383 /* libPods-kinoafisha.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B37F3045E9539DD28D9C91DC /* libPods-kinoafisha.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		01A5BFEFE018C53B8C9D8447 /* Pods-kinoafisha.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kinoafisha.appstore.xcconfig"; path = "Pods/Target Support Files/Pods-kinoafisha/Pods-kinoafisha.appstore.xcconfig"; sourceTree = "<group>"; };
-		0BF14987EA5F812207CE86EC /* Pods-kinoafisha.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kinoafisha.debug.xcconfig"; path = "Pods/Target Support Files/Pods-kinoafisha/Pods-kinoafisha.debug.xcconfig"; sourceTree = "<group>"; };
+		212345B14A1E9C5AC83C37B1 /* Pods-kinoafisha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kinoafisha.release.xcconfig"; path = "Pods/Target Support Files/Pods-kinoafisha/Pods-kinoafisha.release.xcconfig"; sourceTree = "<group>"; };
 		441ADB1C1A13E6CD00E01CF6 /* FilmDetailHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilmDetailHeaderCell.h; sourceTree = "<group>"; };
 		441ADB1D1A13E6CD00E01CF6 /* FilmDetailHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilmDetailHeaderCell.m; sourceTree = "<group>"; };
 		441ADB1F1A13F19D00E01CF6 /* AttributeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributeCell.h; sourceTree = "<group>"; };
@@ -115,8 +114,9 @@
 		44E4D61B1A5DC90100A89982 /* XSLT */ = {isa = PBXFileReference; lastKnownFileType = folder; path = XSLT; sourceTree = SOURCE_ROOT; };
 		44E4D61D1A5DD08300A89982 /* S3Secrets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = S3Secrets.h; sourceTree = "<group>"; };
 		44E4D61E1A5DD09900A89982 /* S3Secrets_Example.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = S3Secrets_Example.h; path = ../S3Secrets_Example.h; sourceTree = "<group>"; };
-		DDBD344A5E1DC2EC06B7B3F4 /* libPods-kinoafisha.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-kinoafisha.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F992382DC43E8364EEEFF699 /* Pods-kinoafisha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kinoafisha.release.xcconfig"; path = "Pods/Target Support Files/Pods-kinoafisha/Pods-kinoafisha.release.xcconfig"; sourceTree = "<group>"; };
+		892CF74CC3BA2D9C494A0029 /* Pods-kinoafisha.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kinoafisha.appstore.xcconfig"; path = "Pods/Target Support Files/Pods-kinoafisha/Pods-kinoafisha.appstore.xcconfig"; sourceTree = "<group>"; };
+		B37F3045E9539DD28D9C91DC /* libPods-kinoafisha.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-kinoafisha.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E47B8640D51702EB30B55AE4 /* Pods-kinoafisha.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kinoafisha.debug.xcconfig"; path = "Pods/Target Support Files/Pods-kinoafisha/Pods-kinoafisha.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,21 +124,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F2F60FC7961C6B9A6F855D3 /* libPods-kinoafisha.a in Frameworks */,
+				B0DAF7237995C6A3CBEC3383 /* libPods-kinoafisha.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		17EA3707589F72CE15B1A3CB /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				DDBD344A5E1DC2EC06B7B3F4 /* libPods-kinoafisha.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		441C77901A15607E00F9499E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,8 +170,8 @@
 			children = (
 				4451294A1A09FF0D000364E1 /* kinoafisha */,
 				445129491A09FF0D000364E1 /* Products */,
-				67B2D7D4FA4D134CF6ED29C7 /* Pods */,
-				17EA3707589F72CE15B1A3CB /* Frameworks */,
+				CFE7A2EB81ECC59B2A8334FF /* Pods */,
+				8CC6DFD63434055C2682840D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -326,12 +318,20 @@
 			path = TableViewCell;
 			sourceTree = "<group>";
 		};
-		67B2D7D4FA4D134CF6ED29C7 /* Pods */ = {
+		8CC6DFD63434055C2682840D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0BF14987EA5F812207CE86EC /* Pods-kinoafisha.debug.xcconfig */,
-				F992382DC43E8364EEEFF699 /* Pods-kinoafisha.release.xcconfig */,
-				01A5BFEFE018C53B8C9D8447 /* Pods-kinoafisha.appstore.xcconfig */,
+				B37F3045E9539DD28D9C91DC /* libPods-kinoafisha.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CFE7A2EB81ECC59B2A8334FF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E47B8640D51702EB30B55AE4 /* Pods-kinoafisha.debug.xcconfig */,
+				212345B14A1E9C5AC83C37B1 /* Pods-kinoafisha.release.xcconfig */,
+				892CF74CC3BA2D9C494A0029 /* Pods-kinoafisha.appstore.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -343,11 +343,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4451296B1A09FF0D000364E1 /* Build configuration list for PBXNativeTarget "kinoafisha" */;
 			buildPhases = (
-				272D7E3C577E205159926DF8 /* Check Pods Manifest.lock */,
+				DD5ACC0D70E5ABFFFD480ADC /* [CP] Check Pods Manifest.lock */,
 				445129441A09FF0D000364E1 /* Sources */,
 				445129451A09FF0D000364E1 /* Frameworks */,
 				445129461A09FF0D000364E1 /* Resources */,
-				AA5ACEF3EE6B96402669F714 /* Copy Pods Resources */,
+				2711CABAFC837BD0C82C2B60 /* [CP] Embed Pods Frameworks */,
+				3D0597348DE6AD39F7F189CB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -369,6 +370,7 @@
 				TargetAttributes = {
 					445129471A09FF0D000364E1 = {
 						CreatedOnToolsVersion = 6.1;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -410,34 +412,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		272D7E3C577E205159926DF8 /* Check Pods Manifest.lock */ = {
+		2711CABAFC837BD0C82C2B60 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-kinoafisha/Pods-kinoafisha-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AA5ACEF3EE6B96402669F714 /* Copy Pods Resources */ = {
+		3D0597348DE6AD39F7F189CB /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-kinoafisha/Pods-kinoafisha-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DD5ACC0D70E5ABFFFD480ADC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -574,7 +591,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -612,7 +629,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -622,25 +639,31 @@
 		};
 		4451296C1A09FF0D000364E1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0BF14987EA5F812207CE86EC /* Pods-kinoafisha.debug.xcconfig */;
+			baseConfigurationReference = E47B8640D51702EB30B55AE4 /* Pods-kinoafisha.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = kinoafisha/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
 		4451296D1A09FF0D000364E1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F992382DC43E8364EEEFF699 /* Pods-kinoafisha.release.xcconfig */;
+			baseConfigurationReference = 212345B14A1E9C5AC83C37B1 /* Pods-kinoafisha.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eugene Dorfman (J89XB832R3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = kinoafisha/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cba29dcc-9774-4dbf-acc3-022336a9c5da";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
@@ -674,7 +697,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -684,14 +707,16 @@
 		};
 		4458CFB81BA5F75700EBE204 /* AppStore */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 01A5BFEFE018C53B8C9D8447 /* Pods-kinoafisha.appstore.xcconfig */;
+			baseConfigurationReference = 892CF74CC3BA2D9C494A0029 /* Pods-kinoafisha.appstore.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eugene Dorfman (J89XB832R3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = kinoafisha/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0c7af5cd-e1eb-40b9-a9ad-26743a81298c";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = AppStore;
 		};

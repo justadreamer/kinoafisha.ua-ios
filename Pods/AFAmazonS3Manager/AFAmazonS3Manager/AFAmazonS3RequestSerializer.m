@@ -1,6 +1,6 @@
 // AFAmazonS3RequestSerializer.m
 //
-// Copyright (c) 2011–2014 AFNetworking (http://afnetworking.com/)
+// Copyright (c) 2011–2015 AFNetworking (http://afnetworking.com/)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -29,6 +29,7 @@ NSString * const AFAmazonS3USStandardRegion = @"s3.amazonaws.com";
 NSString * const AFAmazonS3USWest1Region = @"s3-us-west-1.amazonaws.com";
 NSString * const AFAmazonS3USWest2Region = @"s3-us-west-2.amazonaws.com";
 NSString * const AFAmazonS3EUWest1Region = @"s3-eu-west-1.amazonaws.com";
+NSString * const AFAmazonS3EUCentral1Region = @"s3-eu-central-1.amazonaws.com";
 NSString * const AFAmazonS3APSoutheast1Region = @"s3-ap-southeast-1.amazonaws.com";
 NSString * const AFAmazonS3APSoutheast2Region = @"s3-ap-southeast-2.amazonaws.com";
 NSString * const AFAmazonS3APNortheast2Region = @"s3-ap-northeast-1.amazonaws.com";
@@ -136,6 +137,8 @@ static NSString * AFAWSSignatureForRequest(NSURLRequest *request, NSString *buck
         return nil;
     }
 
+    self.cachePolicy = NSURLRequestReloadIgnoringCacheData;
+
     self.region = AFAmazonS3USStandardRegion;
     self.useSSL = YES;
 
@@ -206,9 +209,9 @@ static NSString * AFAWSSignatureForRequest(NSURLRequest *request, NSString *buck
         expiration = [[NSDate date] dateByAddingTimeInterval:AFAmazonS3DefaultExpirationTimeInterval];
     }
 
-    if (self.accessKey) {
-        NSString *expires = @([expiration timeIntervalSince1970]).stringValue;
-        NSString *signature = AFAWSSignatureForRequest(request, self.bucket, expires, self.accessKey);
+    if (self.accessKey && self.secret) {
+        NSString *expires = @((NSUInteger)[expiration timeIntervalSince1970]).stringValue;
+        NSString *signature = AFAWSSignatureForRequest(request, self.bucket, expires, self.secret);
 
         NSDictionary *parameters = @{
                                      @"AWSAccessKeyId": self.accessKey,

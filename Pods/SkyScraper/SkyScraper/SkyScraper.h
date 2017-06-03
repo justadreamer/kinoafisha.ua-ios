@@ -1,11 +1,7 @@
 #ifndef SKYSCRAPER
 #define SKYSCRAPER
 
-#import "SkyXSLTransformation.h"
-#import "SkyModelAdapter.h"
-#import "SkyHTMLResponseSerializer.h"
-#import "SkyXMLResponseSerializer.h"
-#import "SkyJSONResponseSerializer.h"
-#import "SkyMantleModelAdapter.h"
+#import <SkyScraper/SkyXSLTransformation.h>
+#import <SkyScraper/SkyModelAdapter.h>
 
 #endif

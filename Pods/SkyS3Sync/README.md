@@ -1,8 +1,7 @@
+SkyS3SyncManager
+================
 
-#SkyS3SyncManager
-
-
-A simple resource manager that allows to remotely update app's resources via Amazon S3.  Basically the manager hosts a local mirror of the Amazon S3 bucket.
+A simple resource manager which downsyncs a full mirror of a remote Amazon S3 bucket.  This allows to remotely update app's resources via Amazon S3.  Full mirror means that if some resource changes at Amazon S3 - it is considered to be more relevant than the local copy and it is downloaded, also if some resource is added or deleted on Amazon - it is added or deleted correspondingly in the local mirror.
 
 ##Cocoapod
 It is planned to publish the spec to the main Specs repo in the near future, however for now please use:
@@ -63,8 +62,7 @@ AppDelegate.m:
 
 Then in code you can call:
 
-```objective-c
-
+```objective-c  
 	#include "AppDelegate.h"
 	
 	//...
@@ -72,6 +70,27 @@ Then in code you can call:
 	//or:
 	NSURL *URL = [AD.s3Sync URLForResource:@"<#filename#>" withExtension:@"<#extension#>"];
 ```
+
+Note if the resource is not present in the sync-directory (mirroring the bucket) - this call will **fallback** to the local resource version.  In order to always get the resource from the mirror you should use this API:
+
+```objective-c
+[[AD.s3Sync syncDirectory] URLForResource:withExtension:]
+```
+
+##Notifications
+
+To be able to react to changes when some resource has been updated and downsynced - you can listen to `SkyS3SyncDidUpdateResourceNotification` notification.  The `userInfo` dictionary will contain:`SkyS3ResourceFileName` and `SkyS3ResourceURL` keys which you can use to make sure that the resource in question has been updated - and then re-read its contents and update the UI correspondingly.
+
+There are other notifications documented in `SkyS3SyncManager.h` - they can be used to react to differentiate other events, such as:
+
+```
+SkyS3SyncDidCopyOriginalResourceNotification
+SkyS3SyncDidRemoveResourceNotification
+SkyS3SyncDidUpdateResourceNotification
+SkyS3SyncDidFinishSyncNotification
+```
+The last notification is sent when S3SyncManager completed syncing all of the managed resources - so either all of them are up to date, or a network error has occurred, which is not exposed as of right now, since we consider that we have the local default version of each resource provided on initialization.
+
 
 ##Directories
 By default SkyS3SyncManager creates SkyS3Sync directory under app's Documents directory.  However you can specify a different directory (f.e. if syncing several different buckets and they appear to have files with the same names) using the property of SkyS3SyncManager:
@@ -82,15 +101,16 @@ By default SkyS3SyncManager creates SkyS3Sync directory under app's Documents di
 ```
 
 ##Syncing strategy
-The local file under sync directory is updated (fetched from Amazon or overwritten by a newer version provided under app's resource bundle) only in case the remote file is:
-a) newer than the local version (by file's modification time)
-b) md5 of the remote file is different than of the local file (i.e. the remote file has a different content)
+The local file under sync directory is updated (fetched from Amazon or overwritten by a newer version provided under app's resource bundle) only in case the remote file has a different md5 than the local file (the remote file has a different content).
 
-In this case the newer version is downloaded and the local older version is overwritten.
+Addition and deletion are correspondingly mirrored into the local sync directory.
 
-There is no delete strategy currently implemented.  That is a TODO.  
+##SkyS3ResourceURLProvider API
+There is a single API for now, which allows to substitute the SkyS3SyncManager with an NSBundle if needed:
+    
+    - (NSURL *)URLForResource:(NSString *)name withExtension:(NSString *)ext;
 
-If the local version of the file does not exist under sync directory, and there is a remote version - it is downloaded and saved under the sync directory.
+the difference of this API from NSBundle's is that it returns nil if resource does not actually exist.  The check for existance is an unexpected behavior, but that's how we use it in our projects, might to change in the future, as we introduce some cleaner APIs.
 
 
 ##Uploading resources to Amazon

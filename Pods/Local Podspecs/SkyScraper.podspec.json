@@ -1,6 +1,6 @@
 {
   "name": "SkyScraper",
-  "version": "0.28",
+  "version": "0.35",
   "summary": "An Objective-C wrapper over libxslt with a couple of useful additions, created to allow easy HTML scraping with data represented in JSON format with the following deserialization into application models",
   "license": {
     "type": "MIT",
@@ -11,14 +11,17 @@
   },
   "source": {
     "git": "git@github.com:justadreamer/SkyScraper.git",
-    "tag": "0.28"
-  },
-  "platforms": {
-    "ios": "7.0"
+    "tag": "0.35"
   },
   "requires_arc": true,
   "homepage": "https://github.com/justadreamer/SkyScraper",
   "default_subspecs": "All",
+  "platforms": {
+    "osx": null,
+    "ios": null,
+    "tvos": null,
+    "watchos": null
+  },
   "subspecs": [
     {
       "name": "All",
@@ -37,7 +40,9 @@
         "SkyScraper/SkyScraper.h",
         "SkyScraper/SkyXSLTransformation.{h,m}",
         "SkyScraper/SkyXSLTParams.{h,m}",
-        "SkyScraper/SkyModelAdapter.h"
+        "SkyScraper/SkyModelAdapter.h",
+        "libxslt/*.h",
+        "libexslt/*.h"
       ],
       "xcconfig": {
         "HEADER_SEARCH_PATHS": "/usr/include/libxml2 "
@@ -46,20 +51,8 @@
         "xml2",
         "iconv"
       ],
-      "dependencies": {
-        "SkyScraper/libxslt-with-plugins": [
-
-        ]
-      }
-    },
-    {
-      "name": "libxslt-with-plugins",
       "vendored_libraries": "libxslt-with-plugins/libxslt-with-plugins.a",
-      "public_header_files": [
-        "libxslt/*.h",
-        "libexslt/*.h"
-      ],
-      "preserve_paths": [
+      "private_header_files": [
         "libxslt/*.h",
         "libexslt/*.h"
       ]
@@ -71,10 +64,11 @@
 
         ],
         "AFNetworking": [
-          "~> 2.4.1"
+          "~> 2.6.3"
         ]
       },
       "source_files": [
+        "SkyScraper/SkyScraper+AFNetworking.h",
         "SkyScraper/SkyResponseSerializer+Protected.h",
         "SkyScraper/SkyHTMLResponseSerializer.{h,m}",
         "SkyScraper/SkyXMLResponseSerializer.{h,m}",
@@ -92,7 +86,10 @@
 
         ]
       },
-      "source_files": "SkyScraper/SkyMantleModelAdapter.{h,m}"
+      "source_files": [
+        "SkyScraper/SkyMantleModelAdapter.{h,m}",
+        "SkyScraper/SkyScraper+Mantle.h"
+      ]
     }
   ]
 }

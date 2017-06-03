@@ -7,6 +7,27 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <SkyS3Sync/SkyS3ResourceURLProvider.h>
+
+/**
+ *  Posted when a particular original resource is first time copied to sync directory with the userInfo containing keys:
+ *
+ *  SkyS3ResourceFileName - the filename (with extension) of the resource that has
+ *  been copied
+ *
+ *  SkyS3ResourceURL - the local file URL of the resource that has just been copied
+ */
+extern NSString * const SkyS3SyncDidCopyOriginalResourceNotification;
+
+/**
+ *  Posted when a particular resource is removed with the userInfo containing keys:
+ *
+ *  SkyS3ResourceFileName - the filename (with extension) of the resource that has
+ *  been removed
+ *
+ */
+extern NSString * const SkyS3SyncDidRemoveResourceNotification;
+
 /**
  *  Posted when a particular resource is updated with the userInfo containing keys:
  *
@@ -41,7 +62,7 @@ extern NSString * const SkyS3ResourceURL;
  *  A simple S3 syncing service, which syncs the contents of the S3BucketName to 
  *  an internal local directory
  */
-@interface SkyS3SyncManager : NSObject
+@interface SkyS3SyncManager : NSObject<SkyS3ResourceURLProvider>
 
 /**
  *  by default the sync directory name is SkyS3Sync, and it is stored under Documents, you can specify an arbitrary name for it (in case f.e. of name 
@@ -84,21 +105,25 @@ extern NSString * const SkyS3ResourceURL;
 
 /**
  *  To get a URL of the particular resource of the latest synced version
- *
+ *  Note: if the resource in question is not present in the sync directory -
+ *  we try to get it from the original resources directory. 
+ *  To obtain the resource from the sync directory without a fallback to original  
+ *  resource directory - use
+ *  -[SkyS3Manager syncDirectory] object and call the same method on that object.
+ *      
  *  @param name filename of the resource
  *  @param ext  extension of the resource
  *
- *  @return a URL to the particular resource
+ *  @return a URL to the particular resource if it exists, or nil if it does not
  */
 - (NSURL *)URLForResource:(NSString *)name withExtension:(NSString *)ext;
 
 /**
- *  To get a URL of the particular resource of the last synced version
+ *  This object can be used to obtain the resource URL without fallback to original
+ *  resource directory
  *
- *  @param fileName filename (including extension) of the resource
- *
- *  @return a URL to the particular resource
+ *  @return SkyS3ResourceURLProvider
  */
-- (NSURL *)URLForResourceWithFileName:(NSString *)fileName;
+- (NSObject<SkyS3ResourceURLProvider> *)syncDirectory;
 
 @end

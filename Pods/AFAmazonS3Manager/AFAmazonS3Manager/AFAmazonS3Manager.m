@@ -1,6 +1,6 @@
 // AFAmazonS3Manager.m
 //
-// Copyright (c) 2011–2014 AFNetworking (http://afnetworking.com/)
+// Copyright (c) 2011–2015 AFNetworking (http://afnetworking.com/)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -21,8 +21,13 @@
 // THE SOFTWARE.
 
 #import "AFAmazonS3Manager.h"
+#import "AFAmazonS3ResponseSerializer.h"
 
 NSString * const AFAmazonS3ManagerErrorDomain = @"com.alamofire.networking.s3.error";
+
+static NSString * AFPathByEscapingSpacesWithPlusSigns(NSString *path) {
+    return [path stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+}
 
 @interface AFAmazonS3Manager ()
 @property (readwrite, nonatomic, strong) NSURL *baseURL;
@@ -38,7 +43,7 @@ NSString * const AFAmazonS3ManagerErrorDomain = @"com.alamofire.networking.s3.er
     }
 
     self.requestSerializer = [AFAmazonS3RequestSerializer serializer];
-    self.responseSerializer = [AFXMLParserResponseSerializer serializer];
+    self.responseSerializer = [AFAmazonS3ResponseSerializer serializer];
 
     return self;
 }
@@ -66,11 +71,11 @@ NSString * const AFAmazonS3ManagerErrorDomain = @"com.alamofire.networking.s3.er
 
 #pragma mark -
 
-- (void)enqueueS3RequestOperationWithMethod:(NSString *)method
-                                       path:(NSString *)path
-                                 parameters:(NSDictionary *)parameters
-                                    success:(void (^)(id responseObject))success
-                                    failure:(void (^)(NSError *error))failure
+- (AFHTTPRequestOperation *)enqueueS3RequestOperationWithMethod:(NSString *)method
+                                                           path:(NSString *)path
+                                                     parameters:(NSDictionary *)parameters
+                                                        success:(void (^)(id responseObject))success
+                                                        failure:(void (^)(NSError *error))failure
 {
     NSMutableURLRequest *request = [self.requestSerializer requestWithMethod:method URLString:[[self.baseURL URLByAppendingPathComponent:path] absoluteString] parameters:parameters error:nil];
     AFHTTPRequestOperation *requestOperation = [self HTTPRequestOperationWithRequest:request success:^(__unused AFHTTPRequestOperation *operation, id responseObject) {
@@ -84,48 +89,59 @@ NSString * const AFAmazonS3ManagerErrorDomain = @"com.alamofire.networking.s3.er
     }];
 
     [self.operationQueue addOperation:requestOperation];
+    
+    return requestOperation;
 }
 
 
 #pragma mark Service Operations
 
-- (void)getServiceWithSuccess:(void (^)(id responseObject))success
-                      failure:(void (^)(NSError *error))failure
+- (AFHTTPRequestOperation *)getServiceWithSuccess:(void (^)(id responseObject))success
+                                          failure:(void (^)(NSError *error))failure
 {
-    [self enqueueS3RequestOperationWithMethod:@"GET" path:@"/" parameters:nil success:success failure:failure];
+    return [self enqueueS3RequestOperationWithMethod:@"GET" path:@"/" parameters:nil success:success failure:failure];
 }
 
 #pragma mark Bucket Operations
 
-- (void)getBucket:(NSString *)bucket
-          success:(void (^)(id responseObject))success
-          failure:(void (^)(NSError *error))failure
+- (AFHTTPRequestOperation *)getBucket:(NSString *)bucket
+                              success:(void (^)(id responseObject))success
+                              failure:(void (^)(NSError *error))failure
 {
-    [self enqueueS3RequestOperationWithMethod:@"GET" path:bucket parameters:nil success:success failure:failure];
+    NSParameterAssert(bucket);
+
+    return [self enqueueS3RequestOperationWithMethod:@"GET" path:bucket parameters:nil success:success failure:failure];
 }
 
-- (void)putBucket:(NSString *)bucket
-       parameters:(NSDictionary *)parameters
-          success:(void (^)(id responseObject))success
-          failure:(void (^)(NSError *error))failure
+- (AFHTTPRequestOperation *)putBucket:(NSString *)bucket
+                           parameters:(NSDictionary *)parameters
+                              success:(void (^)(id responseObject))success
+                              failure:(void (^)(NSError *error))failure
 {
-    [self enqueueS3RequestOperationWithMethod:@"PUT" path:bucket parameters:parameters success:success failure:failure];
-
+    NSParameterAssert(bucket);
+    
+    return [self enqueueS3RequestOperationWithMethod:@"PUT" path:bucket parameters:parameters success:success failure:failure];
 }
 
-- (void)deleteBucket:(NSString *)bucket
-             success:(void (^)(id responseObject))success
-             failure:(void (^)(NSError *error))failure
+- (AFHTTPRequestOperation *)deleteBucket:(NSString *)bucket
+                                 success:(void (^)(id responseObject))success
+                                 failure:(void (^)(NSError *error))failure
 {
-    [self enqueueS3RequestOperationWithMethod:@"DELETE" path:bucket parameters:nil success:success failure:failure];
+    NSParameterAssert(bucket);
+    
+    return [self enqueueS3RequestOperationWithMethod:@"DELETE" path:bucket parameters:nil success:success failure:failure];
 }
 
 #pragma mark Object Operations
 
-- (void)headObjectWithPath:(NSString *)path
-                   success:(void (^)(NSHTTPURLResponse *response))success
-                   failure:(void (^)(NSError *error))failure
+- (AFHTTPRequestOperation *)headObjectWithPath:(NSString *)path
+                                       success:(void (^)(NSHTTPURLResponse *response))success
+                                       failure:(void (^)(NSError *error))failure
 {
+    NSParameterAssert(path);
+
+    path = AFPathByEscapingSpacesWithPlusSigns(path);
+
     NSMutableURLRequest *request = [self.requestSerializer requestWithMethod:@"HEAD" URLString:[[self.baseURL URLByAppendingPathComponent:path] absoluteString] parameters:nil error:nil];
     AFHTTPRequestOperation *requestOperation = [self HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, __unused id responseObject) {
         if (success) {
@@ -138,13 +154,19 @@ NSString * const AFAmazonS3ManagerErrorDomain = @"com.alamofire.networking.s3.er
     }];
 
     [self.operationQueue addOperation:requestOperation];
+    
+    return requestOperation;
 }
 
-- (void)getObjectWithPath:(NSString *)path
-                 progress:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress
-                  success:(void (^)(id responseObject, NSData *responseData))success
-                  failure:(void (^)(NSError *error))failure
+- (AFHTTPRequestOperation *)getObjectWithPath:(NSString *)path
+                                     progress:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress
+                                      success:(void (^)(id responseObject, NSData *responseData))success
+                                      failure:(void (^)(NSError *error))failure
 {
+    NSParameterAssert(path);
+
+    path = AFPathByEscapingSpacesWithPlusSigns(path);
+
     NSMutableURLRequest *request = [self.requestSerializer requestWithMethod:@"GET" URLString:[[self.baseURL URLByAppendingPathComponent:path] absoluteString] parameters:nil error:nil];
     AFHTTPRequestOperation *requestOperation = [self HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (success) {
@@ -159,14 +181,20 @@ NSString * const AFAmazonS3ManagerErrorDomain = @"com.alamofire.networking.s3.er
     [requestOperation setDownloadProgressBlock:progress];
 
     [self.operationQueue addOperation:requestOperation];
+    
+    return requestOperation;
 }
 
-- (void)getObjectWithPath:(NSString *)path
-             outputStream:(NSOutputStream *)outputStream
-                 progress:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress
-                  success:(void (^)(id responseObject))success
-                  failure:(void (^)(NSError *error))failure
+- (AFHTTPRequestOperation *)getObjectWithPath:(NSString *)path
+                                 outputStream:(NSOutputStream *)outputStream
+                                     progress:(void (^)(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead))progress
+                                      success:(void (^)(id responseObject))success
+                                      failure:(void (^)(NSError *error))failure
 {
+    NSParameterAssert(path);
+
+    path = AFPathByEscapingSpacesWithPlusSigns(path);
+
     NSMutableURLRequest *request = [self.requestSerializer requestWithMethod:@"GET" URLString:[[self.baseURL URLByAppendingPathComponent:path] absoluteString] parameters:nil error:nil];
     AFHTTPRequestOperation *requestOperation = [self HTTPRequestOperationWithRequest:request success:^(__unused AFHTTPRequestOperation *operation, id responseObject) {
         if (success) {
@@ -183,43 +211,42 @@ NSString * const AFAmazonS3ManagerErrorDomain = @"com.alamofire.networking.s3.er
     [requestOperation setDownloadProgressBlock:progress];
 
     [self.operationQueue addOperation:requestOperation];
+    
+    return requestOperation;
 }
 
-- (void)postObjectWithFile:(NSString *)path
-           destinationPath:(NSString *)destinationPath
-                parameters:(NSDictionary *)parameters
-                  progress:(void (^)(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite))progress
-                   success:(void (^)(id responseObject))success
-                   failure:(void (^)(NSError *error))failure
+- (AFHTTPRequestOperation *)postObjectWithFile:(NSString *)path
+                               destinationPath:(NSString *)destinationPath
+                                    parameters:(NSDictionary *)parameters
+                                      progress:(void (^)(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite))progress
+                                       success:(void (^)(id responseObject))success
+                                       failure:(void (^)(NSError *error))failure
 {
-    [self setObjectWithMethod:@"POST" file:path destinationPath:destinationPath parameters:parameters progress:progress success:success failure:failure];
+    return [self setObjectWithMethod:@"POST" file:path destinationPath:destinationPath parameters:parameters progress:progress success:success failure:failure];
 }
 
-- (void)putObjectWithFile:(NSString *)path
-          destinationPath:(NSString *)destinationPath
-               parameters:(NSDictionary *)parameters
-                 progress:(void (^)(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite))progress
-                  success:(void (^)(id responseObject))success
-                  failure:(void (^)(NSError *error))failure
+- (AFHTTPRequestOperation *)putObjectWithFile:(NSString *)path
+                              destinationPath:(NSString *)destinationPath
+                                   parameters:(NSDictionary *)parameters
+                                     progress:(void (^)(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite))progress
+                                      success:(void (^)(id responseObject))success
+                                      failure:(void (^)(NSError *error))failure
 {
-    [self setObjectWithMethod:@"PUT" file:path destinationPath:destinationPath parameters:parameters progress:progress success:success failure:failure];
+    return [self setObjectWithMethod:@"PUT" file:path destinationPath:destinationPath parameters:parameters progress:progress success:success failure:failure];
 }
 
-- (void)deleteObjectWithPath:(NSString *)path
-                     success:(void (^)(id responseObject))success
-                     failure:(void (^)(NSError *error))failure
+- (AFHTTPRequestOperation *)setObjectWithMethod:(NSString *)method
+                                           file:(NSString *)filePath
+                                destinationPath:(NSString *)destinationPath
+                                     parameters:(NSDictionary *)parameters
+                                       progress:(void (^)(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite))progress
+                                        success:(void (^)(id responseObject))success
+                                        failure:(void (^)(NSError *error))failure
 {
-    [self enqueueS3RequestOperationWithMethod:@"DELETE" path:path parameters:nil success:success failure:failure];
-}
+    NSParameterAssert(method);
+    NSParameterAssert(filePath);
+    NSParameterAssert(destinationPath);
 
-- (void)setObjectWithMethod:(NSString *)method
-                       file:(NSString *)filePath
-            destinationPath:(NSString *)destinationPath
-                 parameters:(NSDictionary *)parameters
-                   progress:(void (^)(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite))progress
-                    success:(void (^)(id responseObject))success
-                    failure:(void (^)(NSError *error))failure
-{
     NSMutableURLRequest *fileRequest = [NSMutableURLRequest requestWithURL:[NSURL fileURLWithPath:filePath]];
     fileRequest.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
 
@@ -232,10 +259,10 @@ NSString * const AFAmazonS3ManagerErrorDomain = @"com.alamofire.networking.s3.er
             failure(fileError);
         }
 
-        return;
+        return nil;
     }
 
-    destinationPath = [destinationPath stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+    destinationPath = AFPathByEscapingSpacesWithPlusSigns(destinationPath);
 
     NSMutableURLRequest *request = nil;
     if ([method compare:@"POST" options:NSCaseInsensitiveSearch] == NSOrderedSame) {
@@ -252,11 +279,19 @@ NSString * const AFAmazonS3ManagerErrorDomain = @"com.alamofire.networking.s3.er
             if (failure) {
                 failure(requestError);
             }
-            
-            return;
+
+            return nil;
         }
     } else {
-        request = [self.requestSerializer requestWithMethod:method URLString:[[self.baseURL URLByAppendingPathComponent:destinationPath] absoluteString] parameters:parameters error:nil];
+        request = [self.requestSerializer requestWithMethod:method URLString:[[self.baseURL URLByAppendingPathComponent:destinationPath] absoluteString] parameters:nil error:nil];
+        
+        // S3 expects parameters as headers for PUT requests
+        if (parameters != nil) {
+            for (id key in parameters) {
+                [request setValue:[parameters objectForKey:key] forHTTPHeaderField:key];
+            }
+        }
+        
         request.HTTPBody = data;
     }
 
@@ -273,6 +308,19 @@ NSString * const AFAmazonS3ManagerErrorDomain = @"com.alamofire.networking.s3.er
     [requestOperation setUploadProgressBlock:progress];
 
     [self.operationQueue addOperation:requestOperation];
+    
+    return requestOperation;
+}
+
+- (AFHTTPRequestOperation *)deleteObjectWithPath:(NSString *)path
+                                         success:(void (^)(id responseObject))success
+                                         failure:(void (^)(NSError *error))failure
+{
+    NSParameterAssert(path);
+
+    path = AFPathByEscapingSpacesWithPlusSigns(path);
+
+    return [self enqueueS3RequestOperationWithMethod:@"DELETE" path:path parameters:nil success:success failure:failure];
 }
 
 #pragma mark - NSKeyValueObserving

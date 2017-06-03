@@ -1,6 +1,6 @@
 {
   "name": "SkyS3Sync",
-  "version": "0.6",
+  "version": "0.18",
   "summary": "A utility for downsyncing remotely updated versions of local files from S3.  Allows you to remotely modify some application data and make it available to your app without the need to resubmit the app to AppStore or creating a specialized backend and API the app has to talk to",
   "license": {
     "type": "MIT",
@@ -11,7 +11,7 @@
   },
   "source": {
     "git": "git@github.com:justadreamer/SkyS3Sync.git",
-    "tag": "0.6"
+    "tag": "0.18"
   },
   "platforms": {
     "ios": "7.0"
@@ -23,19 +23,22 @@
   ],
   "dependencies": {
     "libextobjc": [
-      "~> 0.4.1"
+      "~> 0.4"
     ],
     "AFAmazonS3Manager": [
-      "~> 3.0.0"
+      "~> 3.2"
     ],
     "AFOnoResponseSerializer": [
-      "~> 1.0.0"
+      "~> 1.0"
     ],
     "ObjectiveSugar": [
-      "~> 1.1.0"
+      "~> 1.1"
     ],
     "FileMD5Hash": [
       "~> 2.0"
+    ],
+    "AFNetworking": [
+      "~> 2.2"
     ]
   }
 }

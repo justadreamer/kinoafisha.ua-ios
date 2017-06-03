@@ -9,6 +9,6 @@
 #ifndef TestS3_SkyS3Sync_h
 #define TestS3_SkyS3Sync_h
 
-#import "SkyS3SyncManager.h"
+#import <SkyS3Sync/SkyS3SyncManager.h>
 
 #endif
