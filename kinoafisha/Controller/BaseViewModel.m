@@ -12,6 +12,8 @@
 #import <libextobjc/extobjc.h>
 #import <AFNetworking/AFNetworking.h>
 #import <SkyScraper/SkyScraper.h>
+#import <SkyScraper/SkyHTMLResponseSerializer.h>
+#import <SkyScraper/SkyMantleModelAdapter.h>
 #import "Flurry.h"
 
 @interface BaseViewModel()
