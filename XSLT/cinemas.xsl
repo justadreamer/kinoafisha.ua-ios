@@ -20,7 +20,7 @@
   {
     "city_name":"<xsl:call-template name="tpl_sanitize"><xsl:with-param name="text" select="//span[@class='select' and @id='cities']/span/span"/></xsl:call-template>",
     "cinemas":[
-      <xsl:for-each select="//div[@class='list-cinema']/div[@class='item']">
+      <xsl:for-each select="//div[@class='js-cont-cinema']/div[@class='item']">
         {
           "name":"<xsl:call-template name="tpl_sanitize"><xsl:with-param name="text" select=".//h3"/></xsl:call-template>",
           "link":"<xsl:call-template name="tpl_prepend_url"><xsl:with-param name="href" select=".//h3/a/@href"/></xsl:call-template>",
