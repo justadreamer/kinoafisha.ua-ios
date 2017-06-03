@@ -11,6 +11,7 @@
 #import <ObjectiveSugar/ObjectiveSugar.h>
 #import "BaseViewModel+Protected.h"
 #import "City.h"
+#import "Flurry.h"
 
 @interface CitiesViewModel ()
 @property (nonatomic,strong,readwrite) City *selectedCity;
@@ -19,7 +20,7 @@
 @implementation CitiesViewModel
 
 - (void) setSelectedCityIndex:(NSUInteger)index {
-    [City setSelectedCity:self.cities[index]];
+    [self setSelectedCity:self.cities[index]];
     self.selectedCity = self.cities[index];
 }
 
@@ -60,8 +61,13 @@
         City* defaultSelection = [cities find:^BOOL(City *city) {
             return city.isDefaultSelection;
         }];
-        [City setSelectedCity:defaultSelection];
+        [self setSelectedCity:defaultSelection];
     }
     return cities;
+}
+
+- (void) setSelectedCity:(City *)city {
+    [City setSelectedCity:city];
+    [Flurry logEvent:@"City selected" withParameters:@{@"city":city.name?:@""}];
 }
 @end

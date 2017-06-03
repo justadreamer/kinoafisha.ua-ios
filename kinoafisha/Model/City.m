@@ -8,7 +8,6 @@
 
 #import "City.h"
 #import "Global.h"
-#import "Flurry.h"
 
 static City *gSelectedCity;
 
@@ -41,7 +40,6 @@ static City *gSelectedCity;
 
 + (void) setSelectedCity:(City *)city {
     gSelectedCity = city;
-    [Flurry logEvent:@"City selected" withParameters:@{@"city":city.name?:@""}];
     [[NSNotificationCenter defaultCenter] postNotificationName:DidChangeCityNotification object:nil userInfo:@{CityKey:city}];
 }
 
