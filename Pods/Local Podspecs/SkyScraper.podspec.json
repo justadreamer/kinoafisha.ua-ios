@@ -1,6 +1,6 @@
 {
   "name": "SkyScraper",
-  "version": "0.35",
+  "version": "0.41",
   "summary": "An Objective-C wrapper over libxslt with a couple of useful additions, created to allow easy HTML scraping with data represented in JSON format with the following deserialization into application models",
   "license": {
     "type": "MIT",
@@ -11,17 +11,15 @@
   },
   "source": {
     "git": "git@github.com:justadreamer/SkyScraper.git",
-    "tag": "0.35"
+    "tag": "0.41"
+  },
+  "platforms": {
+    "ios": "8.0",
+    "osx": "10.10"
   },
   "requires_arc": true,
   "homepage": "https://github.com/justadreamer/SkyScraper",
   "default_subspecs": "All",
-  "platforms": {
-    "osx": null,
-    "ios": null,
-    "tvos": null,
-    "watchos": null
-  },
   "subspecs": [
     {
       "name": "All",

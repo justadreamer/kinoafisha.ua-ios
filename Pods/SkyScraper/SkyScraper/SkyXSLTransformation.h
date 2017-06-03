@@ -6,15 +6,15 @@ extern NSString  * const SkyScraperErrorDomain;
 /**
  *  XSLT stylesheet URL if it was initialized with 'initWithXSLTURL:' method
  */
-@property (nonatomic,strong,readonly) NSURL* xsltURL;
+@property (atomic,strong,readonly) NSURL* xsltURL;
 /**
  *  set to YES to replace named entities with characters and decimal entities with hex equivalents (NO by default)
  */
-@property (nonatomic,assign) BOOL replaceXMLEntities;
+@property (atomic,assign) BOOL replaceXMLEntities;
 /**
  *  set to YES to fix the problem with parsing of empty textarea tags (NO by default) http://habrahabr.ru/post/27666/
  */
-@property (nonatomic,assign) BOOL enableTextareaExpansion;
+@property (atomic,assign) BOOL enableTextareaExpansion;
 
 - (instancetype) init NS_UNAVAILABLE;
 

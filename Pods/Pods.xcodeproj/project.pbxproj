@@ -45,7 +45,6 @@
 		16617C0CB5E309DE4015F7FAFC3908F4 /* xsltInternals.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8B74C592B0CBFB2362A7015CB2A06D /* xsltInternals.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		16857F4D363174EEDCB0ECA97DE591AA /* AFURLResponseSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = E6F90DB4E901891B3E2E0BBB71474411 /* AFURLResponseSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		16E6A11F729E5EBF0A87B97589299520 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA7195BA9C5EAEEB96C8D29B5A98727 /* SystemConfiguration.framework */; };
-		179C8191485E51F8791266CF72609CFD /* SkyHTMLResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F481F6257F85BF096C40B4B4EF1F4523 /* SkyHTMLResponseSerializer.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		17C4B7FAAC1C67821C2DD338E48B2E16 /* SVIndefiniteAnimatedView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EB490C52FD5CDC6ADF5432DCB80EF08 /* SVIndefiniteAnimatedView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		17F947035BD6667F297494D82B78AB02 /* NSInvocation+RACTypeParsing.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F28A5F4C86883F55765B9976435F534 /* NSInvocation+RACTypeParsing.m */; };
 		1829D5187C2143AD2F214D3767204FD1 /* metamacros.h in Headers */ = {isa = PBXBuildFile; fileRef = F83BC7471F3E2109EAE3CB371E975C3D /* metamacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -108,6 +107,7 @@
 		310EF8CF49A9FF519D0A0BCA0DE1A969 /* AFHTTPRequestOperationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1A609C46F0C116D53598FE99983967 /* AFHTTPRequestOperationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		31196F723F96AC9A2D8682635EBAE4FD /* RACScheduler+Subclass.h in Headers */ = {isa = PBXBuildFile; fileRef = BFBEF5E59359C92454412E69451F453A /* RACScheduler+Subclass.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		31D1CE46D6C3507CF19A53B6B6BD2354 /* RACStringSequence.h in Headers */ = {isa = PBXBuildFile; fileRef = C203004B6A4096EA4B7A2871CF812957 /* RACStringSequence.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		324AE86CABD482CA68BAC45BA6131210 /* SkyResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4128122173D1B10F8D1E822865FF30E0 /* SkyResponseSerializer.m */; };
 		3261C71ABA5F13011106ED4334494E3A /* UITextField+RACSignalSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B535A4488959FDAB913A226C5047D92 /* UITextField+RACSignalSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3314FA438853D8B8D9EE7C1E8906B119 /* Mantle-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FF5B01B1A404E3F75BE2775F0C3A62 /* Mantle-dummy.m */; };
 		3405F92ACA023968B4954F3827FCAFB2 /* RACEagerSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 38FF41A05B6B0984D838DB6F5C447741 /* RACEagerSequence.m */; };
@@ -125,6 +125,7 @@
 		3A27D1C604A3A2454DC5C823ADA4510D /* NSArray+RACSequenceAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = FB741D4B66302054746124BC511177A4 /* NSArray+RACSequenceAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A6F2BCD8F3E1647EA3C8DBB8C626DD2 /* FileHash.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D26A1F4CB44905529FBC5D579E07724 /* FileHash.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3B3B598A0B166EB63A88FCCE0E3229FA /* UIButton+RACCommandSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C805BD0E4437934FCBCA29BD102E133 /* UIButton+RACCommandSupport.m */; };
+		3B6E9215C95B977A7A3EEE3D2CF57C35 /* SkyXMLResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2186D22118913CFC9BBA28D2B657F1D2 /* SkyXMLResponseSerializer.m */; };
 		3C327D0D2C28FCE93FEFF54B65A3F0F9 /* IconGradient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EB52C40F9EDE3E2C01E55459D29E1DC /* IconGradient@2x.png */; };
 		3DD5727F4D9458C05EF2C64F4CE529EC /* it.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 52620B177A7C0A79852EB8E4336840C8 /* it.lproj */; };
 		3E162E8A35BF832771B00FCC3ED7DDD1 /* UIImagePickerController+RACSignalSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = E9AB11DDA13A432FB02370F6C812C825 /* UIImagePickerController+RACSignalSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -195,6 +196,7 @@
 		60598855E14D4B7030DFEA762BBBD81F /* security.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DCA98389F2746CC8F02E38E1B7A187D /* security.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		6068E200C4DC3A6AB6DEDE8061903737 /* variables.h in Headers */ = {isa = PBXBuildFile; fileRef = AD24A4AB59A0BAB4BB49EE0DEFE7DAE9 /* variables.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		60BA340912686ADDB4F7D363138192DC /* feedbackActivity.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D7644A53C06DF33435ECFBCDAE6F26 /* feedbackActivity.png */; };
+		6129FD06D2456A000F420EB17A1419AC /* SkyMantleModelAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9F7784E0AF8EC392D8C4458D2C31FB /* SkyMantleModelAdapter.m */; };
 		61F64C1144514DDAD781F115BBAEAC3E /* UISlider+RACSignalSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F89D1C4825993AC63B6F3ED575451DE /* UISlider+RACSignalSupport.m */; };
 		62BE13825DD6A55169CA6A4F8A1CD17F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 660F03C669CC7CFD1082F03BFFC37310 /* MobileCoreServices.framework */; };
 		62F0F5FC7EC6EC8DA339625B01DFC91E /* NSDictionary+MTLManipulationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3F3E1EDEFA5C7316F516251BF0D984 /* NSDictionary+MTLManipulationAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
@@ -218,7 +220,6 @@
 		6CBAC114EF5C5AB9E95160474DF037D6 /* RACSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5A60E3D34A8C197757586D6251EA8A /* RACSequence.m */; };
 		6E19A92187961071149FF636C0793A20 /* NSDictionary+MTLJSONKeyPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 01788A318BC40377A1406BF19E892860 /* NSDictionary+MTLJSONKeyPath.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		6F43BBF12A4998247BDB4F7BC879B36F /* EXTNil.h in Headers */ = {isa = PBXBuildFile; fileRef = 7905F059CD9560B50D0A249EF52EE22B /* EXTNil.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6F67F9896E69AB7ED97B7B7DAE6E0240 /* SkyScraper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 496CF2B1CD9227386762D4CC0B0067D4 /* SkyScraper-dummy.m */; };
 		70B63DE118FF4D73B81D6886827459FA /* buttonRoundedDeleteHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F987BC59F50D061C3784B833D7AF974F /* buttonRoundedDeleteHighlighted@2x.png */; };
 		7118A64EBE687F7720EB8100229B454D /* NSDictionary+ObjectiveSugar.h in Headers */ = {isa = PBXBuildFile; fileRef = DE778DA0521B61DD877FB362043798BC /* NSDictionary+ObjectiveSugar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		711B4CD5E1B28294EDC261271450B5C6 /* MKAnnotationView+RACSignalSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = A49EB682D42F5FCF2AF2514FBFCBEC86 /* MKAnnotationView+RACSignalSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -229,13 +230,13 @@
 		73D52E93AF3CC56FF964420A2653B21C /* NSIndexSet+RACSequenceAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A391EC9862C335C9FF0414BB96BC241 /* NSIndexSet+RACSequenceAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		73EA30B64E89A5CB0EA589143EFAACD9 /* EXTSafeCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = BF716D16BE8854FA7CC4F89CCECA8732 /* EXTSafeCategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		74CA42CAE6B9916A02E2A089975B6B07 /* RACSignal.h in Headers */ = {isa = PBXBuildFile; fileRef = AE2959CBFEFDD27B97D5DE13CE1EF6E9 /* RACSignal.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		75178CA4999FF15C24161C90193EF593 /* SkyXSLTParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 13AAD4F3D49BC5F050E3E383281FF0E1 /* SkyXSLTParams.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		7540575C466E817654AD6E1980550ED2 /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 12B6DCF16FE3A983BFD315605079B9F9 /* en.lproj */; };
 		75FE7FDBD5AF5FA30F1F577686B1731E /* UIButton+RACCommandSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = F3CE72B1A578592CD13432D32E88FDFA /* UIButton+RACCommandSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		762A2DFF416A46000E38083F997BEE3E /* EXTRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 17A6D114DB3494F64DF173EADE3443E4 /* EXTRuntimeExtensions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		773054CC1950D98C0F0E190F26EC5000 /* MTLReflection.h in Headers */ = {isa = PBXBuildFile; fileRef = A1C2EDD326998A2D6A64DE0EA297959B /* MTLReflection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		779FB0A21B1DA8B858151EE23346B40C /* authorize_denied.png in Resources */ = {isa = PBXBuildFile; fileRef = EB96436E5989B8471199F1F0A946B8DB /* authorize_denied.png */; };
 		78036D0D624A1D14CDDFCDC2F60B3DC7 /* RACSubscriptingAssignmentTrampoline.h in Headers */ = {isa = PBXBuildFile; fileRef = 08DDA73E4C90B52A903C4576A8024904 /* RACSubscriptingAssignmentTrampoline.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		783C8509A4B3E50D1BC3C6164FE4920C /* SkyJSONResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AA2401927D62D9E6021A5F8999740C /* SkyJSONResponseSerializer.m */; };
 		79FFB0057ADBBE41394FD24AA1FED7C2 /* attributes.h in Headers */ = {isa = PBXBuildFile; fileRef = D9B5E5BF9EB89F4CD785649868D7B050 /* attributes.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		7A1F81655CE7CA09EE9007C5EF8F4E1E /* NSObject+RACDeallocating.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0B48F7D065C5A609E8401FB31CBF0 /* NSObject+RACDeallocating.m */; };
 		7A2128E2217F6528CF7316D3965725AA /* RACArraySequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 654591A9CB96C913E17935A3DE99C2F2 /* RACArraySequence.m */; };
@@ -248,9 +249,7 @@
 		7DEFED965004D3C9067AD696997D546A /* RACDynamicSignal.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C7BF1E64AAA42A8E77E38A9607AB66 /* RACDynamicSignal.m */; };
 		7E914B9E52601ABD2D55C6232578A048 /* RACScheduler+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = B6653B2449AEAC4373565CE5715BB221 /* RACScheduler+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		7F5757E49296146761ECA04EF8417982 /* libxslt.h in Headers */ = {isa = PBXBuildFile; fileRef = C384181104E3C4DD8EF44EEE1C2806E6 /* libxslt.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		7FC9D41F149DE8CB0F48C8C13065D6F9 /* SkyResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4128122173D1B10F8D1E822865FF30E0 /* SkyResponseSerializer.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		803F7CF8782C696D24EF7C08480E226C /* AFOnoResponseSerializer-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C8093D5C0C3D5C0B5DDC3A21013943 /* AFOnoResponseSerializer-dummy.m */; };
-		80819C8EB4CF6E2A3DCB7E19D11EEB8C /* SkyJSONResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AA2401927D62D9E6021A5F8999740C /* SkyJSONResponseSerializer.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		80B3610BC2E4FABD05D3112EA564E9A9 /* iconCamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 05144CA80BBE7CAC9B87D01A19DD05A3 /* iconCamera@2x.png */; };
 		814085A66FC50F90E4E10EDECC380F8B /* SkyS3Sync.h in Headers */ = {isa = PBXBuildFile; fileRef = 701294DC3768109B36BEEA57A4C801E6 /* SkyS3Sync.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8157BD22C7078B9EB3741440F8FC4CB1 /* Blur@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F352CC12EF5CF204DC3534855FABC82 /* Blur@3x.png */; };
@@ -290,7 +289,6 @@
 		95E158A33E722123F11617E3D3237145 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2259DFD6D909A7F48E9D877F84410360 /* Foundation.framework */; };
 		9606CA45C121FDF30F82787326694AA3 /* NSString+ObjectiveSugar.h in Headers */ = {isa = PBXBuildFile; fileRef = EE5A8A0447A0C56BDCA24B13FEEF862F /* NSString+ObjectiveSugar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9625E4E23044783FBB751E799B325014 /* RACScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B579571108017A343C4BF9B9991EC9 /* RACScheduler.m */; };
-		96D513367E10D97DBA36E3A5DC6BD8D8 /* SkyXMLResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2186D22118913CFC9BBA28D2B657F1D2 /* SkyXMLResponseSerializer.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		97480AC6E6BD0F310AAEF0B071075D91 /* keys.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F69575BCE07006A6A4CAB27BD25D0DA /* keys.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		977B24FE8C1A92F2E88663C4CE94D772 /* NSDictionary+MTLMappingAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DDD8A82E122216B76837097DDD1469C /* NSDictionary+MTLMappingAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		978426A9FA4432435A7435714B04B44C /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D3D930B642762C59027F0C4C66318CC /* AFHTTPSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -315,7 +313,6 @@
 		A129CCD9BA3DB032BA088159664D2C36 /* FileHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 40566BA77A4FD038645260B147ED28AA /* FileHash.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A1754AC4681C5BF65E97CAFC4E9A726D /* RACTargetQueueScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA4420506A9B8FEC087779D021E23B /* RACTargetQueueScheduler.m */; };
 		A22AEB24E512D406BE572996AC356E4E /* AFNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D2C948C9E6250DF732546416D2B0A7DA /* AFNetworkReachabilityManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A36F0C062D72C77984DAB1A5B4EDC565 /* SkyXSLTransformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5378E9A2063F319A90E41FA711F87EE7 /* SkyXSLTransformation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		A379F1FB54C01547A8352838EED0635C /* RACMulticastConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BC590405E7E88C073526782E741EEC5 /* RACMulticastConnection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A484CF2969C139C9D594E8EDA9D0B7DA /* RACTupleSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 8031AC67E45EE333BA7A4CEE43DC3338 /* RACTupleSequence.m */; };
 		A4999FFBFA7D4D5A92C3E0B9CEC1A12B /* EXTConcreteProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C655F3573EA398DF1CCD09BB26CEF56 /* EXTConcreteProtocol.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
@@ -326,6 +323,7 @@
 		A864F39102B583907EE3129C9C3FED6A /* RACPassthroughSubscriber.h in Headers */ = {isa = PBXBuildFile; fileRef = A9320B3E1A309C67E52DC6B779721DE8 /* RACPassthroughSubscriber.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A8A346D545DFA55AA866D2F43DD4AE33 /* RACSignal+Operations.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D172831B129914FF8559E779D6CD7DA /* RACSignal+Operations.m */; };
 		A93CFB9702B4EFBBB7CCFD6E35A16D9D /* NSObject+RACSelectorSignal.m in Sources */ = {isa = PBXBuildFile; fileRef = B40E277D8509DF671001DC3441D41141 /* NSObject+RACSelectorSignal.m */; };
+		AA0EA3F3BABDC734C3E03412AF197C96 /* SkyXSLTParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 13AAD4F3D49BC5F050E3E383281FF0E1 /* SkyXSLTParams.m */; };
 		AAB6B2AA550FC7E5B6E87B95F3468676 /* UIAlertView+RACSignalSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAD20401277CF79847479DA4FFDF375 /* UIAlertView+RACSignalSupport.m */; };
 		ABB9396B00CEB17CC08CB61DA5A3A30B /* RACBehaviorSubject.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FFCC5CAC8A31A6A874C3849E255856B /* RACBehaviorSubject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ABD14A8FE070EAD3B1BEE7BBD038C092 /* NSData+RACSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = C0C76C7F96729AE23B43840C3424D93B /* NSData+RACSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -349,6 +347,7 @@
 		B688F3C46994D649FB11484B6AB2DD36 /* EXTRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 91447349F6DF72A5E500DF2452BAA589 /* EXTRuntimeExtensions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		B706852EFD13A9BA132CF80E1DB3CC6B /* RACGroupedSignal.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B5E94DA54AF9237A84F866579D4AC73 /* RACGroupedSignal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B7CE299F0F67B8F1937DAF6A054E0600 /* UIButton+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = D85FB1A41E46CF6F0D3CA09FFAF3D7A0 /* UIButton+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B93C4BCB0569B766605DB7D755FE26AA /* SkyHTMLResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F481F6257F85BF096C40B4B4EF1F4523 /* SkyHTMLResponseSerializer.m */; };
 		B9DDD4DEA8659AB10E4C97F5521C2AF0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2259DFD6D909A7F48E9D877F84410360 /* Foundation.framework */; };
 		B9F0D2712034425FD6DD8440E09EDC32 /* RACStream.h in Headers */ = {isa = PBXBuildFile; fileRef = F01966BF380B70DFEC639127115EEBA2 /* RACStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BACCE78C736E49EAE51F397D660E7DFF /* NSObject+RACLifting.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBB983D6C44E384F1D4E2ACA2B5E066 /* NSObject+RACLifting.m */; };
@@ -374,6 +373,7 @@
 		C81BCB4426F2E395D282B5EE3F923E39 /* buttonRoundedDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ED240F821CD243F01093B37E5A40537 /* buttonRoundedDelete@2x.png */; };
 		C8498E004C9FC9948DA910729F0226DD /* SkyS3ResourceData.h in Headers */ = {isa = PBXBuildFile; fileRef = BE1A5C9551CD59A7799BFE8E43A3F482 /* SkyS3ResourceData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8DAB293F9FCDD19EBD7F0E61784A3D6 /* RACIndexSetSequence.h in Headers */ = {isa = PBXBuildFile; fileRef = 298C254D57244F3689E3FA5CACEB410A /* RACIndexSetSequence.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C973E289E117DC7058558181232ADF59 /* SkyScraper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 496CF2B1CD9227386762D4CC0B0067D4 /* SkyScraper-dummy.m */; };
 		C9F05DDC038BA23D8C1AAAD80A7935B2 /* UISwitch+RACSignalSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = BDC74BCCFA50E72999E39E9994F79062 /* UISwitch+RACSignalSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CA4EB5736F1F00C6D2FB95BB9C779955 /* RACSequence.h in Headers */ = {isa = PBXBuildFile; fileRef = B57C1B13A8191F7ACE4F8C07C99E9D10 /* RACSequence.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CBD15E6C7047919483164F419C7A012B /* MTLTransformerErrorHandling.h in Headers */ = {isa = PBXBuildFile; fileRef = 368C4399C4389A046D44A796DF587670 /* MTLTransformerErrorHandling.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -404,6 +404,7 @@
 		DE44386B70C2F9B2A5713E404AB1536A /* NSString+RACKeyPathUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = B3C009DEB45FC9DE66D046B69B138218 /* NSString+RACKeyPathUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF134E581BF242EA54CAE2A8B9169A09 /* MTLModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 683B4B6F5A86927CF4B6DC1541A0CCCD /* MTLModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF259A2F7F00D38E7BDA4A66D3E1F627 /* RACObjCRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = AB81276285FC23FBAD46DEFA02AF1BB5 /* RACObjCRuntime.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DF4A30E068B014892D33909C767A7B50 /* SkyXSLTransformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5378E9A2063F319A90E41FA711F87EE7 /* SkyXSLTransformation.m */; };
 		E13CC3B4CBF461FAB976588541D9CFD7 /* RACSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = 80AA571327A57EC0A81E945E957ECCAB /* RACSubject.m */; };
 		E1691BD7F3E2BC3F99DDF12082FBF66C /* NSDictionary+MTLManipulationAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = C7B515770E7023895A43822A172B0FC9 /* NSDictionary+MTLManipulationAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E2288D5031FEC1D245D4B56EF9641A1C /* UIGestureRecognizer+RACSignalSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 04312D898BFC965DEE22085C0915C8BD /* UIGestureRecognizer+RACSignalSupport.m */; };
@@ -455,7 +456,6 @@
 		F88253F3B188B2575216A4CE494548F9 /* SkyMantleModelAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CC5FE874637E5C88E627D998A0C5649 /* SkyMantleModelAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F898672A878508C124445A0EB65D173D /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C50D0FBC3F012D25F68149C617C36E86 /* bg.png */; };
 		F9AEFBCA0B4C6FE3BAFF9CC27B7A7F16 /* MTLJSONAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = B1FC99C88259121C35A179E7EB81F9B6 /* MTLJSONAdapter.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		F9C7AD72B4BCEF1FBC597A2B99DB535C /* SkyMantleModelAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9F7784E0AF8EC392D8C4458D2C31FB /* SkyMantleModelAdapter.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		F9EF4CB0781C8107F2024AB00F81BEDA /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A060849C8A715D7389BB029248DB2E /* AFURLRequestSerialization.m */; };
 		FB87C617AE90285D27284FB35EA9E817 /* SkyResponseSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 92E389C68078F44CE4C5685D403C6BF0 /* SkyResponseSerializer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FBC3B1397F3BFEC2401051749EB3586C /* RACDisposable.h in Headers */ = {isa = PBXBuildFile; fileRef = 17B568DE43541A2DE99CCE662554A527 /* RACDisposable.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -679,7 +679,7 @@
 		027FE630BE56D6FCEABEE9C12BDC2164 /* RACScopedDisposable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACScopedDisposable.h; path = ReactiveCocoa/RACScopedDisposable.h; sourceTree = "<group>"; };
 		03B9DABA13D41630F867D3B8E181C0F4 /* AFURLSessionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLSessionManager.h; path = AFNetworking/AFURLSessionManager.h; sourceTree = "<group>"; };
 		04312D898BFC965DEE22085C0915C8BD /* UIGestureRecognizer+RACSignalSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIGestureRecognizer+RACSignalSupport.m"; path = "ReactiveCocoa/UIGestureRecognizer+RACSignalSupport.m"; sourceTree = "<group>"; };
-		04B4B0B405AF4DBADB853DD16EA78DAA /* libFileMD5Hash.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFileMD5Hash.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		04B4B0B405AF4DBADB853DD16EA78DAA /* libFileMD5Hash.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libFileMD5Hash.a; path = libFileMD5Hash.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		05144CA80BBE7CAC9B87D01A19DD05A3 /* iconCamera@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "iconCamera@2x.png"; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/iconCamera@2x.png"; sourceTree = "<group>"; };
 		0588E13DCF0B8A8C7FB491954A61CAE5 /* extensions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = extensions.h; path = libxslt/extensions.h; sourceTree = "<group>"; };
 		063A1D6E210933DD2FF0901F80768AD1 /* AFAmazonS3ResponseSerializer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFAmazonS3ResponseSerializer.h; path = AFAmazonS3Manager/AFAmazonS3ResponseSerializer.h; sourceTree = "<group>"; };
@@ -696,16 +696,16 @@
 		0CA5697A0375CB2C1420F1E2EB5D9C39 /* EXTSelectorChecking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EXTSelectorChecking.h; path = extobjc/EXTSelectorChecking.h; sourceTree = "<group>"; };
 		0CABE1AE955F159E502E3B858B1B3814 /* RACQueueScheduler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACQueueScheduler.m; path = ReactiveCocoa/RACQueueScheduler.m; sourceTree = "<group>"; };
 		0CE28A33BF85AAE201CB310E5AD567AA /* NSUserDefaults+RACSupport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSUserDefaults+RACSupport.h"; path = "ReactiveCocoa/NSUserDefaults+RACSupport.h"; sourceTree = "<group>"; };
-		0D03A0BF15B0CBB473429D8D42DC4201 /* hr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = hr.lproj; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/hr.lproj"; sourceTree = "<group>"; };
+		0D03A0BF15B0CBB473429D8D42DC4201 /* hr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = hr.lproj; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/hr.lproj"; sourceTree = "<group>"; };
 		0E2BF8BC66C67D3B8D8EAE8F7FF96CC9 /* RACEXTScope.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACEXTScope.h; path = ReactiveCocoa/extobjc/RACEXTScope.h; sourceTree = "<group>"; };
 		0F4B617C2D843EC265D2D248BB629E75 /* imports.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = imports.h; path = libxslt/imports.h; sourceTree = "<group>"; };
 		0F944FE2643DD7F4AFE75359B3AB4F08 /* UITextField+RACSignalSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITextField+RACSignalSupport.m"; path = "ReactiveCocoa/UITextField+RACSignalSupport.m"; sourceTree = "<group>"; };
 		0FB011DB5614C8B702B071529C8CC837 /* Blur.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = Blur.png; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/Blur.png"; sourceTree = "<group>"; };
 		10FDF2B2C5D66892D18A17560CF926ED /* xsltutils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = xsltutils.h; path = libxslt/xsltutils.h; sourceTree = "<group>"; };
 		1125867CC5DCC4393267CC8A2B586677 /* RACBehaviorSubject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACBehaviorSubject.m; path = ReactiveCocoa/RACBehaviorSubject.m; sourceTree = "<group>"; };
-		126C55D7AC453B99514BC179B074A9DA /* libSkyScraper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSkyScraper.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		126C55D7AC453B99514BC179B074A9DA /* libSkyScraper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSkyScraper.a; path = libSkyScraper.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1299EE546B69B1A442163BC075F2BE73 /* preproc.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = preproc.h; path = libxslt/preproc.h; sourceTree = "<group>"; };
-		12B6DCF16FE3A983BFD315605079B9F9 /* en.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = en.lproj; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/en.lproj"; sourceTree = "<group>"; };
+		12B6DCF16FE3A983BFD315605079B9F9 /* en.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = en.lproj; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/en.lproj"; sourceTree = "<group>"; };
 		13AAD4F3D49BC5F050E3E383281FF0E1 /* SkyXSLTParams.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SkyXSLTParams.m; path = SkyScraper/SkyXSLTParams.m; sourceTree = "<group>"; };
 		15652470A3CEB9E7EDDC07023EF11648 /* UIControl+RACSignalSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIControl+RACSignalSupport.m"; path = "ReactiveCocoa/UIControl+RACSignalSupport.m"; sourceTree = "<group>"; };
 		15EE2C2DC3A108921AC0E14A47F70281 /* feedbackActivity@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "feedbackActivity@2x.png"; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/feedbackActivity@2x.png"; sourceTree = "<group>"; };
@@ -722,7 +722,7 @@
 		1B6674ACACFDC86895F252ECDAF13A76 /* FlurryEmpty.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FlurryEmpty.m; path = Flurry/FlurryEmpty.m; sourceTree = "<group>"; };
 		1C07B51352A32B3BA4F7F8FEF5B9E3C8 /* RACKVOProxy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACKVOProxy.h; path = ReactiveCocoa/RACKVOProxy.h; sourceTree = "<group>"; };
 		1C4B6D6CAC96FD48B9E548DA90A97687 /* NSMutableArray+ObjectiveSugar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+ObjectiveSugar.m"; path = "Classes/NSMutableArray+ObjectiveSugar.m"; sourceTree = "<group>"; };
-		1CD08290CBCED934F85AD9F0678B6B16 /* nb.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = nb.lproj; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/nb.lproj"; sourceTree = "<group>"; };
+		1CD08290CBCED934F85AD9F0678B6B16 /* nb.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = nb.lproj; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/nb.lproj"; sourceTree = "<group>"; };
 		1D60C9D6B04BD3BFACA78E3F20AA85C2 /* UIActivityIndicatorView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIActivityIndicatorView+AFNetworking.m"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.m"; sourceTree = "<group>"; };
 		1DB9996DF5AFF47B84E1D24D44313891 /* AFOnoResponseSerializer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFOnoResponseSerializer.h; path = AFOnoResponseSerializer/AFOnoResponseSerializer.h; sourceTree = "<group>"; };
 		1DCA98389F2746CC8F02E38E1B7A187D /* security.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = security.h; path = libxslt/security.h; sourceTree = "<group>"; };
@@ -732,9 +732,9 @@
 		20C085E940DAE40A79A1386C9B480F8F /* SkyS3Sync.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SkyS3Sync.xcconfig; sourceTree = "<group>"; };
 		2148DD81EF3AD609944F3D4D454988D6 /* RACArraySequence.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACArraySequence.h; path = ReactiveCocoa/RACArraySequence.h; sourceTree = "<group>"; };
 		2186D22118913CFC9BBA28D2B657F1D2 /* SkyXMLResponseSerializer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SkyXMLResponseSerializer.m; path = SkyScraper/SkyXMLResponseSerializer.m; sourceTree = "<group>"; };
-		21B3AD3EBE6DA60C992653F377F2CCEC /* libAFAmazonS3Manager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAFAmazonS3Manager.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		21B3AD3EBE6DA60C992653F377F2CCEC /* libAFAmazonS3Manager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libAFAmazonS3Manager.a; path = libAFAmazonS3Manager.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2259DFD6D909A7F48E9D877F84410360 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		2266DD21A97A458E51649CA091DD5570 /* RACSignalProvider.d */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.dtrace; name = RACSignalProvider.d; path = ReactiveCocoa/RACSignalProvider.d; sourceTree = "<group>"; };
+		2266DD21A97A458E51649CA091DD5570 /* RACSignalProvider.d */ = {isa = PBXFileReference; includeInIndex = 1; name = RACSignalProvider.d; path = ReactiveCocoa/RACSignalProvider.d; sourceTree = "<group>"; };
 		2342AFB395D9FCDD3E9990D649503186 /* ObjectiveSugar-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ObjectiveSugar-prefix.pch"; sourceTree = "<group>"; };
 		244DD9301E1372419FEBACF596B1F8BB /* RACUnit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACUnit.h; path = ReactiveCocoa/RACUnit.h; sourceTree = "<group>"; };
 		2517034007E79C969000B88D5783850D /* libFlurry_7.10.0.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libFlurry_7.10.0.a; path = Flurry/libFlurry_7.10.0.a; sourceTree = "<group>"; };
@@ -746,7 +746,7 @@
 		275B8C703CE3CD8AE270056D7BB1CB43 /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+EmptyDataSet.h"; path = "Source/UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
 		27B0E42A8A326FC74C5B851C657318E8 /* buttonRoundedRegular@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "buttonRoundedRegular@2x.png"; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/buttonRoundedRegular@2x.png"; sourceTree = "<group>"; };
 		27BDF5857CDFBE10AC4A721815D17281 /* Ok@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "Ok@2x.png"; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/Ok@2x.png"; sourceTree = "<group>"; };
-		27F729ABB57D2B3DC1A3E5663BFB2857 /* libSkyS3Sync.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSkyS3Sync.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		27F729ABB57D2B3DC1A3E5663BFB2857 /* libSkyS3Sync.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSkyS3Sync.a; path = libSkyS3Sync.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		289235AD28DF3060B4758FB077FF1315 /* authorize_denied@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "authorize_denied@3x.png"; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/authorize_denied@3x.png"; sourceTree = "<group>"; };
 		28C0B4AD065270994064C7A60A762A43 /* libextobjc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = libextobjc.xcconfig; sourceTree = "<group>"; };
 		28CABF9FBA340350ABC29B4847687101 /* MKAnnotationView+RACSignalSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "MKAnnotationView+RACSignalSupport.m"; path = "ReactiveCocoa/MKAnnotationView+RACSignalSupport.m"; sourceTree = "<group>"; };
@@ -765,7 +765,7 @@
 		2F3E77F9E87E61C7C4CC6E2C5DDA8BB0 /* UITextView+RACSignalSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITextView+RACSignalSupport.m"; path = "ReactiveCocoa/UITextView+RACSignalSupport.m"; sourceTree = "<group>"; };
 		2F9BAC02286543595DE083ED420C8723 /* AFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperationManager.m; path = AFNetworking/AFHTTPRequestOperationManager.m; sourceTree = "<group>"; };
 		3008558F83238B52DA7FB2BA182D375E /* UIActivityIndicatorView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIActivityIndicatorView+AFNetworking.h"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.h"; sourceTree = "<group>"; };
-		302CD45756B02995E73FF629B993A055 /* libReactiveCocoa.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libReactiveCocoa.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		302CD45756B02995E73FF629B993A055 /* libReactiveCocoa.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libReactiveCocoa.a; path = libReactiveCocoa.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		30A7DE940ED6983AB3EE2205A7BD16D6 /* RACReplaySubject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACReplaySubject.m; path = ReactiveCocoa/RACReplaySubject.m; sourceTree = "<group>"; };
 		32D5ED0F9B4A3FFA873D03E7F369A8CA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		32E9B6685A6BE66B94FA33D07903669B /* RACReturnSignal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACReturnSignal.h; path = ReactiveCocoa/RACReturnSignal.h; sourceTree = "<group>"; };
@@ -790,7 +790,7 @@
 		3F56FAA2088C1EA544B3C9728C9F10FF /* EXTSynthesize.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EXTSynthesize.h; path = extobjc/EXTSynthesize.h; sourceTree = "<group>"; };
 		3FE79D9F5B37816A10E32D8EF26A20E9 /* Mantle-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Mantle-prefix.pch"; sourceTree = "<group>"; };
 		40566BA77A4FD038645260B147ED28AA /* FileHash.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FileHash.m; path = Library/FileHash.m; sourceTree = "<group>"; };
-		4059D66BAFBF7AF6745FD68AE9ACF329 /* fr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = fr.lproj; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/fr.lproj"; sourceTree = "<group>"; };
+		4059D66BAFBF7AF6745FD68AE9ACF329 /* fr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = fr.lproj; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/fr.lproj"; sourceTree = "<group>"; };
 		407A07FEC616F40BE2D7F38AB5592C5E /* extobjc.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = extobjc.h; path = extobjc/extobjc.h; sourceTree = "<group>"; };
 		4128122173D1B10F8D1E822865FF30E0 /* SkyResponseSerializer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SkyResponseSerializer.m; path = SkyScraper/SkyResponseSerializer.m; sourceTree = "<group>"; };
 		41344528BB0730F4E77D244B1C456272 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDK.framework"; sourceTree = "<group>"; };
@@ -835,16 +835,16 @@
 		4F5B22C52499A24BC6A08FE003C04E88 /* RACUnarySequence.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACUnarySequence.m; path = ReactiveCocoa/RACUnarySequence.m; sourceTree = "<group>"; };
 		4F69575BCE07006A6A4CAB27BD25D0DA /* keys.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = keys.h; path = libxslt/keys.h; sourceTree = "<group>"; };
 		4F8055A838FA0F0C39B709B4B57AD60A /* RACEmptySequence.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACEmptySequence.m; path = ReactiveCocoa/RACEmptySequence.m; sourceTree = "<group>"; };
-		5028469CD70D933AD37B21B03802C167 /* libFlurry-iOS-SDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libFlurry-iOS-SDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5028469CD70D933AD37B21B03802C167 /* libFlurry-iOS-SDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libFlurry-iOS-SDK.a"; path = "libFlurry-iOS-SDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		504F5EC9D34FD1F93115FBCF4B6FDDA6 /* Ok.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = Ok.png; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/Ok.png"; sourceTree = "<group>"; };
 		51D60E76348CAE82A6157AEF7F36EEE0 /* NSInvocation+EXT.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSInvocation+EXT.h"; path = "extobjc/NSInvocation+EXT.h"; sourceTree = "<group>"; };
 		51E0BBAAB819F4EECB5D4F74F34C539B /* UIActionSheet+RACSignalSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIActionSheet+RACSignalSupport.m"; path = "ReactiveCocoa/UIActionSheet+RACSignalSupport.m"; sourceTree = "<group>"; };
 		51E3C2F8E2F6259B19C56013125F15FE /* SkyScraper+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SkyScraper+AFNetworking.h"; path = "SkyScraper/SkyScraper+AFNetworking.h"; sourceTree = "<group>"; };
-		52620B177A7C0A79852EB8E4336840C8 /* it.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = it.lproj; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/it.lproj"; sourceTree = "<group>"; };
+		52620B177A7C0A79852EB8E4336840C8 /* it.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = it.lproj; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/it.lproj"; sourceTree = "<group>"; };
 		52B579571108017A343C4BF9B9991EC9 /* RACScheduler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACScheduler.m; path = ReactiveCocoa/RACScheduler.m; sourceTree = "<group>"; };
 		52CBCFF08A2758CE82D4599F7E9E564F /* MTLModel+NSCoding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MTLModel+NSCoding.h"; path = "Mantle/MTLModel+NSCoding.h"; sourceTree = "<group>"; };
 		532F1C30C35FCC0E8411750E05BB6508 /* ReactiveCocoa.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ReactiveCocoa.h; path = ReactiveCocoa/ReactiveCocoa.h; sourceTree = "<group>"; };
-		532F33197472D13FFBE401937047D366 /* de.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = de.lproj; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/de.lproj"; sourceTree = "<group>"; };
+		532F33197472D13FFBE401937047D366 /* de.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = de.lproj; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/de.lproj"; sourceTree = "<group>"; };
 		5378E9A2063F319A90E41FA711F87EE7 /* SkyXSLTransformation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SkyXSLTransformation.m; path = SkyScraper/SkyXSLTransformation.m; sourceTree = "<group>"; };
 		555F9CC4713D805B1BCB6E9A2348798B /* RACTuple.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACTuple.m; path = ReactiveCocoa/RACTuple.m; sourceTree = "<group>"; };
 		5568017402AFD55BF9E626B4ADF45847 /* libextobjc-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "libextobjc-dummy.m"; sourceTree = "<group>"; };
@@ -876,7 +876,7 @@
 		6293BD91A5192D8EDD3D8B9CD0A642FF /* NSNotificationCenter+RACSupport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSNotificationCenter+RACSupport.h"; path = "ReactiveCocoa/NSNotificationCenter+RACSupport.h"; sourceTree = "<group>"; };
 		63693180711E9CFE9AC13C90044A6E24 /* ObjectiveSugar-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ObjectiveSugar-dummy.m"; sourceTree = "<group>"; };
 		64A5DC4705A53AF621D1D6EBC90F5222 /* EXTScope.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EXTScope.h; path = extobjc/EXTScope.h; sourceTree = "<group>"; };
-		64A797C57BED186587D71B53946E0F47 /* fa.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = fa.lproj; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/fa.lproj"; sourceTree = "<group>"; };
+		64A797C57BED186587D71B53946E0F47 /* fa.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = fa.lproj; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/fa.lproj"; sourceTree = "<group>"; };
 		64AE4CD896C9CE504FB508B3EDF26DCD /* UIControl+RACSignalSupportPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIControl+RACSignalSupportPrivate.h"; path = "ReactiveCocoa/UIControl+RACSignalSupportPrivate.h"; sourceTree = "<group>"; };
 		654591A9CB96C913E17935A3DE99C2F2 /* RACArraySequence.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACArraySequence.m; path = ReactiveCocoa/RACArraySequence.m; sourceTree = "<group>"; };
 		660F03C669CC7CFD1082F03BFFC37310 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
@@ -889,13 +889,13 @@
 		684F869DC3784A0B4225D7110ED0BD2F /* feedbackActivity~ipad.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "feedbackActivity~ipad.png"; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/feedbackActivity~ipad.png"; sourceTree = "<group>"; };
 		685CBD20475F322ACF15AFC911F53827 /* AFAmazonS3RequestSerializer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFAmazonS3RequestSerializer.m; path = AFAmazonS3Manager/AFAmazonS3RequestSerializer.m; sourceTree = "<group>"; };
 		6A86A1CA1CC2E12CDBA8C9935F3FD628 /* Rectangle@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "Rectangle@2x.png"; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/Rectangle@2x.png"; sourceTree = "<group>"; };
-		6A947210A156F0E8EA279DBEBA3CE99E /* RACCompoundDisposableProvider.d */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.dtrace; name = RACCompoundDisposableProvider.d; path = ReactiveCocoa/RACCompoundDisposableProvider.d; sourceTree = "<group>"; };
+		6A947210A156F0E8EA279DBEBA3CE99E /* RACCompoundDisposableProvider.d */ = {isa = PBXFileReference; includeInIndex = 1; name = RACCompoundDisposableProvider.d; path = ReactiveCocoa/RACCompoundDisposableProvider.d; sourceTree = "<group>"; };
 		6A9E10F44F1621BD96BE52A92837C1A0 /* exslt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = exslt.h; path = libexslt/exslt.h; sourceTree = "<group>"; };
 		6B5E94DA54AF9237A84F866579D4AC73 /* RACGroupedSignal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACGroupedSignal.h; path = ReactiveCocoa/RACGroupedSignal.h; sourceTree = "<group>"; };
 		6CFBB6B501DACB5D34A53808809895A4 /* RACDynamicSignal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACDynamicSignal.h; path = ReactiveCocoa/RACDynamicSignal.h; sourceTree = "<group>"; };
 		6D394B8558E41BFDA44DFD5480E21E29 /* RACDisposable.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACDisposable.m; path = ReactiveCocoa/RACDisposable.m; sourceTree = "<group>"; };
 		6DD624E5267BE94652ED3CD87A902B9F /* RACSubscriber+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "RACSubscriber+Private.h"; path = "ReactiveCocoa/RACSubscriber+Private.h"; sourceTree = "<group>"; };
-		6F2769673593A9065DBD0B4EA5295D06 /* libOno.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOno.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F2769673593A9065DBD0B4EA5295D06 /* libOno.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libOno.a; path = libOno.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		701294DC3768109B36BEEA57A4C801E6 /* SkyS3Sync.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SkyS3Sync.h; path = SkyS3Sync/SkyS3Sync.h; sourceTree = "<group>"; };
 		7020DD76CC91E5B1C4467BE12C45D050 /* RACSubscriber.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACSubscriber.m; path = ReactiveCocoa/RACSubscriber.m; sourceTree = "<group>"; };
 		70D3DBEBC9CB8B4B82E83043F19EFDFC /* NSOrderedSet+RACSequenceAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSOrderedSet+RACSequenceAdditions.m"; path = "ReactiveCocoa/NSOrderedSet+RACSequenceAdditions.m"; sourceTree = "<group>"; };
@@ -919,7 +919,7 @@
 		7905F059CD9560B50D0A249EF52EE22B /* EXTNil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EXTNil.h; path = extobjc/EXTNil.h; sourceTree = "<group>"; };
 		795ADCC7B040197FB4F18C4651419668 /* EXTSafeCategory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EXTSafeCategory.m; path = extobjc/EXTSafeCategory.m; sourceTree = "<group>"; };
 		79A80B084F88BAF17CC883BD6739281D /* SkyXMLResponseSerializer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SkyXMLResponseSerializer.h; path = SkyScraper/SkyXMLResponseSerializer.h; sourceTree = "<group>"; };
-		7ADEC223FCAFC33FA71160C57D6943FF /* nl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = nl.lproj; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/nl.lproj"; sourceTree = "<group>"; };
+		7ADEC223FCAFC33FA71160C57D6943FF /* nl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = nl.lproj; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/nl.lproj"; sourceTree = "<group>"; };
 		7C48810D3AE9BF495C3E735048DB69F0 /* FlurrySessionBuilder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FlurrySessionBuilder.h; path = Flurry/FlurrySessionBuilder.h; sourceTree = "<group>"; };
 		7CF700093D1F40553AA5CB9C75E60EE2 /* RACSubscriptionScheduler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACSubscriptionScheduler.h; path = ReactiveCocoa/RACSubscriptionScheduler.h; sourceTree = "<group>"; };
 		7E3A23DB3B46FDA6EADCBEACF950F450 /* SkyScraper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SkyScraper.h; path = SkyScraper/SkyScraper.h; sourceTree = "<group>"; };
@@ -937,7 +937,7 @@
 		8213C5508FA8FD10CD05A7D05E5D69B8 /* FeedbackPlaceholder.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = FeedbackPlaceholder.png; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/FeedbackPlaceholder.png"; sourceTree = "<group>"; };
 		825B91706E9A5C4648F8E4ACC159397E /* NSString+RACSequenceAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+RACSequenceAdditions.m"; path = "ReactiveCocoa/NSString+RACSequenceAdditions.m"; sourceTree = "<group>"; };
 		831C4FDE628908D62B9669192A4AD2A1 /* RACTargetQueueScheduler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACTargetQueueScheduler.h; path = ReactiveCocoa/RACTargetQueueScheduler.h; sourceTree = "<group>"; };
-		831CAB681CDAA7D7A7E981351294E0E7 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HockeySDKResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		831CAB681CDAA7D7A7E981351294E0E7 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = HockeySDKResources.bundle; path = HockeySDKResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		832F390C00C7CDCD96FFEBF1AA9B9371 /* Flurry-iOS-SDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Flurry-iOS-SDK-dummy.m"; sourceTree = "<group>"; };
 		84C3994EA3C28DE16332603BDF813345 /* AFURLSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLSessionManager.m; path = AFNetworking/AFURLSessionManager.m; sourceTree = "<group>"; };
 		84CEB612520A9C50E5D868F4DE4C8A91 /* SkyS3Directory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SkyS3Directory.m; path = SkyS3Sync/SkyS3Directory.m; sourceTree = "<group>"; };
@@ -947,7 +947,7 @@
 		88DD12F02AF0107B36F92598F0E2F489 /* RACSignal.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACSignal.m; path = ReactiveCocoa/RACSignal.m; sourceTree = "<group>"; };
 		88F787C6C9619BBF2A795628AD8E5FBA /* NSArray+MTLManipulationAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+MTLManipulationAdditions.h"; path = "Mantle/NSArray+MTLManipulationAdditions.h"; sourceTree = "<group>"; };
 		8A5DBCCCCC5A67883C5CDC4590C0E53D /* UIControl+RACSignalSupport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIControl+RACSignalSupport.h"; path = "ReactiveCocoa/UIControl+RACSignalSupport.h"; sourceTree = "<group>"; };
-		8A7A06CF0DA34B8AC6F1E270D7462585 /* libDZNEmptyDataSet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDZNEmptyDataSet.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A7A06CF0DA34B8AC6F1E270D7462585 /* libDZNEmptyDataSet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libDZNEmptyDataSet.a; path = libDZNEmptyDataSet.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AA9C0B7F9C20F23378553D5E8D0CDCE /* SkyS3ResourceURLProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SkyS3ResourceURLProvider.h; path = SkyS3Sync/SkyS3ResourceURLProvider.h; sourceTree = "<group>"; };
 		8AD7A9DA79410F97A354FB330B96368E /* ONOXMLDocument.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ONOXMLDocument.m; path = Source/ONOXMLDocument.m; sourceTree = "<group>"; };
 		8B24674309171A280585A0DE0CB8B2A4 /* NSValueTransformer+MTLInversionAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSValueTransformer+MTLInversionAdditions.h"; path = "Mantle/NSValueTransformer+MTLInversionAdditions.h"; sourceTree = "<group>"; };
@@ -961,7 +961,7 @@
 		8D172831B129914FF8559E779D6CD7DA /* RACSignal+Operations.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "RACSignal+Operations.m"; path = "ReactiveCocoa/RACSignal+Operations.m"; sourceTree = "<group>"; };
 		8D6BF843A193093A221068828BDFAF82 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = SVProgressHUD.bundle; path = SVProgressHUD/SVProgressHUD.bundle; sourceTree = "<group>"; };
 		8D9C597237020E999F61A8598EEFC844 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLConnectionOperation.h; path = AFNetworking/AFURLConnectionOperation.h; sourceTree = "<group>"; };
-		8E1F201899AFB638AA76694C80D04557 /* zh-Hans.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = "zh-Hans.lproj"; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/zh-Hans.lproj"; sourceTree = "<group>"; };
+		8E1F201899AFB638AA76694C80D04557 /* zh-Hans.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "zh-Hans.lproj"; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/zh-Hans.lproj"; sourceTree = "<group>"; };
 		8ED240F821CD243F01093B37E5A40537 /* buttonRoundedDelete@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "buttonRoundedDelete@2x.png"; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/buttonRoundedDelete@2x.png"; sourceTree = "<group>"; };
 		8F352CC12EF5CF204DC3534855FABC82 /* Blur@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "Blur@3x.png"; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/Blur@3x.png"; sourceTree = "<group>"; };
 		8F5D206A32A9E5BAA30B836B45ABEDC8 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIWebView+AFNetworking.m"; path = "UIKit+AFNetworking/UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
@@ -973,12 +973,12 @@
 		91447349F6DF72A5E500DF2452BAA589 /* EXTRuntimeExtensions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EXTRuntimeExtensions.m; path = Mantle/extobjc/EXTRuntimeExtensions.m; sourceTree = "<group>"; };
 		9207FA251A4DBE0107460D436E748ECA /* NSDictionary+MTLJSONKeyPath.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+MTLJSONKeyPath.h"; path = "Mantle/NSDictionary+MTLJSONKeyPath.h"; sourceTree = "<group>"; };
 		92E389C68078F44CE4C5685D403C6BF0 /* SkyResponseSerializer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SkyResponseSerializer.h; path = SkyScraper/SkyResponseSerializer.h; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9686A9F825E9ECE73B3C61C17EE1C4A6 /* UIGestureRecognizer+RACSignalSupport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIGestureRecognizer+RACSignalSupport.h"; path = "ReactiveCocoa/UIGestureRecognizer+RACSignalSupport.h"; sourceTree = "<group>"; };
 		96F5E5978F5D9C5F5BE7C35F37894217 /* UIButton+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+AFNetworking.m"; path = "UIKit+AFNetworking/UIButton+AFNetworking.m"; sourceTree = "<group>"; };
 		9730B1A362AD66C8854488E3AC4C5564 /* RACSubscriptingAssignmentTrampoline.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACSubscriptingAssignmentTrampoline.m; path = ReactiveCocoa/RACSubscriptingAssignmentTrampoline.m; sourceTree = "<group>"; };
 		97AD4DE8B7FAE73576FA754C68B6CADC /* SkyS3SyncManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SkyS3SyncManager.h; path = SkyS3Sync/SkyS3SyncManager.h; sourceTree = "<group>"; };
-		97B02B67E92BEBECD628AC4902B8CBF3 /* libMantle.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMantle.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		97B02B67E92BEBECD628AC4902B8CBF3 /* libMantle.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMantle.a; path = libMantle.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		989E5A80FA02331DE40825E939F7F61D /* Flurry-iOS-SDK.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Flurry-iOS-SDK.xcconfig"; sourceTree = "<group>"; };
 		990FBC1C495E2E1AACFBB815BB2665BF /* RACScheduler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACScheduler.h; path = ReactiveCocoa/RACScheduler.h; sourceTree = "<group>"; };
 		996E03C2E34D08D5C4961CF33D55F8C6 /* SkyModelAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SkyModelAdapter.h; path = SkyScraper/SkyModelAdapter.h; sourceTree = "<group>"; };
@@ -1003,10 +1003,10 @@
 		A1C2EDD326998A2D6A64DE0EA297959B /* MTLReflection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTLReflection.h; path = Mantle/MTLReflection.h; sourceTree = "<group>"; };
 		A1E0F8D9D29E142AE32355CE8BF8CEB7 /* SkyS3SyncManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SkyS3SyncManager.m; path = SkyS3Sync/SkyS3SyncManager.m; sourceTree = "<group>"; };
 		A3B63D9E972226CD779816A2A9D586E8 /* libxslt-with-plugins.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = "libxslt-with-plugins.a"; path = "libxslt-with-plugins/libxslt-with-plugins.a"; sourceTree = "<group>"; };
-		A402DE9033414D5802CF2FE34A5AEE1F /* hu.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = hu.lproj; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/hu.lproj"; sourceTree = "<group>"; };
+		A402DE9033414D5802CF2FE34A5AEE1F /* hu.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = hu.lproj; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/hu.lproj"; sourceTree = "<group>"; };
 		A49EB682D42F5FCF2AF2514FBFCBEC86 /* MKAnnotationView+RACSignalSupport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MKAnnotationView+RACSignalSupport.h"; path = "ReactiveCocoa/MKAnnotationView+RACSignalSupport.h"; sourceTree = "<group>"; };
 		A51E20C6C420553770BCAF7CB1CD4148 /* NSURLConnection+RACSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSURLConnection+RACSupport.m"; path = "ReactiveCocoa/NSURLConnection+RACSupport.m"; sourceTree = "<group>"; };
-		A60DE4F81E4AC553E2FDFEB4A290E05F /* libAFOnoResponseSerializer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAFOnoResponseSerializer.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A60DE4F81E4AC553E2FDFEB4A290E05F /* libAFOnoResponseSerializer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libAFOnoResponseSerializer.a; path = libAFOnoResponseSerializer.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A682EB1933B15CE71BFD22772F16F941 /* RACSignalSequence.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACSignalSequence.h; path = ReactiveCocoa/RACSignalSequence.h; sourceTree = "<group>"; };
 		A731E697621165331F8786FC99CD21E7 /* NSInvocation+RACTypeParsing.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSInvocation+RACTypeParsing.h"; path = "ReactiveCocoa/NSInvocation+RACTypeParsing.h"; sourceTree = "<group>"; };
 		A8361CA1128DB731A9C9330819F62C1C /* EXTScope.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EXTScope.m; path = extobjc/EXTScope.m; sourceTree = "<group>"; };
@@ -1022,7 +1022,7 @@
 		AD0B227BFF7A444010DF9E7DA9CEC9A9 /* SkyScraper-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SkyScraper-prefix.pch"; sourceTree = "<group>"; };
 		AD24A4AB59A0BAB4BB49EE0DEFE7DAE9 /* variables.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = variables.h; path = libxslt/variables.h; sourceTree = "<group>"; };
 		ADBEDB79ED25BCB2B59835553BD3776A /* UIStepper+RACSignalSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIStepper+RACSignalSupport.m"; path = "ReactiveCocoa/UIStepper+RACSignalSupport.m"; sourceTree = "<group>"; };
-		ADDB37AF4201FB62E4B9435D10FA7E3C /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADDB37AF4201FB62E4B9435D10FA7E3C /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libAFNetworking.a; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE2959CBFEFDD27B97D5DE13CE1EF6E9 /* RACSignal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACSignal.h; path = ReactiveCocoa/RACSignal.h; sourceTree = "<group>"; };
 		AE6156E54A99C9FA44C353700D3537EA /* NSError+MTLModelException.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSError+MTLModelException.m"; path = "Mantle/NSError+MTLModelException.m"; sourceTree = "<group>"; };
 		AE650E548F6C32173D907951373D8CF5 /* RACDynamicSequence.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACDynamicSequence.m; path = ReactiveCocoa/RACDynamicSequence.m; sourceTree = "<group>"; };
@@ -1039,9 +1039,9 @@
 		B40E277D8509DF671001DC3441D41141 /* NSObject+RACSelectorSignal.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+RACSelectorSignal.m"; path = "ReactiveCocoa/NSObject+RACSelectorSignal.m"; sourceTree = "<group>"; };
 		B45B60D0D79DC9FAF2E85F720F629D47 /* EXTConcreteProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EXTConcreteProtocol.h; path = extobjc/EXTConcreteProtocol.h; sourceTree = "<group>"; };
 		B53697085B16C8FA8589412F3744DA50 /* RACDynamicSequence.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACDynamicSequence.h; path = ReactiveCocoa/RACDynamicSequence.h; sourceTree = "<group>"; };
-		B53D96D6F8251DCA841EDA9791AF7EA2 /* liblibextobjc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibextobjc.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B53D96D6F8251DCA841EDA9791AF7EA2 /* liblibextobjc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = liblibextobjc.a; path = liblibextobjc.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B57C1B13A8191F7ACE4F8C07C99E9D10 /* RACSequence.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACSequence.h; path = ReactiveCocoa/RACSequence.h; sourceTree = "<group>"; };
-		B6602385AB03E0A1DAF7F8547B6512B4 /* libObjectiveSugar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libObjectiveSugar.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6602385AB03E0A1DAF7F8547B6512B4 /* libObjectiveSugar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libObjectiveSugar.a; path = libObjectiveSugar.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6653B2449AEAC4373565CE5715BB221 /* RACScheduler+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "RACScheduler+Private.h"; path = "ReactiveCocoa/RACScheduler+Private.h"; sourceTree = "<group>"; };
 		B666640EFD03399F3CC601FAADE7E3F5 /* Arrow@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "Arrow@2x.png"; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/Arrow@2x.png"; sourceTree = "<group>"; };
 		B6B9219B2F4E4B6511644DECCD3B6254 /* NSObject+RACLifting.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+RACLifting.h"; path = "ReactiveCocoa/NSObject+RACLifting.h"; sourceTree = "<group>"; };
@@ -1067,7 +1067,7 @@
 		C0C76C7F96729AE23B43840C3424D93B /* NSData+RACSupport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSData+RACSupport.h"; path = "ReactiveCocoa/NSData+RACSupport.h"; sourceTree = "<group>"; };
 		C162ED9D76AE948EABEDC7EE52B93117 /* RACChannel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACChannel.m; path = ReactiveCocoa/RACChannel.m; sourceTree = "<group>"; };
 		C18EFEA98CEF3E6F91FAF9D5F711B714 /* NSFileHandle+RACSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSFileHandle+RACSupport.m"; path = "ReactiveCocoa/NSFileHandle+RACSupport.m"; sourceTree = "<group>"; };
-		C1BD39CD6CB526E5BD5D9A2E2D183145 /* pt.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = pt.lproj; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/pt.lproj"; sourceTree = "<group>"; };
+		C1BD39CD6CB526E5BD5D9A2E2D183145 /* pt.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = pt.lproj; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/pt.lproj"; sourceTree = "<group>"; };
 		C1EDE1C0415D2F13134C27982519E791 /* RACBlockTrampoline.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACBlockTrampoline.m; path = ReactiveCocoa/RACBlockTrampoline.m; sourceTree = "<group>"; };
 		C1FE2DA21622A74E4DA7E74B5DCA32BE /* SkyHTMLResponseSerializer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SkyHTMLResponseSerializer.h; path = SkyScraper/SkyHTMLResponseSerializer.h; sourceTree = "<group>"; };
 		C203004B6A4096EA4B7A2871CF812957 /* RACStringSequence.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACStringSequence.h; path = ReactiveCocoa/RACStringSequence.h; sourceTree = "<group>"; };
@@ -1109,7 +1109,7 @@
 		D7D9C5339B979AEDB5DCB51B07927F7C /* RACSubject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACSubject.h; path = ReactiveCocoa/RACSubject.h; sourceTree = "<group>"; };
 		D85FB1A41E46CF6F0D3CA09FFAF3D7A0 /* UIButton+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+AFNetworking.h"; path = "UIKit+AFNetworking/UIButton+AFNetworking.h"; sourceTree = "<group>"; };
 		D88334CC46359F328D7AFB373169E818 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPSessionManager.m; path = AFNetworking/AFHTTPSessionManager.m; sourceTree = "<group>"; };
-		D8E268A0ACAE8A2AFC68D06FB6137EA8 /* es.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = es.lproj; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/es.lproj"; sourceTree = "<group>"; };
+		D8E268A0ACAE8A2AFC68D06FB6137EA8 /* es.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = es.lproj; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/es.lproj"; sourceTree = "<group>"; };
 		D8F3CA89D6B3D88129F9E41C70CBB2B1 /* buttonRoundedRegularHighlighted@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "buttonRoundedRegularHighlighted@2x.png"; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/buttonRoundedRegularHighlighted@2x.png"; sourceTree = "<group>"; };
 		D9B5E5BF9EB89F4CD785649868D7B050 /* attributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = attributes.h; path = libxslt/attributes.h; sourceTree = "<group>"; };
 		D9C0E96227565FF4D52E427BD563D053 /* RACScopedDisposable.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACScopedDisposable.m; path = ReactiveCocoa/RACScopedDisposable.m; sourceTree = "<group>"; };
@@ -1127,7 +1127,7 @@
 		E19A07922E1738E3DC8C48C176BB1A8A /* Cancel.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = Cancel.png; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/Cancel.png"; sourceTree = "<group>"; };
 		E318C27F8F80AFEC89B9B435A2DFC35E /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityIndicatorManager.m; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.m"; sourceTree = "<group>"; };
 		E31B2710271E7895BB3B1AFCD8CF18D4 /* RACImmediateScheduler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACImmediateScheduler.h; path = ReactiveCocoa/RACImmediateScheduler.h; sourceTree = "<group>"; };
-		E38FC2330937FCA16AA87E99A2E46AD3 /* pt-PT.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = "pt-PT.lproj"; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/pt-PT.lproj"; sourceTree = "<group>"; };
+		E38FC2330937FCA16AA87E99A2E46AD3 /* pt-PT.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "pt-PT.lproj"; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/pt-PT.lproj"; sourceTree = "<group>"; };
 		E488C2DBFBC57AB04206C0E7FEDBEDF3 /* UIImagePickerController+RACSignalSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImagePickerController+RACSignalSupport.m"; path = "ReactiveCocoa/UIImagePickerController+RACSignalSupport.m"; sourceTree = "<group>"; };
 		E5528F28CF3F39E6F45A4CF3ECE9070B /* NSObject+RACDescription.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+RACDescription.h"; path = "ReactiveCocoa/NSObject+RACDescription.h"; sourceTree = "<group>"; };
 		E612B9C73865BBBA434BB9E8A4F091D8 /* UITableViewHeaderFooterView+RACSignalSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITableViewHeaderFooterView+RACSignalSupport.m"; path = "ReactiveCocoa/UITableViewHeaderFooterView+RACSignalSupport.m"; sourceTree = "<group>"; };
@@ -1138,7 +1138,7 @@
 		E9AB11DDA13A432FB02370F6C812C825 /* UIImagePickerController+RACSignalSupport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImagePickerController+RACSignalSupport.h"; path = "ReactiveCocoa/UIImagePickerController+RACSignalSupport.h"; sourceTree = "<group>"; };
 		EA2F562F07F5FC5F31E8D4A23DF451CB /* EXTRuntimeExtensions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EXTRuntimeExtensions.h; path = extobjc/EXTRuntimeExtensions.h; sourceTree = "<group>"; };
 		EA5A60E3D34A8C197757586D6251EA8A /* RACSequence.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACSequence.m; path = ReactiveCocoa/RACSequence.m; sourceTree = "<group>"; };
-		EA6F80683339BCA021E6A9B8D9F7C35E /* libPods-kinoafisha.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-kinoafisha.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA6F80683339BCA021E6A9B8D9F7C35E /* libPods-kinoafisha.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-kinoafisha.a"; path = "libPods-kinoafisha.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB27EA1EE7E1969EB108FA3BD99D6F73 /* Flurry-iOS-SDK-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Flurry-iOS-SDK-prefix.pch"; sourceTree = "<group>"; };
 		EB96436E5989B8471199F1F0A946B8DB /* authorize_denied.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = authorize_denied.png; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/authorize_denied.png"; sourceTree = "<group>"; };
 		EBD9A0D0D8860C1E6D55C79BAE752240 /* RACKVOTrampoline.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACKVOTrampoline.m; path = ReactiveCocoa/RACKVOTrampoline.m; sourceTree = "<group>"; };
@@ -1155,7 +1155,7 @@
 		F3CE72B1A578592CD13432D32E88FDFA /* UIButton+RACCommandSupport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+RACCommandSupport.h"; path = "ReactiveCocoa/UIButton+RACCommandSupport.h"; sourceTree = "<group>"; };
 		F4640466B64931AC93B6A08CBD78C538 /* RACDelegateProxy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACDelegateProxy.h; path = ReactiveCocoa/RACDelegateProxy.h; sourceTree = "<group>"; };
 		F481F6257F85BF096C40B4B4EF1F4523 /* SkyHTMLResponseSerializer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SkyHTMLResponseSerializer.m; path = SkyScraper/SkyHTMLResponseSerializer.m; sourceTree = "<group>"; };
-		F4E98A5B32B188610AB637BA6B43AC57 /* libSVProgressHUD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSVProgressHUD.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4E98A5B32B188610AB637BA6B43AC57 /* libSVProgressHUD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSVProgressHUD.a; path = libSVProgressHUD.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F553EB77A0027E79B6C663E9E8ECD320 /* RACKVOChannel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACKVOChannel.h; path = ReactiveCocoa/RACKVOChannel.h; sourceTree = "<group>"; };
 		F6265EF96E654DD946C5629B2E65F95E /* EXTSelectorChecking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EXTSelectorChecking.m; path = extobjc/EXTSelectorChecking.m; sourceTree = "<group>"; };
 		F693595B345DDDAC66C982C691DA9C17 /* RACTestScheduler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACTestScheduler.m; path = ReactiveCocoa/RACTestScheduler.m; sourceTree = "<group>"; };
@@ -1171,9 +1171,9 @@
 		FC4FCFFC922BAAE579BD39395ECE75D6 /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLRequestSerialization.h; path = AFNetworking/AFURLRequestSerialization.h; sourceTree = "<group>"; };
 		FD58B97632A6445D8C8A669331C6881B /* NSObject+RACKVOWrapper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+RACKVOWrapper.m"; path = "ReactiveCocoa/NSObject+RACKVOWrapper.m"; sourceTree = "<group>"; };
 		FDF1A3DBC8B1BE05ADFCD7D9484E878E /* NSDictionary+ObjectiveSugar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+ObjectiveSugar.m"; path = "Classes/NSDictionary+ObjectiveSugar.m"; sourceTree = "<group>"; };
-		FE18C9A86768E350D5119D90BDD16156 /* ja.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = ja.lproj; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/ja.lproj"; sourceTree = "<group>"; };
+		FE18C9A86768E350D5119D90BDD16156 /* ja.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = ja.lproj; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/ja.lproj"; sourceTree = "<group>"; };
 		FE1CC99780C853B2D661039ACFDBABD7 /* Pods-kinoafisha-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-kinoafisha-frameworks.sh"; sourceTree = "<group>"; };
-		FEDCFEC9B5408EFFD9B70AE0FDF5B7D6 /* ru.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = ru.lproj; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/ru.lproj"; sourceTree = "<group>"; };
+		FEDCFEC9B5408EFFD9B70AE0FDF5B7D6 /* ru.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = ru.lproj; path = "HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDKResources.bundle/ru.lproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1343,6 +1343,7 @@
 				C78A2D5354968BE9F66EFD5F78990218 /* Resources */,
 				BD0E8600D6BC720DA41248B81E7BC8DB /* Support Files */,
 			);
+			name = SVProgressHUD;
 			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
@@ -1451,6 +1452,7 @@
 				E85EB12877890155259BFE5C9B6E46BE /* UIScrollView+EmptyDataSet.m */,
 				B7A28EB37B655B860B9276F58C2834BD /* Support Files */,
 			);
+			name = DZNEmptyDataSet;
 			path = DZNEmptyDataSet;
 			sourceTree = "<group>";
 		};
@@ -1465,6 +1467,7 @@
 				73D52014C21E8473B99138AC533D5D48 /* AFAmazonS3ResponseSerializer.m */,
 				50AB3730D159C01F3A8BD4DFCAB23B08 /* Support Files */,
 			);
+			name = AFAmazonS3Manager;
 			path = AFAmazonS3Manager;
 			sourceTree = "<group>";
 		};
@@ -1507,6 +1510,7 @@
 				FD68C8999D032668BA48288814BAB091 /* Mantle */,
 				C1C581FCE605306683324E5377459231 /* Support Files */,
 			);
+			name = SkyScraper;
 			path = SkyScraper;
 			sourceTree = "<group>";
 		};
@@ -1632,6 +1636,7 @@
 				309B9C7FA6007227762B2A904FD0C377 /* FlurrySDK */,
 				D6AE6260528C65BA7BF658F3B0F53491 /* Support Files */,
 			);
+			name = "Flurry-iOS-SDK";
 			path = "Flurry-iOS-SDK";
 			sourceTree = "<group>";
 		};
@@ -1647,6 +1652,7 @@
 				B0110900804684DB947E1B17E7276C4D /* Support Files */,
 				20039816DAEE0FD8940E8FC72399D812 /* UIKit */,
 			);
+			name = AFNetworking;
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
@@ -1688,6 +1694,7 @@
 				40566BA77A4FD038645260B147ED28AA /* FileHash.m */,
 				FB8B2748BA4683451FF2E41F878C9D95 /* Support Files */,
 			);
+			name = FileMD5Hash;
 			path = FileMD5Hash;
 			sourceTree = "<group>";
 		};
@@ -1813,6 +1820,7 @@
 				3EF6C922536A98CA65BC9033662D5976 /* extobjc */,
 				48F057C8D0CF0C5B5C28B45A082E3F55 /* Support Files */,
 			);
+			name = Mantle;
 			path = Mantle;
 			sourceTree = "<group>";
 		};
@@ -2023,6 +2031,7 @@
 				AE2593F7FB7A0D2247F4429BCC982257 /* DefaultLib */,
 				ADEB631CB03591DE440F65000B64EC24 /* Support Files */,
 			);
+			name = HockeySDK;
 			path = HockeySDK;
 			sourceTree = "<group>";
 		};
@@ -2034,6 +2043,7 @@
 				E9374C21F9F0811473E9A3AEFCFB3A1A /* Support Files */,
 				E81492CA757E271C0D7478ADB88C2B8B /* UI */,
 			);
+			name = ReactiveCocoa;
 			path = ReactiveCocoa;
 			sourceTree = "<group>";
 		};
@@ -2083,6 +2093,7 @@
 				6A3D7097A5110CB4146607BA1A1376F2 /* Support Files */,
 				CBDFACC88970C7F92FDF855B6B66FC69 /* UmbrellaHeader */,
 			);
+			name = libextobjc;
 			path = libextobjc;
 			sourceTree = "<group>";
 		};
@@ -2141,6 +2152,7 @@
 				A1E0F8D9D29E142AE32355CE8BF8CEB7 /* SkyS3SyncManager.m */,
 				557A26464CE76AA5114095425792D833 /* Support Files */,
 			);
+			name = SkyS3Sync;
 			path = SkyS3Sync;
 			sourceTree = "<group>";
 		};
@@ -2197,6 +2209,7 @@
 				8AD7A9DA79410F97A354FB330B96368E /* ONOXMLDocument.m */,
 				DA6C69B07D65EB371E0F852F7E7FE10D /* Support Files */,
 			);
+			name = Ono;
 			path = Ono;
 			sourceTree = "<group>";
 		};
@@ -2294,6 +2307,7 @@
 				BFB85DDD4D0640B5A250903E97AD01A5 /* AFOnoResponseSerializer.m */,
 				8AA8CBBE363348B7D75E92045F5E872D /* Support Files */,
 			);
+			name = AFOnoResponseSerializer;
 			path = AFOnoResponseSerializer;
 			sourceTree = "<group>";
 		};
@@ -2315,6 +2329,7 @@
 				469F1A83CD67C641A2F2D8657BCD083C /* ObjectiveSugar.h */,
 				84C437636D468ADB8165433FCFA9CD03 /* Support Files */,
 			);
+			name = ObjectiveSugar;
 			path = ObjectiveSugar;
 			sourceTree = "<group>";
 		};
@@ -2729,7 +2744,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1BF5B99C8ACF43DFD1A281ABA37C0383 /* Build configuration list for PBXNativeTarget "SkyScraper" */;
 			buildPhases = (
-				8EE6BF00B9629C733D4614DCBDE85DF1 /* Sources */,
+				E05A2C2844CE8F339E94CBA3B38A7255 /* Sources */,
 				CA8718FD347A2415B51B3B8580952010 /* Frameworks */,
 				534C56116098D01FD923FBC8B3C27B2C /* Headers */,
 			);
@@ -3163,21 +3178,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8EE6BF00B9629C733D4614DCBDE85DF1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				179C8191485E51F8791266CF72609CFD /* SkyHTMLResponseSerializer.m in Sources */,
-				80819C8EB4CF6E2A3DCB7E19D11EEB8C /* SkyJSONResponseSerializer.m in Sources */,
-				F9C7AD72B4BCEF1FBC597A2B99DB535C /* SkyMantleModelAdapter.m in Sources */,
-				7FC9D41F149DE8CB0F48C8C13065D6F9 /* SkyResponseSerializer.m in Sources */,
-				6F67F9896E69AB7ED97B7B7DAE6E0240 /* SkyScraper-dummy.m in Sources */,
-				96D513367E10D97DBA36E3A5DC6BD8D8 /* SkyXMLResponseSerializer.m in Sources */,
-				75178CA4999FF15C24161C90193EF593 /* SkyXSLTParams.m in Sources */,
-				A36F0C062D72C77984DAB1A5B4EDC565 /* SkyXSLTransformation.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8F6757B025A7FD74C059B3855E90F5A9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3366,6 +3366,21 @@
 				F2F77182C216998DB6582312B6AE1BE7 /* UIProgressView+AFNetworking.m in Sources */,
 				2D19484D6D2238E5F819A6E444F84D79 /* UIRefreshControl+AFNetworking.m in Sources */,
 				15C153A605B8DBD95EE207AE2A4172E9 /* UIWebView+AFNetworking.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E05A2C2844CE8F339E94CBA3B38A7255 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B93C4BCB0569B766605DB7D755FE26AA /* SkyHTMLResponseSerializer.m in Sources */,
+				783C8509A4B3E50D1BC3C6164FE4920C /* SkyJSONResponseSerializer.m in Sources */,
+				6129FD06D2456A000F420EB17A1419AC /* SkyMantleModelAdapter.m in Sources */,
+				324AE86CABD482CA68BAC45BA6131210 /* SkyResponseSerializer.m in Sources */,
+				C973E289E117DC7058558181232ADF59 /* SkyScraper-dummy.m in Sources */,
+				3B6E9215C95B977A7A3EEE3D2CF57C35 /* SkyXMLResponseSerializer.m in Sources */,
+				AA0EA3F3BABDC734C3E03412AF197C96 /* SkyXSLTParams.m in Sources */,
+				DF4A30E068B014892D33909C767A7B50 /* SkyXSLTransformation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3622,6 +3637,29 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/libextobjc/libextobjc-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = AppStore;
+		};
+		0F53817899E7643678418A32FE46B95D /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9970665FA01817E06846700FDB4A4DE1 /* SkyScraper.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SkyScraper/SkyScraper-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
@@ -4030,7 +4068,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
@@ -4060,29 +4098,6 @@
 				SKIP_INSTALL = YES;
 			};
 			name = AppStore;
-		};
-		4178C813DF3223AD96FDB0321C392089 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9970665FA01817E06846700FDB4A4DE1 /* SkyScraper.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SkyScraper/SkyScraper-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
 		};
 		4FC5AED4561503173851F2D078EB9AED /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -4166,7 +4181,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
 				VALIDATE_PRODUCT = YES;
@@ -4185,29 +4200,6 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/ReactiveCocoa/ReactiveCocoa-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = AppStore;
-		};
-		684E11F9523E1161CB587E76D7BC6E26 /* AppStore */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9970665FA01817E06846700FDB4A4DE1 /* SkyScraper.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SkyScraper/SkyScraper-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
@@ -4534,6 +4526,29 @@
 			};
 			name = AppStore;
 		};
+		B7C99789D03CC551348CF17D369A92BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9970665FA01817E06846700FDB4A4DE1 /* SkyScraper.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SkyScraper/SkyScraper-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		BADC698889748417CA61C2B812B0A29A /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 56A91F0BC05169E1E18EB7F7E4D8C28D /* DZNEmptyDataSet.xcconfig */;
@@ -4597,11 +4612,34 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		CCDBEA8F031CD4EC41742EE64116F652 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9970665FA01817E06846700FDB4A4DE1 /* SkyScraper.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SkyScraper/SkyScraper-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -4720,29 +4758,6 @@
 			};
 			name = Release;
 		};
-		F6D05C485C678249250D47BE638B6409 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9970665FA01817E06846700FDB4A4DE1 /* SkyScraper.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SkyScraper/SkyScraper-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
 		F95C897CFD4084E9885E6F8EE6CE4F9D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8BA341AEA291829AC6B3E7FAAFAC1BD1 /* Mantle.xcconfig */;
@@ -4790,9 +4805,9 @@
 		1BF5B99C8ACF43DFD1A281ABA37C0383 /* Build configuration list for PBXNativeTarget "SkyScraper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				684E11F9523E1161CB587E76D7BC6E26 /* AppStore */,
-				F6D05C485C678249250D47BE638B6409 /* Debug */,
-				4178C813DF3223AD96FDB0321C392089 /* Release */,
+				0F53817899E7643678418A32FE46B95D /* AppStore */,
+				CCDBEA8F031CD4EC41742EE64116F652 /* Debug */,
+				B7C99789D03CC551348CF17D369A92BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
