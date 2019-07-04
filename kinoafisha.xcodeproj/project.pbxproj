@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44060E0122CE8FCE00BA0C43 /* CitiesHostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44060E0022CE8FCE00BA0C43 /* CitiesHostingViewController.swift */; };
 		441ADB1E1A13E6CD00E01CF6 /* FilmDetailHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 441ADB1D1A13E6CD00E01CF6 /* FilmDetailHeaderCell.m */; };
 		441ADB211A13F19D00E01CF6 /* AttributeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 441ADB201A13F19D00E01CF6 /* AttributeCell.m */; };
 		441C77A21A15683F00F9499E /* info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 441C779A1A15683F00F9499E /* info@2x.png */; };
@@ -15,6 +16,7 @@
 		441C77A51A15683F00F9499E /* ukraine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 441C77A01A15683F00F9499E /* ukraine@2x.png */; };
 		441C77A81A156CF500F9499E /* credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 441C77A61A156CF500F9499E /* credits.html */; };
 		441C77AB1A156D5700F9499E /* CreditsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 441C77AA1A156D5700F9499E /* CreditsViewController.m */; };
+		4425EF4222CBE92E00321AFE /* CitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4425EF4122CBE92E00321AFE /* CitiesView.swift */; };
 		443AAABC1A62AE4B00F2A188 /* CitiesViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 443AAABB1A62AE4B00F2A188 /* CitiesViewModel.m */; };
 		443AAAC11A630A2B00F2A188 /* CinemasViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 443AAAC01A630A2B00F2A188 /* CinemasViewModel.m */; };
 		4451294E1A09FF0D000364E1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4451294D1A09FF0D000364E1 /* main.m */; };
@@ -47,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		212345B14A1E9C5AC83C37B1 /* Pods-kinoafisha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kinoafisha.release.xcconfig"; path = "Pods/Target Support Files/Pods-kinoafisha/Pods-kinoafisha.release.xcconfig"; sourceTree = "<group>"; };
+		44060E0022CE8FCE00BA0C43 /* CitiesHostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesHostingViewController.swift; sourceTree = "<group>"; };
 		441ADB1C1A13E6CD00E01CF6 /* FilmDetailHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilmDetailHeaderCell.h; sourceTree = "<group>"; };
 		441ADB1D1A13E6CD00E01CF6 /* FilmDetailHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilmDetailHeaderCell.m; sourceTree = "<group>"; };
 		441ADB1F1A13F19D00E01CF6 /* AttributeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributeCell.h; sourceTree = "<group>"; };
@@ -58,6 +61,8 @@
 		441C77A71A156CF500F9499E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/credits.html; sourceTree = "<group>"; };
 		441C77A91A156D5700F9499E /* CreditsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreditsViewController.h; path = Controller/CreditsViewController.h; sourceTree = "<group>"; };
 		441C77AA1A156D5700F9499E /* CreditsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreditsViewController.m; path = Controller/CreditsViewController.m; sourceTree = "<group>"; };
+		4425EF4022CBE92E00321AFE /* kinoafisha-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "kinoafisha-Bridging-Header.h"; sourceTree = "<group>"; };
+		4425EF4122CBE92E00321AFE /* CitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesView.swift; sourceTree = "<group>"; };
 		443AAABA1A62AE4B00F2A188 /* CitiesViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CitiesViewModel.h; path = Controller/CitiesViewModel.h; sourceTree = "<group>"; };
 		443AAABB1A62AE4B00F2A188 /* CitiesViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CitiesViewModel.m; path = Controller/CitiesViewModel.m; sourceTree = "<group>"; };
 		443AAABF1A630A2B00F2A188 /* CinemasViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CinemasViewModel.h; path = Controller/CinemasViewModel.h; sourceTree = "<group>"; };
@@ -150,6 +155,9 @@
 				44B2EE711A0F905D000AFC00 /* CitiesViewController.m */,
 				443AAABA1A62AE4B00F2A188 /* CitiesViewModel.h */,
 				443AAABB1A62AE4B00F2A188 /* CitiesViewModel.m */,
+				4425EF4122CBE92E00321AFE /* CitiesView.swift */,
+				4425EF4022CBE92E00321AFE /* kinoafisha-Bridging-Header.h */,
+				44060E0022CE8FCE00BA0C43 /* CitiesHostingViewController.swift */,
 			);
 			name = Cities;
 			sourceTree = "<group>";
@@ -370,6 +378,8 @@
 				TargetAttributes = {
 					445129471A09FF0D000364E1 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = J89XB832R3;
+						LastSwiftMigration = 1100;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -379,6 +389,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -487,9 +498,11 @@
 				44B2EEA71A0FD74A000AFC00 /* CinemasContainer.m in Sources */,
 				443AAAC11A630A2B00F2A188 /* CinemasViewModel.m in Sources */,
 				44C54DA91A154BC900AF22AD /* FilmCell.m in Sources */,
+				44060E0122CE8FCE00BA0C43 /* CitiesHostingViewController.swift in Sources */,
 				443AAABC1A62AE4B00F2A188 /* CitiesViewModel.m in Sources */,
 				441ADB211A13F19D00E01CF6 /* AttributeCell.m in Sources */,
 				44B2EF831A116CAE000AFC00 /* CinemasViewController.m in Sources */,
+				4425EF4222CBE92E00321AFE /* CitiesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,13 +655,18 @@
 			baseConfigurationReference = E47B8640D51702EB30B55AE4 /* Pods-kinoafisha.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = J89XB832R3;
 				INFOPLIST_FILE = kinoafisha/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "kinoafisha/kinoafisha-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -657,13 +675,17 @@
 			baseConfigurationReference = 212345B14A1E9C5AC83C37B1 /* Pods-kinoafisha.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = J89XB832R3;
 				INFOPLIST_FILE = kinoafisha/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "kinoafisha/kinoafisha-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -710,13 +732,17 @@
 			baseConfigurationReference = 892CF74CC3BA2D9C494A0029 /* Pods-kinoafisha.appstore.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = J89XB832R3;
 				INFOPLIST_FILE = kinoafisha/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "kinoafisha/kinoafisha-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = AppStore;
 		};
