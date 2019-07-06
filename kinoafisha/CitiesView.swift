@@ -9,9 +9,11 @@
 import SwiftUI
 
 struct CitiesView : View {
-    
+    @ObjectBinding var citiesViewModel = CitiesLoader()
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello World!"/*@END_MENU_TOKEN@*/)
+        LoadingView(isShowing: $citiesViewModel.isLoading) {
+            CitiesListView(cities: self.citiesViewModel.cities)
+        }
     }
 }
 

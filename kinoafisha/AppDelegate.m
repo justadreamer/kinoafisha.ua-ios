@@ -26,9 +26,8 @@
     [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"c357110cbce64ba11cc73faa41591897"];
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
-#endif
-    
     [Flurry startSession:@"24FBVSP95KGR8493G4MF"];
+#endif
     return YES;
 }
 
