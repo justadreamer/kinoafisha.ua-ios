@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		44060E0122CE8FCE00BA0C43 /* CitiesHostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44060E0022CE8FCE00BA0C43 /* CitiesHostingViewController.swift */; };
+		44060E0122CE8FCE00BA0C43 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44060E0022CE8FCE00BA0C43 /* ContainerViewController.swift */; };
 		441ADB1E1A13E6CD00E01CF6 /* FilmDetailHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 441ADB1D1A13E6CD00E01CF6 /* FilmDetailHeaderCell.m */; };
 		441ADB211A13F19D00E01CF6 /* AttributeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 441ADB201A13F19D00E01CF6 /* AttributeCell.m */; };
 		441C77A21A15683F00F9499E /* info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 441C779A1A15683F00F9499E /* info@2x.png */; };
@@ -40,6 +40,7 @@
 		44B2EF8C1A12B992000AFC00 /* Film.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B2EF8B1A12B992000AFC00 /* Film.m */; };
 		44B2EF8F1A12BA11000AFC00 /* Attribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B2EF8E1A12BA11000AFC00 /* Attribute.m */; };
 		44B2EF921A12C0F3000AFC00 /* FilmDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B2EF911A12C0F3000AFC00 /* FilmDetailViewController.m */; };
+		44B5925A22D0F0A800B93D8D /* CitiesHostedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B5925922D0F0A800B93D8D /* CitiesHostedViewController.swift */; };
 		44C54DA61A153D4800AF22AD /* FilmsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C54DA51A153D4800AF22AD /* FilmsViewController.m */; };
 		44C54DA91A154BC900AF22AD /* FilmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C54DA81A154BC900AF22AD /* FilmCell.m */; };
 		44C8189B1B91F8A400E538FB /* BaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C8189A1B91F8A400E538FB /* BaseViewModel.m */; };
@@ -49,7 +50,7 @@
 
 /* Begin PBXFileReference section */
 		212345B14A1E9C5AC83C37B1 /* Pods-kinoafisha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kinoafisha.release.xcconfig"; path = "Pods/Target Support Files/Pods-kinoafisha/Pods-kinoafisha.release.xcconfig"; sourceTree = "<group>"; };
-		44060E0022CE8FCE00BA0C43 /* CitiesHostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesHostingViewController.swift; sourceTree = "<group>"; };
+		44060E0022CE8FCE00BA0C43 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		441ADB1C1A13E6CD00E01CF6 /* FilmDetailHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilmDetailHeaderCell.h; sourceTree = "<group>"; };
 		441ADB1D1A13E6CD00E01CF6 /* FilmDetailHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilmDetailHeaderCell.m; sourceTree = "<group>"; };
 		441ADB1F1A13F19D00E01CF6 /* AttributeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributeCell.h; sourceTree = "<group>"; };
@@ -110,6 +111,7 @@
 		44B2EF8E1A12BA11000AFC00 /* Attribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Attribute.m; path = Model/Attribute.m; sourceTree = "<group>"; };
 		44B2EF901A12C0F3000AFC00 /* FilmDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilmDetailViewController.h; path = Controller/FilmDetailViewController.h; sourceTree = "<group>"; };
 		44B2EF911A12C0F3000AFC00 /* FilmDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilmDetailViewController.m; path = Controller/FilmDetailViewController.m; sourceTree = "<group>"; };
+		44B5925922D0F0A800B93D8D /* CitiesHostedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesHostedViewController.swift; sourceTree = "<group>"; };
 		44C54DA41A153D4800AF22AD /* FilmsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilmsViewController.h; path = Controller/FilmsViewController.h; sourceTree = "<group>"; };
 		44C54DA51A153D4800AF22AD /* FilmsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilmsViewController.m; path = Controller/FilmsViewController.m; sourceTree = "<group>"; };
 		44C54DA71A154BC900AF22AD /* FilmCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilmCell.h; sourceTree = "<group>"; };
@@ -156,8 +158,8 @@
 				443AAABA1A62AE4B00F2A188 /* CitiesViewModel.h */,
 				443AAABB1A62AE4B00F2A188 /* CitiesViewModel.m */,
 				4425EF4122CBE92E00321AFE /* CitiesView.swift */,
+				44B5925922D0F0A800B93D8D /* CitiesHostedViewController.swift */,
 				4425EF4022CBE92E00321AFE /* kinoafisha-Bridging-Header.h */,
-				44060E0022CE8FCE00BA0C43 /* CitiesHostingViewController.swift */,
 			);
 			name = Cities;
 			sourceTree = "<group>";
@@ -261,6 +263,7 @@
 				446AA6A11B925296003B3319 /* BaseViewModel+Protected.h */,
 				446AA6A81B9327F1003B3319 /* BaseViewController.h */,
 				446AA6A91B9327F1003B3319 /* BaseViewController.m */,
+				44060E0022CE8FCE00BA0C43 /* ContainerViewController.swift */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -492,13 +495,14 @@
 				4494D0291AAB31DC00C958B1 /* ScheduleViewModel.m in Sources */,
 				446AA6AF1B933397003B3319 /* FilmDetailViewModel.m in Sources */,
 				441ADB1E1A13E6CD00E01CF6 /* FilmDetailHeaderCell.m in Sources */,
+				44B5925A22D0F0A800B93D8D /* CitiesHostedViewController.swift in Sources */,
 				44B2EF801A116C83000AFC00 /* ScheduleViewController.m in Sources */,
 				44B2EF861A117299000AFC00 /* ScheduleEntry.m in Sources */,
 				44B2EF8C1A12B992000AFC00 /* Film.m in Sources */,
 				44B2EEA71A0FD74A000AFC00 /* CinemasContainer.m in Sources */,
 				443AAAC11A630A2B00F2A188 /* CinemasViewModel.m in Sources */,
 				44C54DA91A154BC900AF22AD /* FilmCell.m in Sources */,
-				44060E0122CE8FCE00BA0C43 /* CitiesHostingViewController.swift in Sources */,
+				44060E0122CE8FCE00BA0C43 /* ContainerViewController.swift in Sources */,
 				443AAABC1A62AE4B00F2A188 /* CitiesViewModel.m in Sources */,
 				441ADB211A13F19D00E01CF6 /* AttributeCell.m in Sources */,
 				44B2EF831A116CAE000AFC00 /* CinemasViewController.m in Sources */,

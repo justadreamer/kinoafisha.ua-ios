@@ -6,10 +6,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Cities View Controller-->
+        <!--Table View Controller-->
         <scene sceneID="OvH-5l-ZpH">
             <objects>
-                <tableViewController id="ww0-Mk-qtg" customClass="CitiesViewController" sceneMemberID="viewController">
+                <tableViewController id="ww0-Mk-qtg" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="itD-dQ-JzB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -33,7 +33,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CS5-T2-2mh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1942" y="-282"/>
+            <point key="canvasLocation" x="2306" y="-152"/>
         </scene>
         <!--Кинотеатры-->
         <scene sceneID="ugT-eu-WiA">
@@ -357,19 +357,38 @@
         <!--Город-->
         <scene sceneID="aiI-XT-x55">
             <objects>
-                <navigationController id="l5g-5s-JhH" sceneMemberID="viewController">
+                <navigationController id="l5g-5s-JhH" customClass="CitiesNavController" customModule="kinoafisha" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Город" image="ukraine.png" id="bez-xf-5a3"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tFd-4H-dsN">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="ww0-Mk-qtg" kind="relationship" relationship="rootViewController" id="Vtu-wq-IQw"/>
+                        <segue destination="ww0-Mk-qtg" kind="relationship" relationship="rootViewController" id="rkP-bn-X7s"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xDf-GQ-ghX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1122" y="-282"/>
+        </scene>
+        <!--Cities Hosted View Controller-->
+        <scene sceneID="6RX-zW-biF">
+            <objects>
+                <viewController id="XE0-gl-IXz" customClass="CitiesHostedViewController" customModule="kinoafisha" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Mhi-wT-AnR"/>
+                        <viewControllerLayoutGuide type="bottom" id="XLX-jH-NFO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3W6-fN-uVk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="409-RE-WbX"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZCk-AL-Poc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2305" y="-827"/>
         </scene>
         <!--Кинотеатры-->
         <scene sceneID="Vf6-EG-4hy">
