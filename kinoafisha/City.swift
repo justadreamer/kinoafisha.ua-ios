@@ -8,8 +8,17 @@
 
 import Foundation
 
-struct City {
+struct City: Codable {
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case cinemaURL = "link_cinema"
+        case filmURL = "link_kinoafisha"
+        case isDefaultSelection = "is_default_selection"
+    }
+    
     let name: String
     let cinemaURL: URL
     let filmURL: URL
+    let isDefaultSelection: Bool
 }

@@ -163,6 +163,7 @@
 		443AAABD1A62AE5800F2A188 /* Cities */ = {
 			isa = PBXGroup;
 			children = (
+				4477C75622D11A7E004F7479 /* City.swift */,
 				44B2EE701A0F905D000AFC00 /* CitiesViewController.h */,
 				44B2EE711A0F905D000AFC00 /* CitiesViewController.m */,
 				443AAABA1A62AE4B00F2A188 /* CitiesViewModel.h */,
@@ -209,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				4425EF4022CBE92E00321AFE /* kinoafisha-Bridging-Header.h */,
+				443AAABD1A62AE5800F2A188 /* Cities */,
 				44E4D61B1A5DC90100A89982 /* XSLT */,
 				44B2EE6F1A0F9024000AFC00 /* Model */,
 				44B2EE6E1A0F901C000AFC00 /* UI: Controllers and ViewModels */,
@@ -297,7 +299,6 @@
 			isa = PBXGroup;
 			children = (
 				446AA6A71B9327BD003B3319 /* Base */,
-				443AAABD1A62AE5800F2A188 /* Cities */,
 				443AAABE1A630A0900F2A188 /* Cinemas */,
 				4494D0231AAB319800C958B1 /* Schedule */,
 				446AA6A41B932518003B3319 /* Film Detail */,
@@ -322,7 +323,6 @@
 				44B2EF851A117299000AFC00 /* ScheduleEntry.m */,
 				44B2EEA51A0FD74A000AFC00 /* CinemasContainer.h */,
 				44B2EEA61A0FD74A000AFC00 /* CinemasContainer.m */,
-				4477C75622D11A7E004F7479 /* City.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
