@@ -357,14 +357,14 @@
         <!--Город-->
         <scene sceneID="aiI-XT-x55">
             <objects>
-                <navigationController id="l5g-5s-JhH" customClass="CitiesNavController" customModule="kinoafisha" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="l5g-5s-JhH" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Город" image="ukraine.png" id="bez-xf-5a3"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tFd-4H-dsN">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="ww0-Mk-qtg" kind="relationship" relationship="rootViewController" id="rkP-bn-X7s"/>
+                        <segue destination="XE0-gl-IXz" kind="relationship" relationship="rootViewController" id="zV4-6C-Ih8"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xDf-GQ-ghX" userLabel="First Responder" sceneMemberID="firstResponder"/>

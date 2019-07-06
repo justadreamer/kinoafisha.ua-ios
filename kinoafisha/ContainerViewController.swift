@@ -15,13 +15,9 @@ import SwiftUI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-       /* if let content = content {
+        if let content = content {
             display(content: content)
-        }*/
+        }
     }
     
     func display(content: UIViewController) {
