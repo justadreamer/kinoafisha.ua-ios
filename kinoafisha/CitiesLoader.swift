@@ -22,7 +22,7 @@ final class CitiesLoader: BindableObject {
     var cities: [City] = []
     
     let urlSession = URLSession.init(configuration: .default)
-    let url = URL(string: KinoAfishaBaseURLString)!
+    let url = URL(string: KinoAfishaBaseURLString+"/cinema")!
     let ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36"
     
     let transformation: SkyXSLTransformation = {
@@ -41,8 +41,10 @@ final class CitiesLoader: BindableObject {
         
         let task = urlSession.dataTask(with: request) { [weak self] data, response, error in
             if let data = data {
-                if let json = try? self?.transformation.jsonObject(fromHTMLData: data, withParams: [NSString(string: "baseURL"): NSString(string: Q(KinoAfishaBaseURLString))])   {
-                    print("\(json)")
+                if let transformed = try? self?.transformation.transformedData(fromHTMLData: data, withParams: [NSString(string: "baseURL"): NSString(string: Q(KinoAfishaBaseURLString))])   {
+                    if let cities = try? JSONDecoder().decode([City].self, from: transformed) {
+                        self?.cities = cities
+                    }
                 }
             }
             self?.isLoading = false
