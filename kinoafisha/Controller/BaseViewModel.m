@@ -17,7 +17,8 @@
 #import "Flurry.h"
 
 @interface BaseViewModel()
-@property (nonatomic,strong) AFHTTPRequestOperation *operation;
++ (NSURLSession *) session;
+@property (nonatomic,strong) NSURLSessionDataTask *task;
 @end
 
 @implementation BaseViewModel
@@ -27,8 +28,16 @@
 @synthesize loadable = _needsLoading;
 
 - (void) dealloc {
-    self.operation.completionBlock = nil;
-    [self.operation cancel];
+    [self.task cancel];
+}
+
++ (NSURLSession *)session {
+    static dispatch_once_t onceToken;
+    static NSURLSession *_session;
+    dispatch_once(&onceToken, ^{
+        _session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    });
+    return _session;
 }
 
 - (BOOL) loadable {
@@ -40,8 +49,7 @@
         return;
     }
 
-    self.operation.completionBlock = nil;
-    [self.operation cancel];
+    [self.task cancel];
     
     NSURL *citiesXSLURL = [AD.s3SyncManager URLForResource:self.XSLTName withExtension:@"xsl"];
     SkyXSLTransformation *transformation = [[SkyXSLTransformation alloc] initWithXSLTURL:citiesXSLURL];
@@ -50,28 +58,34 @@
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:self.URL];
     [request setValue:UA forHTTPHeaderField:@"User-Agent"];
-    self.operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    self.operation.responseSerializer = serializer;
+
     
-    @weakify(self);
     self.isLoading = YES;
     self.error = nil;
 
-    [self.operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        @strongify(self);
-        self.dataModel = [self processLoadedDataModel:responseObject];
-        self.isLoading = NO;
-        [Flurry logEvent:@"data did load" withParameters:@{@"view_model":NSStringFromClass([self class])}];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        @strongify(self);
-        self.isLoading = NO;
-        self.error = error;
-        [Flurry logEvent:@"data did fail to load" withParameters:@{@"view_model":NSStringFromClass([self class])}];
-        [Flurry logError:@"data did fail to load" message:@"" error:error];
-        NSLog(@"%@",error);
+    @weakify(self)
+    self.task = [BaseViewModel.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        @strongify(self)
+        if (data && !error) {
+            NSError *serializationError;
+            id responseObject = [serializer responseObjectForResponse:response data:data error:&serializationError];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.dataModel = [self processLoadedDataModel:responseObject];
+                self.isLoading = NO;
+                [Flurry logEvent:@"data did load" withParameters:@{@"view_model":NSStringFromClass([self class])}];
+            });
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.isLoading = NO;
+                self.error = error;
+                [Flurry logEvent:@"data did fail to load" withParameters:@{@"view_model":NSStringFromClass([self class])}];
+                [Flurry logError:@"data did fail to load" message:@"" error:error];
+                NSLog(@"%@",error);
+            });
+        }
     }];
     
-    [self.operation start];
+    [self.task resume];
     
 }
 
