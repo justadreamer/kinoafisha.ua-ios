@@ -1,73 +1,62 @@
 PODS:
-  - AFAmazonS3Manager (3.2.1):
-    - AFNetworking/NSURLConnection (~> 2.4)
-  - AFNetworking (2.6.3):
-    - AFNetworking/NSURLConnection (= 2.6.3)
-    - AFNetworking/NSURLSession (= 2.6.3)
-    - AFNetworking/Reachability (= 2.6.3)
-    - AFNetworking/Security (= 2.6.3)
-    - AFNetworking/Serialization (= 2.6.3)
-    - AFNetworking/UIKit (= 2.6.3)
-  - AFNetworking/NSURLConnection (2.6.3):
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.6.3):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.6.3)
-  - AFNetworking/Security (2.6.3)
-  - AFNetworking/Serialization (2.6.3)
-  - AFNetworking/UIKit (2.6.3):
-    - AFNetworking/NSURLConnection
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
-  - AFOnoResponseSerializer (1.0.0):
-    - AFNetworking (~> 2.2)
-    - Ono (~> 1.0)
   - DZNEmptyDataSet (1.8.1)
   - FileMD5Hash (2.0.0)
   - Flurry-iOS-SDK (7.10.0):
     - Flurry-iOS-SDK/FlurrySDK (= 7.10.0)
   - Flurry-iOS-SDK/FlurrySDK (7.10.0)
-  - HockeySDK (4.1.5):
-    - HockeySDK/DefaultLib (= 4.1.5)
-  - HockeySDK/DefaultLib (4.1.5)
-  - libextobjc (0.4.1):
-    - libextobjc/EXTADT (= 0.4.1)
-    - libextobjc/EXTConcreteProtocol (= 0.4.1)
-    - libextobjc/EXTKeyPathCoding (= 0.4.1)
-    - libextobjc/EXTNil (= 0.4.1)
-    - libextobjc/EXTSafeCategory (= 0.4.1)
-    - libextobjc/EXTScope (= 0.4.1)
-    - libextobjc/EXTSelectorChecking (= 0.4.1)
-    - libextobjc/EXTSynthesize (= 0.4.1)
-    - libextobjc/NSInvocation+EXT (= 0.4.1)
-    - libextobjc/NSMethodSignature+EXT (= 0.4.1)
-    - libextobjc/RuntimeExtensions (= 0.4.1)
-    - libextobjc/UmbrellaHeader (= 0.4.1)
-  - libextobjc/EXTADT (0.4.1):
+  - HockeySDK (5.1.4):
+    - HockeySDK/DefaultLib (= 5.1.4)
+  - HockeySDK/DefaultLib (5.1.4)
+  - libextobjc (0.6):
+    - libextobjc/EXTADT (= 0.6)
+    - libextobjc/EXTConcreteProtocol (= 0.6)
+    - libextobjc/EXTKeyPathCoding (= 0.6)
+    - libextobjc/EXTNil (= 0.6)
+    - libextobjc/EXTSafeCategory (= 0.6)
+    - libextobjc/EXTScope (= 0.6)
+    - libextobjc/EXTSelectorChecking (= 0.6)
+    - libextobjc/EXTSynthesize (= 0.6)
+    - "libextobjc/NSInvocation+EXT (= 0.6)"
+    - "libextobjc/NSMethodSignature+EXT (= 0.6)"
+    - libextobjc/RuntimeExtensions (= 0.6)
+    - libextobjc/UmbrellaHeader (= 0.6)
+  - libextobjc/EXTADT (0.6):
     - libextobjc/RuntimeExtensions
-  - libextobjc/EXTConcreteProtocol (0.4.1):
+  - libextobjc/EXTConcreteProtocol (0.6):
     - libextobjc/RuntimeExtensions
-  - libextobjc/EXTKeyPathCoding (0.4.1):
+  - libextobjc/EXTKeyPathCoding (0.6):
     - libextobjc/RuntimeExtensions
-  - libextobjc/EXTNil (0.4.1):
+  - libextobjc/EXTNil (0.6):
     - libextobjc/RuntimeExtensions
-  - libextobjc/EXTSafeCategory (0.4.1):
+  - libextobjc/EXTSafeCategory (0.6):
     - libextobjc/RuntimeExtensions
-  - libextobjc/EXTScope (0.4.1):
+  - libextobjc/EXTScope (0.6):
     - libextobjc/RuntimeExtensions
-  - libextobjc/EXTSelectorChecking (0.4.1):
+  - libextobjc/EXTSelectorChecking (0.6):
     - libextobjc/RuntimeExtensions
-  - libextobjc/EXTSynthesize (0.4.1):
+  - libextobjc/EXTSynthesize (0.6):
     - libextobjc/RuntimeExtensions
-  - libextobjc/NSInvocation+EXT (0.4.1):
+  - "libextobjc/NSInvocation+EXT (0.6)":
     - libextobjc/RuntimeExtensions
-  - libextobjc/NSMethodSignature+EXT (0.4.1):
+  - "libextobjc/NSMethodSignature+EXT (0.6)":
     - libextobjc/RuntimeExtensions
-  - libextobjc/RuntimeExtensions (0.4.1)
-  - libextobjc/UmbrellaHeader (0.4.1)
+  - libextobjc/RuntimeExtensions (0.6)
+  - libextobjc/UmbrellaHeader (0.6)
   - Mantle (2.1.0):
     - Mantle/extobjc (= 2.1.0)
   - Mantle/extobjc (2.1.0)
@@ -80,23 +69,22 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
-  - SkyS3Sync (0.18):
-    - AFAmazonS3Manager (~> 3.2)
-    - AFNetworking (~> 2.2)
-    - AFOnoResponseSerializer (~> 1.0)
+  - SkyS3Sync (1.0.2):
+    - AFNetworking (~> 3.0)
     - FileMD5Hash (~> 2.0)
     - libextobjc (~> 0.4)
     - ObjectiveSugar (~> 1.1)
-  - SkyScraper (0.41):
-    - SkyScraper/All (= 0.41)
-  - SkyScraper/AFNetworking2 (0.41):
-    - AFNetworking (~> 2.6.3)
+    - Ono (~> 1.0)
+  - SkyScraper (1.1):
+    - SkyScraper/All (= 1.1)
+  - SkyScraper/AFNetworking3 (1.1):
+    - AFNetworking (~> 3.0)
     - SkyScraper/Base
-  - SkyScraper/All (0.41):
-    - SkyScraper/AFNetworking2
+  - SkyScraper/All (1.1):
+    - SkyScraper/AFNetworking3
     - SkyScraper/Mantle
-  - SkyScraper/Base (0.41)
-  - SkyScraper/Mantle (0.41):
+  - SkyScraper/Base (1.1)
+  - SkyScraper/Mantle (1.1):
     - Mantle
     - SkyScraper/Base
   - SVProgressHUD (1.1.3)
@@ -111,6 +99,20 @@ DEPENDENCIES:
   - SkyScraper (from `https://github.com/justadreamer/SkyScraper`)
   - SVProgressHUD (~> 1.1)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - DZNEmptyDataSet
+    - FileMD5Hash
+    - Flurry-iOS-SDK
+    - HockeySDK
+    - libextobjc
+    - Mantle
+    - ObjectiveSugar
+    - Ono
+    - ReactiveCocoa
+    - SVProgressHUD
+
 EXTERNAL SOURCES:
   SkyS3Sync:
     :git: https://github.com/justadreamer/SkyS3Sync
@@ -119,29 +121,27 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   SkyS3Sync:
-    :commit: 3ea1a20675f872b5d59f643fea4d5db2bc5d89a0
+    :commit: 0c8d621556a78e642c527af278cb8ecbb52fbf7c
     :git: https://github.com/justadreamer/SkyS3Sync
   SkyScraper:
-    :commit: a498bde1a3db49f42f9d176c846805909c2aff36
+    :commit: 8f579224ac6d9326467fb47dca60088024ac00f3
     :git: https://github.com/justadreamer/SkyScraper
 
 SPEC CHECKSUMS:
-  AFAmazonS3Manager: 688f9238511bb86011159d0155fcda09838b0e0d
-  AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
-  AFOnoResponseSerializer: c02c8bef1d6742ac68f33ecaed41826c9657bc33
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FileMD5Hash: 3ed69cc19a21ff4d30ae8833fc104275ad2c7de0
   Flurry-iOS-SDK: e6975df9e57010d582bf9bed0f6312553cf24bc2
-  HockeySDK: 606b537bbfbe454ee440e92cc93bc634b3c77151
-  libextobjc: a650fc1bf489a3d3a9bc2e621efa3e1006fc5471
+  HockeySDK: 15afe6bc0a5bfe3a531fd73dbf082095f37dac3b
+  libextobjc: aed8b7d2b07f511c1a7ecaacb33ea03e327c69b7
   Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
   ObjectiveSugar: a6a25f23d657c19df0a0b972466d5b5ca9f5295c
   Ono: 80b1c686777d3f6d5d5ce6fcac8a74afef4ca197
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
-  SkyS3Sync: adbf97532ffd7d5e85be19228daa9f5fe2247510
-  SkyScraper: c982bb20003d7bea14ec0973a61108040177f0b0
+  SkyS3Sync: b7da721c7119d74b211c15d7b2cf54d6b134b581
+  SkyScraper: 188f7ec9e1269ebc13c1c290aa0854d58075cdea
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
 
-PODFILE CHECKSUM: b917f466256b63653af29d115b74269715a33e01
+PODFILE CHECKSUM: 6623259c7845306722796dd6c9775e2595747091
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.7.3

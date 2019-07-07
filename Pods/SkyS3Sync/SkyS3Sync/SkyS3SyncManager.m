@@ -8,22 +8,31 @@
 
 #import "SkyS3SyncManager.h"
 
-#import <AFAmazonS3Manager/AFAmazonS3Manager.h>
+#import "SkyS3AmazonS3Manager.h"
+#import "SkyS3OnoResponseSerializer.h"
+#import "SkyS3Directory.h"
+#import "SkyS3ResourceData.h"
+
 #import <ObjectiveSugar/ObjectiveSugar.h>
-#import <AFOnoResponseSerializer/AFOnoResponseSerializer.h>
 #import <Ono/Ono.h>
 #import <libextobjc/extobjc.h>
 #import <FileMD5Hash/FileHash.h>
-#import "SkyS3Directory.h"
-#import "SkyS3ResourceData.h"
+
+#define _SkyS3SafeString(x) (x ? x : @"")
 
 NSString * const SkyS3SyncDidFinishSyncNotification = @"SkyS3SyncDidFinishSyncNotification";
 NSString * const SkyS3SyncDidRemoveResourceNotification = @"SkyS3SyncDidRemoveResourceNotification";
 NSString * const SkyS3SyncDidUpdateResourceNotification = @"SkyS3SyncDidUpdateResourceNotification";
 NSString * const SkyS3SyncDidCopyOriginalResourceNotification = @"SkyS3SyncDidCopyOriginalResourceNotification";
+NSString * const SkyS3SyncDidFailToListBucket = @"SkyS3SyncDidFailToListBucket";
+NSString * const SkyS3SyncDidFailToDownloadResource = @"SkyS3SyncDidFailToDownloadResource";;
+
 NSString * const SkyS3ResourceFileName = @"SkyS3ResourceFileName";
 NSString * const SkyS3ResourceURL = @"SkyS3ResourceURL";
+NSString * const SkyS3BucketName = @"SkyS3BucketName";
+NSString * const SkyS3Error = @"SkyS3Error";
 
+static NSInteger const SkyS3MaxRetries = 3;
 
 @interface SkyS3SyncManager ()
 /**
@@ -58,7 +67,11 @@ NSString * const SkyS3ResourceURL = @"SkyS3ResourceURL";
 @property (atomic,assign) BOOL originalResourcesCopied;
 
 
-@property (nonatomic,strong) AFAmazonS3Manager *amazonS3Manager;
+/** 
+ * These manager objects will have different responseSerializers
+ */
+@property (nonatomic,strong) SkyS3AmazonS3Manager *amazonS3BucketListManager;
+@property (nonatomic,strong) SkyS3AmazonS3Manager *amazonS3DownloadResourceManager;
 
 /**
  *  By default the sync directory is auto-created in an internal location.  You can specify your own directory
@@ -67,6 +80,8 @@ NSString * const SkyS3ResourceURL = @"SkyS3ResourceURL";
 @property (nonatomic,readwrite,strong) NSURL *syncDirectoryURL;
 @property (nonatomic,strong) SkyS3Directory *actualSyncDirectory;
 @property (nonatomic,strong) dispatch_queue_t dispatchQueue;
+
+@property (nonatomic,assign) NSInteger listBucketRetries;
 @end
 
 @implementation SkyS3SyncManager
@@ -87,10 +102,10 @@ NSString * const SkyS3ResourceURL = @"SkyS3ResourceURL";
 #pragma mark - SkyResourceProvider
 
 - (NSURL *)URLForResource:(NSString *)name withExtension:(NSString *)ext {
-    if (!name || !ext) {
+    if (!name) {
         return nil;
     }
-    NSString *resourceFileName = [name stringByAppendingPathExtension:ext];
+    NSString *resourceFileName = ext.length > 0 ? [name stringByAppendingPathExtension:ext] : name;
     return [self URLForResourceWithFileName:resourceFileName];
 }
 
@@ -99,12 +114,9 @@ NSString * const SkyS3ResourceURL = @"SkyS3ResourceURL";
         return nil;
     }
 
-    NSURL *URL = nil;
-    if (self.originalResourcesCopied) {
-        NSURL *URL = [self.actualSyncDirectory URLForResourceWithFileName:fileName];
-        if (URL) {
-            return URL;
-        }
+    NSURL *URL = [self.actualSyncDirectory URLForResourceWithFileName:fileName];
+    if (URL) {
+        return URL;
     }
 
     URL = [self.originalResourcesDirectory URLByAppendingPathComponent:fileName];
@@ -155,14 +167,28 @@ NSString * const SkyS3ResourceURL = @"SkyS3ResourceURL";
     return _syncDirectoryName;
 }
 
-- (AFAmazonS3Manager *)amazonS3Manager {
-    if (!_amazonS3Manager) {
-        _amazonS3Manager = [[AFAmazonS3Manager alloc] initWithAccessKeyID:self.S3AccessKey secret:self.S3SecretKey];
-        _amazonS3Manager.completionQueue = self.dispatchQueue;
-        _amazonS3Manager.requestSerializer.bucket = self.S3BucketName;
-        _amazonS3Manager.requestSerializer.cachePolicy = NSURLRequestReloadIgnoringCacheData;
+- (SkyS3AmazonS3Manager *)makeAFManager {
+    SkyS3AmazonS3Manager *manager = [[SkyS3AmazonS3Manager alloc] initWithAccessKeyID:self.S3AccessKey secret:self.S3SecretKey];
+    manager.completionQueue = self.dispatchQueue;
+    manager.requestSerializer.bucket = self.S3BucketName;
+    manager.requestSerializer.cachePolicy = NSURLRequestReloadIgnoringCacheData;
+    return manager;
+}
+
+- (SkyS3AmazonS3Manager *)amazonS3BucketListManager {
+    if (!_amazonS3BucketListManager) {
+        _amazonS3BucketListManager = [self makeAFManager];
+        _amazonS3BucketListManager.responseSerializer = [SkyS3OnoResponseSerializer serializer];
     }
-    return _amazonS3Manager;
+    return _amazonS3BucketListManager;
+}
+
+- (SkyS3AmazonS3Manager *)amazonS3DownloadResourceManager {
+    if (!_amazonS3DownloadResourceManager) {
+        _amazonS3DownloadResourceManager = [self makeAFManager];
+        _amazonS3DownloadResourceManager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    }
+    return _amazonS3DownloadResourceManager;
 }
 
 #pragma mark - actual sync
@@ -188,6 +214,7 @@ NSString * const SkyS3ResourceURL = @"SkyS3ResourceURL";
 
     [self doOriginalResourcesCopying];
     if (self.remoteSyncEnabled) {
+        self.listBucketRetries = 0;
         [self doAmazonS3Sync];
     } else {
         [self finishSync];
@@ -239,13 +266,18 @@ NSString * const SkyS3ResourceURL = @"SkyS3ResourceURL";
 
 - (void) doAmazonS3Sync {
     @weakify(self);
-    self.amazonS3Manager.responseSerializer = [AFOnoResponseSerializer serializer];
-    [self.amazonS3Manager getBucket:@"/" success:^(id responseObject) {
+    [self.amazonS3BucketListManager getBucket:@"/" success:^(id responseObject) {
         @strongify(self);
         [self processS3ListBucket:responseObject];
     } failure:^(NSError *error) {
         @strongify(self);
+        if (self.listBucketRetries < SkyS3MaxRetries) {
+            [self performSelector:@selector(doAmazonS3Sync)];
+            self.listBucketRetries++;
+            return;
+        }
         [self.class log:@"error = %@", error];
+        [self postNotificationName:SkyS3SyncDidFailToListBucket userInfo:@{SkyS3BucketName:_SkyS3SafeString(self.S3BucketName), SkyS3Error: error}];
         [self finishSync];
     }];
 }
@@ -256,11 +288,13 @@ NSString * const SkyS3ResourceURL = @"SkyS3ResourceURL";
     __block NSUInteger completedCounter = 0;
 
     @weakify(self);
-    void(^completedBlock)() = ^{
-        if (++completedCounter == remoteResources.count) {
-            @strongify(self);
-            [self finishSync];
-        };
+    void(^completedBlock)(void) = ^{
+        @strongify(self);
+        @synchronized(self) {
+            if (++completedCounter == remoteResources.count) {
+                [self finishSync];
+            };
+        }
     };
 
     // delete local files that are absent on the remote host
@@ -282,34 +316,44 @@ NSString * const SkyS3ResourceURL = @"SkyS3ResourceURL";
         }
     }
     
-    NSString* cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-    NSURL *cachesURL = [NSURL fileURLWithPath:cachesPath];
+
     remoteResources = [remoteResources reject:^BOOL(SkyS3ResourceData *resource) {
         return [resource.etag isEqualToString:[self md5ForURL:resource.localURL]];
     }];
 
     [remoteResources each:^(SkyS3ResourceData *resource) {
-        [self.class log:@"updating %@",resource.name];
-        if (!resource.name) {
-            return;
-        }
-        NSURL *tmpURL = [cachesURL URLByAppendingPathComponent:resource.name];
-        NSOutputStream *stream = [NSOutputStream outputStreamToFileAtPath:[tmpURL path] append:NO];
-        self.amazonS3Manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-        [self.amazonS3Manager getObjectWithPath:resource.name outputStream:stream progress:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
-        } success:^(id responseObject) {
-            [self copyFrom:tmpURL to:resource.localURL];
-            [self.class log:@"did update %@",resource.name];
-            [self postDidUpdateNotificationWithResourceFileName:resource.name andURL:resource.localURL];
-            completedBlock();
-        } failure:^(NSError *error) {
-            completedBlock();
-        }];
+        [self downloadResource:resource withCompletedBlock:completedBlock];
     }];
 
     if (remoteResources.count == 0) {
         [self finishSync];
     }
+}
+
+- (void)downloadResource:(SkyS3ResourceData *)resource withCompletedBlock:(void(^)(void))completedBlock {
+    NSString* cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+    NSURL *cachesURL = [NSURL fileURLWithPath:cachesPath];
+    [self.class log:@"updating %@",resource.name];
+    if (!resource.name) {
+        return;
+    }
+    NSURL *tmpURL = [cachesURL URLByAppendingPathComponent:resource.name];
+    // remove previous temporary file to avoid sync collisions
+    [[NSFileManager defaultManager] removeItemAtURL:tmpURL error:nil];
+    [self.amazonS3DownloadResourceManager getObjectWithPath:resource.name outputFileURL:tmpURL success:^(id responseObject) {
+        [self copyFrom:tmpURL to:resource.localURL];
+        [self.class log:@"did update %@",resource.name];
+        [self postDidUpdateNotificationWithResourceFileName:resource.name andURL:resource.localURL];
+        completedBlock();
+    } failure:^(NSError *error) {
+        if (resource.retries < SkyS3MaxRetries) {
+            resource.retries++;
+            [self downloadResource:resource withCompletedBlock:completedBlock];
+        } else {
+            [self postNotificationName:SkyS3SyncDidFailToDownloadResource userInfo:@{SkyS3ResourceFileName:_SkyS3SafeString(resource.name), SkyS3BucketName:_SkyS3SafeString(self.S3BucketName), SkyS3Error: error}];
+            completedBlock();
+        }
+    }];
 }
 
 #pragma mark - Notifications
@@ -327,15 +371,21 @@ NSString * const SkyS3ResourceURL = @"SkyS3ResourceURL";
 }
 
 - (void) postNotificationName:(NSString*)notificationName withResourceFileName:(NSString*)resourceFileName andURL:(NSURL *)resourceURL {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSMutableDictionary* userInfo = [NSMutableDictionary dictionary];
-        if (resourceFileName) {
-            userInfo[SkyS3ResourceFileName] = resourceFileName;
-        }
 
-        if (resourceURL) {
-            userInfo[SkyS3ResourceURL] = resourceURL;
-        }
+    NSMutableDictionary* userInfo = [NSMutableDictionary dictionary];
+    if (resourceFileName) {
+        userInfo[SkyS3ResourceFileName] = resourceFileName;
+    }
+
+    if (resourceURL) {
+        userInfo[SkyS3ResourceURL] = resourceURL;
+    }
+
+    [self postNotificationName:notificationName userInfo:userInfo];
+}
+
+- (void)postNotificationName:(NSString *)notificationName userInfo:(NSDictionary *)userInfo {
+    dispatch_async(dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:self userInfo:userInfo];
     });
 }
@@ -435,14 +485,26 @@ NSString * const SkyS3ResourceURL = @"SkyS3ResourceURL";
 }
 
 - (void) copyFrom:(NSURL *)srcURL to:(NSURL *)dstURL {
-    NSError *error = nil;
-    if ([[NSFileManager defaultManager] fileExistsAtPath:[dstURL path]]) {
-        if (![[NSFileManager defaultManager] removeItemAtURL:dstURL error:&error]) {
-            [self.class log:@"Failed to remove existing file before copying: %@ to %@ error: %@",srcURL,dstURL,error];
+    NSFileCoordinator *coordinator = [[NSFileCoordinator alloc] initWithFilePresenter:nil];
+    NSError *coordinatorError = nil;
+    BOOL __block coordinatorSuccess = NO;
+
+    [coordinator coordinateWritingItemAtURL:dstURL options:NSFileCoordinatorWritingForReplacing error:&coordinatorError byAccessor:^(NSURL * _Nonnull newURL) {
+        coordinatorSuccess = YES;
+
+        NSError *error = nil;
+        if ([[NSFileManager defaultManager] fileExistsAtPath:[newURL path]]) {
+            if (![[NSFileManager defaultManager] removeItemAtURL:newURL error:&error]) {
+                [self.class log:@"Failed to remove existing file before copying: %@ to %@ error: %@",srcURL,dstURL,error];
+            }
         }
-    }
-    if (![[NSFileManager defaultManager] copyItemAtURL:srcURL toURL:dstURL error:&error]) {
-        [self.class log:@"Failed to copy: %@ to %@ error: %@",srcURL,dstURL,error];
+        if (![[NSFileManager defaultManager] copyItemAtURL:srcURL toURL:newURL error:&error]) {
+            [self.class log:@"Failed to copy: %@ to %@ error: %@",srcURL,dstURL,error];
+        }
+    }];
+
+    if (!coordinatorSuccess) {
+        [self.class log:@"Failed to coordinate copying: %@ to %@ error: %@",srcURL,dstURL,coordinatorSuccess];
     }
 }
 

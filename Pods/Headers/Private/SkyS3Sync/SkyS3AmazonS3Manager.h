@@ -1,0 +1,1 @@
+../../../SkyS3Sync/SkyS3Sync/SkyS3AmazonS3Manager.h

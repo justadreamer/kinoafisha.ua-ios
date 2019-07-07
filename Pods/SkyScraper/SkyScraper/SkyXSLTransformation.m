@@ -27,7 +27,7 @@ extern int xmlLoadExtDtdDefaultValue;
 @property (nonatomic, copy) ReplaceStringBlockType replaceStringBlock;
 @end
 
-void exslt_org_regular_expressions_init();
+void exslt_org_regular_expressions_init(void);
 
 @implementation SkyXSLTransformation
 - (void) dealloc {
@@ -62,6 +62,10 @@ void exslt_org_regular_expressions_init();
 - (void) setupStyleSheetFromXMLDoc:(xmlDocPtr)styleSheetDoc {
     xmlXIncludeProcess(styleSheetDoc);
     self.stylesheet = xsltParseStylesheetDoc(styleSheetDoc);
+}
+
+- (NSData *)transformedDataFromHTMLData:(NSData *)html withParams:(NSDictionary *)params error:(NSError * __autoreleasing *)error {
+    return [self transformedDataFromData:html isHTML:YES withParams:params error: error];
 }
 
 - (NSData *) transformedDataFromData:(NSData *)data isHTML:(BOOL)isHTML withParams:(NSDictionary *)params error:(NSError * __autoreleasing *)error {
@@ -214,12 +218,10 @@ void exslt_org_regular_expressions_init();
     char *inbuf  = (char *)data.bytes;
     char *outbuf = malloc(sizeof(char) * data.length);
     char *outptr = outbuf;
-    if (iconv(cd, &inbuf, &inbytesleft, &outptr, &outbytesleft)
-        == (size_t)-1) {
-        NSLog(@"this should not happen, seriously");
-        return nil;
+    NSData *result = nil;
+    if (iconv(cd, &inbuf, &inbytesleft, &outptr, &outbytesleft) != (size_t)-1) {
+        result = [NSData dataWithBytes:outbuf length:data.length - outbytesleft];
     }
-    NSData *result = [NSData dataWithBytes:outbuf length:data.length - outbytesleft];
     iconv_close(cd);
     free(outbuf);
     return result;

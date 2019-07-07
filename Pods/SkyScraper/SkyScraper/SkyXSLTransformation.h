@@ -53,7 +53,7 @@ extern NSString  * const SkyScraperErrorDomain;
 
 /**
  *  A convenience method that internally uses transformedStringFromHTML:withParams: and should be used
- * in case you know that XSLT transform will produce JSON from an HTML document
+ *  in case you know that XSLT transform will produce JSON from an HTML document
  *
  *  @param html   a data object containing a string representation of an HTML document in UTF8 encoding
  *  @param params a dictionary of params to be passed when the stylesheet transformation is applied
@@ -62,6 +62,11 @@ extern NSString  * const SkyScraperErrorDomain;
  *  @return either NSDictionary or NSArray object corresponding to the string JSON representation
  */
 - (id) JSONObjectFromHTMLData:(NSData *)html withParams:(NSDictionary *)params error:(NSError * __autoreleasing *)error;
+
+/**
+ *  Returns a data object containing a result of transforming a given HTML data
+ */
+- (NSData *)transformedDataFromHTMLData:(NSData *)html withParams:(NSDictionary *)params error:(NSError * __autoreleasing *)error;
 
 /**
  *  A convenience method that internally applies the transfomration to xml

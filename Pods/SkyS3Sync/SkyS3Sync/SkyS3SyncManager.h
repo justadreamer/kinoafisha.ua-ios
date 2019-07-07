@@ -17,7 +17,7 @@
  *
  *  SkyS3ResourceURL - the local file URL of the resource that has just been copied
  */
-extern NSString * const SkyS3SyncDidCopyOriginalResourceNotification;
+extern NSString * __nonnull const SkyS3SyncDidCopyOriginalResourceNotification;
 
 /**
  *  Posted when a particular resource is removed with the userInfo containing keys:
@@ -26,7 +26,7 @@ extern NSString * const SkyS3SyncDidCopyOriginalResourceNotification;
  *  been removed
  *
  */
-extern NSString * const SkyS3SyncDidRemoveResourceNotification;
+extern NSString * __nonnull const SkyS3SyncDidRemoveResourceNotification;
 
 /**
  *  Posted when a particular resource is updated with the userInfo containing keys:
@@ -36,27 +36,49 @@ extern NSString * const SkyS3SyncDidRemoveResourceNotification;
  * 
  *  SkyS3ResourceURL - the local file URL of the resource that has just been updated
  */
-extern NSString * const SkyS3SyncDidUpdateResourceNotification;
+extern NSString * __nonnull const SkyS3SyncDidUpdateResourceNotification;
 
 /**
  *  Posted when the syncing has finished (either all appropriate resources
  *  have been updated, or there are no updates, or there was a network failure
  */
-extern NSString * const SkyS3SyncDidFinishSyncNotification;
+extern NSString * __nonnull const SkyS3SyncDidFinishSyncNotification;
+
+/**
+ *  Posted when bucket list request fails.  User info contains `bucket` name. 
+ *  (SkyS3BucketName key), and associated NSError (SkyS3Error key).
+ */
+extern NSString * __nonnull const SkyS3SyncDidFailToListBucket;
+
+/**
+ *  Posted when resource download failed.  User info contains our normal 
+ *  SkyS3ResourceFileName key, and associated NSError (SkyS3Error key).
+ */
+extern NSString * __nonnull const SkyS3SyncDidFailToDownloadResource;
+
+/**
+ *  Bucket name with which the manager is initialized. 
+ */
+extern NSString * __nonnull const SkyS3BucketName;
+
+/**
+ *  NSError object passed in the error notifications.
+ */
+extern NSString * __nonnull const SkyS3Error;
 
 /**
  *  This key is part of userInfo dictionary for the 
  *  SkyS3SyncDidUpdateResourceNotification, contains the filename (with extension) of the resource that has
  *  been updated
  */
-extern NSString * const SkyS3ResourceFileName;
+extern NSString * __nonnull const SkyS3ResourceFileName;
 
 /**
  *  This key is part of the userInfo dictionary for the 
  *  SkyS3SyncDidUpdateResourceNotification, contains the local file URL of the 
  *  resource that has just been updated
  */
-extern NSString * const SkyS3ResourceURL;
+extern NSString * __nonnull const SkyS3ResourceURL;
 
 /**
  *  A simple S3 syncing service, which syncs the contents of the S3BucketName to 
@@ -68,12 +90,12 @@ extern NSString * const SkyS3ResourceURL;
  *  by default the sync directory name is SkyS3Sync, and it is stored under Documents, you can specify an arbitrary name for it (in case f.e. of name 
  *  collission, or if you are working with several instances of SkyS3SyncManager
  */
-@property (nonatomic,strong) NSString *syncDirectoryName;
+@property (nonatomic,strong) NSString * __nonnull syncDirectoryName;
 
 /**
  *  The directory where the synced resources are stored
  */
-@property (nonatomic,readonly) NSURL *syncDirectoryURL;
+@property (nonatomic,readonly) NSURL * __nonnull syncDirectoryURL;
 
 /**
  *  By default YES, and in case the remote file differs in md5 from local - it will be pulled. 
@@ -93,9 +115,9 @@ extern NSString * const SkyS3ResourceURL;
  *
  *  @return returns a fully initialized SkyS3SyncManager
  */
-- (instancetype) initWithS3AccessKey:(NSString *)accessKey secretKey:(NSString *)secretKey bucketName:(NSString *)bucketName originalResourcesDirectory:(NSURL *)originalResourcesDirectory NS_DESIGNATED_INITIALIZER;
+- (_Nonnull instancetype) initWithS3AccessKey:(NSString * _Nonnull)accessKey secretKey:(NSString * _Nonnull)secretKey bucketName:(NSString * _Nonnull)bucketName originalResourcesDirectory:(NSURL * _Nonnull)originalResourcesDirectory NS_DESIGNATED_INITIALIZER;
 
-- (instancetype) init NS_UNAVAILABLE;
+- (_Nonnull instancetype) init NS_UNAVAILABLE;
 
 /**
  *  To be called from AppDelegate's applicationDidBecomeActive: method to check if anything has been updated on S3
@@ -116,7 +138,7 @@ extern NSString * const SkyS3ResourceURL;
  *
  *  @return a URL to the particular resource if it exists, or nil if it does not
  */
-- (NSURL *)URLForResource:(NSString *)name withExtension:(NSString *)ext;
+- (nullable NSURL *)URLForResource:(nullable NSString *)name withExtension:(nullable NSString *)ext;
 
 /**
  *  This object can be used to obtain the resource URL without fallback to original
@@ -124,6 +146,6 @@ extern NSString * const SkyS3ResourceURL;
  *
  *  @return SkyS3ResourceURLProvider
  */
-- (NSObject<SkyS3ResourceURLProvider> *)syncDirectory;
+- ( NSObject<SkyS3ResourceURLProvider> * _Nonnull )syncDirectory;
 
 @end

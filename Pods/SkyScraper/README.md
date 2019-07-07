@@ -1,4 +1,4 @@
-#SkyScraper
+# SkyScraper
 
 SkyScraper is an advanced web scraping library for iOS written in Objective-C.  It is specifically designed to allow HTML document parsing and conversion into JSON model representation (and then further into the application objects).  The mapping of the specific parts of HTML document to JSON model representation is defined by the end user in XSLT 1.0 langugage.
 
@@ -43,7 +43,7 @@ This includes only the SkyXSLTransformation class.
 
 The spec will be moved into the main Specs repository eventually, but for now the library is in a very early development stage.
 
-**3)**  To learn/train yourself in XSLT - again please study the Tests and Examples/CLSkyScraper projects - there are XSLT transformations defined within the application resources.  There are some useful tricks to be learned from these examples - f.e. modularization by utilizing XIncludes, text data sanitization to be used within JSON, URL concatenation, etc.  There are also quite a lot of resources on XSLT 1.0 on the web:
+**3)**  To learn/train yourself in XSLT - again please study the Tests and Examples/CLSkyScraper projects - there are XSLT transformations defined within the application resources.  There are some useful tricks to be learned from these examples - f.e. modularization by utilizing XIncludes, text data sanitization to be used within JSON, URL concatenation, etc.  There are also many resources on XSLT 1.0 on the web:
 
 [https://en.wikipedia.org/wiki/XSLT](https://en.wikipedia.org/wiki/XSLT)
 
@@ -52,11 +52,11 @@ The spec will be moved into the main Specs repository eventually, but for now th
 [http://www.w3schools.com/xsl/default.asp](http://www.w3schools.com/xsl/default.asp)
 
 
-##Example of direct usage
+## Example of direct usage
 
 Below is an example boilerplace code needed to apply an XSLT transformation and get a JSON from an HTML data.  We assume that you have got an HTML document represented with ```NSData *html``` object and have an XSLT transformation ```scraping.xsl``` in the application resources:
 
-```objective-c
+```objc
 NSBundle *bundle = [NSBundle bundleForClass:self.class];
 NSURL *XSLURL = [bundle URLForResource:@"scraping" withExtension:@"xsl"];
 SkyXSLTransformation *transformation = [[SkyXSLTransformation alloc] initWithXSLTURL:XSLURL];
@@ -66,16 +66,14 @@ NSLog(@"%@",result);
 ```
 
 
-##Example usage with AFNetworking '~> 2'
+##Example usage with AFNetworking '~> 3'
 
-Below is an example boilerplate code you need to download the HTML document and acquire the JSON representation of your application data models.  It is assumed that you have defined an ```NSURL *URL``` object pointing at target HTML document on the web.  It is also assumed that somewhere in the application resource bundle you have ```scraping.xsl``` file with the XSLT transformation to convert HTML into JSON.
+Below is an example boilerplate code you need to download the HTML document and acquire the JSON representation of your application data models.  It is assumed that you have defined an ```NSString *URLString``` object pointing at target HTML document on the web.  It is also assumed that somewhere in the application resource bundle you have ```scraping.xsl``` file with the XSLT transformation to convert HTML into JSON.
 
-```objective-c
+```objc
 
 	#import <SkyScraper/SkyScraper.h>
 	//...
-	
-	NSURLRequest *request = [NSURLRequest requestWithURL:URL];
 	
 	NSURL *localXSLURL = [[NSBundle mainBundle] URLForResource:@"scraping" withExtension:@"xsl"];
 	
@@ -83,48 +81,46 @@ Below is an example boilerplate code you need to download the HTML document and 
 	
 	SkyHTMLResponseSerializer *serializer = [SkyHTMLResponseSerializer serializerWithXSLTransformation:transformation params:nil modelAdapter:nil];
 	
-	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-	operation.responseSerializer = serializer;
+	AFHTTPSessionManager *manager = [AFHTTPSessionManager new];
+    manager.responseSerializer = serializer;
 	
-	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+	[manager GET:URLString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 	    NSLog(@"%@",responseObject);
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+	} failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
 	    NSLog(@"%@",error);
 	}];
-	
-	[operation start];
 
 ```    	
     	
 Here the transformation object has been utilized within the response serializer object, used by AFHTTPRequestOperation to deserialize the response.
 
 
-##Example usage with AFNetworking '~> 2' and Mantle
+##Example usage with AFNetworking '~> 3' and Mantle
 
 The basic setup is all the same as in the previous example, the difference is only in that we instantiate and initialize a Mantle model adapter and pass it to the response serializer factory method.  The response serializer the will use the model adapter to deserialize the parsed JSON object into the application data object - an instance of Model.class.
 
-```objective-c
+```objc
 SkyMantleModelAdapter *modelAdapter = [[SkyMantleModelAdapter alloc] initWithModelClass:Model.class];
 SkyHTMLResponseSerializer *serializer = [SkyHTMLResponseSerializer serializerWithXSLTransformation:transformation params:nil modelAdapter:modelAdapter];
 ```
 
-##Library features
+## Library features
 
-###1. Pluggability
+### 1. Pluggability
 The library has been designed with general goals of simplicity and extensibility in mind, yet with an emphasis of its highly specialized task - limited to a niche of converting HTML -> JSON -> model objects.  
 Extensibility primarily deals with the ability to create model adapters that would work for different model frameworks - Mantle is just an example, but it is possible and easy to create adapters for Nimbus or JSONModel frameworks as well.
 Also SkyXSLTransformation class does not care about your networking stack - you are not limited to using AFNetworking - it can be any other network framework. Thus the simple SkyXSLTransformation component is designed to be easily **pluggable** into any networking and/or model framework.
 
-###2. Thread-safety
+### 2. Thread-safety
 Instances of SkyXSLTransformation are immutable objects, they do not store any state during execution of the transform:... method and since they encapsulate only a runtime-compiled XSLT stylesheet, which in turn stays immutable - it guarantees thread safety.  
 
-###3. Transformation reusability
+### 3. Transformation reusability
 This plays well together with thread-safety, however just to emphasize the feature once again: the same instance of SkyXSLTransformation once initialized can be used over and over again for processing the according HTML documents.  The parameters passed are specific for each use occasion - so every time you call -[SkyXSLTransformation transform:params:modelAdapter:] - you can pass different params dictionary.
 
-###4. XSLT modularity support
+### 4. XSLT modularity support
 The library supports both XInclude and <xsl:import>.  Please refer to the online documentation to understand the difference, as this gives a developer a great flexibility for extracting the reusable code into separate xslt documents.
 
-###5. Independent XSLT development workflow
+### 5. Independent XSLT development workflow
 For developing and testing an XSLT against the HTML to be scraped - you don't have to create an iOS app.  The very same functionality that is contained within the SkyXSLTransformation is supported by ```xsltproc/xsltproc```(both binary and source are provided), which is compiled against the very same instance of ```libxslt``` and the same plugins (only regexp plugin for now).  Also to check that your XSLT transforms into a valid JSON (and also to pretty-print the output) - it is recommended to use jsonlint (can be installed using ```brew install jsonlint```).  So let's assume you have downloaded an html document.  The command you should employ to test how your XSLT doc applied to it works is this:
 
 		$ xsltproc/xsltproc --html --xincludestyle --param param_name "'string_value'" stylesheet.xsl document.html | jsonlint
@@ -137,7 +133,7 @@ So this workflow makes it possible to develop XSLT independently and then just u
 
 This also separates the data layer from the iOS code and makes it reusable in the web-server or other mobile/desktop OS environment.  Read you can create the same XSLT to run on both iOS and Android (although for Android you'll need a different XSLT processor).
 
-###6. Support for XSLT extensions
+### 6. Support for XSLT extensions
 Currently there is a number of EXSLT extensions supported: including regexps extensions, which is compiled in separately from an opensource plugin implementation.  Here is a full list of modules supported:
 
 		$ xsltproc/xsltproc --dumpextensions

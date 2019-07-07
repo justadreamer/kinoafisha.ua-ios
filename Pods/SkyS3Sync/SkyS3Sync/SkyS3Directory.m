@@ -30,10 +30,10 @@
 
 #pragma mark - SkyS3ResourceURLProvider
 - (NSURL *)URLForResource:(NSString *)name withExtension:(NSString *)ext {
-    if (!name || !ext) {
+    if (!name) {
         return nil;
     }
-    NSString *filename = [name stringByAppendingPathExtension:ext];
+    NSString *filename = ext.length > 0 ? [name stringByAppendingPathExtension:ext] : name;
     return [self URLForResourceWithFileName:filename];
 }
 

@@ -13,6 +13,9 @@
 @property (nonatomic,strong) NSDate *lastModifiedDate;
 @property (nonatomic,strong) NSURL *localURL;
 
+//number of retries we do attempting to download resource
+@property (nonatomic,assign) NSInteger retries;
+
 - (instancetype) initWithName:(NSString *)name etag:(NSString *)etag lastModifiedDate:(NSDate *)lastModifiedDate;
 
 @end

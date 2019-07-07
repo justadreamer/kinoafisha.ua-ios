@@ -29,7 +29,13 @@
         return nil;
     }
     
-    id JSONObject = [self applyTransformationToData:data withError:error];
+    id JSONObject = nil;
+    if ([data isKindOfClass:NSData.class]) {
+        JSONObject = [self applyTransformationToData:data withError:error];
+    } else if ([data isKindOfClass:NSDictionary.class] || [data isKindOfClass:NSArray.class]) {
+        JSONObject = [self applyTransformationToJSONObject:data withError:error];
+    }
+    
     id responseObject = JSONObject;
     if (JSONObject && self.modelAdapter) {
         responseObject = [self.modelAdapter modelFromJSONObject:JSONObject error:error];
@@ -39,6 +45,11 @@
 
 //override in subclasses
 - (id) applyTransformationToData:(NSData *)data withError:(NSError *__autoreleasing *)error {
+    return nil;
+}
+
+//override in subclasses
+- (id) applyTransformationToJSONObject:(id)JSONObject withError:(NSError *__autoreleasing *)error {
     return nil;
 }
 

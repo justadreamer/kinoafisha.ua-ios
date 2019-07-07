@@ -50,15 +50,17 @@
     _paramsBuf = calloc(nParams+1, sizeof(char *));
     
     __block int i = 0;
+    __weak __typeof(self)weakSelf = self;
     [params enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
         NSString *skey = [NSString stringWithFormat:@"%@",key];
         NSString *sval = [NSString stringWithFormat:@"%@",obj];
         char *keybuf = calloc(2*[skey length]+1, sizeof(char));
         char *valbuf = calloc(2*[sval length]+1, sizeof(char));
         if ([skey getCString:keybuf maxLength:2*[skey length] encoding:NSUTF8StringEncoding] &&
             [sval getCString:valbuf maxLength:2*[sval length] encoding:NSUTF8StringEncoding]) {
-            _paramsBuf[i++]=keybuf;
-            _paramsBuf[i++]=valbuf;
+            strongSelf.paramsBuf[i++]=keybuf;
+            strongSelf.paramsBuf[i++]=valbuf;
         }
     }];
     _paramsBuf[i]=NULL;

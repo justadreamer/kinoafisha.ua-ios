@@ -7,6 +7,8 @@
  */
 @property (nonatomic,weak) Class modelClass;
 
+- (instancetype)init NS_UNAVAILABLE;
+
 /**
  *  Designated initializer
  *

@@ -22,8 +22,13 @@
 }
 
 - (id) applyTransformationToData:(NSData *)data withError:(NSError *__autoreleasing *)error {
-    NSDictionary* jsonDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-    data = [NSPropertyListSerialization dataWithPropertyList:jsonDict format:NSPropertyListXMLFormat_v1_0 options:0 error:nil];
+    NSDictionary *JSONObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+    data = [NSPropertyListSerialization dataWithPropertyList:JSONObject format:NSPropertyListXMLFormat_v1_0 options:0 error:nil];
+    return [self.transformation JSONObjectFromXMLData:data withParams:self.params error:error];
+}
+
+- (id) applyTransformationToJSONObject:(id)JSONObject withError:(NSError *__autoreleasing *)error {
+    NSData *data = [NSPropertyListSerialization dataWithPropertyList:JSONObject format:NSPropertyListXMLFormat_v1_0 options:0 error:nil];
     return [self.transformation JSONObjectFromXMLData:data withParams:self.params error:error];
 }
 
