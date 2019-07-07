@@ -9,10 +9,10 @@
 import SwiftUI
 
 struct CitiesView : View {
-    @ObjectBinding var citiesViewModel = CitiesLoader()
+    @ObjectBinding var citiesProvider: CitiesProvider = CitiesProvider()
     var body: some View {
-        LoadingView(isShowing: $citiesViewModel.isLoading) {
-            CitiesListView(cities: self.citiesViewModel.cities)
+        LoadingView(isShowing: $citiesProvider.isLoading) {
+            CitiesSelectionListView(citiesProvider: self.citiesProvider)
         }
     }
 }

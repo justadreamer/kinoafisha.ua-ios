@@ -1,5 +1,5 @@
 //
-//  CitiesLoader.swift
+//  CitiesProvider.swift
 //  kinoafisha
 //
 //  Created by eugene on 06.07.2019.
@@ -15,11 +15,15 @@ func Q(_ s: String) -> String {
     "\"\(s)\""
 }
 
-
-final class CitiesLoader: BindableObject {
+final class CitiesProvider: BindableObject {
     var didChange = PassthroughSubject<Void, Never>()
     var isLoading: Bool = true
     var cities: [City] = []
+    var selectedCity: City? {
+        didSet {
+            notifyChanged()
+        }
+    }
     
     let urlSession = URLSession.init(configuration: .default)
     let url = URL(string: KinoAfishaBaseURLString+"/cinema")!
@@ -44,14 +48,19 @@ final class CitiesLoader: BindableObject {
                 if let transformed = try? self?.transformation.transformedData(fromHTMLData: data, withParams: [NSString(string: "baseURL"): NSString(string: Q(KinoAfishaBaseURLString))])   {
                     if let cities = try? JSONDecoder().decode([City].self, from: transformed) {
                         self?.cities = cities
+                        self?.selectedCity = cities.first(where: { $0.isDefaultSelection })
                     }
                 }
             }
             self?.isLoading = false
-            DispatchQueue.main.async {
-                self?.didChange.send(Void())
-            }
+            self?.notifyChanged()
         }
         task.resume()
+    }
+    
+    func notifyChanged() {
+        DispatchQueue.main.async {
+            self.didChange.send(())
+        }
     }
 }
