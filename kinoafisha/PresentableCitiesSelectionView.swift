@@ -8,8 +8,9 @@
 
 import SwiftUI
 
-struct CitiesOnboardingView : View {
+struct PresentableCitiesSelectionView : View {
     @ObjectBinding var citiesProvider: CitiesProvider = CitiesProvider()
+    @Binding var present: Bool
 
     var body: some View {
         NavigationView {
@@ -17,11 +18,14 @@ struct CitiesOnboardingView : View {
                 CitiesSelectionListView(citiesProvider: self.citiesProvider)
             }
             .navigationBarTitle("Кинотеатры города ")
-                .navigationBarItems(trailing: Button(action: {
-                    
+            .navigationBarItems(trailing:
+                Button(action: {
+                    self.present = false
                 }) {
                     Text("Готово")
-                })
+                }
+                .disabled(citiesProvider.cities.count == 0)
+            )
         }
     }
 }

@@ -20,6 +20,7 @@ final class CitiesProvider: BindableObject {
     var didChange = PassthroughSubject<Void, Never>()
     var isLoading: Bool = true
     var cities: [City] = []
+    
     var selectedCity: City? {
         didSet {
             saveSelectedCity()
@@ -70,12 +71,15 @@ final class CitiesProvider: BindableObject {
         }
     }
     
-    let selectedCityKey = "SelectedCity"
+    private let selectedCityKey = "SelectedCity"
     func saveSelectedCity() {
         guard let selectedCity = selectedCity,
             let encoded = try? JSONEncoder().encode(selectedCity)//,
             //let string = String(data: encoded, encoding: .utf8)
-            else { return }
+            else {
+                userDefaults.removeObject(forKey: selectedCityKey)
+                return
+            }
         userDefaults.set(encoded, forKey: selectedCityKey)
     }
     
