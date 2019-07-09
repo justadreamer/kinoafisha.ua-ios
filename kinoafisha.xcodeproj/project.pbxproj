@@ -16,7 +16,7 @@
 		441C77A51A15683F00F9499E /* ukraine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 441C77A01A15683F00F9499E /* ukraine@2x.png */; };
 		441C77A81A156CF500F9499E /* credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 441C77A61A156CF500F9499E /* credits.html */; };
 		441C77AB1A156D5700F9499E /* CreditsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 441C77AA1A156D5700F9499E /* CreditsViewController.m */; };
-		4425EF4222CBE92E00321AFE /* CitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4425EF4122CBE92E00321AFE /* CitiesView.swift */; };
+		4425EF4222CBE92E00321AFE /* CitiesOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4425EF4122CBE92E00321AFE /* CitiesOnboardingView.swift */; };
 		443AAABC1A62AE4B00F2A188 /* CitiesViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 443AAABB1A62AE4B00F2A188 /* CitiesViewModel.m */; };
 		443AAAC11A630A2B00F2A188 /* CinemasViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 443AAAC01A630A2B00F2A188 /* CinemasViewModel.m */; };
 		44476BD622D11C340066B61D /* CitiesSelectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44476BD522D11C340066B61D /* CitiesSelectionListView.swift */; };
@@ -68,7 +68,7 @@
 		441C77A91A156D5700F9499E /* CreditsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreditsViewController.h; path = Controller/CreditsViewController.h; sourceTree = "<group>"; };
 		441C77AA1A156D5700F9499E /* CreditsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreditsViewController.m; path = Controller/CreditsViewController.m; sourceTree = "<group>"; };
 		4425EF4022CBE92E00321AFE /* kinoafisha-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "kinoafisha-Bridging-Header.h"; sourceTree = "<group>"; };
-		4425EF4122CBE92E00321AFE /* CitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesView.swift; sourceTree = "<group>"; };
+		4425EF4122CBE92E00321AFE /* CitiesOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesOnboardingView.swift; sourceTree = "<group>"; };
 		443AAABA1A62AE4B00F2A188 /* CitiesViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CitiesViewModel.h; path = Controller/CitiesViewModel.h; sourceTree = "<group>"; };
 		443AAABB1A62AE4B00F2A188 /* CitiesViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CitiesViewModel.m; path = Controller/CitiesViewModel.m; sourceTree = "<group>"; };
 		443AAABF1A630A2B00F2A188 /* CinemasViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CinemasViewModel.h; path = Controller/CinemasViewModel.h; sourceTree = "<group>"; };
@@ -169,10 +169,9 @@
 				443AAABB1A62AE4B00F2A188 /* CitiesViewModel.m */,
 				4477C75622D11A7E004F7479 /* City.swift */,
 				4477C75422D11962004F7479 /* CitiesProvider.swift */,
-				4425EF4122CBE92E00321AFE /* CitiesView.swift */,
+				4425EF4122CBE92E00321AFE /* CitiesOnboardingView.swift */,
 				44B5925922D0F0A800B93D8D /* CitiesHostedViewController.swift */,
 				44476BD522D11C340066B61D /* CitiesSelectionListView.swift */,
-				44476BD722D11CD90066B61D /* LoadingView.swift */,
 			);
 			name = Cities;
 			sourceTree = "<group>";
@@ -209,6 +208,7 @@
 		4451294A1A09FF0D000364E1 /* kinoafisha */ = {
 			isa = PBXGroup;
 			children = (
+				4486987D22D3090C00F3BFFF /* Supporting Views */,
 				4425EF4022CBE92E00321AFE /* kinoafisha-Bridging-Header.h */,
 				443AAABD1A62AE5800F2A188 /* Cities */,
 				44E4D61B1A5DC90100A89982 /* XSLT */,
@@ -282,6 +282,14 @@
 				44476BD922D11DEA0066B61D /* ActivityIndicator.swift */,
 			);
 			name = Base;
+			sourceTree = "<group>";
+		};
+		4486987D22D3090C00F3BFFF /* Supporting Views */ = {
+			isa = PBXGroup;
+			children = (
+				44476BD722D11CD90066B61D /* LoadingView.swift */,
+			);
+			name = "Supporting Views";
 			sourceTree = "<group>";
 		};
 		4494D0231AAB319800C958B1 /* Schedule */ = {
@@ -517,7 +525,7 @@
 				443AAABC1A62AE4B00F2A188 /* CitiesViewModel.m in Sources */,
 				441ADB211A13F19D00E01CF6 /* AttributeCell.m in Sources */,
 				44B2EF831A116CAE000AFC00 /* CinemasViewController.m in Sources */,
-				4425EF4222CBE92E00321AFE /* CitiesView.swift in Sources */,
+				4425EF4222CBE92E00321AFE /* CitiesOnboardingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

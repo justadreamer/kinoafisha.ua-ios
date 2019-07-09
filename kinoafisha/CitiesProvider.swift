@@ -15,16 +15,19 @@ func Q(_ s: String) -> String {
     "\"\(s)\""
 }
 
+
 final class CitiesProvider: BindableObject {
     var didChange = PassthroughSubject<Void, Never>()
     var isLoading: Bool = true
     var cities: [City] = []
     var selectedCity: City? {
         didSet {
+            saveSelectedCity()
             notifyChanged()
         }
     }
     
+    let userDefaults = UserDefaults.standard
     let urlSession = URLSession.init(configuration: .default)
     let url = URL(string: KinoAfishaBaseURLString+"/cinema")!
     let ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36"
@@ -36,6 +39,7 @@ final class CitiesProvider: BindableObject {
     }()
     
     init() {
+        maybeLoadSelectedCity()
         reload()
     }
     
@@ -48,7 +52,9 @@ final class CitiesProvider: BindableObject {
                 if let transformed = try? self?.transformation.transformedData(fromHTMLData: data, withParams: [NSString(string: "baseURL"): NSString(string: Q(KinoAfishaBaseURLString))])   {
                     if let cities = try? JSONDecoder().decode([City].self, from: transformed) {
                         self?.cities = cities
-                        self?.selectedCity = cities.first(where: { $0.isDefaultSelection })
+                        if self?.selectedCity == nil {
+                            self?.selectedCity = cities.first(where: { $0.isDefaultSelection })
+                        }
                     }
                 }
             }
@@ -62,5 +68,22 @@ final class CitiesProvider: BindableObject {
         DispatchQueue.main.async {
             self.didChange.send(())
         }
+    }
+    
+    let selectedCityKey = "SelectedCity"
+    func saveSelectedCity() {
+        guard let selectedCity = selectedCity,
+            let encoded = try? JSONEncoder().encode(selectedCity)//,
+            //let string = String(data: encoded, encoding: .utf8)
+            else { return }
+        userDefaults.set(encoded, forKey: selectedCityKey)
+    }
+    
+    func maybeLoadSelectedCity() {
+        guard let data = userDefaults.value(forKey: selectedCityKey) as? Data,
+            let selectedCity = try? JSONDecoder().decode(City.self, from: data)
+            else { return }
+        
+        self.selectedCity = selectedCity
     }
 }

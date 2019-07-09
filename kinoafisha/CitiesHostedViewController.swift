@@ -11,7 +11,7 @@ import SwiftUI
 
 class CitiesHostedViewController: ContainerViewController {
     override func viewDidLoad() {
-        let hosting = UIHostingController(rootView: CitiesView())
+        let hosting = UIHostingController(rootView: CitiesOnboardingView())
         self.content = hosting
         super.viewDidLoad()
     }

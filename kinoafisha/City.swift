@@ -9,14 +9,13 @@
 import Foundation
 
 struct City: Codable, Equatable, Hashable {
-    
     enum CodingKeys: String, CodingKey {
         case name
         case cinemaURL = "link_cinema"
         case filmURL = "link_kinoafisha"
         case isDefaultSelection = "is_default_selection"
     }
-    
+
     let name: String
     let cinemaURL: URL
     let filmURL: URL
