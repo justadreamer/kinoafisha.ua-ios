@@ -16,13 +16,13 @@ struct CitiesOnboardingView : View {
             LoadingView(isShowing: $citiesProvider.isLoading) {
                 CitiesSelectionListView(citiesProvider: self.citiesProvider)
             }
+            .navigationBarTitle("Кинотеатры города ")
+                .navigationBarItems(trailing: Button(action: {
+                    
+                }) {
+                    Text("Готово")
+                })
         }
-        .navigationBarTitle("Кинотеатры города ")
-            .navigationBarItems(trailing: Button(action: {
-                
-            }) {
-                Text("Готово")
-            })
     }
 }
 

@@ -32,6 +32,8 @@
 		446AA6B21B933768003B3319 /* FilmsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 446AA6B11B933768003B3319 /* FilmsViewModel.m */; };
 		4477C75522D11962004F7479 /* CitiesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4477C75422D11962004F7479 /* CitiesProvider.swift */; };
 		4477C75722D11A7E004F7479 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4477C75622D11A7E004F7479 /* City.swift */; };
+		448A6C7122D4740000BE7D05 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448A6C7022D4740000BE7D05 /* SceneDelegate.swift */; };
+		448A6C7322D4747E00BE7D05 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448A6C7222D4747E00BE7D05 /* MainView.swift */; };
 		4494D0291AAB31DC00C958B1 /* ScheduleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4494D0281AAB31DC00C958B1 /* ScheduleViewModel.m */; };
 		44B2EE721A0F905D000AFC00 /* CitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B2EE711A0F905D000AFC00 /* CitiesViewController.m */; };
 		44B2EE991A0F925D000AFC00 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B2EE981A0F925D000AFC00 /* City.m */; };
@@ -94,6 +96,8 @@
 		446AA6B11B933768003B3319 /* FilmsViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilmsViewModel.m; path = Controller/FilmsViewModel.m; sourceTree = "<group>"; };
 		4477C75422D11962004F7479 /* CitiesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesProvider.swift; sourceTree = "<group>"; };
 		4477C75622D11A7E004F7479 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		448A6C7022D4740000BE7D05 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		448A6C7222D4747E00BE7D05 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		4494D0271AAB31DC00C958B1 /* ScheduleViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScheduleViewModel.h; path = Controller/ScheduleViewModel.h; sourceTree = "<group>"; };
 		4494D0281AAB31DC00C958B1 /* ScheduleViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScheduleViewModel.m; path = Controller/ScheduleViewModel.m; sourceTree = "<group>"; };
 		44B2EE701A0F905D000AFC00 /* CitiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CitiesViewController.h; path = Controller/CitiesViewController.h; sourceTree = "<group>"; };
@@ -208,6 +212,16 @@
 		4451294A1A09FF0D000364E1 /* kinoafisha */ = {
 			isa = PBXGroup;
 			children = (
+				4451294F1A09FF0D000364E1 /* AppDelegate.h */,
+				445129501A09FF0D000364E1 /* AppDelegate.m */,
+				445129551A09FF0D000364E1 /* Main.storyboard */,
+				445129581A09FF0D000364E1 /* Images.xcassets */,
+				4451295A1A09FF0D000364E1 /* LaunchScreen.xib */,
+				44B2EE9E1A0FA207000AFC00 /* Global.h */,
+				44E4D61D1A5DD08300A89982 /* S3Secrets.h */,
+				44E4D61E1A5DD09900A89982 /* S3Secrets_Example.h */,
+				448A6C7022D4740000BE7D05 /* SceneDelegate.swift */,
+				448A6C7222D4747E00BE7D05 /* MainView.swift */,
 				4486987D22D3090C00F3BFFF /* Supporting Views */,
 				4425EF4022CBE92E00321AFE /* kinoafisha-Bridging-Header.h */,
 				443AAABD1A62AE5800F2A188 /* Cities */,
@@ -215,16 +229,8 @@
 				44B2EE6F1A0F9024000AFC00 /* Model */,
 				44B2EE6E1A0F901C000AFC00 /* UI: Controllers and ViewModels */,
 				44B2EEAF1A10002C000AFC00 /* TableViewCell */,
-				4451294F1A09FF0D000364E1 /* AppDelegate.h */,
-				445129501A09FF0D000364E1 /* AppDelegate.m */,
-				445129551A09FF0D000364E1 /* Main.storyboard */,
-				445129581A09FF0D000364E1 /* Images.xcassets */,
-				4451295A1A09FF0D000364E1 /* LaunchScreen.xib */,
 				441C77901A15607E00F9499E /* Resources */,
 				4451294B1A09FF0D000364E1 /* Supporting Files */,
-				44B2EE9E1A0FA207000AFC00 /* Global.h */,
-				44E4D61D1A5DD08300A89982 /* S3Secrets.h */,
-				44E4D61E1A5DD09900A89982 /* S3Secrets_Example.h */,
 			);
 			path = kinoafisha;
 			sourceTree = "<group>";
@@ -493,6 +499,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44B2EF891A12B57F000AFC00 /* ScheduleCinemaRoomCell.m in Sources */,
+				448A6C7322D4747E00BE7D05 /* MainView.swift in Sources */,
 				441C77AB1A156D5700F9499E /* CreditsViewController.m in Sources */,
 				44C54DA61A153D4800AF22AD /* FilmsViewController.m in Sources */,
 				446AA6AA1B9327F1003B3319 /* BaseViewController.m in Sources */,
@@ -507,6 +514,7 @@
 				44B2EE991A0F925D000AFC00 /* City.m in Sources */,
 				44B2EEB21A10002C000AFC00 /* CinemaCell.m in Sources */,
 				44476BD822D11CD90066B61D /* LoadingView.swift in Sources */,
+				448A6C7122D4740000BE7D05 /* SceneDelegate.swift in Sources */,
 				4451294E1A09FF0D000364E1 /* main.m in Sources */,
 				44476BDA22D11DEA0066B61D /* ActivityIndicator.swift in Sources */,
 				4494D0291AAB31DC00C958B1 /* ScheduleViewModel.m in Sources */,

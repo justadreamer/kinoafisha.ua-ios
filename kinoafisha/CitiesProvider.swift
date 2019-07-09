@@ -26,7 +26,7 @@ final class CitiesProvider: BindableObject {
             notifyChanged()
         }
     }
-    
+
     let userDefaults = UserDefaults.standard
     let urlSession = URLSession.init(configuration: .default)
     let url = URL(string: KinoAfishaBaseURLString+"/cinema")!
