@@ -10,14 +10,14 @@ import SwiftUI
 
 struct MainUIContainer : View {
     @ObjectBinding var citiesProvider: CitiesProvider
-    @State private var presentSettings: Bool
+    @State var presentSettings: Bool
 
     var body: some View {
         Group {
-            if presentSettings || citiesProvider.selectedCity != nil {
+            if presentSettings {
                 PresentableCitiesSelectionView(citiesProvider: citiesProvider, present: $presentSettings)
             } else {
-                MainTabBarView(presentSettings: $presentSettings)
+                MainTabBarView(presentSettings: $presentSettings, city: citiesProvider.selectedCity!)
             }
         }
     }

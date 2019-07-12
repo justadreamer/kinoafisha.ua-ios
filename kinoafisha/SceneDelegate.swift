@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             citiesProvider.selectedCity = nil //for debug purposes
-            window.rootViewController = UIHostingController(rootView: WelcomeDispatcherView(citiesProvider: citiesProvider))
+            window.rootViewController = UIHostingController(rootView: MainUIContainer(citiesProvider: citiesProvider, presentSettings: citiesProvider.selectedCity == nil))
             self.window = window
             window.makeKeyAndVisible()
         }

@@ -10,12 +10,6 @@ import Foundation
 import SwiftUI
 import Combine
 
-let KinoAfishaBaseURLString = "http://kinoafisha.ua"
-func Q(_ s: String) -> String {
-    "\"\(s)\""
-}
-
-
 final class CitiesProvider: BindableObject {
     var didChange = PassthroughSubject<Void, Never>()
     var isLoading: Bool = true

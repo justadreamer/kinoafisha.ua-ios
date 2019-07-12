@@ -23,6 +23,7 @@ struct SettingsButton: View {
 
 struct MainTabBarView : View {
     @Binding var presentSettings: Bool
+    @State var city: City
 
     var body: some View {
         TabbedView {
@@ -40,7 +41,7 @@ struct MainTabBarView : View {
             .tag(0)
             
             NavigationView {
-                Text("Кинотеатры")
+                CinemasView(cinemasProvider: CinemasProvider(url: city.cinemaURL))
                 .navigationBarTitle("Кинотеатры")
                 .navigationBarItems(trailing: SettingsButton(presentSettings: $presentSettings))
             }
