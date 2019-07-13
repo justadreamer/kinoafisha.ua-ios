@@ -18,3 +18,9 @@ struct CinemasContainer: Codable {
     var cityName: String
     var cinemas: [Cinema]
 }
+
+extension CinemasContainer: ProvidesEmptyState {
+    static var empty: Self {
+        return CinemasContainer(cityName: "", cinemas: [])
+    }
+}

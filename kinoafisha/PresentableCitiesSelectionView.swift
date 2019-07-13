@@ -29,11 +29,3 @@ struct PresentableCitiesSelectionView : View {
         }
     }
 }
-
-#if DEBUG
-struct CitiesView_Previews : PreviewProvider {
-    static var previews: some View {
-        CitiesView()
-    }
-}
-#endif

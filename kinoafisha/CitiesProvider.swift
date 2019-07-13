@@ -14,9 +14,13 @@ final class CitiesProvider: BindableObject {
     var didChange = PassthroughSubject<Void, Never>()
     var isLoading: Bool = true
     var cities: [City] = []
-    
+    var filmsProvider = FilmsProvider(url: nil)
+    var cinemasProvider = CinemasProvider(url: nil)
+
     var selectedCity: City? {
         didSet {
+            filmsProvider.url = selectedCity?.filmURL
+            cinemasProvider.url = selectedCity?.cinemaURL
             saveSelectedCity()
             notifyChanged()
         }

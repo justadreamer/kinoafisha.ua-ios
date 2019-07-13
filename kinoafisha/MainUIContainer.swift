@@ -17,7 +17,7 @@ struct MainUIContainer : View {
             if presentSettings {
                 PresentableCitiesSelectionView(citiesProvider: citiesProvider, present: $presentSettings)
             } else {
-                MainTabBarView(presentSettings: $presentSettings, city: citiesProvider.selectedCity!)
+                MainTabBarView(presentSettings: $presentSettings, citiesProvider: citiesProvider)
             }
         }
     }

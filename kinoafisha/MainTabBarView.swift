@@ -23,12 +23,12 @@ struct SettingsButton: View {
 
 struct MainTabBarView : View {
     @Binding var presentSettings: Bool
-    @State var city: City
+    @ObjectBinding var citiesProvider: CitiesProvider
 
     var body: some View {
         TabbedView {
             NavigationView {
-                Text("Фильмы")
+                FilmsView(filmsProvider: citiesProvider.filmsProvider)
                 .navigationBarTitle("Фильмы")
                 .navigationBarItems(trailing: SettingsButton(presentSettings: $presentSettings))
             }
@@ -39,9 +39,9 @@ struct MainTabBarView : View {
                 }
             }
             .tag(0)
-            
+
             NavigationView {
-                CinemasView(cinemasProvider: CinemasProvider(url: city.cinemaURL))
+                CinemasView(cinemasProvider: citiesProvider.cinemasProvider)
                 .navigationBarTitle("Кинотеатры")
                 .navigationBarItems(trailing: SettingsButton(presentSettings: $presentSettings))
             }

@@ -29,6 +29,7 @@ struct LoadingView<Content>: View where Content: View {
                 }
                 .frame(width: geometry.size.width / 2,
                        height: geometry.size.height / 5)
+                    .padding()
                     .background(Color.secondary.colorInvert())
                     .foregroundColor(Color.primary)
                     .cornerRadius(5)

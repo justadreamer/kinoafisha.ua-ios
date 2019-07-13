@@ -18,9 +18,19 @@ final class CinemasProvider: BindableObject {
             didChange.send()
         }
     }
+
     var cinemas: [Cinema] = [] {
         didSet {
             didChange.send()
+        }
+    }
+
+    var url: URL? {
+        get {
+            loader.url
+        }
+        set {
+            loader.url = newValue
         }
     }
 
@@ -30,7 +40,7 @@ final class CinemasProvider: BindableObject {
         cancelation?.cancel()
     }
 
-    init(url: URL) {
+    init(url: URL?) {
         self.loader = XSLTLoader<CinemasContainer>(url: url, transformationName: "cinemas", resourceURLProvider: (UIApplication.shared.delegate as! AppDelegate).s3SyncManager)
         reload()
     }
