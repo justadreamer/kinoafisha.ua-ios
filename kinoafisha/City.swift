@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct City: Codable, Equatable, Hashable {
+struct City: Codable, Hashable {
     enum CodingKeys: String, CodingKey {
         case name
         case cinemaURL = "link_cinema"
@@ -20,4 +20,10 @@ struct City: Codable, Equatable, Hashable {
     let cinemaURL: URL
     let filmURL: URL
     let isDefaultSelection: Bool
+}
+
+extension City: Equatable {
+    static func ==(lhs: Self, rhs: Self) -> Bool {
+        return lhs.name == rhs.name
+    }
 }
