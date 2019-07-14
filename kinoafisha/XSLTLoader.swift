@@ -24,33 +24,17 @@ func Q(_ s: String) -> String {
 }
 
 
-final class XSLTLoader<Model: Decodable> where Model: ProvidesEmptyState {
-    private var urlValue = CurrentValueSubject<URL?, Error>(nil)
+final class XSLTLoader<Model> where Model: ProvidesEmptyState, Model: Decodable{
     var url: URL? {
         didSet {
             urlValue.send(url)
         }
     }
-    
-    
-    var transformation: SkyXSLTransformation
-    let urlSession = URLSession.init(configuration: .default)
-    let ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36"
 
-    var loading: Bool = false
-
-    init(url: URL?, transformation: SkyXSLTransformation) {
-        self.url = url
-        self.transformation = transformation
-    }
+    private var urlValue = CurrentValueSubject<URL?, Error>(nil)
     
-    init(url: URL?, transformationName: String, resourceURLProvider: SkyS3ResourceURLProvider) {
-        self.url = url
-        self.transformation = Self.transformation(name: transformationName, from: resourceURLProvider)
-    }
-
-    func reload() -> AnyPublisher<Model, Error> {
-        print("reload \(self) url: \(url)")
+    var reloadModel: AnyPublisher<Model, Error> {
+        print("reloading \(self) url: \(String(describing: url))")
         return urlValue
             .flatMap { url -> AnyPublisher<Model, Error> in
                 //guard let url = url else { throw "no url provided" }
@@ -64,11 +48,31 @@ final class XSLTLoader<Model: Decodable> where Model: ProvidesEmptyState {
                     .tryMap { data, response -> Model in
                         let model = try self.parse(data)
                         return model
-                    }
-                    .eraseToAnyPublisher()
-            }
-            .eraseToAnyPublisher()
+                }
+                .eraseToAnyPublisher()
+        }
+        .eraseToAnyPublisher()
     }
+    
+    
+    
+    private var transformation: SkyXSLTransformation
+    private let urlSession = URLSession.init(configuration: .default)
+    private let ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36"
+
+    var loading: Bool = false
+
+    init(url: URL?, transformation: SkyXSLTransformation) {
+        self.url = url
+        self.transformation = transformation
+    }
+    
+    init(url: URL?, transformationName: String, resourceURLProvider: SkyS3ResourceURLProvider) {
+        self.url = url
+        self.transformation = Self.transformation(name: transformationName, from: resourceURLProvider)
+    }
+
+    
     
     static func transformation(name: String, from provider: SkyS3ResourceURLProvider) -> SkyXSLTransformation {
         let xsltURL = provider.url(forResource: name, withExtension: "xsl")!

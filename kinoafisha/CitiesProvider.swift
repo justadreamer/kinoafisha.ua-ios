@@ -14,8 +14,8 @@ final class CitiesProvider: BindableObject {
     var didChange = PassthroughSubject<Void, Never>()
     var isLoading: Bool = true
     var cities: [City] = []
-    var filmsProvider = FilmsProvider(url: nil)
-    var cinemasProvider = CinemasProvider(url: nil)
+    var filmsProvider = ModelProvider<[Film]>(url: nil, transformationName: "films")
+    var cinemasProvider = ModelProvider<CinemasContainer>(url: nil, transformationName: "cinemas")
 
     var selectedCity: City? {
         didSet {

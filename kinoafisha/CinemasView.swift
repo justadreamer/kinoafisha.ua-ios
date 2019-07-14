@@ -9,9 +9,9 @@
 import SwiftUI
 
 struct CinemasView : View {
-    @ObjectBinding var cinemasProvider: CinemasProvider
+    @ObjectBinding var cinemasProvider: ModelProvider<CinemasContainer>
     var body: some View {
-        List(cinemasProvider.cinemas.identified(by: \.name)) { cinema in
+        List(cinemasProvider.model.cinemas.identified(by: \.name)) { cinema in
             CinemaRow(cinema: cinema)
         }
     }

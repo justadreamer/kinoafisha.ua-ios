@@ -10,10 +10,10 @@ import SwiftUI
 import Combine
 
 struct FilmsView : View {
-    @ObjectBinding var filmsProvider: FilmsProvider
+    @ObjectBinding var filmsProvider: ModelProvider<[Film]>
     
     var body: some View {
-        List(filmsProvider.films.identified(by: \.title)) { film in
+        List(filmsProvider.model.identified(by: \.title)) { film in
             FilmRow(film: film)
         }
     }

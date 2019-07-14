@@ -1,30 +1,29 @@
 //
-//  FilmsProvider.swift
+//  ModelProvider.swift
 //  kinoafisha
 //
-//  Created by Eugene Dorfman on 13/7/19.
+//  Created by Eugene Dorfman on 14/7/19.
 //  Copyright © 2019 justadreamer. All rights reserved.
 //
 
 import Foundation
-import SwiftUI
 import Combine
+import SwiftUI
 
-final class FilmsProvider: BindableObject {
-    var didChange = PassthroughSubject<Void,Never>()
-
-    var films: [Film] = [] {
+final class ModelProvider<Model>: BindableObject where Model: ProvidesEmptyState, Model: Decodable{
+    var didChange = PassthroughSubject<Void, Never>()
+    var model: Model = Model.empty {
         didSet {
             didChange.send()
         }
     }
-
     var isLoading: Bool = false {
         didSet {
             didChange.send()
         }
     }
-    
+
+    private var loader: XSLTLoader<Model>
     var url: URL? {
         get {
             loader.url
@@ -33,16 +32,14 @@ final class FilmsProvider: BindableObject {
             loader.url = newValue
         }
     }
-
-    private var loader: XSLTLoader<[Film]>
-    var cancelation: Cancellable?
     
+    private var cancelation: Cancellable?
     deinit {
         cancelation?.cancel()
     }
     
-    init(url: URL?) {
-        self.loader = XSLTLoader(url: url, transformationName: "films", resourceURLProvider: (UIApplication.shared.delegate as! AppDelegate).s3SyncManager)
+    init(url: URL?, transformationName: String) {
+        self.loader = XSLTLoader<Model>(url: url, transformationName: transformationName, resourceURLProvider: (UIApplication.shared.delegate as! AppDelegate).s3SyncManager)
         reload()
     }
     
@@ -50,16 +47,17 @@ final class FilmsProvider: BindableObject {
         self.isLoading = true
         
         cancelation =
-            self.loader.reload()
-            .catch { error -> Just<[Film]> in
+            self.loader.reloadModel
+            .receive(on: DispatchQueue.main)
+            .catch { error -> Just<Model> in
                 //perform side effect here and return empty cinemas
                 print("\(error)")
-                return Just([])
+                return Just(Model.empty)
             }
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] films in
+            .sink { [weak self] model in
                 self?.isLoading = false //for now this is a required side effect which prevents us to use .assign(to:on:)
-                self?.films = films
+                self?.model = model
         }
     }
+
 }
