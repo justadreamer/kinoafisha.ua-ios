@@ -31,7 +31,7 @@
 		446AA6AF1B933397003B3319 /* FilmDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 446AA6AE1B933397003B3319 /* FilmDetailViewModel.m */; };
 		446AA6B21B933768003B3319 /* FilmsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 446AA6B11B933768003B3319 /* FilmsViewModel.m */; };
 		4472A41B22D66F84009E2E9C /* XSLTLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4472A41A22D66F84009E2E9C /* XSLTLoader.swift */; };
-		4477C75522D11962004F7479 /* CitiesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4477C75422D11962004F7479 /* CitiesProvider.swift */; };
+		4477C75522D11962004F7479 /* ProvidersContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4477C75422D11962004F7479 /* ProvidersContainer.swift */; };
 		4477C75722D11A7E004F7479 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4477C75622D11A7E004F7479 /* City.swift */; };
 		448A6C7122D4740000BE7D05 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448A6C7022D4740000BE7D05 /* SceneDelegate.swift */; };
 		4494D0291AAB31DC00C958B1 /* ScheduleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4494D0281AAB31DC00C958B1 /* ScheduleViewModel.m */; };
@@ -107,7 +107,7 @@
 		446AA6B01B933768003B3319 /* FilmsViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilmsViewModel.h; path = Controller/FilmsViewModel.h; sourceTree = "<group>"; };
 		446AA6B11B933768003B3319 /* FilmsViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilmsViewModel.m; path = Controller/FilmsViewModel.m; sourceTree = "<group>"; };
 		4472A41A22D66F84009E2E9C /* XSLTLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XSLTLoader.swift; sourceTree = "<group>"; };
-		4477C75422D11962004F7479 /* CitiesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesProvider.swift; sourceTree = "<group>"; };
+		4477C75422D11962004F7479 /* ProvidersContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvidersContainer.swift; sourceTree = "<group>"; };
 		4477C75622D11A7E004F7479 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		448A6C7022D4740000BE7D05 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4494D0271AAB31DC00C958B1 /* ScheduleViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScheduleViewModel.h; path = Controller/ScheduleViewModel.h; sourceTree = "<group>"; };
@@ -198,7 +198,6 @@
 				443AAABA1A62AE4B00F2A188 /* CitiesViewModel.h */,
 				443AAABB1A62AE4B00F2A188 /* CitiesViewModel.m */,
 				4477C75622D11A7E004F7479 /* City.swift */,
-				4477C75422D11962004F7479 /* CitiesProvider.swift */,
 				4425EF4122CBE92E00321AFE /* PresentableCitiesSelectionView.swift */,
 				44476BD522D11C340066B61D /* CitiesSelectionListView.swift */,
 			);
@@ -259,6 +258,7 @@
 				4472A41A22D66F84009E2E9C /* XSLTLoader.swift */,
 				449CE74D22DA32DE00958CC2 /* ProvidesEmptyState.swift */,
 				449CE74F22DBAD1C00958CC2 /* ModelProvider.swift */,
+				4477C75422D11962004F7479 /* ProvidersContainer.swift */,
 				4486987D22D3090C00F3BFFF /* Supporting Views */,
 				4425EF4022CBE92E00321AFE /* kinoafisha-Bridging-Header.h */,
 				443AAABD1A62AE5800F2A188 /* Cities */,
@@ -547,7 +547,7 @@
 				4472A41B22D66F84009E2E9C /* XSLTLoader.swift in Sources */,
 				4498916622D93E72002D26B2 /* FilmRow.swift in Sources */,
 				44B2EF801A116C83000AFC00 /* ScheduleViewController.m in Sources */,
-				4477C75522D11962004F7479 /* CitiesProvider.swift in Sources */,
+				4477C75522D11962004F7479 /* ProvidersContainer.swift in Sources */,
 				4498915F22D93C10002D26B2 /* CinemasContainer.swift in Sources */,
 				44C03D4C22D504B100F5C246 /* TabBarView.swift in Sources */,
 				44B2EF861A117299000AFC00 /* ScheduleEntry.m in Sources */,

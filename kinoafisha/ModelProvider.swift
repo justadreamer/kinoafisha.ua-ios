@@ -11,15 +11,15 @@ import Combine
 import SwiftUI
 
 final class ModelProvider<Model>: BindableObject where Model: ProvidesEmptyState, Model: Decodable{
-    var didChange = PassthroughSubject<Void, Never>()
+    var didChange = PassthroughSubject<Model, Never>()
     var model: Model = Model.empty {
         didSet {
-            didChange.send()
+            didChange.send(model)
         }
     }
     var isLoading: Bool = false {
         didSet {
-            didChange.send()
+            didChange.send(model)
         }
     }
 
@@ -44,8 +44,8 @@ final class ModelProvider<Model>: BindableObject where Model: ProvidesEmptyState
     }
     
     func reload() {
+        cancelation?.cancel()
         self.isLoading = true
-        
         cancelation =
             self.loader.reloadModel
             .receive(on: DispatchQueue.main)

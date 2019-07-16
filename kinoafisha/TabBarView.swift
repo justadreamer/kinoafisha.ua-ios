@@ -23,12 +23,12 @@ struct SettingsButton: View {
 
 struct TabBarView : View {
     @State var presentSettings: Bool = false
-    @ObjectBinding var citiesProvider: CitiesProvider
+    @ObjectBinding var providersContainer: ProvidersContainer
 
     var body: some View {
         TabbedView {
             NavigationView {
-                FilmsView(filmsProvider: citiesProvider.filmsProvider)
+                FilmsView(filmsProvider: providersContainer.filmsProvider)
                 .navigationBarTitle("Фильмы")
                 .navigationBarItems(trailing: SettingsButton(presentSettings: $presentSettings))
             }
@@ -41,7 +41,7 @@ struct TabBarView : View {
             .tag(0)
 
             NavigationView {
-                CinemasView(cinemasProvider: citiesProvider.cinemasProvider)
+                CinemasView(cinemasProvider: providersContainer.cinemasProvider)
                 .navigationBarTitle("Кинотеатры")
                 .navigationBarItems(trailing: SettingsButton(presentSettings: $presentSettings))
             }
@@ -57,7 +57,7 @@ struct TabBarView : View {
     }
     
     func modal() -> Modal {
-        Modal(PresentableCitiesSelectionView(citiesProvider: citiesProvider, present: $presentSettings)) {
+        Modal(PresentableCitiesSelectionView(providersContainer: providersContainer, citiesProvider: providersContainer.citiesProvider, present: $presentSettings)) {
             self.presentSettings = false
         }
     }

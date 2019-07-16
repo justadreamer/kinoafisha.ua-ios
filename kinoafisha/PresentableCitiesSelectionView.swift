@@ -9,24 +9,31 @@
 import SwiftUI
 
 struct PresentableCitiesSelectionView : View {
-    @ObjectBinding var citiesProvider: CitiesProvider
+    @ObjectBinding var providersContainer: ProvidersContainer
+    @ObjectBinding var citiesProvider: ModelProvider<[City]>
     @Binding var present: Bool
 
     var body: some View {
         NavigationView {
             LoadingView(isShowing: $citiesProvider.isLoading) {
-                CitiesSelectionListView(citiesProvider: self.citiesProvider)
+                CitiesSelectionListView(providersContainer: self.providersContainer, citiesProvider: self.citiesProvider)
             }
             .navigationBarTitle("Кинотеатры города ")
-            .navigationBarItems(trailing:
+            .navigationBarItems(leading:
                 Button(action: {
-                    withAnimation {
-                        self.present.toggle()
-                    }
+                    self.citiesProvider.reload()
                 }) {
-                    Text("Готово")
-                }
-                .disabled(citiesProvider.cities.count == 0)
+                    Image(systemName: "arrow.clockwise")
+                },
+                                trailing:
+                    Button(action: {
+                        withAnimation {
+                            self.present.toggle()
+                        }
+                    }) {
+                        Text("Готово")
+                    }
+                    .disabled(citiesProvider.model.count == 0)
             )
         }
     }
