@@ -55,8 +55,8 @@
 		44B2EF8C1A12B992000AFC00 /* Film.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B2EF8B1A12B992000AFC00 /* Film.m */; };
 		44B2EF8F1A12BA11000AFC00 /* Attribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B2EF8E1A12BA11000AFC00 /* Attribute.m */; };
 		44B2EF921A12C0F3000AFC00 /* FilmDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B2EF911A12C0F3000AFC00 /* FilmDetailViewController.m */; };
-		44C03D4C22D504B100F5C246 /* MainTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C03D4B22D504B100F5C246 /* MainTabBarView.swift */; };
-		44C03D5022D5215F00F5C246 /* MainUIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C03D4F22D5215F00F5C246 /* MainUIContainer.swift */; };
+		44C03D4C22D504B100F5C246 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C03D4B22D504B100F5C246 /* TabBarView.swift */; };
+		44C03D5022D5215F00F5C246 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C03D4F22D5215F00F5C246 /* WelcomeView.swift */; };
 		44C03D5222D5C9FA00F5C246 /* CinemasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C03D5122D5C9FA00F5C246 /* CinemasView.swift */; };
 		44C03D5422D5CA1F00F5C246 /* CinemaRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C03D5322D5CA1F00F5C246 /* CinemaRow.swift */; };
 		44C03D5622D5CA2700F5C246 /* Cinema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C03D5522D5CA2700F5C246 /* Cinema.swift */; };
@@ -145,8 +145,8 @@
 		44B2EF8E1A12BA11000AFC00 /* Attribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Attribute.m; path = Model/Attribute.m; sourceTree = "<group>"; };
 		44B2EF901A12C0F3000AFC00 /* FilmDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilmDetailViewController.h; path = Controller/FilmDetailViewController.h; sourceTree = "<group>"; };
 		44B2EF911A12C0F3000AFC00 /* FilmDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilmDetailViewController.m; path = Controller/FilmDetailViewController.m; sourceTree = "<group>"; };
-		44C03D4B22D504B100F5C246 /* MainTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarView.swift; sourceTree = "<group>"; };
-		44C03D4F22D5215F00F5C246 /* MainUIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUIContainer.swift; sourceTree = "<group>"; };
+		44C03D4B22D504B100F5C246 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		44C03D4F22D5215F00F5C246 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		44C03D5122D5C9FA00F5C246 /* CinemasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemasView.swift; sourceTree = "<group>"; };
 		44C03D5322D5CA1F00F5C246 /* CinemaRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CinemaRow.swift; path = /Users/eugene/projects/kinoafisha/kinoafisha/CinemaRow.swift; sourceTree = "<absolute>"; };
 		44C03D5522D5CA2700F5C246 /* Cinema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cinema.swift; sourceTree = "<group>"; };
@@ -254,8 +254,8 @@
 				44E4D61D1A5DD08300A89982 /* S3Secrets.h */,
 				44E4D61E1A5DD09900A89982 /* S3Secrets_Example.h */,
 				448A6C7022D4740000BE7D05 /* SceneDelegate.swift */,
-				44C03D4B22D504B100F5C246 /* MainTabBarView.swift */,
-				44C03D4F22D5215F00F5C246 /* MainUIContainer.swift */,
+				44C03D4B22D504B100F5C246 /* TabBarView.swift */,
+				44C03D4F22D5215F00F5C246 /* WelcomeView.swift */,
 				4472A41A22D66F84009E2E9C /* XSLTLoader.swift */,
 				449CE74D22DA32DE00958CC2 /* ProvidesEmptyState.swift */,
 				449CE74F22DBAD1C00958CC2 /* ModelProvider.swift */,
@@ -525,7 +525,7 @@
 				44C03D5622D5CA2700F5C246 /* Cinema.swift in Sources */,
 				446AA6AA1B9327F1003B3319 /* BaseViewController.m in Sources */,
 				446AA6B21B933768003B3319 /* FilmsViewModel.m in Sources */,
-				44C03D5022D5215F00F5C246 /* MainUIContainer.swift in Sources */,
+				44C03D5022D5215F00F5C246 /* WelcomeView.swift in Sources */,
 				445129511A09FF0D000364E1 /* AppDelegate.m in Sources */,
 				4498916422D93E66002D26B2 /* FilmsView.swift in Sources */,
 				44C8189B1B91F8A400E538FB /* BaseViewModel.m in Sources */,
@@ -549,7 +549,7 @@
 				44B2EF801A116C83000AFC00 /* ScheduleViewController.m in Sources */,
 				4477C75522D11962004F7479 /* CitiesProvider.swift in Sources */,
 				4498915F22D93C10002D26B2 /* CinemasContainer.swift in Sources */,
-				44C03D4C22D504B100F5C246 /* MainTabBarView.swift in Sources */,
+				44C03D4C22D504B100F5C246 /* TabBarView.swift in Sources */,
 				44B2EF861A117299000AFC00 /* ScheduleEntry.m in Sources */,
 				44B2EF8C1A12B992000AFC00 /* Film.m in Sources */,
 				4498916A22D93FB4002D26B2 /* Attribute.swift in Sources */,

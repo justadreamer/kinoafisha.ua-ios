@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct PresentableCitiesSelectionView : View {
-    @ObjectBinding var citiesProvider: CitiesProvider = CitiesProvider()
+    @ObjectBinding var citiesProvider: CitiesProvider
     @Binding var present: Bool
 
     var body: some View {
@@ -20,7 +20,9 @@ struct PresentableCitiesSelectionView : View {
             .navigationBarTitle("Кинотеатры города ")
             .navigationBarItems(trailing:
                 Button(action: {
-                    self.present = false
+                    withAnimation {
+                        self.present.toggle()
+                    }
                 }) {
                     Text("Готово")
                 }

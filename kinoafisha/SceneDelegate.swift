@@ -22,8 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use a UIHostingController as window root view controller
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            //citiesProvider.selectedCity = nil //for debug purposes
-            window.rootViewController = UIHostingController(rootView: MainUIContainer(citiesProvider: citiesProvider, presentSettings: citiesProvider.selectedCity == nil))
+            citiesProvider.selectedCity = nil //for debug purposes
+            window.rootViewController = UIHostingController(rootView: WelcomeView(citiesProvider: citiesProvider, presentOnboarding: citiesProvider.selectedCity == nil))
             self.window = window
             window.makeKeyAndVisible()
         }

@@ -21,8 +21,8 @@ struct SettingsButton: View {
     }
 }
 
-struct MainTabBarView : View {
-    @Binding var presentSettings: Bool
+struct TabBarView : View {
+    @State var presentSettings: Bool = false
     @ObjectBinding var citiesProvider: CitiesProvider
 
     var body: some View {
@@ -52,6 +52,13 @@ struct MainTabBarView : View {
                 }
             }
             .tag(1)
+        }
+        .presentation(presentSettings ? modal() : nil)
+    }
+    
+    func modal() -> Modal {
+        Modal(PresentableCitiesSelectionView(citiesProvider: citiesProvider, present: $presentSettings)) {
+            self.presentSettings = false
         }
     }
 }
