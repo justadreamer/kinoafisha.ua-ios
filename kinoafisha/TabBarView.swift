@@ -29,7 +29,7 @@ struct TabBarView : View {
         TabbedView {
             NavigationView {
                 FilmsView(filmsProvider: providersContainer.filmsProvider)
-                .navigationBarTitle("Фильмы")
+                .navigationBarTitle("Фильмы \(providersContainer.selectedCity?.name ?? "")")
                 .navigationBarItems(trailing: SettingsButton(presentSettings: $presentSettings))
             }
             .tabItem {
@@ -42,7 +42,7 @@ struct TabBarView : View {
 
             NavigationView {
                 CinemasView(cinemasProvider: providersContainer.cinemasProvider)
-                .navigationBarTitle("Кинотеатры")
+                    .navigationBarTitle("Кинотеатры \(providersContainer.selectedCity?.name ?? "")")
                 .navigationBarItems(trailing: SettingsButton(presentSettings: $presentSettings))
             }
             .tabItem {
@@ -53,12 +53,10 @@ struct TabBarView : View {
             }
             .tag(1)
         }
-        .presentation(presentSettings ? modal() : nil)
+        .sheet(isPresented: $presentSettings, content: modal)
     }
     
-    func modal() -> Modal {
-        Modal(PresentableCitiesSelectionView(providersContainer: providersContainer, citiesProvider: providersContainer.citiesProvider, present: $presentSettings)) {
-            self.presentSettings = false
-        }
+    func modal() -> some View {
+        PresentableCitiesSelectionView(providersContainer: providersContainer, citiesProvider: providersContainer.citiesProvider, present: $presentSettings)
     }
 }

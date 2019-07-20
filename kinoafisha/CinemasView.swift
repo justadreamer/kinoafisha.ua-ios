@@ -11,8 +11,10 @@ import SwiftUI
 struct CinemasView : View {
     @ObjectBinding var cinemasProvider: ModelProvider<CinemasContainer>
     var body: some View {
-        List(cinemasProvider.model.cinemas.identified(by: \.name)) { cinema in
-            CinemaRow(cinema: cinema)
+        LoadingView(isShowing: $cinemasProvider.isLoading) {
+            List(self.cinemasProvider.model.cinemas, id: \.name) { cinema in
+                CinemaRow(cinema: cinema)
+            }
         }
     }
 }

@@ -33,7 +33,7 @@ struct CitiesSelectionListView : View {
 
     var body: some View {
         List {
-            ForEach(citiesProvider.model.identified(by: \.name)) { city in
+            ForEach(citiesProvider.model, id: \.name) { city in
                 CityButton(providersContainer: self.providersContainer, city: city)
             }
         }

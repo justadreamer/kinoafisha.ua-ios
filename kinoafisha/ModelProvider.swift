@@ -11,15 +11,19 @@ import Combine
 import SwiftUI
 
 final class ModelProvider<Model>: BindableObject where Model: ProvidesEmptyState, Model: Decodable{
-    var didChange = PassthroughSubject<Model, Never>()
+    var willChange = PassthroughSubject<Void, Never>()
+    var modelValue = CurrentValueSubject<Model, Never>(Model.empty)
+
     var model: Model = Model.empty {
         didSet {
-            didChange.send(model)
+            modelValue.value = model
+            willChange.send()
         }
     }
+
     var isLoading: Bool = false {
         didSet {
-            didChange.send(model)
+            willChange.send()
         }
     }
 
@@ -33,9 +37,14 @@ final class ModelProvider<Model>: BindableObject where Model: ProvidesEmptyState
         }
     }
     
-    private var cancelation: Cancellable?
+    private var cancelations = Set<AnyCancellable>()
+    
     deinit {
-        cancelation?.cancel()
+        cancelAll()
+    }
+    
+    func cancelAll() {
+        cancelations.forEach { $0.cancel() }
     }
     
     init(url: URL?, transformationName: String) {
@@ -44,10 +53,16 @@ final class ModelProvider<Model>: BindableObject where Model: ProvidesEmptyState
     }
     
     func reload() {
-        cancelation?.cancel()
-        self.isLoading = true
-        cancelation =
-            self.loader.reloadModel
+        cancelAll()
+
+        self.loader
+            .isLoading
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.isLoading, on: self)
+            .store(in: &cancelations)
+
+        let cancellation = self.loader
+            .reloadModel
             .receive(on: DispatchQueue.main)
             .catch { error -> Just<Model> in
                 //perform side effect here and return empty cinemas
@@ -55,9 +70,11 @@ final class ModelProvider<Model>: BindableObject where Model: ProvidesEmptyState
                 return Just(Model.empty)
             }
             .sink { [weak self] model in
-                self?.isLoading = false //for now this is a required side effect which prevents us to use .assign(to:on:)
                 self?.model = model
-        }
+                self?.isLoading = false //for now this is a required side effect which prevents us to use .assign(to:on:)
+            }
+        
+        self.cancelations.insert(AnyCancellable(cancellation))
     }
 
 }

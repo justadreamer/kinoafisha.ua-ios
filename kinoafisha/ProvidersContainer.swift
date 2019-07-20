@@ -12,7 +12,7 @@ import Combine
 
 final class ProvidersContainer: BindableObject {
     var disposeBag = Set<AnyCancellable>()
-    var didChange = PassthroughSubject<Void, Never>()
+    var willChange = PassthroughSubject<Void, Never>()
     let userDefaults = UserDefaults.standard
 
     var citiesProvider = ModelProvider<[City]>(url: URL(string: KinoAfishaBaseURLString + "/cinema"), transformationName: "cities")
@@ -34,18 +34,22 @@ final class ProvidersContainer: BindableObject {
 
     init() {
         maybeLoadSelectedCity()
+
         citiesProvider
-            .didChange
+            .modelValue
+            .filter { [weak self] _ in self?.selectedCity == nil }
             .map { cities in
-                cities.first(where: { $0.isDefaultSelection })
+                let city = cities.first(where: { $0.isDefaultSelection })
+                print("\(String(describing: city))")
+                return city
             }
             .assign(to: \.selectedCity, on: self)
             .store(in: &disposeBag)
     }
-    
+
     func notifyChanged() {
         DispatchQueue.main.async {
-            self.didChange.send(())
+            self.willChange.send(())
         }
     }
     
