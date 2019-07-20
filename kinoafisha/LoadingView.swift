@@ -38,6 +38,5 @@ struct LoadingView<Content>: View where Content: View {
             }
         }
     }
-    
 }
 

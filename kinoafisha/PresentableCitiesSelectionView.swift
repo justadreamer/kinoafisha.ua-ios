@@ -20,11 +20,7 @@ struct PresentableCitiesSelectionView : View {
             }
             .navigationBarTitle("Кинотеатры города ")
             .navigationBarItems(leading:
-                Button(action: {
-                    self.citiesProvider.reload()
-                }) {
-                    Image(systemName: "arrow.clockwise")
-                }
+                ReloadButton(reload: self.citiesProvider.reload)
             )
         }
     }

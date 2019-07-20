@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4402AA8E22E324AE00D3FD02 /* ReloadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4402AA8D22E324AE00D3FD02 /* ReloadButton.swift */; };
+		4402AA9022E3268D00D3FD02 /* SettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4402AA8F22E3268D00D3FD02 /* SettingsButton.swift */; };
 		44060E0122CE8FCE00BA0C43 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44060E0022CE8FCE00BA0C43 /* ContainerViewController.swift */; };
 		441ADB1E1A13E6CD00E01CF6 /* FilmDetailHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 441ADB1D1A13E6CD00E01CF6 /* FilmDetailHeaderCell.m */; };
 		441ADB211A13F19D00E01CF6 /* AttributeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 441ADB201A13F19D00E01CF6 /* AttributeCell.m */; };
@@ -69,6 +71,8 @@
 
 /* Begin PBXFileReference section */
 		212345B14A1E9C5AC83C37B1 /* Pods-kinoafisha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kinoafisha.release.xcconfig"; path = "Pods/Target Support Files/Pods-kinoafisha/Pods-kinoafisha.release.xcconfig"; sourceTree = "<group>"; };
+		4402AA8D22E324AE00D3FD02 /* ReloadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadButton.swift; sourceTree = "<group>"; };
+		4402AA8F22E3268D00D3FD02 /* SettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButton.swift; sourceTree = "<group>"; };
 		44060E0022CE8FCE00BA0C43 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		441ADB1C1A13E6CD00E01CF6 /* FilmDetailHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilmDetailHeaderCell.h; sourceTree = "<group>"; };
 		441ADB1D1A13E6CD00E01CF6 /* FilmDetailHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilmDetailHeaderCell.m; sourceTree = "<group>"; };
@@ -308,6 +312,8 @@
 			isa = PBXGroup;
 			children = (
 				44476BD722D11CD90066B61D /* LoadingView.swift */,
+				4402AA8D22E324AE00D3FD02 /* ReloadButton.swift */,
+				4402AA8F22E3268D00D3FD02 /* SettingsButton.swift */,
 			);
 			name = "Supporting Views";
 			sourceTree = "<group>";
@@ -549,6 +555,7 @@
 				44B2EF801A116C83000AFC00 /* ScheduleViewController.m in Sources */,
 				4477C75522D11962004F7479 /* ProvidersContainer.swift in Sources */,
 				4498915F22D93C10002D26B2 /* CinemasContainer.swift in Sources */,
+				4402AA8E22E324AE00D3FD02 /* ReloadButton.swift in Sources */,
 				44C03D4C22D504B100F5C246 /* TabBarView.swift in Sources */,
 				44B2EF861A117299000AFC00 /* ScheduleEntry.m in Sources */,
 				44B2EF8C1A12B992000AFC00 /* Film.m in Sources */,
@@ -559,6 +566,7 @@
 				44C54DA91A154BC900AF22AD /* FilmCell.m in Sources */,
 				44060E0122CE8FCE00BA0C43 /* ContainerViewController.swift in Sources */,
 				443AAABC1A62AE4B00F2A188 /* CitiesViewModel.m in Sources */,
+				4402AA9022E3268D00D3FD02 /* SettingsButton.swift in Sources */,
 				441ADB211A13F19D00E01CF6 /* AttributeCell.m in Sources */,
 				44B2EF831A116CAE000AFC00 /* CinemasViewController.m in Sources */,
 				449CE74E22DA32DE00958CC2 /* ProvidesEmptyState.swift in Sources */,

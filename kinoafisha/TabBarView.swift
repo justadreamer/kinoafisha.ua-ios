@@ -8,19 +8,6 @@
 
 import SwiftUI
 
-struct SettingsButton: View {
-    @Binding var presentSettings: Bool
-    
-    var body: some View {
-        Button(action: {
-            self.presentSettings = true
-        }) {
-            Image(systemName: "gear")
-                .imageScale(.large)
-        }
-    }
-}
-
 struct TabBarView : View {
     @State var presentSettings: Bool = false
     @ObjectBinding var providersContainer: ProvidersContainer
@@ -30,7 +17,7 @@ struct TabBarView : View {
             NavigationView {
                 FilmsView(filmsProvider: providersContainer.filmsProvider)
                 .navigationBarTitle("Фильмы \(providersContainer.selectedCity?.name ?? "")")
-                .navigationBarItems(trailing: SettingsButton(presentSettings: $presentSettings))
+                .navigationBarItems(leading: ReloadButton(reload: self.providersContainer.filmsProvider.reload), trailing: SettingsButton(presentSettings: $presentSettings))
             }
             .tabItem {
                 VStack {
@@ -43,7 +30,7 @@ struct TabBarView : View {
             NavigationView {
                 CinemasView(cinemasProvider: providersContainer.cinemasProvider)
                     .navigationBarTitle("Кинотеатры \(providersContainer.selectedCity?.name ?? "")")
-                .navigationBarItems(trailing: SettingsButton(presentSettings: $presentSettings))
+                .navigationBarItems(leading: ReloadButton(reload: self.providersContainer.cinemasProvider.reload), trailing: SettingsButton(presentSettings: $presentSettings))
             }
             .tabItem {
                 VStack {
