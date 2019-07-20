@@ -24,16 +24,7 @@ struct PresentableCitiesSelectionView : View {
                     self.citiesProvider.reload()
                 }) {
                     Image(systemName: "arrow.clockwise")
-                },
-                                trailing:
-                    Button(action: {
-                        withAnimation {
-                            self.present.toggle()
-                        }
-                    }) {
-                        Text("Готово")
-                    }
-                    .disabled(citiesProvider.model.count == 0)
+                }
             )
         }
     }
