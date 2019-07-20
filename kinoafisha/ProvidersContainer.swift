@@ -72,4 +72,10 @@ final class ProvidersContainer: BindableObject {
         
         self.selectedCity = selectedCity
     }
+    
+    func delayedViewRefresh() {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now().advanced(by: .milliseconds(500))) {
+            self.willChange.send()
+        }
+    }
 }

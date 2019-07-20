@@ -10,7 +10,7 @@ import SwiftUI
 
 struct TabBarView : View {
     @State var presentSettings: Bool = false
-    @ObjectBinding var providersContainer: ProvidersContainer
+    @EnvironmentObject var providersContainer: ProvidersContainer
 
     var body: some View {
         TabbedView {
@@ -19,6 +19,7 @@ struct TabBarView : View {
                 .navigationBarTitle("Фильмы \(providersContainer.selectedCity?.name ?? "")")
                 .navigationBarItems(leading: ReloadButton(reload: self.providersContainer.filmsProvider.reload), trailing: SettingsButton(presentSettings: $presentSettings))
             }
+            
             .tabItem {
                 VStack {
                     Image(systemName: "film")
@@ -41,9 +42,11 @@ struct TabBarView : View {
             .tag(1)
         }
         .sheet(isPresented: $presentSettings, content: modal)
+        
     }
     
     func modal() -> some View {
-        PresentableCitiesSelectionView(providersContainer: providersContainer, citiesProvider: providersContainer.citiesProvider, present: $presentSettings)
+        CitySelectionView(citiesProvider: providersContainer.citiesProvider, presented: $presentSettings)
+            .environmentObject(providersContainer)
     }
 }

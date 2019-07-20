@@ -34,9 +34,7 @@ struct LoadingView<Content>: View where Content: View {
                     .foregroundColor(Color.primary)
                     .cornerRadius(5)
                     .opacity(self.isShowing ? 1 : 0)
-                
             }
         }
     }
 }
-

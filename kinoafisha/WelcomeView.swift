@@ -9,11 +9,11 @@
 import SwiftUI
 
 struct WelcomeView : View {
-    var providersContainer: ProvidersContainer
+    @EnvironmentObject var providersContainer: ProvidersContainer
     @State var presentOnboarding: Bool
 
-    func presentableCitiesSelectionView() -> PresentableCitiesSelectionView {
-        PresentableCitiesSelectionView(providersContainer: providersContainer, citiesProvider: providersContainer.citiesProvider, present: $presentOnboarding)
+    func presentableCitiesSelectionView() -> CitySelectionView {
+        CitySelectionView(citiesProvider: providersContainer.citiesProvider, presented: $presentOnboarding)
     }
 
     var transition: AnyTransition {
@@ -30,7 +30,7 @@ struct WelcomeView : View {
                 presentableCitiesSelectionView()
                     .transition(transition)
             } else {
-                TabBarView(providersContainer: providersContainer)
+                TabBarView()
                     .transition(transition)
             }
         }
