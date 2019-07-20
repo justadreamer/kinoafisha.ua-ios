@@ -60,6 +60,7 @@ final class XSLTLoader<Model> where Model: ProvidesEmptyState, Model: Decodable{
                 return self.urlSession.dataTaskPublisher(for: request)
                     .tryMap { data, response -> Model in
                         let model = try self.parse(data)
+                        //sleep(5) for debug purposes to test loading indicator
                         self.isLoading.value = false
                         return model
                 }

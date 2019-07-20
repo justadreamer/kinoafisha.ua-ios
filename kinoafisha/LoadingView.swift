@@ -24,12 +24,13 @@ struct LoadingView<Content>: View where Content: View {
                     .blur(radius: self.isShowing ? 3 : 0)
                 
                 VStack {
-                    Text("Loading...")
+                    Text("Загрузка...")
                     ActivityIndicator(isAnimating: .constant(true), style: .large)
                 }
-                .frame(width: geometry.size.width / 2,
-                       height: geometry.size.height / 5)
                     .padding()
+                    .frame(width: geometry.size.width / 3,
+                       height: geometry.size.height / 3)
+                    
                     .background(Color.secondary.colorInvert())
                     .foregroundColor(Color.primary)
                     .cornerRadius(5)
