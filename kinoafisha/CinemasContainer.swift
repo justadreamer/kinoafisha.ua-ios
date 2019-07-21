@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CinemasContainer: Codable {
+struct CinemasContainer: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case cityName = "city_name"

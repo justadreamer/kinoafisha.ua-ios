@@ -15,7 +15,7 @@ struct CitySelectionView : View {
 
     var body: some View {
         NavigationView {
-            LoadingView(isShowing: $citiesProvider.isLoading) {
+            LoadingView(state: $citiesProvider.loadingState) {
                 List {
                     ForEach(self.providersContainer.citiesProvider.model, id: \.name) { city in
                         CityButton(city: city)

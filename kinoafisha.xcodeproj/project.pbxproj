@@ -12,6 +12,7 @@
 		44060E0122CE8FCE00BA0C43 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44060E0022CE8FCE00BA0C43 /* ContainerViewController.swift */; };
 		441ADB1E1A13E6CD00E01CF6 /* FilmDetailHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 441ADB1D1A13E6CD00E01CF6 /* FilmDetailHeaderCell.m */; };
 		441ADB211A13F19D00E01CF6 /* AttributeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 441ADB201A13F19D00E01CF6 /* AttributeCell.m */; };
+		441B5E9F22E3A7BD00B33D95 /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B5E9E22E3A7BD00B33D95 /* LoadingState.swift */; };
 		441C77A21A15683F00F9499E /* info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 441C779A1A15683F00F9499E /* info@2x.png */; };
 		441C77A31A15683F00F9499E /* cinema@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 441C779C1A15683F00F9499E /* cinema@2x.png */; };
 		441C77A41A15683F00F9499E /* film@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 441C779E1A15683F00F9499E /* film@2x.png */; };
@@ -78,6 +79,7 @@
 		441ADB1D1A13E6CD00E01CF6 /* FilmDetailHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilmDetailHeaderCell.m; sourceTree = "<group>"; };
 		441ADB1F1A13F19D00E01CF6 /* AttributeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributeCell.h; sourceTree = "<group>"; };
 		441ADB201A13F19D00E01CF6 /* AttributeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributeCell.m; sourceTree = "<group>"; };
+		441B5E9E22E3A7BD00B33D95 /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
 		441C779B1A15683F00F9499E /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Base.lproj/info@2x.png"; sourceTree = "<group>"; };
 		441C779D1A15683F00F9499E /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Base.lproj/cinema@2x.png"; sourceTree = "<group>"; };
 		441C779F1A15683F00F9499E /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Base.lproj/film@2x.png"; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				4472A41A22D66F84009E2E9C /* XSLTLoader.swift */,
 				449CE74D22DA32DE00958CC2 /* ProvidesEmptyState.swift */,
 				449CE74F22DBAD1C00958CC2 /* ModelProvider.swift */,
+				441B5E9E22E3A7BD00B33D95 /* LoadingState.swift */,
 			);
 			name = "Common Infrastructure";
 			sourceTree = "<group>";
@@ -550,6 +553,7 @@
 				44B2EF921A12C0F3000AFC00 /* FilmDetailViewController.m in Sources */,
 				44B2EE991A0F925D000AFC00 /* City.m in Sources */,
 				44B2EEB21A10002C000AFC00 /* CinemaCell.m in Sources */,
+				441B5E9F22E3A7BD00B33D95 /* LoadingState.swift in Sources */,
 				44476BD822D11CD90066B61D /* LoadingView.swift in Sources */,
 				448A6C7122D4740000BE7D05 /* SceneDelegate.swift in Sources */,
 				4451294E1A09FF0D000364E1 /* main.m in Sources */,

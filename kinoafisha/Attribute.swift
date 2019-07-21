@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Attribute: Codable {
+struct Attribute: Codable, Equatable {
     var name: String
     var value: String
 }

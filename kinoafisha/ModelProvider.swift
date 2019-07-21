@@ -10,7 +10,7 @@ import Foundation
 import Combine
 import SwiftUI
 
-final class ModelProvider<Model>: BindableObject where Model: ProvidesEmptyState, Model: Decodable{
+final class ModelProvider<Model>: BindableObject where Model: ProvidesEmptyState, Model: Decodable, Model: Equatable {
     var willChange = PassthroughSubject<Void, Never>()
     var modelValue = CurrentValueSubject<Model, Never>(Model.empty)
 
@@ -21,7 +21,7 @@ final class ModelProvider<Model>: BindableObject where Model: ProvidesEmptyState
         }
     }
 
-    var isLoading: Bool = false {
+    var loadingState: NoModelLoadingState = .complete {
         didSet {
             willChange.send()
         }
@@ -49,32 +49,27 @@ final class ModelProvider<Model>: BindableObject where Model: ProvidesEmptyState
     
     init(url: URL?, transformationName: String) {
         self.loader = XSLTLoader<Model>(url: url, transformationName: transformationName, resourceURLProvider: (UIApplication.shared.delegate as! AppDelegate).s3SyncManager)
-        reload()
+
+        let subj = self.loader
+            .loadingState
+            .receive(on: DispatchQueue.main)
+            .share()
+            
+        subj
+            .map { $0.eraseModel }
+            .assign(to: \.loadingState, on: self)
+            .store(in: &cancelations)
+        
+        //this caches the previous state of the model, so even if the next response is an error - we
+        //have the previous state, which might not be exactly correct and expected
+        subj
+            .compactMap { $0.model }
+            .assign(to: \.model, on: self)
+            .store(in: &cancelations)
     }
     
     func reload() {
-        cancelAll()
-
-        self.loader
-            .isLoading
-            .receive(on: DispatchQueue.main)
-            .assign(to: \.isLoading, on: self)
-            .store(in: &cancelations)
-
-        let cancellation = self.loader
-            .reloadModel
-            .receive(on: DispatchQueue.main)
-            .catch { error -> Just<Model> in
-                //perform side effect here and return empty cinemas
-                print("\(error)")
-                return Just(Model.empty)
-            }
-            .sink { [weak self] model in
-                self?.model = model
-                self?.isLoading = false //for now this is a required side effect which prevents us to use .assign(to:on:)
-            }
-        
-        self.cancelations.insert(AnyCancellable(cancellation))
+        self.loader.reload()
     }
 
 }

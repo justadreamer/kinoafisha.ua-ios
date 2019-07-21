@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Cinema: Codable {
+struct Cinema: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case name
         case detailURL = "link"

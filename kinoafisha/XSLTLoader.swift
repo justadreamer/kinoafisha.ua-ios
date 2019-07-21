@@ -24,24 +24,28 @@ func Q(_ s: String) -> String {
 }
 
 
-final class XSLTLoader<Model> where Model: ProvidesEmptyState, Model: Decodable{
+final class XSLTLoader<Model> where Model: ProvidesEmptyState, Model: Decodable, Model: Equatable{
     var url: URL? {
         didSet {
             urlValue.send(url)
         }
     }
-
-    var isLoading = CurrentValueSubject<Bool, Never>(false)
-    
-    private var urlValue = CurrentValueSubject<URL?, Error>(nil)
+    var loadingState = CurrentValueSubject<LoadingState<Model>, Never>(.complete(Model.empty))
+    private var urlValue = CurrentValueSubject<URL?, Never>(nil)
     private var transformation: SkyXSLTransformation
     private let urlSession = URLSession.init(configuration: .default)
     private let ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36"
+    private var cancelation: AnyCancellable?
+
+    deinit {
+        cancelation?.cancel()
+    }
 
     init(url: URL?, transformationName: String, resourceURLProvider: SkyS3ResourceURLProvider) {
         self.url = url
         self.urlValue.send(url)
         self.transformation = Self.transformation(name: transformationName, from: resourceURLProvider)
+        self.createSubscription()
     }
 
     static func transformation(name: String, from provider: SkyS3ResourceURLProvider) -> SkyXSLTransformation {
@@ -49,24 +53,33 @@ final class XSLTLoader<Model> where Model: ProvidesEmptyState, Model: Decodable{
         return SkyXSLTransformation(xslturl: xsltURL)
     }
 
-    var reloadModel: AnyPublisher<Model, Error> {
+    func reload() {
         print("reloading \(self) url: \(String(describing: url))")
-        return urlValue
-            .compactMap { $0 }
-            .flatMap { url -> AnyPublisher<Model, Error> in
-                self.isLoading.value = true
-                var request = URLRequest(url: url)
-                request.addValue(self.ua, forHTTPHeaderField: "User-Agent")
-                return self.urlSession.dataTaskPublisher(for: request)
-                    .tryMap { data, response -> Model in
-                        let model = try self.parse(data)
-                        //sleep(5) for debug purposes to test loading indicator
-                        self.isLoading.value = false
-                        return model
+        urlValue.value = urlValue.value //to stimulate a reload
+    }
+    
+    func createSubscription() {
+        cancelation =
+            urlValue
+                .compactMap { $0 }
+                .flatMap { url -> AnyPublisher<LoadingState<Model>,Never> in
+                    self.loadingState.value = .loading
+                    var request = URLRequest(url: url)
+                    request.addValue(self.ua, forHTTPHeaderField: "User-Agent")
+                    return self.urlSession
+                        .dataTaskPublisher(for: request)
+                        .tryMap { data, response -> LoadingState<Model> in
+                            //sleep(5) // for debug purposes to test loading indicator
+                            //throw "shit happens" //for debug purposes to test error throwing
+                            let model = try self.parse(data)
+                            return LoadingState.complete(model)
+                        }
+                        .catch { error in
+                            Just(LoadingState<Model>.error(error.localizedDescription))
+                        }
+                        .eraseToAnyPublisher()
                 }
-                .eraseToAnyPublisher()
-        }
-        .eraseToAnyPublisher()
+                .subscribe(loadingState)
     }
     
     func parse(_ data: Data) throws -> Model  {

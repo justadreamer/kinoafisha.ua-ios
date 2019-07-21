@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct ScheduleEntry: Codable {
+struct ScheduleEntry: Codable, Equatable {
 
     enum EntryType: String, Codable {
         case film

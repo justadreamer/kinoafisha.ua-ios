@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Film: Codable {
+struct Film: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case title
         case subtitle

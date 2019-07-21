@@ -13,7 +13,7 @@ struct FilmsView : View {
     @ObjectBinding var filmsProvider: ModelProvider<[Film]>
     
     var body: some View {
-        LoadingView(isShowing: $filmsProvider.isLoading) {
+        LoadingView(state: $filmsProvider.loadingState) {
             List(self.filmsProvider.model, id: \.title) { film in
                 FilmRow(film: film)
             }
