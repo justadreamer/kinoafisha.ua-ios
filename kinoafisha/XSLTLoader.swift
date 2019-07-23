@@ -23,8 +23,7 @@ func Q(_ s: String) -> String {
     "\"\(s)\""
 }
 
-
-final class XSLTLoader<Model> where Model: ProvidesEmptyState, Model: Decodable, Model: Equatable{
+final class XSLTLoader<Model> where Model: ProvidesEmptyState, Model: Codable, Model: Equatable{
     var url: URL? {
         didSet {
             urlValue.send(url)
@@ -34,7 +33,6 @@ final class XSLTLoader<Model> where Model: ProvidesEmptyState, Model: Decodable,
     private var urlValue = CurrentValueSubject<URL?, Never>(nil)
     private var transformation: SkyXSLTransformation
     private let urlSession = URLSession.init(configuration: .default)
-    private let ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36"
     private var cancelation: AnyCancellable?
 
     deinit {
@@ -64,14 +62,15 @@ final class XSLTLoader<Model> where Model: ProvidesEmptyState, Model: Decodable,
                 .compactMap { $0 }
                 .flatMap { url -> AnyPublisher<LoadingState<Model>,Never> in
                     self.loadingState.value = .loading
-                    var request = URLRequest(url: url)
-                    request.addValue(self.ua, forHTTPHeaderField: "User-Agent")
+                    var request = URLRequest.spoofedUA(url: url)
                     return self.urlSession
                         .dataTaskPublisher(for: request)
                         .tryMap { data, response -> LoadingState<Model> in
                             //sleep(5) // for debug purposes to test loading indicator
                             //throw "shit happens" //for debug purposes to test error throwing
                             let model = try self.parse(data)
+                            let jsonData = try JSONEncoder().encode(model)
+                            let jsonString = String(data: jsonData, encoding: .utf8)!
                             return LoadingState.complete(model)
                         }
                         .catch { error in

@@ -10,7 +10,7 @@ import Foundation
 import Combine
 import SwiftUI
 
-final class ModelProvider<Model>: BindableObject where Model: ProvidesEmptyState, Model: Decodable, Model: Equatable {
+final class ModelProvider<Model>: BindableObject where Model: ProvidesEmptyState, Model: Codable, Model: Equatable {
     var willChange = PassthroughSubject<Void, Never>()
     var modelValue = CurrentValueSubject<Model, Never>(Model.empty)
 
@@ -27,13 +27,13 @@ final class ModelProvider<Model>: BindableObject where Model: ProvidesEmptyState
         }
     }
 
-    private var loader: XSLTLoader<Model>
+    private var loader: XSLTLoader<Model>?
     var url: URL? {
         get {
-            loader.url
+            loader?.url
         }
         set {
-            loader.url = newValue
+            loader?.url = newValue
         }
     }
     
@@ -47,29 +47,34 @@ final class ModelProvider<Model>: BindableObject where Model: ProvidesEmptyState
         cancelations.forEach { $0.cancel() }
     }
     
-    init(url: URL?, transformationName: String) {
-        self.loader = XSLTLoader<Model>(url: url, transformationName: transformationName, resourceURLProvider: (UIApplication.shared.delegate as! AppDelegate).s3SyncManager)
+    init(url: URL?, transformationName: String, fakeModel: Model? = nil) {
+        if let fakeModel = fakeModel {
+            self.model = fakeModel
+            self.loadingState = .complete
+        } else {
+            self.loader = XSLTLoader<Model>(url: url, transformationName: transformationName, resourceURLProvider: (UIApplication.shared.delegate as! AppDelegate).s3SyncManager)
 
-        let subj = self.loader
-            .loadingState
-            .receive(on: DispatchQueue.main)
-            .share()
+            let subj = self.loader!
+                .loadingState
+                .receive(on: DispatchQueue.main)
+                .share()
+                
+            subj
+                .map { $0.eraseModel }
+                .assign(to: \.loadingState, on: self)
+                .store(in: &cancelations)
             
-        subj
-            .map { $0.eraseModel }
-            .assign(to: \.loadingState, on: self)
-            .store(in: &cancelations)
-        
-        //this caches the previous state of the model, so even if the next response is an error - we
-        //have the previous state, which might not be exactly correct and expected
-        subj
-            .compactMap { $0.model }
-            .assign(to: \.model, on: self)
-            .store(in: &cancelations)
+            //this caches the previous state of the model, so even if the next response is an error - we
+            //have the previous state, which might not be exactly correct and expected, so it is debatable
+            subj
+                .compactMap { $0.model }
+                .assign(to: \.model, on: self)
+                .store(in: &cancelations)
+        }
     }
     
     func reload() {
-        self.loader.reload()
+        self.loader?.reload()
     }
 
 }

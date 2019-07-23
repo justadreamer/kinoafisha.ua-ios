@@ -78,4 +78,14 @@ final class ProvidersContainer: BindableObject {
             self.willChange.send()
         }
     }
+    
+    private var imageHolders = [URL:ImageHolder]()
+    func imageHolder(for url: URL, defaultWidth: Length, defaultHeight: Length) -> ImageHolder {
+        if let imageHolder = imageHolders[url] {
+            return imageHolder
+        }
+        let imageHolder = ImageHolder(url: url, defaultWidth: defaultWidth, defaultHeight: defaultHeight)
+        imageHolders[url] = imageHolder
+        return imageHolder
+    }
 }

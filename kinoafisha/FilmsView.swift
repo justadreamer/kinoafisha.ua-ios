@@ -11,11 +11,12 @@ import Combine
 
 struct FilmsView : View {
     @ObjectBinding var filmsProvider: ModelProvider<[Film]>
-    
+    @EnvironmentObject var providersContainer: ProvidersContainer
+
     var body: some View {
         LoadingView(state: $filmsProvider.loadingState) {
             List(self.filmsProvider.model, id: \.title) { film in
-                FilmRow(film: film)
+                FilmRow(film: film, imageHolder: self.providersContainer.imageHolder(for: film.thumbnailURL, defaultWidth: FilmRow.thumbWidth, defaultHeight: FilmRow.thumbHeight))
             }
         }
     }

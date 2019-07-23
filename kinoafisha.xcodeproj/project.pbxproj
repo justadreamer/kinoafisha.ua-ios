@@ -13,6 +13,10 @@
 		441ADB1E1A13E6CD00E01CF6 /* FilmDetailHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 441ADB1D1A13E6CD00E01CF6 /* FilmDetailHeaderCell.m */; };
 		441ADB211A13F19D00E01CF6 /* AttributeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 441ADB201A13F19D00E01CF6 /* AttributeCell.m */; };
 		441B5E9F22E3A7BD00B33D95 /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B5E9E22E3A7BD00B33D95 /* LoadingState.swift */; };
+		441B5EA222E49C6300B33D95 /* films.json in Resources */ = {isa = PBXBuildFile; fileRef = 441B5EA122E49C6300B33D95 /* films.json */; };
+		441B5EA922E5831300B33D95 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B5EA822E5831300B33D95 /* Global.swift */; };
+		441B5EAB22E5838900B33D95 /* URLRequest+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B5EAA22E5838900B33D95 /* URLRequest+Additions.swift */; };
+		441B5EAD22E58C8900B33D95 /* ImageHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B5EAC22E58C8800B33D95 /* ImageHolder.swift */; };
 		441C77A21A15683F00F9499E /* info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 441C779A1A15683F00F9499E /* info@2x.png */; };
 		441C77A31A15683F00F9499E /* cinema@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 441C779C1A15683F00F9499E /* cinema@2x.png */; };
 		441C77A41A15683F00F9499E /* film@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 441C779E1A15683F00F9499E /* film@2x.png */; };
@@ -80,6 +84,10 @@
 		441ADB1F1A13F19D00E01CF6 /* AttributeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributeCell.h; sourceTree = "<group>"; };
 		441ADB201A13F19D00E01CF6 /* AttributeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributeCell.m; sourceTree = "<group>"; };
 		441B5E9E22E3A7BD00B33D95 /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
+		441B5EA122E49C6300B33D95 /* films.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = films.json; sourceTree = "<group>"; };
+		441B5EA822E5831300B33D95 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		441B5EAA22E5838900B33D95 /* URLRequest+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Additions.swift"; sourceTree = "<group>"; };
+		441B5EAC22E58C8800B33D95 /* ImageHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHolder.swift; sourceTree = "<group>"; };
 		441C779B1A15683F00F9499E /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Base.lproj/info@2x.png"; sourceTree = "<group>"; };
 		441C779D1A15683F00F9499E /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Base.lproj/cinema@2x.png"; sourceTree = "<group>"; };
 		441C779F1A15683F00F9499E /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Base.lproj/film@2x.png"; sourceTree = "<group>"; };
@@ -185,12 +193,72 @@
 		4402AA9122E3288200D3FD02 /* Common Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				441B5EAC22E58C8800B33D95 /* ImageHolder.swift */,
 				4472A41A22D66F84009E2E9C /* XSLTLoader.swift */,
 				449CE74D22DA32DE00958CC2 /* ProvidesEmptyState.swift */,
 				449CE74F22DBAD1C00958CC2 /* ModelProvider.swift */,
 				441B5E9E22E3A7BD00B33D95 /* LoadingState.swift */,
+				441B5EA822E5831300B33D95 /* Global.swift */,
+				441B5EAA22E5838900B33D95 /* URLRequest+Additions.swift */,
 			);
 			name = "Common Infrastructure";
+			sourceTree = "<group>";
+		};
+		441B5EA022E49C4E00B33D95 /* fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				441B5EA122E49C6300B33D95 /* films.json */,
+			);
+			name = fixtures;
+			sourceTree = "<group>";
+		};
+		441B5EA322E5817100B33D95 /* Films Legacy */ = {
+			isa = PBXGroup;
+			children = (
+				44B2EF8A1A12B992000AFC00 /* Film.h */,
+				44B2EF8B1A12B992000AFC00 /* Film.m */,
+				44C54DA41A153D4800AF22AD /* FilmsViewController.h */,
+				44C54DA51A153D4800AF22AD /* FilmsViewController.m */,
+				446AA6B01B933768003B3319 /* FilmsViewModel.h */,
+				446AA6B11B933768003B3319 /* FilmsViewModel.m */,
+				44B2EF901A12C0F3000AFC00 /* FilmDetailViewController.h */,
+				44B2EF911A12C0F3000AFC00 /* FilmDetailViewController.m */,
+				446AA6AD1B933397003B3319 /* FilmDetailViewModel.h */,
+				446AA6AE1B933397003B3319 /* FilmDetailViewModel.m */,
+				44B2EF8D1A12BA11000AFC00 /* Attribute.h */,
+				44B2EF8E1A12BA11000AFC00 /* Attribute.m */,
+				44B2EF841A117299000AFC00 /* ScheduleEntry.h */,
+				44B2EF851A117299000AFC00 /* ScheduleEntry.m */,
+			);
+			name = "Films Legacy";
+			sourceTree = "<group>";
+		};
+		441B5EA422E5818500B33D95 /* Cinemas Legacy */ = {
+			isa = PBXGroup;
+			children = (
+				44B2EEA51A0FD74A000AFC00 /* CinemasContainer.h */,
+				44B2EEA61A0FD74A000AFC00 /* CinemasContainer.m */,
+				44B2EEA21A0FD562000AFC00 /* Cinema.h */,
+				44B2EEA31A0FD562000AFC00 /* Cinema.m */,
+				44B2EF821A116CAE000AFC00 /* CinemasViewController.h */,
+				44B2EF811A116CAE000AFC00 /* CinemasViewController.m */,
+				443AAABF1A630A2B00F2A188 /* CinemasViewModel.h */,
+				443AAAC01A630A2B00F2A188 /* CinemasViewModel.m */,
+			);
+			name = "Cinemas Legacy";
+			sourceTree = "<group>";
+		};
+		441B5EA522E5819100B33D95 /* Cities Legacy */ = {
+			isa = PBXGroup;
+			children = (
+				44B2EE971A0F925D000AFC00 /* City.h */,
+				44B2EE981A0F925D000AFC00 /* City.m */,
+				44B2EE701A0F905D000AFC00 /* CitiesViewController.h */,
+				44B2EE711A0F905D000AFC00 /* CitiesViewController.m */,
+				443AAABA1A62AE4B00F2A188 /* CitiesViewModel.h */,
+				443AAABB1A62AE4B00F2A188 /* CitiesViewModel.m */,
+			);
+			name = "Cities Legacy";
 			sourceTree = "<group>";
 		};
 		441C77901A15607E00F9499E /* Resources */ = {
@@ -208,12 +276,6 @@
 		443AAABD1A62AE5800F2A188 /* Cities */ = {
 			isa = PBXGroup;
 			children = (
-				44B2EE971A0F925D000AFC00 /* City.h */,
-				44B2EE981A0F925D000AFC00 /* City.m */,
-				44B2EE701A0F905D000AFC00 /* CitiesViewController.h */,
-				44B2EE711A0F905D000AFC00 /* CitiesViewController.m */,
-				443AAABA1A62AE4B00F2A188 /* CitiesViewModel.h */,
-				443AAABB1A62AE4B00F2A188 /* CitiesViewModel.m */,
 				4477C75622D11A7E004F7479 /* City.swift */,
 				44476BD522D11C340066B61D /* CityButton.swift */,
 				4425EF4122CBE92E00321AFE /* CitySelectionView.swift */,
@@ -224,14 +286,6 @@
 		443AAABE1A630A0900F2A188 /* Cinemas */ = {
 			isa = PBXGroup;
 			children = (
-				44B2EEA51A0FD74A000AFC00 /* CinemasContainer.h */,
-				44B2EEA61A0FD74A000AFC00 /* CinemasContainer.m */,
-				44B2EEA21A0FD562000AFC00 /* Cinema.h */,
-				44B2EEA31A0FD562000AFC00 /* Cinema.m */,
-				44B2EF821A116CAE000AFC00 /* CinemasViewController.h */,
-				44B2EF811A116CAE000AFC00 /* CinemasViewController.m */,
-				443AAABF1A630A2B00F2A188 /* CinemasViewModel.h */,
-				443AAAC01A630A2B00F2A188 /* CinemasViewModel.m */,
 				44C03D5122D5C9FA00F5C246 /* CinemasView.swift */,
 				44C03D5322D5CA1F00F5C246 /* CinemaRow.swift */,
 				44C03D5522D5CA2700F5C246 /* Cinema.swift */,
@@ -261,6 +315,7 @@
 		4451294A1A09FF0D000364E1 /* kinoafisha */ = {
 			isa = PBXGroup;
 			children = (
+				441B5EA022E49C4E00B33D95 /* fixtures */,
 				4451294F1A09FF0D000364E1 /* AppDelegate.h */,
 				445129501A09FF0D000364E1 /* AppDelegate.m */,
 				445129551A09FF0D000364E1 /* Main.storyboard */,
@@ -279,7 +334,7 @@
 				443AAABD1A62AE5800F2A188 /* Cities */,
 				443AAABE1A630A0900F2A188 /* Cinemas */,
 				4498916022D93D39002D26B2 /* Films */,
-				44B2EE6E1A0F901C000AFC00 /* Legacy VC+VM */,
+				44B2EE6E1A0F901C000AFC00 /* Legacy */,
 				4451294B1A09FF0D000364E1 /* Supporting Files */,
 				44E4D61B1A5DC90100A89982 /* XSLT */,
 			);
@@ -343,20 +398,6 @@
 		4498916022D93D39002D26B2 /* Films */ = {
 			isa = PBXGroup;
 			children = (
-				44B2EF8A1A12B992000AFC00 /* Film.h */,
-				44B2EF8B1A12B992000AFC00 /* Film.m */,
-				44C54DA41A153D4800AF22AD /* FilmsViewController.h */,
-				44C54DA51A153D4800AF22AD /* FilmsViewController.m */,
-				446AA6B01B933768003B3319 /* FilmsViewModel.h */,
-				446AA6B11B933768003B3319 /* FilmsViewModel.m */,
-				44B2EF901A12C0F3000AFC00 /* FilmDetailViewController.h */,
-				44B2EF911A12C0F3000AFC00 /* FilmDetailViewController.m */,
-				446AA6AD1B933397003B3319 /* FilmDetailViewModel.h */,
-				446AA6AE1B933397003B3319 /* FilmDetailViewModel.m */,
-				44B2EF8D1A12BA11000AFC00 /* Attribute.h */,
-				44B2EF8E1A12BA11000AFC00 /* Attribute.m */,
-				44B2EF841A117299000AFC00 /* ScheduleEntry.h */,
-				44B2EF851A117299000AFC00 /* ScheduleEntry.m */,
 				4498916322D93E66002D26B2 /* FilmsView.swift */,
 				4498916522D93E72002D26B2 /* FilmRow.swift */,
 				4498916722D93EEF002D26B2 /* Film.swift */,
@@ -366,16 +407,19 @@
 			name = Films;
 			sourceTree = "<group>";
 		};
-		44B2EE6E1A0F901C000AFC00 /* Legacy VC+VM */ = {
+		44B2EE6E1A0F901C000AFC00 /* Legacy */ = {
 			isa = PBXGroup;
 			children = (
+				441B5EA522E5819100B33D95 /* Cities Legacy */,
+				441B5EA422E5818500B33D95 /* Cinemas Legacy */,
+				441B5EA322E5817100B33D95 /* Films Legacy */,
 				441C77901A15607E00F9499E /* Resources */,
 				44B2EEAF1A10002C000AFC00 /* TableViewCell */,
 				446AA6A71B9327BD003B3319 /* Base */,
 				4494D0231AAB319800C958B1 /* Schedule */,
 				446AA6A61B93255C003B3319 /* Credits */,
 			);
-			name = "Legacy VC+VM";
+			name = Legacy;
 			sourceTree = "<group>";
 		};
 		44B2EEAF1A10002C000AFC00 /* TableViewCell */ = {
@@ -482,6 +526,7 @@
 				445129591A09FF0D000364E1 /* Images.xcassets in Resources */,
 				441C77A31A15683F00F9499E /* cinema@2x.png in Resources */,
 				44E4D61C1A5DC90100A89982 /* XSLT in Resources */,
+				441B5EA222E49C6300B33D95 /* films.json in Resources */,
 				441C77A21A15683F00F9499E /* info@2x.png in Resources */,
 				441C77A81A156CF500F9499E /* credits.html in Resources */,
 			);
@@ -546,7 +591,9 @@
 				445129511A09FF0D000364E1 /* AppDelegate.m in Sources */,
 				4498916422D93E66002D26B2 /* FilmsView.swift in Sources */,
 				44C8189B1B91F8A400E538FB /* BaseViewModel.m in Sources */,
+				441B5EAB22E5838900B33D95 /* URLRequest+Additions.swift in Sources */,
 				44476BD622D11C340066B61D /* CityButton.swift in Sources */,
+				441B5EA922E5831300B33D95 /* Global.swift in Sources */,
 				44B2EE721A0F905D000AFC00 /* CitiesViewController.m in Sources */,
 				44B2EF8F1A12BA11000AFC00 /* Attribute.m in Sources */,
 				44B2EEA41A0FD562000AFC00 /* Cinema.m in Sources */,
@@ -559,6 +606,7 @@
 				4451294E1A09FF0D000364E1 /* main.m in Sources */,
 				44476BDA22D11DEA0066B61D /* ActivityIndicator.swift in Sources */,
 				4494D0291AAB31DC00C958B1 /* ScheduleViewModel.m in Sources */,
+				441B5EAD22E58C8900B33D95 /* ImageHolder.swift in Sources */,
 				446AA6AF1B933397003B3319 /* FilmDetailViewModel.m in Sources */,
 				441ADB1E1A13E6CD00E01CF6 /* FilmDetailHeaderCell.m in Sources */,
 				44C03D5422D5CA1F00F5C246 /* CinemaRow.swift in Sources */,

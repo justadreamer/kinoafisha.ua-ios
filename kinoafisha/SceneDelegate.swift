@@ -14,18 +14,34 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     var providersContainer = ProvidersContainer()
     
+    var fakeFilmsView: some View {
+        let jsonURL = Bundle.main.url(forResource: "films", withExtension: "json")!
+        let jsonData = try! Data(contentsOf: jsonURL)
+        let films = try! JSONDecoder().decode([Film].self, from: jsonData)
+        let filmsProvider = ModelProvider<[Film]>.init(url: nil, transformationName: "", fakeModel: films)
+        return FilmsView(filmsProvider: filmsProvider).environmentObject(providersContainer)
+    }
+    
+    var welcomeView: some View {
+        WelcomeView(presentOnboarding: providersContainer.selectedCity == nil)
+                            .environmentObject(providersContainer)
+    }
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
         // Use a UIHostingController as window root view controller
+        
+        
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            providersContainer.selectedCity = nil //for debug purposes
+            //providersContainer.selectedCity = nil //for debug
+                    
             window.rootViewController = UIHostingController(rootView:
-                WelcomeView(presentOnboarding: providersContainer.selectedCity == nil)
-                    .environmentObject(providersContainer)
+                welcomeView
+                // fakeFilmsView //for debug
             )
             self.window = window
             window.makeKeyAndVisible()
