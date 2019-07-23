@@ -13,11 +13,16 @@ import Combine
 final class ImageHolder: BindableObject {
     var willChange = PassthroughSubject<Void,Never>()
     var url: URL
-    var image: Image = Image(systemName: "hourglass") {
+    var image: Image? {
         didSet {
-            willChange.send()
+            withAnimation {
+                willChange.send()
+            }
         }
     }
+    
+    var defaultImage = Image(systemName: "hourglass")
+
     var width: Length
     var height: Length
 

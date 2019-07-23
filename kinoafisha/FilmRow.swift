@@ -17,11 +17,15 @@ struct FilmRow : View {
 
     var body: some View {
         HStack(alignment: .top) {
-            VStack {
-                imageHolder.image
-                    .frame(width: imageHolder.width, height: imageHolder.height)
-                Spacer()
+            Group {
+                if imageHolder.image != nil {
+                    imageHolder.image
+                    .transition(.opacity)
+                } else {
+                    imageHolder.defaultImage
+                }
             }
+            .frame(width: imageHolder.width, height: imageHolder.height)
 
             VStack(alignment: .leading) {
                 Text(self.film.title)
@@ -29,13 +33,14 @@ struct FilmRow : View {
                     .fontWeight(.bold)
                     .lineLimit(nil)
                     .foregroundColor(.primary)
+                    .layoutPriority(1)
 
                 Text(self.film.subtitle)
                     .font(.subheadline)
                     .lineLimit(1)
                     .foregroundColor(.secondary)
 
-                HStack(alignment: .center) {
+                HStack(alignment: .lastTextBaseline) {
                     Image(systemName: "star.fill")
                         .renderingMode(.template)
                         .foregroundColor(.yellow)
@@ -43,7 +48,6 @@ struct FilmRow : View {
                     Text(self.film.votesCount)
                         .foregroundColor(.secondary)
                 }
-                Spacer()
             }
         }
     }
