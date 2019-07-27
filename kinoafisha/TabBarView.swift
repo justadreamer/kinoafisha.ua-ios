@@ -42,7 +42,6 @@ struct TabBarView : View {
             .tag(1)
         }
         .sheet(isPresented: $presentSettings, content: modal)
-        
     }
     
     func modal() -> some View {

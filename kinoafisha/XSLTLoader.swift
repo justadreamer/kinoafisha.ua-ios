@@ -52,7 +52,7 @@ final class XSLTLoader<Model> where Model: ProvidesEmptyState, Model: Codable, M
     }
 
     func reload() {
-        print("reloading \(self) url: \(String(describing: url))")
+        //print("reloading \(self) url: \(String(describing: url))")
         urlValue.value = urlValue.value //to stimulate a reload
     }
     
@@ -62,15 +62,18 @@ final class XSLTLoader<Model> where Model: ProvidesEmptyState, Model: Codable, M
                 .compactMap { $0 }
                 .flatMap { url -> AnyPublisher<LoadingState<Model>,Never> in
                     self.loadingState.value = .loading
-                    var request = URLRequest.spoofedUA(url: url)
+                    let request = URLRequest.spoofedUA(url: url)
                     return self.urlSession
                         .dataTaskPublisher(for: request)
                         .tryMap { data, response -> LoadingState<Model> in
                             //sleep(5) // for debug purposes to test loading indicator
                             //throw "shit happens" //for debug purposes to test error throwing
                             let model = try self.parse(data)
-                            let jsonData = try JSONEncoder().encode(model)
-                            let jsonString = String(data: jsonData, encoding: .utf8)!
+                            //for debug output:
+                            /*
+                            let jsonString = String(data: data, encoding: .utf8)!
+                            print(jsonString)
+                            */
                             return LoadingState.complete(model)
                         }
                         .catch { error in

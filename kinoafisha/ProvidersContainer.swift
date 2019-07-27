@@ -82,6 +82,7 @@ final class ProvidersContainer: BindableObject {
     private var imageHolders = [URL:ImageHolder]()
     func imageHolder(for url: URL, defaultWidth: Length, defaultHeight: Length) -> ImageHolder {
         if let imageHolder = imageHolders[url] {
+            imageHolder.reload() //whenever requested reload just in case it failed previously
             return imageHolder
         }
         let imageHolder = ImageHolder(url: url, defaultWidth: defaultWidth, defaultHeight: defaultHeight)

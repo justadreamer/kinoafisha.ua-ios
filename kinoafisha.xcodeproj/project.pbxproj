@@ -69,6 +69,7 @@
 		44C03D5622D5CA2700F5C246 /* Cinema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C03D5522D5CA2700F5C246 /* Cinema.swift */; };
 		44C54DA61A153D4800AF22AD /* FilmsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C54DA51A153D4800AF22AD /* FilmsViewController.m */; };
 		44C54DA91A154BC900AF22AD /* FilmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C54DA81A154BC900AF22AD /* FilmCell.m */; };
+		44C71AFC22E83A3B007A96E4 /* cinemascontainer.json in Resources */ = {isa = PBXBuildFile; fileRef = 44C71AFB22E83A3B007A96E4 /* cinemascontainer.json */; };
 		44C8189B1B91F8A400E538FB /* BaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C8189A1B91F8A400E538FB /* BaseViewModel.m */; };
 		44E4D61C1A5DC90100A89982 /* XSLT in Resources */ = {isa = PBXBuildFile; fileRef = 44E4D61B1A5DC90100A89982 /* XSLT */; };
 		B0DAF7237995C6A3CBEC3383 /* libPods-kinoafisha.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B37F3045E9539DD28D9C91DC /* libPods-kinoafisha.a */; };
@@ -168,6 +169,7 @@
 		44C54DA51A153D4800AF22AD /* FilmsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilmsViewController.m; path = Controller/FilmsViewController.m; sourceTree = "<group>"; };
 		44C54DA71A154BC900AF22AD /* FilmCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilmCell.h; sourceTree = "<group>"; };
 		44C54DA81A154BC900AF22AD /* FilmCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilmCell.m; sourceTree = "<group>"; };
+		44C71AFB22E83A3B007A96E4 /* cinemascontainer.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cinemascontainer.json; sourceTree = "<group>"; };
 		44C818991B91F8A400E538FB /* BaseViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewModel.h; path = Controller/BaseViewModel.h; sourceTree = "<group>"; };
 		44C8189A1B91F8A400E538FB /* BaseViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewModel.m; path = Controller/BaseViewModel.m; sourceTree = "<group>"; };
 		44E4D61B1A5DC90100A89982 /* XSLT */ = {isa = PBXFileReference; lastKnownFileType = folder; name = XSLT; path = kinoafisha/XSLT; sourceTree = SOURCE_ROOT; };
@@ -208,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				441B5EA122E49C6300B33D95 /* films.json */,
+				44C71AFB22E83A3B007A96E4 /* cinemascontainer.json */,
 			);
 			name = fixtures;
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 				441C77A31A15683F00F9499E /* cinema@2x.png in Resources */,
 				44E4D61C1A5DC90100A89982 /* XSLT in Resources */,
 				441B5EA222E49C6300B33D95 /* films.json in Resources */,
+				44C71AFC22E83A3B007A96E4 /* cinemascontainer.json in Resources */,
 				441C77A21A15683F00F9499E /* info@2x.png in Resources */,
 				441C77A81A156CF500F9499E /* credits.html in Resources */,
 			);

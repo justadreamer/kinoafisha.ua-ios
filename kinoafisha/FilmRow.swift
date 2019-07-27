@@ -17,15 +17,7 @@ struct FilmRow : View {
 
     var body: some View {
         HStack(alignment: .top) {
-            Group {
-                if imageHolder.image != nil {
-                    imageHolder.image
-                    .transition(.opacity)
-                } else {
-                    imageHolder.defaultImage
-                }
-            }
-            .frame(width: imageHolder.width, height: imageHolder.height)
+            imageHolder.imageGroup
 
             VStack(alignment: .leading) {
                 Text(self.film.title)

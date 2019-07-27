@@ -13,13 +13,27 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     var providersContainer = ProvidersContainer()
-    
-    var fakeFilmsView: some View {
-        let jsonURL = Bundle.main.url(forResource: "films", withExtension: "json")!
+
+    func jsonFixture(name: String) -> Data {
+        let jsonURL = Bundle.main.url(forResource: name, withExtension: "json")!
         let jsonData = try! Data(contentsOf: jsonURL)
+        return jsonData
+    }
+
+    var fakeFilmsView: some View {
+        let jsonData = jsonFixture(name: "films")
         let films = try! JSONDecoder().decode([Film].self, from: jsonData)
         let filmsProvider = ModelProvider<[Film]>.init(url: nil, transformationName: "", fakeModel: films)
-        return FilmsView(filmsProvider: filmsProvider).environmentObject(providersContainer)
+        return FilmsView(filmsProvider: filmsProvider)
+            .environmentObject(providersContainer)
+    }
+    
+    var fakeCinemasView: some View {
+        let jsonData = jsonFixture(name: "cinemascontainer")
+        let cinemasContainer = try! JSONDecoder().decode(CinemasContainer.self, from: jsonData)
+        let cinemasProvider = ModelProvider<CinemasContainer>.init(url: nil, transformationName: "", fakeModel: cinemasContainer)
+        return CinemasView(cinemasProvider: cinemasProvider)
+            .environmentObject(providersContainer)
     }
     
     var welcomeView: some View {
@@ -41,7 +55,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     
             window.rootViewController = UIHostingController(rootView:
                 welcomeView
-                // fakeFilmsView //for debug
+                //fakeFilmsView //for debug
+                //fakeCinemasView //for debug
             )
             self.window = window
             window.makeKeyAndVisible()
