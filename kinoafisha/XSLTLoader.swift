@@ -69,15 +69,10 @@ final class XSLTLoader<Model> where Model: Codable, Model: Equatable{
                             //sleep(5) // for debug purposes to test loading indicator
                             //throw "shit happens" //for debug purposes to test error throwing
                             let model = try self.parse(data)
-                            //for debug output:
-                            /*
-                            let jsonString = String(data: data, encoding: .utf8)!
-                            print(jsonString)
-                            */
                             return LoadingState.complete(model)
                         }
                         .catch { error in
-                            Just(LoadingState<Model>.error(error.localizedDescription))
+                            Just(LoadingState<Model>.error(error))
                         }
                         .eraseToAnyPublisher()
                 }
@@ -86,8 +81,12 @@ final class XSLTLoader<Model> where Model: Codable, Model: Equatable{
     
     func parse(_ data: Data) throws -> Model  {
         let transformed = try transformation.transformedData(fromHTMLData: data, withParams: [NSString(string: "baseURL"): NSString(string: Q(KinoAfishaBaseURLString))])
-        let decoder = JSONDecoder()
-        let model = try decoder.decode(Model.self, from: transformed)
+        //for debug output:
+        /*
+        let jsonString = String(data: transformed, encoding: .utf8)!
+        print(jsonString)
+        */
+        let model = try JSONDecoder().decode(Model.self, from: transformed)
         return model
     }
 }

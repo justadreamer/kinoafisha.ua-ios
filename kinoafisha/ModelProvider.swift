@@ -70,6 +70,19 @@ final class ModelProvider<Model>: BindableObject where Model: Codable, Model: Eq
                 .compactMap { $0.model }
                 .assign(to: \.model, on: self)
                 .store(in: &cancelations)
+            
+            subj
+                .map { loadingState -> Error? in
+                    switch loadingState {
+                    case .error(let e): return e
+                    default: return nil
+                    }
+                }
+                .compactMap { $0 }
+                .sink(receiveValue: { error in
+                    print("\(Self.self) error: \(error)")}
+                )
+                .store(in: &cancelations)            
         }
     }
     

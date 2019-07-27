@@ -10,7 +10,13 @@ import Foundation
 
 
 struct ScheduleEntry: Codable, Equatable {
-
+    enum CodingKeys: String, CodingKey {
+        case title
+        case type
+        case url = "link"
+        case showTimes = "show_times"
+    }
+    
     enum EntryType: String, Codable {
         case film
         case cinema
@@ -19,6 +25,6 @@ struct ScheduleEntry: Codable, Equatable {
     
     var title: String
     var type: EntryType
-    var url: URL
-    var showTimes: [String]
+    var url: URL?
+    var showTimes: [String]?
 }

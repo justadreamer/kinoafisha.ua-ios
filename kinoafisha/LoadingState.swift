@@ -8,18 +8,18 @@
 
 import Foundation
 
-enum LoadingState<Model>: Equatable where Model: Decodable, Model: Equatable {
+enum LoadingState<Model> where Model: Decodable, Model: Equatable {
     case initial
     case complete(Model)
     case loading
-    case error(String)
+    case error(Error)
     
     var eraseModel: NoModelLoadingState {
         switch self {
         case .initial: return NoModelLoadingState.complete
         case .complete: return NoModelLoadingState.complete
         case .loading: return NoModelLoadingState.loading
-        case .error(let s): return NoModelLoadingState.error(s)
+        case .error(let e): return NoModelLoadingState.error(e)
         }
     }
     
@@ -31,8 +31,20 @@ enum LoadingState<Model>: Equatable where Model: Decodable, Model: Equatable {
     }
 }
 
-enum NoModelLoadingState: Equatable {
+enum NoModelLoadingState {
     case complete
     case loading
-    case error(String)
+    case error(Error)
+}
+
+extension NoModelLoadingState: Equatable {
+    static func == (lhs: NoModelLoadingState, rhs: NoModelLoadingState) -> Bool {
+        switch (lhs, rhs) {
+        case (.complete,.complete): return true
+        case (.loading, .loading): return true
+        case (.error, .error): return true
+        default:
+            return false
+        }
+    }
 }

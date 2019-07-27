@@ -22,7 +22,7 @@ struct LoadingView<Content>: View where Content: View {
     
     var error: String? {
         if case let NoModelLoadingState.error(e) = state {
-            return e
+            return e.localizedDescription
         }
         return nil
     }

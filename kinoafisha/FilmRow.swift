@@ -26,11 +26,13 @@ struct FilmRow : View {
                     .lineLimit(nil)
                     .foregroundColor(.primary)
                     .layoutPriority(1)
-
-                Text(self.film.subtitle)
-                    .font(.subheadline)
-                    .lineLimit(1)
-                    .foregroundColor(.secondary)
+                
+                if self.film.subtitle != nil {
+                    Text(self.film.subtitle!)
+                        .font(.subheadline)
+                        .lineLimit(1)
+                        .foregroundColor(.secondary)
+                }
 
                 HStack(alignment: .lastTextBaseline) {
                     Image(systemName: "star.fill")

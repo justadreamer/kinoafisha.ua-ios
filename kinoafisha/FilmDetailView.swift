@@ -10,9 +10,13 @@ import SwiftUI
 
 struct FilmDetailView: View {
     @EnvironmentObject var providersContainer: ProvidersContainer
-    @State var film: Film
-    //@ObjectBinding var detailsLoader: ModelProvider<Film>
-    
+    var film: Film
+    @ObjectBinding var detailsLoader: ModelProvider<Film>
+
+    var enrichedFilm : Film {
+        detailsLoader.model == nil ? film : detailsLoader.model!
+    }
+
     var body: some View {
         List {
             Section {
@@ -25,7 +29,7 @@ struct FilmDetailView: View {
             }
 
             Section {
-                ForEach(film.attributes, id: \.name) { attribute in
+                ForEach(enrichedFilm.attributes, id: \.name) { attribute in
                     HStack(alignment: .top) {
                         Text("\(attribute.name)")
                             .foregroundColor(.secondary)

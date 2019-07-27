@@ -21,9 +21,9 @@ struct Film: Codable, Equatable {
         case detailURL = "detail_url"
     }
     var title: String
-    var subtitle: String
+    var subtitle: String?
     var thumbnailURL: URL
-    var detailURL: URL
+    var detailURL: URL?
     var rating: String
     var votesCount: String
     var attributes: [Attribute]
