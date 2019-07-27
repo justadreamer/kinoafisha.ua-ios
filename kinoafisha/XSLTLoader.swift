@@ -23,13 +23,13 @@ func Q(_ s: String) -> String {
     "\"\(s)\""
 }
 
-final class XSLTLoader<Model> where Model: ProvidesEmptyState, Model: Codable, Model: Equatable{
+final class XSLTLoader<Model> where Model: Codable, Model: Equatable{
     var url: URL? {
         didSet {
             urlValue.send(url)
         }
     }
-    var loadingState = CurrentValueSubject<LoadingState<Model>, Never>(.complete(Model.empty))
+    var loadingState = CurrentValueSubject<LoadingState<Model>, Never>(.initial)
     private var urlValue = CurrentValueSubject<URL?, Never>(nil)
     private var transformation: SkyXSLTransformation
     private let urlSession = URLSession.init(configuration: .default)

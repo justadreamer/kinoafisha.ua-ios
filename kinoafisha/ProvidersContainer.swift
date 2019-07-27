@@ -38,6 +38,7 @@ final class ProvidersContainer: BindableObject {
         citiesProvider
             .modelValue
             .filter { [weak self] _ in self?.selectedCity == nil }
+            .compactMap { $0 }
             .map { cities in
                 let city = cities.first(where: { $0.isDefaultSelection })
                 print("\(String(describing: city))")

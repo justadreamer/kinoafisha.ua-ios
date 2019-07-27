@@ -8,13 +8,15 @@
 
 import Foundation
 
-enum LoadingState<Model>: Equatable where Model: Decodable, Model: ProvidesEmptyState, Model: Equatable {
+enum LoadingState<Model>: Equatable where Model: Decodable, Model: Equatable {
+    case initial
     case complete(Model)
     case loading
     case error(String)
     
     var eraseModel: NoModelLoadingState {
         switch self {
+        case .initial: return NoModelLoadingState.complete
         case .complete: return NoModelLoadingState.complete
         case .loading: return NoModelLoadingState.loading
         case .error(let s): return NoModelLoadingState.error(s)

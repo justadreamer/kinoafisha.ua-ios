@@ -10,11 +10,11 @@ import Foundation
 import Combine
 import SwiftUI
 
-final class ModelProvider<Model>: BindableObject where Model: ProvidesEmptyState, Model: Codable, Model: Equatable {
+final class ModelProvider<Model>: BindableObject where Model: Codable, Model: Equatable {
     var willChange = PassthroughSubject<Void, Never>()
-    var modelValue = CurrentValueSubject<Model, Never>(Model.empty)
+    var modelValue = CurrentValueSubject<Model?, Never>(nil)
 
-    var model: Model = Model.empty {
+    var model: Model? {
         didSet {
             modelValue.value = model
             willChange.send()

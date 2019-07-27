@@ -16,9 +16,13 @@ struct CitySelectionView : View {
     var body: some View {
         NavigationView {
             LoadingView(state: $citiesProvider.loadingState) {
-                List {
-                    ForEach(self.providersContainer.citiesProvider.model, id: \.name) { city in
-                        CityButton(city: city)
+                VStack {
+                    if self.citiesProvider.model != nil {
+                        List {
+                            ForEach(self.citiesProvider.model!, id: \.name) { city in
+                                CityButton(city: city)
+                            }
+                        }
                     }
                 }
             }

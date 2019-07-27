@@ -18,9 +18,3 @@ struct CinemasContainer: Codable, Equatable {
     var cityName: String
     var cinemas: [Cinema]
 }
-
-extension CinemasContainer: ProvidesEmptyState {
-    static var empty: Self {
-        return CinemasContainer(cityName: "", cinemas: [])
-    }
-}

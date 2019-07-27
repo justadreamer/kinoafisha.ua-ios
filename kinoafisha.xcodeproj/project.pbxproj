@@ -49,7 +49,6 @@
 		4498916822D93EEF002D26B2 /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4498916722D93EEF002D26B2 /* Film.swift */; };
 		4498916A22D93FB4002D26B2 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4498916922D93FB4002D26B2 /* Attribute.swift */; };
 		4498916C22D93FBC002D26B2 /* ScheduleEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4498916B22D93FBC002D26B2 /* ScheduleEntry.swift */; };
-		449CE74E22DA32DE00958CC2 /* ProvidesEmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449CE74D22DA32DE00958CC2 /* ProvidesEmptyState.swift */; };
 		449CE75022DBAD1C00958CC2 /* ModelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449CE74F22DBAD1C00958CC2 /* ModelProvider.swift */; };
 		44B2EE721A0F905D000AFC00 /* CitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B2EE711A0F905D000AFC00 /* CitiesViewController.m */; };
 		44B2EE991A0F925D000AFC00 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B2EE981A0F925D000AFC00 /* City.m */; };
@@ -136,7 +135,6 @@
 		4498916722D93EEF002D26B2 /* Film.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Film.swift; sourceTree = "<group>"; };
 		4498916922D93FB4002D26B2 /* Attribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attribute.swift; sourceTree = "<group>"; };
 		4498916B22D93FBC002D26B2 /* ScheduleEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEntry.swift; sourceTree = "<group>"; };
-		449CE74D22DA32DE00958CC2 /* ProvidesEmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvidesEmptyState.swift; sourceTree = "<group>"; };
 		449CE74F22DBAD1C00958CC2 /* ModelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProvider.swift; sourceTree = "<group>"; };
 		44B2EE701A0F905D000AFC00 /* CitiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CitiesViewController.h; path = Controller/CitiesViewController.h; sourceTree = "<group>"; };
 		44B2EE711A0F905D000AFC00 /* CitiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CitiesViewController.m; path = Controller/CitiesViewController.m; sourceTree = "<group>"; };
@@ -201,7 +199,6 @@
 			children = (
 				441B5EAC22E58C8800B33D95 /* ImageHolder.swift */,
 				4472A41A22D66F84009E2E9C /* XSLTLoader.swift */,
-				449CE74D22DA32DE00958CC2 /* ProvidesEmptyState.swift */,
 				449CE74F22DBAD1C00958CC2 /* ModelProvider.swift */,
 				441B5E9E22E3A7BD00B33D95 /* LoadingState.swift */,
 				441B5EA822E5831300B33D95 /* Global.swift */,
@@ -640,7 +637,6 @@
 				4402AA9022E3268D00D3FD02 /* SettingsButton.swift in Sources */,
 				441ADB211A13F19D00E01CF6 /* AttributeCell.m in Sources */,
 				44B2EF831A116CAE000AFC00 /* CinemasViewController.m in Sources */,
-				449CE74E22DA32DE00958CC2 /* ProvidesEmptyState.swift in Sources */,
 				44F0483322EC59F300DC187F /* FilmDetailView.swift in Sources */,
 				449CE75022DBAD1C00958CC2 /* ModelProvider.swift in Sources */,
 				4498916C22D93FBC002D26B2 /* ScheduleEntry.swift in Sources */,

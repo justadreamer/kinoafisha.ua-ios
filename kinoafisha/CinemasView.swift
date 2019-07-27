@@ -14,8 +14,12 @@ struct CinemasView : View {
 
     var body: some View {
         LoadingView(state: $cinemasProvider.loadingState) {
-            List(self.cinemasProvider.model.cinemas, id: \.name) { cinema in
-                CinemaRow(cinema: cinema, imageHolder: self.providersContainer.imageHolder(for: cinema.thumbnailURL, defaultWidth: CinemaRow.thumbWidth, defaultHeight: CinemaRow.thumbHeight))
+            VStack {
+                if self.cinemasProvider.model != nil {
+                    List(self.cinemasProvider.model!.cinemas, id: \.name) { cinema in
+                        CinemaRow(cinema: cinema, imageHolder: self.providersContainer.imageHolder(for: cinema.thumbnailURL, defaultWidth: CinemaRow.thumbWidth, defaultHeight: CinemaRow.thumbHeight))
+                    }
+                }
             }
         }
     }
