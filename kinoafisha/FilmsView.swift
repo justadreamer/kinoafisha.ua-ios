@@ -16,7 +16,9 @@ struct FilmsView : View {
     var body: some View {
         LoadingView(state: $filmsProvider.loadingState) {
             List(self.filmsProvider.model, id: \.title) { film in
-                FilmRow(film: film, imageHolder: self.providersContainer.imageHolder(for: film.thumbnailURL, defaultWidth: FilmRow.thumbWidth, defaultHeight: FilmRow.thumbHeight))
+                NavigationLink(destination: FilmDetailView(film: film/*, detailsLoader: providersContainer.filmDetailLoader()*/)) {
+                    FilmRow(film: film, imageHolder: self.providersContainer.imageHolder(for: film.thumbnailURL, defaultWidth: FilmRow.thumbWidth, defaultHeight: FilmRow.thumbHeight))
+                }
             }
         }
     }

@@ -89,4 +89,8 @@ final class ProvidersContainer: BindableObject {
         imageHolders[url] = imageHolder
         return imageHolder
     }
+    /*
+    func filmDetailProvider(url: URL) -> ModelProvider<Film> {
+        return ModelProvider<Film>(url: url, transformationName: "single_filmv2")
+    }*/
 }

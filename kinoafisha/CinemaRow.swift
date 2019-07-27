@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct CinemaRow : View {
+    static let thumbWidth: Length = 160
+    static let thumbHeight: Length = 80
+
     let cinema: Cinema
     @ObjectBinding var imageHolder: ImageHolder
 
