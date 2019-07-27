@@ -82,12 +82,19 @@ final class ModelProvider<Model>: BindableObject where Model: Codable, Model: Eq
                 .sink(receiveValue: { error in
                     print("\(Self.self) error: \(error)")}
                 )
-                .store(in: &cancelations)            
+                .store(in: &cancelations)
         }
     }
     
     func reload() {
-        self.loader?.reload()
+        //if no model yet and we are not loading now
+        if self.model == nil && self.loadingState != .loading {
+            self.loader?.reload()
+        }
     }
 
+    func forceReload() {
+        //reload regardless whether we have the model or not
+        self.loader?.reload()
+    }
 }

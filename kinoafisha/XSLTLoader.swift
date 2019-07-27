@@ -24,13 +24,8 @@ func Q(_ s: String) -> String {
 }
 
 final class XSLTLoader<Model> where Model: Codable, Model: Equatable{
-    var url: URL? {
-        didSet {
-            urlValue.send(url)
-        }
-    }
+    var url: URL?
     var loadingState = CurrentValueSubject<LoadingState<Model>, Never>(.initial)
-    private var urlValue = CurrentValueSubject<URL?, Never>(nil)
     private var transformation: SkyXSLTransformation
     private let urlSession = URLSession.init(configuration: .default)
     private var cancelation: AnyCancellable?
@@ -41,9 +36,7 @@ final class XSLTLoader<Model> where Model: Codable, Model: Equatable{
 
     init(url: URL?, transformationName: String, resourceURLProvider: SkyS3ResourceURLProvider) {
         self.url = url
-        self.urlValue.send(url)
         self.transformation = Self.transformation(name: transformationName, from: resourceURLProvider)
-        self.createSubscription()
     }
 
     static func transformation(name: String, from provider: SkyS3ResourceURLProvider) -> SkyXSLTransformation {
@@ -53,28 +46,28 @@ final class XSLTLoader<Model> where Model: Codable, Model: Equatable{
 
     func reload() {
         //print("reloading \(self) url: \(String(describing: url))")
-        urlValue.value = urlValue.value //to stimulate a reload
+        //we could:
+        //urlValue.value = urlValue.value //to stimulate a reload
+        //but rather resubscribe:
+        createSubscription()
     }
     
     func createSubscription() {
+        cancelation?.cancel()
+        guard let url = url else { return }
+        self.loadingState.value = .loading
+        let request = URLRequest.spoofedUA(url: url)
         cancelation =
-            urlValue
-                .compactMap { $0 }
-                .flatMap { url -> AnyPublisher<LoadingState<Model>,Never> in
-                    self.loadingState.value = .loading
-                    let request = URLRequest.spoofedUA(url: url)
-                    return self.urlSession
-                        .dataTaskPublisher(for: request)
-                        .tryMap { data, response -> LoadingState<Model> in
-                            //sleep(5) // for debug purposes to test loading indicator
-                            //throw "shit happens" //for debug purposes to test error throwing
-                            let model = try self.parse(data)
-                            return LoadingState.complete(model)
-                        }
-                        .catch { error in
-                            Just(LoadingState<Model>.error(error))
-                        }
-                        .eraseToAnyPublisher()
+            self.urlSession
+                .dataTaskPublisher(for: request)
+                .tryMap { data, response -> LoadingState<Model> in
+                    //sleep(5) // for debug purposes to test loading indicator
+                    //throw "shit happens" //for debug purposes to test error throwing
+                    let model = try self.parse(data)
+                    return LoadingState.complete(model)
+                }
+                .catch { error in
+                    Just(LoadingState<Model>.error(error))
                 }
                 .subscribe(loadingState)
     }

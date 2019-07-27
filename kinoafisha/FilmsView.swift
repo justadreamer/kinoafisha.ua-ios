@@ -32,6 +32,9 @@ struct FilmsView : View {
                 }
             }
         }
+        .onAppear {
+            self.filmsProvider.reload()
+        }
     }
 }
 

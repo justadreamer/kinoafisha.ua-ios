@@ -26,6 +26,9 @@ struct CitySelectionView : View {
                     }
                 }
             }
+            .onAppear {
+                self.citiesProvider.reload()
+            }
             .navigationBarTitle("Кинотеатры города ")
             .navigationBarItems(leading:
                 ReloadButton(reload: self.providersContainer.citiesProvider.reload),

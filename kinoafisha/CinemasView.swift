@@ -22,6 +22,9 @@ struct CinemasView : View {
                 }
             }
         }
+        .onAppear {
+            self.cinemasProvider.reload()
+        }
     }
 }
 
