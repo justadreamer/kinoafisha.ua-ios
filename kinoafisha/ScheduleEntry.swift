@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import SwiftUI
 
 struct ScheduleEntry: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
@@ -27,4 +27,10 @@ struct ScheduleEntry: Codable, Equatable {
     var type: EntryType
     var url: URL?
     var showTimes: [String]?
+}
+
+extension ScheduleEntry: Identifiable {
+    var id: String {
+        title
+    }
 }

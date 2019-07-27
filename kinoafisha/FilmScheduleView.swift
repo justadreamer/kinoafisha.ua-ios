@@ -9,10 +9,23 @@
 import SwiftUI
 
 struct FilmScheduleView: View {
-    var film: Film
+    var scheduleEntries: [ScheduleEntry]
 
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello World!"/*@END_MENU_TOKEN@*/)
+        List(scheduleEntries) { entry in
+            if entry.type == .cinema {
+                Text("\(entry.title)")
+                    .font(.headline)
+            } else if entry.type == .cinemaRoom {
+                VStack(alignment: .leading) {
+                    Text("\(entry.title)")
+                        .fontWeight(.semibold)
+                    Text("\(entry.showTimes != nil ? entry.showTimes!.joined(separator: " ") : "")")
+                        .foregroundColor(.red)
+                }
+                    .padding(.leading)
+            }
+        }
     }
 }
 

@@ -18,6 +18,10 @@ struct FilmDetailView: View {
         detailsLoader.model == nil ? film : detailsLoader.model!
     }
 
+    var scheduleText: Text {
+        Text("Расписание сеансов")
+    }
+
     var body: some View {
         List {
             headingSection()
@@ -29,14 +33,18 @@ struct FilmDetailView: View {
             }
             .navigationBarTitle(Text("\(film.title)"), displayMode: .inline)
     }
-    
+
     func headingSection() -> some View {
         Section {
             FilmRow(film: film, imageHolder: providersContainer.imageHolder(for: film.thumbnailURL, defaultWidth: FilmRow.thumbWidth, defaultHeight: FilmRow.thumbHeight))
-
-            NavigationLink(destination: FilmScheduleView(film: film)) {
-                Text("Расписание сеансов")
-                    .foregroundColor(.accentColor)
+            
+            if enrichedFilm.scheduleEntries != nil {
+                NavigationLink(destination: FilmScheduleView(scheduleEntries: enrichedFilm.scheduleEntries!)) {
+                    scheduleText
+                        .foregroundColor(.accentColor)
+                }
+            } else {
+                scheduleText
             }
         }
     }
@@ -50,6 +58,10 @@ struct FilmDetailView: View {
                     Text("\(attribute.value)")
                         .lineLimit(nil)
                 }
+            }
+            if enrichedFilm.descr != nil {
+                Text("\(enrichedFilm.descr!)")
+                    .lineLimit(nil)
             }
         }
     }
