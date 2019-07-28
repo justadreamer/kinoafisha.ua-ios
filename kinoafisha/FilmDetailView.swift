@@ -10,11 +10,11 @@ import SwiftUI
 
 struct FilmDetailView: View {
     @EnvironmentObject var providersContainer: ProvidersContainer
-    var film: Film
+    var film: Film?
     @ObjectBinding var detailsLoader: ModelProvider<Film>
     @State var loading: Bool = false
     
-    var enrichedFilm : Film {
+    var enrichedFilm : Film? {
         detailsLoader.model == nil ? film : detailsLoader.model!
     }
 
@@ -22,24 +22,44 @@ struct FilmDetailView: View {
         Text("Расписание сеансов")
     }
 
-    var body: some View {
+    func content() -> some View {
         List {
-            headingSection()
+            headingSection(film: (film != nil ? film : enrichedFilm))
+            scheduleSection()
             enrichedFilmSection()
             activityIndicator()
+        }
+        .navigationBarTitle(Text("\(enrichedFilm == nil ? "" : enrichedFilm!.title)"), displayMode: .inline)
+    }
+    
+    var body: some View {
+        Group {
+            if self.enrichedFilm == nil {
+                LoadingView(state: $detailsLoader.loadingState, content: content)
+            } else {
+                content()
+            }
         }
             .onAppear {
                 self.detailsLoader.reload()
             }
-            .navigationBarTitle(Text("\(film.title)"), displayMode: .inline)
+            
     }
 
-    func headingSection() -> some View {
+    func headingSection(film: Film?) -> some View {
+        Group {
+            if film != nil {
+                Section {
+                    FilmRow(film: film!, imageHolder: providersContainer.imageHolder(for: film!.thumbnailURL, defaultWidth: FilmRow.thumbWidth, defaultHeight: FilmRow.thumbHeight))
+                }
+            }
+        }
+    }
+    
+    func scheduleSection() -> some View {
         Section {
-            FilmRow(film: film, imageHolder: providersContainer.imageHolder(for: film.thumbnailURL, defaultWidth: FilmRow.thumbWidth, defaultHeight: FilmRow.thumbHeight))
-            
-            if enrichedFilm.scheduleEntries != nil {
-                NavigationLink(destination: FilmScheduleView(scheduleEntries: enrichedFilm.scheduleEntries!)) {
+            if enrichedFilm != nil && enrichedFilm!.scheduleEntries != nil {
+                NavigationLink(destination: FilmScheduleView(scheduleEntries: enrichedFilm!.scheduleEntries!)) {
                     scheduleText
                         .foregroundColor(.accentColor)
                 }
@@ -50,18 +70,22 @@ struct FilmDetailView: View {
     }
     
     func enrichedFilmSection() -> some View {
-        Section {
-            ForEach(enrichedFilm.attributes, id: \.name) { attribute in
-                HStack(alignment: .top) {
-                    Text("\(attribute.name)")
-                        .foregroundColor(.secondary)
-                    Text("\(attribute.value)")
-                        .lineLimit(nil)
+        Group {
+            if enrichedFilm != nil {
+                Section {
+                    ForEach(enrichedFilm!.attributes, id: \.name) { attribute in
+                        HStack(alignment: .top) {
+                            Text("\(attribute.name)")
+                                .foregroundColor(.secondary)
+                            Text("\(attribute.value)")
+                                .lineLimit(nil)
+                        }
+                    }
+                    if enrichedFilm!.descr != nil {
+                        Text("\(enrichedFilm!.descr!)")
+                            .lineLimit(nil)
+                    }
                 }
-            }
-            if enrichedFilm.descr != nil {
-                Text("\(enrichedFilm.descr!)")
-                    .lineLimit(nil)
             }
         }
     }

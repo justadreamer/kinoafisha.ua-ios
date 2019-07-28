@@ -16,16 +16,18 @@ struct CinemaScheduleView: View {
     var list: some View {
         List(detailsProvider.model!) { entry in
             if entry.type == .film {
-                Text("\(entry.title)")
-                    .font(.headline)
+                if entry.url != nil {
+                    NavigationLink(destination: FilmDetailView(film: nil, detailsLoader: self.providersContainer.filmDetailProvider(url: entry.url!))) {
+                        Text("\(entry.title)")
+                            .fontWeight(.semibold)
+                            .foregroundColor(.accentColor)
+                    }
+                } else {
+                    Text("\(entry.title)")
+                        .font(.headline)
+                }
             } else if entry.type == .cinemaRoom {
                 VStack(alignment: .leading) {
-                    /*if entry.url != nil {
-                        NavigationLink(destination: FilmDetailView(film: nil, detailsLoader: providersContainer.filmDetailProvider(url: entry.url!))) {
-                            Text("\(entry.title)")
-                                .fontWeight(.semibold)
-                        }
-                    }*/
                     Text("\(entry.title)")
                         .fontWeight(.semibold)
                     Text("\(entry.showTimes != nil ? entry.showTimes!.joined(separator: " ") : "")")
