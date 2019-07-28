@@ -94,4 +94,8 @@ final class ProvidersContainer: BindableObject {
     func filmDetailProvider(url: URL) -> ModelProvider<Film> {
         return ModelProvider<Film>(url: url, transformationName: "single_film_v2")
     }
+    
+    func cinemasDetailProvider(url: URL) -> ModelProvider<[ScheduleEntry]> {
+        return ModelProvider<[ScheduleEntry]>(url: url, transformationName: "single_cinema")
+    }
 }

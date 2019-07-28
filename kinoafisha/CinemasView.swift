@@ -17,7 +17,10 @@ struct CinemasView : View {
             VStack {
                 if self.cinemasProvider.model != nil {
                     List(self.cinemasProvider.model!.cinemas, id: \.name) { cinema in
-                        CinemaRow(cinema: cinema, imageHolder: self.providersContainer.imageHolder(for: cinema.thumbnailURL, defaultWidth: CinemaRow.thumbWidth, defaultHeight: CinemaRow.thumbHeight))
+                        NavigationLink(destination: CinemaScheduleView(cinema: cinema, detailsProvider: self.providersContainer.cinemasDetailProvider(url: cinema.detailURL))) {
+                            CinemaRow(cinema: cinema, imageHolder: self.providersContainer.imageHolder(for: cinema.thumbnailURL, defaultWidth: CinemaRow.thumbWidth, defaultHeight: CinemaRow.thumbHeight))
+                        }
+                        
                     }
                 }
             }

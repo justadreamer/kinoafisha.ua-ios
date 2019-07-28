@@ -73,6 +73,7 @@
 		44E4D61C1A5DC90100A89982 /* XSLT in Resources */ = {isa = PBXBuildFile; fileRef = 44E4D61B1A5DC90100A89982 /* XSLT */; };
 		44F0483322EC59F300DC187F /* FilmDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0483222EC59F300DC187F /* FilmDetailView.swift */; };
 		44F0483522EC5C3100DC187F /* FilmScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0483422EC5C3100DC187F /* FilmScheduleView.swift */; };
+		44F0483922ED0B3300DC187F /* CinemaScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0483822ED0B3300DC187F /* CinemaScheduleView.swift */; };
 		B0DAF7237995C6A3CBEC3383 /* libPods-kinoafisha.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B37F3045E9539DD28D9C91DC /* libPods-kinoafisha.a */; };
 /* End PBXBuildFile section */
 
@@ -177,6 +178,7 @@
 		44E4D61E1A5DD09900A89982 /* S3Secrets_Example.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = S3Secrets_Example.h; path = ../S3Secrets_Example.h; sourceTree = "<group>"; };
 		44F0483222EC59F300DC187F /* FilmDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailView.swift; sourceTree = "<group>"; };
 		44F0483422EC5C3100DC187F /* FilmScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmScheduleView.swift; sourceTree = "<group>"; };
+		44F0483822ED0B3300DC187F /* CinemaScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaScheduleView.swift; sourceTree = "<group>"; };
 		892CF74CC3BA2D9C494A0029 /* Pods-kinoafisha.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kinoafisha.appstore.xcconfig"; path = "Pods/Target Support Files/Pods-kinoafisha/Pods-kinoafisha.appstore.xcconfig"; sourceTree = "<group>"; };
 		B37F3045E9539DD28D9C91DC /* libPods-kinoafisha.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-kinoafisha.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E47B8640D51702EB30B55AE4 /* Pods-kinoafisha.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kinoafisha.debug.xcconfig"; path = "Pods/Target Support Files/Pods-kinoafisha/Pods-kinoafisha.debug.xcconfig"; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				44C03D5122D5C9FA00F5C246 /* CinemasView.swift */,
 				44C03D5522D5CA2700F5C246 /* Cinema.swift */,
 				4498915E22D93C10002D26B2 /* CinemasContainer.swift */,
+				44F0483822ED0B3300DC187F /* CinemaScheduleView.swift */,
 			);
 			name = Cinemas;
 			sourceTree = "<group>";
@@ -635,6 +638,7 @@
 				44060E0122CE8FCE00BA0C43 /* ContainerViewController.swift in Sources */,
 				443AAABC1A62AE4B00F2A188 /* CitiesViewModel.m in Sources */,
 				4402AA9022E3268D00D3FD02 /* SettingsButton.swift in Sources */,
+				44F0483922ED0B3300DC187F /* CinemaScheduleView.swift in Sources */,
 				441ADB211A13F19D00E01CF6 /* AttributeCell.m in Sources */,
 				44B2EF831A116CAE000AFC00 /* CinemasViewController.m in Sources */,
 				44F0483322EC59F300DC187F /* FilmDetailView.swift in Sources */,
