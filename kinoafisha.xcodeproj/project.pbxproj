@@ -289,7 +289,6 @@
 				44F0483A22EEDF4200DC187F /* fixtures */,
 				4451294F1A09FF0D000364E1 /* AppDelegate.h */,
 				445129501A09FF0D000364E1 /* AppDelegate.m */,
-				445129551A09FF0D000364E1 /* Main.storyboard */,
 				445129581A09FF0D000364E1 /* Images.xcassets */,
 				4451295A1A09FF0D000364E1 /* LaunchScreen.xib */,
 				44B2EE9E1A0FA207000AFC00 /* Global.h */,
@@ -427,6 +426,7 @@
 		44F0484522EEEC4700DC187F /* Legacy */ = {
 			isa = PBXGroup;
 			children = (
+				445129551A09FF0D000364E1 /* Main.storyboard */,
 				441B5EA522E5819100B33D95 /* Cities Legacy */,
 				441B5EA422E5818500B33D95 /* Cinemas Legacy */,
 				441B5EA322E5817100B33D95 /* Films Legacy */,
