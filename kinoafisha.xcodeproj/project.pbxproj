@@ -196,28 +196,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4402AA9122E3288200D3FD02 /* Common Infrastructure */ = {
-			isa = PBXGroup;
-			children = (
-				441B5EAC22E58C8800B33D95 /* ImageHolder.swift */,
-				4472A41A22D66F84009E2E9C /* XSLTLoader.swift */,
-				449CE74F22DBAD1C00958CC2 /* ModelProvider.swift */,
-				441B5E9E22E3A7BD00B33D95 /* LoadingState.swift */,
-				441B5EA822E5831300B33D95 /* Global.swift */,
-				441B5EAA22E5838900B33D95 /* URLRequest+Additions.swift */,
-			);
-			name = "Common Infrastructure";
-			sourceTree = "<group>";
-		};
-		441B5EA022E49C4E00B33D95 /* fixtures */ = {
-			isa = PBXGroup;
-			children = (
-				441B5EA122E49C6300B33D95 /* films.json */,
-				44C71AFB22E83A3B007A96E4 /* cinemascontainer.json */,
-			);
-			name = fixtures;
-			sourceTree = "<group>";
-		};
 		441B5EA322E5817100B33D95 /* Films Legacy */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +215,7 @@
 				44B2EF851A117299000AFC00 /* ScheduleEntry.m */,
 			);
 			name = "Films Legacy";
+			path = ..;
 			sourceTree = "<group>";
 		};
 		441B5EA422E5818500B33D95 /* Cinemas Legacy */ = {
@@ -252,6 +231,7 @@
 				443AAAC01A630A2B00F2A188 /* CinemasViewModel.m */,
 			);
 			name = "Cinemas Legacy";
+			path = ..;
 			sourceTree = "<group>";
 		};
 		441B5EA522E5819100B33D95 /* Cities Legacy */ = {
@@ -265,6 +245,7 @@
 				443AAABB1A62AE4B00F2A188 /* CitiesViewModel.m */,
 			);
 			name = "Cities Legacy";
+			path = ..;
 			sourceTree = "<group>";
 		};
 		441C77901A15607E00F9499E /* Resources */ = {
@@ -277,28 +258,7 @@
 				441C77A01A15683F00F9499E /* ukraine@2x.png */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		443AAABD1A62AE5800F2A188 /* Cities */ = {
-			isa = PBXGroup;
-			children = (
-				4477C75622D11A7E004F7479 /* City.swift */,
-				44476BD522D11C340066B61D /* CityButton.swift */,
-				4425EF4122CBE92E00321AFE /* CitySelectionView.swift */,
-			);
-			name = Cities;
-			sourceTree = "<group>";
-		};
-		443AAABE1A630A0900F2A188 /* Cinemas */ = {
-			isa = PBXGroup;
-			children = (
-				4467D94922E71F170066D483 /* CinemaRow.swift */,
-				44C03D5122D5C9FA00F5C246 /* CinemasView.swift */,
-				44C03D5522D5CA2700F5C246 /* Cinema.swift */,
-				4498915E22D93C10002D26B2 /* CinemasContainer.swift */,
-				44F0483822ED0B3300DC187F /* CinemaScheduleView.swift */,
-			);
-			name = Cinemas;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		4451293F1A09FF0D000364E1 = {
@@ -322,7 +282,11 @@
 		4451294A1A09FF0D000364E1 /* kinoafisha */ = {
 			isa = PBXGroup;
 			children = (
-				441B5EA022E49C4E00B33D95 /* fixtures */,
+				44F0483F22EEEBF500DC187F /* Films */,
+				44F0483D22EEEBD500DC187F /* Cinemas */,
+				44F0483C22EEEBBC00DC187F /* Cities */,
+				44F0483B22EEDF5600DC187F /* Common */,
+				44F0483A22EEDF4200DC187F /* fixtures */,
 				4451294F1A09FF0D000364E1 /* AppDelegate.h */,
 				445129501A09FF0D000364E1 /* AppDelegate.m */,
 				445129551A09FF0D000364E1 /* Main.storyboard */,
@@ -335,26 +299,13 @@
 				44C03D4B22D504B100F5C246 /* TabBarView.swift */,
 				44C03D4F22D5215F00F5C246 /* WelcomeView.swift */,
 				4477C75422D11962004F7479 /* ProvidersContainer.swift */,
-				4402AA9122E3288200D3FD02 /* Common Infrastructure */,
-				4486987D22D3090C00F3BFFF /* Supporting Views */,
 				4425EF4022CBE92E00321AFE /* kinoafisha-Bridging-Header.h */,
-				443AAABD1A62AE5800F2A188 /* Cities */,
-				443AAABE1A630A0900F2A188 /* Cinemas */,
-				4498916022D93D39002D26B2 /* Films */,
-				44B2EE6E1A0F901C000AFC00 /* Legacy */,
-				4451294B1A09FF0D000364E1 /* Supporting Files */,
-				44E4D61B1A5DC90100A89982 /* XSLT */,
-			);
-			path = kinoafisha;
-			sourceTree = "<group>";
-		};
-		4451294B1A09FF0D000364E1 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
 				4451294C1A09FF0D000364E1 /* Info.plist */,
 				4451294D1A09FF0D000364E1 /* main.m */,
+				44E4D61B1A5DC90100A89982 /* XSLT */,
+				44F0484522EEEC4700DC187F /* Legacy */,
 			);
-			name = "Supporting Files";
+			path = kinoafisha;
 			sourceTree = "<group>";
 		};
 		446AA6A61B93255C003B3319 /* Credits */ = {
@@ -364,6 +315,7 @@
 				441C77AA1A156D5700F9499E /* CreditsViewController.m */,
 			);
 			name = Credits;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		446AA6A71B9327BD003B3319 /* Base */ = {
@@ -379,16 +331,7 @@
 				44476BD922D11DEA0066B61D /* ActivityIndicator.swift */,
 			);
 			name = Base;
-			sourceTree = "<group>";
-		};
-		4486987D22D3090C00F3BFFF /* Supporting Views */ = {
-			isa = PBXGroup;
-			children = (
-				44476BD722D11CD90066B61D /* LoadingView.swift */,
-				4402AA8D22E324AE00D3FD02 /* ReloadButton.swift */,
-				4402AA8F22E3268D00D3FD02 /* SettingsButton.swift */,
-			);
-			name = "Supporting Views";
+			path = ..;
 			sourceTree = "<group>";
 		};
 		4494D0231AAB319800C958B1 /* Schedule */ = {
@@ -400,35 +343,7 @@
 				4494D0281AAB31DC00C958B1 /* ScheduleViewModel.m */,
 			);
 			name = Schedule;
-			sourceTree = "<group>";
-		};
-		4498916022D93D39002D26B2 /* Films */ = {
-			isa = PBXGroup;
-			children = (
-				4498916322D93E66002D26B2 /* FilmsView.swift */,
-				4498916522D93E72002D26B2 /* FilmRow.swift */,
-				4498916722D93EEF002D26B2 /* Film.swift */,
-				4498916922D93FB4002D26B2 /* Attribute.swift */,
-				4498916B22D93FBC002D26B2 /* ScheduleEntry.swift */,
-				44F0483222EC59F300DC187F /* FilmDetailView.swift */,
-				44F0483422EC5C3100DC187F /* FilmScheduleView.swift */,
-			);
-			name = Films;
-			sourceTree = "<group>";
-		};
-		44B2EE6E1A0F901C000AFC00 /* Legacy */ = {
-			isa = PBXGroup;
-			children = (
-				441B5EA522E5819100B33D95 /* Cities Legacy */,
-				441B5EA422E5818500B33D95 /* Cinemas Legacy */,
-				441B5EA322E5817100B33D95 /* Films Legacy */,
-				441C77901A15607E00F9499E /* Resources */,
-				44B2EEAF1A10002C000AFC00 /* TableViewCell */,
-				446AA6A71B9327BD003B3319 /* Base */,
-				4494D0231AAB319800C958B1 /* Schedule */,
-				446AA6A61B93255C003B3319 /* Credits */,
-			);
-			name = Legacy;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		44B2EEAF1A10002C000AFC00 /* TableViewCell */ = {
@@ -446,6 +361,82 @@
 				44C54DA81A154BC900AF22AD /* FilmCell.m */,
 			);
 			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		44F0483A22EEDF4200DC187F /* fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				441B5EA122E49C6300B33D95 /* films.json */,
+				44C71AFB22E83A3B007A96E4 /* cinemascontainer.json */,
+			);
+			path = fixtures;
+			sourceTree = "<group>";
+		};
+		44F0483B22EEDF5600DC187F /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				44476BD722D11CD90066B61D /* LoadingView.swift */,
+				4402AA8D22E324AE00D3FD02 /* ReloadButton.swift */,
+				4402AA8F22E3268D00D3FD02 /* SettingsButton.swift */,
+				441B5EAC22E58C8800B33D95 /* ImageHolder.swift */,
+				4472A41A22D66F84009E2E9C /* XSLTLoader.swift */,
+				449CE74F22DBAD1C00958CC2 /* ModelProvider.swift */,
+				441B5E9E22E3A7BD00B33D95 /* LoadingState.swift */,
+				441B5EA822E5831300B33D95 /* Global.swift */,
+				441B5EAA22E5838900B33D95 /* URLRequest+Additions.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		44F0483C22EEEBBC00DC187F /* Cities */ = {
+			isa = PBXGroup;
+			children = (
+				4477C75622D11A7E004F7479 /* City.swift */,
+				44476BD522D11C340066B61D /* CityButton.swift */,
+				4425EF4122CBE92E00321AFE /* CitySelectionView.swift */,
+			);
+			path = Cities;
+			sourceTree = "<group>";
+		};
+		44F0483D22EEEBD500DC187F /* Cinemas */ = {
+			isa = PBXGroup;
+			children = (
+				4467D94922E71F170066D483 /* CinemaRow.swift */,
+				44C03D5122D5C9FA00F5C246 /* CinemasView.swift */,
+				44C03D5522D5CA2700F5C246 /* Cinema.swift */,
+				4498915E22D93C10002D26B2 /* CinemasContainer.swift */,
+				44F0483822ED0B3300DC187F /* CinemaScheduleView.swift */,
+			);
+			path = Cinemas;
+			sourceTree = "<group>";
+		};
+		44F0483F22EEEBF500DC187F /* Films */ = {
+			isa = PBXGroup;
+			children = (
+				4498916322D93E66002D26B2 /* FilmsView.swift */,
+				4498916522D93E72002D26B2 /* FilmRow.swift */,
+				4498916722D93EEF002D26B2 /* Film.swift */,
+				4498916922D93FB4002D26B2 /* Attribute.swift */,
+				4498916B22D93FBC002D26B2 /* ScheduleEntry.swift */,
+				44F0483222EC59F300DC187F /* FilmDetailView.swift */,
+				44F0483422EC5C3100DC187F /* FilmScheduleView.swift */,
+			);
+			path = Films;
+			sourceTree = "<group>";
+		};
+		44F0484522EEEC4700DC187F /* Legacy */ = {
+			isa = PBXGroup;
+			children = (
+				441B5EA522E5819100B33D95 /* Cities Legacy */,
+				441B5EA422E5818500B33D95 /* Cinemas Legacy */,
+				441B5EA322E5817100B33D95 /* Films Legacy */,
+				441C77901A15607E00F9499E /* Resources */,
+				44B2EEAF1A10002C000AFC00 /* TableViewCell */,
+				446AA6A71B9327BD003B3319 /* Base */,
+				4494D0231AAB319800C958B1 /* Schedule */,
+				446AA6A61B93255C003B3319 /* Credits */,
+			);
+			path = Legacy;
 			sourceTree = "<group>";
 		};
 		8CC6DFD63434055C2682840D /* Frameworks */ = {

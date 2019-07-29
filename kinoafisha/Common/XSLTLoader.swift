@@ -67,7 +67,7 @@ final class XSLTLoader<Model> where Model: Codable, Model: Equatable{
                 return self.urlSession
                     .dataTaskPublisher(for: request)
                     .tryMap { data, response -> LoadingState<Model> in
-                        sleep(1) // for debug purposes to test loading indicator
+                        //sleep(1) // for debug purposes to test loading indicator
                         //throw "shit happens" //for debug purposes to test error throwing
                         let model = try self.parse(data)
                         return LoadingState.complete(model)
