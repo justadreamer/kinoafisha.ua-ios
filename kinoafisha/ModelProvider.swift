@@ -54,36 +54,48 @@ final class ModelProvider<Model>: BindableObject where Model: Codable, Model: Eq
         } else {
             self.loader = XSLTLoader<Model>(url: url, transformationName: transformationName, resourceURLProvider: (UIApplication.shared.delegate as! AppDelegate).s3SyncManager)
 
-            let subj = self.loader!
-                .loadingState
-                .receive(on: DispatchQueue.main)
-                .share()
-                
-            subj
-                .map { $0.eraseModel }
-                .assign(to: \.loadingState, on: self)
-                .store(in: &cancelations)
-            
-            //this caches the previous state of the model, so even if the next response is an error - we
-            //have the previous state, which might not be exactly correct and expected, so it is debatable
-            subj
-                .compactMap { $0.model }
-                .assign(to: \.model, on: self)
-                .store(in: &cancelations)
-            
-            subj
-                .map { loadingState -> Error? in
-                    switch loadingState {
-                    case .error(let e): return e
-                    default: return nil
-                    }
-                }
-                .compactMap { $0 }
-                .sink(receiveValue: { error in
-                    print("\(Self.self) error: \(error)")}
-                )
-                .store(in: &cancelations)
+            createSubscriptions()
         }
+    }
+    
+    func createSubscriptions() {
+        let subj = self.loader!
+            .loadingState
+            .receive(on: DispatchQueue.main)
+            .share()
+                    
+        subj
+            .sink { state in
+                //print("\(Self.self) \(state)") //for debug
+            }
+            .store(in: &cancelations)
+        
+        subj
+            .map { $0.eraseModel }
+            .assign(to: \.loadingState, on: self)
+            .store(in: &cancelations)
+        
+        //this caches the previous state of the model, so even if the next response is an error - we
+        //have the previous state, which might not be exactly correct and expected, so it is debatable
+        subj
+            .compactMap {
+                $0.model
+            }
+            .assign(to: \.model, on: self)
+            .store(in: &cancelations)
+        
+        subj
+            .map { loadingState -> Error? in
+                switch loadingState {
+                case .error(let e): return e
+                default: return nil
+                }
+            }
+            .compactMap { $0 }
+            .sink(receiveValue: { error in
+                print("\(Self.self) error: \(error)")}
+            )
+            .store(in: &cancelations)
     }
     
     func reload() {

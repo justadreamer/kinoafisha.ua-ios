@@ -21,7 +21,7 @@ struct FilmRow : View {
 
             VStack(alignment: .leading) {
                 Text(self.film.title)
-                    .font(.title)
+                    .font(.headline)
                     .fontWeight(.bold)
                     .lineLimit(nil)
                     .foregroundColor(.primary)

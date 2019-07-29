@@ -28,15 +28,17 @@ final class XSLTLoader<Model> where Model: Codable, Model: Equatable{
     var loadingState = CurrentValueSubject<LoadingState<Model>, Never>(.initial)
     private var transformation: SkyXSLTransformation
     private let urlSession = URLSession.init(configuration: .default)
-    private var cancelation: AnyCancellable?
+    private var cancellable: AnyCancellable?
+    private var reloadSubject = PassthroughSubject<Void, Never>()
 
     deinit {
-        cancelation?.cancel()
+        cancellable?.cancel()
     }
 
     init(url: URL?, transformationName: String, resourceURLProvider: SkyS3ResourceURLProvider) {
         self.url = url
         self.transformation = Self.transformation(name: transformationName, from: resourceURLProvider)
+        createSubscription()
     }
 
     static func transformation(name: String, from provider: SkyS3ResourceURLProvider) -> SkyXSLTransformation {
@@ -49,27 +51,33 @@ final class XSLTLoader<Model> where Model: Codable, Model: Equatable{
         //we could:
         //urlValue.value = urlValue.value //to stimulate a reload
         //but rather resubscribe:
-        createSubscription()
+        reloadSubject.send()
     }
     
     func createSubscription() {
-        cancelation?.cancel()
-        guard let url = url else { return }
-        self.loadingState.value = .loading
-        let request = URLRequest.spoofedUA(url: url)
-        cancelation =
-            self.urlSession
-                .dataTaskPublisher(for: request)
-                .tryMap { data, response -> LoadingState<Model> in
-                    //sleep(5) // for debug purposes to test loading indicator
-                    //throw "shit happens" //for debug purposes to test error throwing
-                    let model = try self.parse(data)
-                    return LoadingState.complete(model)
+        cancellable?.cancel()
+        cancellable =
+            reloadSubject.flatMap { () -> AnyPublisher<LoadingState<Model>, Never> in
+                guard let url = self.url else {
+                    return Just(LoadingState<Model>.initial)
+                        .eraseToAnyPublisher()
                 }
-                .catch { error in
-                    Just(LoadingState<Model>.error(error))
-                }
-                .subscribe(loadingState)
+                self.loadingState.value = .loading //side effect, sorry
+                let request = URLRequest.spoofedUA(url: url)
+                return self.urlSession
+                    .dataTaskPublisher(for: request)
+                    .tryMap { data, response -> LoadingState<Model> in
+                        sleep(1) // for debug purposes to test loading indicator
+                        //throw "shit happens" //for debug purposes to test error throwing
+                        let model = try self.parse(data)
+                        return LoadingState.complete(model)
+                    }
+                    .catch { error in
+                        Just(LoadingState<Model>.error(error))
+                    }
+                .eraseToAnyPublisher()
+            }
+            .subscribe(loadingState)
     }
     
     func parse(_ data: Data) throws -> Model  {
