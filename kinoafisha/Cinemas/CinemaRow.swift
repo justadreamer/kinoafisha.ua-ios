@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct CinemaRow : View {
-    static let thumbWidth: Length = 160
-    static let thumbHeight: Length = 80
+    static let thumbWidth: CGFloat = 160
+    static let thumbHeight: CGFloat = 80
 
     let cinema: Cinema
-    @ObjectBinding var imageHolder: ImageHolder
+    @ObservedObject var imageHolder: ImageHolder
 
     var body: some View {
         VStack(alignment: .leading) {

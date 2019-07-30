@@ -10,20 +10,20 @@ import Foundation
 import Combine
 import SwiftUI
 
-final class ModelProvider<Model>: BindableObject where Model: Codable, Model: Equatable {
-    var willChange = PassthroughSubject<Void, Never>()
+final class ModelProvider<Model>: ObservableObject where Model: Codable, Model: Equatable {
+    var objectWillChange = PassthroughSubject<Void, Never>()
     var modelValue = CurrentValueSubject<Model?, Never>(nil)
 
     var model: Model? {
         didSet {
             modelValue.value = model
-            willChange.send()
+            objectWillChange.send()
         }
     }
 
     var loadingState: NoModelLoadingState = .complete {
         didSet {
-            willChange.send()
+            objectWillChange.send()
         }
     }
 
@@ -66,7 +66,7 @@ final class ModelProvider<Model>: BindableObject where Model: Codable, Model: Eq
                     
         subj
             .sink { state in
-                //print("\(Self.self) \(state)") //for debug
+//                print("\(Self.self) \(state)") //for debug
             }
             .store(in: &cancelations)
         

@@ -11,7 +11,7 @@ import SwiftUI
 struct CinemaScheduleView: View {
     var cinema: Cinema
     @EnvironmentObject var providersContainer: ProvidersContainer
-    @ObjectBinding var detailsProvider: ModelProvider<[ScheduleEntry]>
+    @ObservedObject var detailsProvider: ModelProvider<[ScheduleEntry]>
     
     var list: some View {
         List(detailsProvider.model!) { entry in

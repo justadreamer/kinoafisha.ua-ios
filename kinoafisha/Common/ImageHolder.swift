@@ -10,14 +10,14 @@ import Foundation
 import SwiftUI
 import Combine
 
-final class ImageHolder: BindableObject {
-    var willChange = PassthroughSubject<Void,Never>()
+final class ImageHolder: ObservableObject {
+    var objectWillChange = PassthroughSubject<Void,Never>()
     var url: URL
     
     var errorImage: Image? {
         didSet {
             withAnimation {
-                willChange.send()
+                objectWillChange.send()
             }
         }
     }
@@ -25,7 +25,7 @@ final class ImageHolder: BindableObject {
     var image: Image? {
         didSet {
             withAnimation {
-                willChange.send()
+                objectWillChange.send()
             }
         }
     }
@@ -47,10 +47,10 @@ final class ImageHolder: BindableObject {
     
     var defaultImage = Image(systemName: "hourglass")
 
-    var width: Length
-    var height: Length
+    var width: CGFloat
+    var height: CGFloat
 
-    init(url: URL, defaultWidth: Length, defaultHeight: Length) {
+    init(url: URL, defaultWidth: CGFloat, defaultHeight: CGFloat) {
         self.url = url
         self.width = defaultWidth
         self.height = defaultHeight

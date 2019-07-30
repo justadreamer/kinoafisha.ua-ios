@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct CinemasView : View {
-    @ObjectBinding var cinemasProvider: ModelProvider<CinemasContainer>
+    @ObservedObject var cinemasProvider: ModelProvider<CinemasContainer>
     @EnvironmentObject var providersContainer: ProvidersContainer
 
     var body: some View {

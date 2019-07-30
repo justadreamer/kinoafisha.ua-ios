@@ -10,10 +10,10 @@ import SwiftUI
 
 struct FilmRow : View {
     var film: Film
-    @ObjectBinding var imageHolder: ImageHolder
+    @ObservedObject var imageHolder: ImageHolder
 
-    static let thumbWidth: Length = 96
-    static let thumbHeight: Length = 140
+    static let thumbWidth: CGFloat = 96
+    static let thumbHeight: CGFloat = 140
 
     var body: some View {
         HStack(alignment: .top) {

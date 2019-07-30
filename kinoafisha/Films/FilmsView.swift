@@ -10,14 +10,14 @@ import SwiftUI
 import Combine
 
 struct FilmsView : View {
-    @ObjectBinding var filmsProvider: ModelProvider<[Film]>
+    @ObservedObject var filmsProvider: ModelProvider<[Film]>
     @EnvironmentObject var providersContainer: ProvidersContainer
     func filmRow(film: Film) -> FilmRow {
         FilmRow(film: film, imageHolder: self.providersContainer.imageHolder(for: film.thumbnailURL, defaultWidth: FilmRow.thumbWidth, defaultHeight: FilmRow.thumbHeight))
     }
 
     var body: some View {
-        LoadingView(state: $filmsProvider.loadingState) {
+        //LoadingView(state: $filmsProvider.loadingState) {
             VStack {
                 if self.filmsProvider.model != nil {
                     List(self.filmsProvider.model!, id: \.title) { film in
@@ -30,7 +30,7 @@ struct FilmsView : View {
                         }
                     }
                 }
-            }
+            //}
         }
         .onAppear {
             self.filmsProvider.reload()

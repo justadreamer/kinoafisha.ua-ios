@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CitySelectionView : View {
     @EnvironmentObject var providersContainer: ProvidersContainer
-    @ObjectBinding var citiesProvider: ModelProvider<[City]>
+    @ObservedObject var citiesProvider: ModelProvider<[City]>
     @Binding var presented: Bool
 
     var body: some View {

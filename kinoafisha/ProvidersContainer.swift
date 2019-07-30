@@ -10,9 +10,9 @@ import Foundation
 import SwiftUI
 import Combine
 
-final class ProvidersContainer: BindableObject {
+final class ProvidersContainer: ObservableObject {
     var disposeBag = Set<AnyCancellable>()
-    var willChange = PassthroughSubject<Void, Never>()
+    var objectWillChange = PassthroughSubject<Void, Never>()
     let userDefaults = UserDefaults.standard
 
     var citiesProvider = ModelProvider<[City]>(url: URL(string: KinoAfishaBaseURLString + "/cinema"), transformationName: "cities")
@@ -50,7 +50,7 @@ final class ProvidersContainer: BindableObject {
 
     func notifyChanged() {
         DispatchQueue.main.async {
-            self.willChange.send(())
+            self.objectWillChange.send(())
         }
     }
     
@@ -76,12 +76,12 @@ final class ProvidersContainer: BindableObject {
     
     func delayedViewRefresh() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now().advanced(by: .milliseconds(500))) {
-            self.willChange.send()
+            self.objectWillChange.send()
         }
     }
     
     private var imageHolders = [URL:ImageHolder]()
-    func imageHolder(for url: URL, defaultWidth: Length, defaultHeight: Length) -> ImageHolder {
+    func imageHolder(for url: URL, defaultWidth: CGFloat, defaultHeight: CGFloat) -> ImageHolder {
         if let imageHolder = imageHolders[url] {
             imageHolder.reload() //whenever requested reload just in case it failed previously
             return imageHolder

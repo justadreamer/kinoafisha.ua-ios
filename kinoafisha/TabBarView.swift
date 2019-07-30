@@ -13,13 +13,12 @@ struct TabBarView : View {
     @EnvironmentObject var providersContainer: ProvidersContainer
 
     var body: some View {
-        TabbedView {
+        TabView {
             NavigationView {
                 FilmsView(filmsProvider: providersContainer.filmsProvider)
                 .navigationBarTitle("Фильмы \(providersContainer.selectedCity?.name ?? "")")
                 .navigationBarItems(leading: ReloadButton(reload: self.providersContainer.filmsProvider.forceReload), trailing: SettingsButton(presentSettings: $presentSettings))
             }
-            
             .tabItem {
                 VStack {
                     Image(systemName: "film")

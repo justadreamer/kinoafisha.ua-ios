@@ -11,7 +11,7 @@ import SwiftUI
 struct FilmDetailView: View {
     @EnvironmentObject var providersContainer: ProvidersContainer
     var film: Film?
-    @ObjectBinding var detailsLoader: ModelProvider<Film>
+    @ObservedObject var detailsLoader: ModelProvider<Film>
     @State var loading: Bool = false
     
     var enrichedFilm : Film? {
@@ -96,7 +96,7 @@ struct FilmDetailView: View {
             ActivityIndicator(isAnimating: $loading, style: .medium)
             Spacer()
         }
-        .onReceive(detailsLoader.willChange) {
+        .onReceive(detailsLoader.objectWillChange) {
             self.loading = self.detailsLoader.loadingState == .loading
         }
     }
