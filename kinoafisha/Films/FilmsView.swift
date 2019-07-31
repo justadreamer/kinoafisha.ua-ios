@@ -17,7 +17,7 @@ struct FilmsView : View {
     }
 
     var body: some View {
-        //LoadingView(state: $filmsProvider.loadingState) {
+        LoadingView(state: $filmsProvider.loadingState) {
             VStack {
                 if self.filmsProvider.model != nil {
                     List(self.filmsProvider.model!, id: \.title) { film in
@@ -30,7 +30,7 @@ struct FilmsView : View {
                         }
                     }
                 }
-            //}
+            }
         }
         .onAppear {
             self.filmsProvider.reload()

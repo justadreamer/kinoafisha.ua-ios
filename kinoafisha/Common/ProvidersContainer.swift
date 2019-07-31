@@ -23,6 +23,8 @@ final class ProvidersContainer: ObservableObject {
         didSet {
             filmsProvider.url = selectedCity?.filmURL
             cinemasProvider.url = selectedCity?.cinemaURL
+            filmsProvider.forceReload()
+            cinemasProvider.forceReload()
             saveSelectedCity()
             notifyChanged()
         }
