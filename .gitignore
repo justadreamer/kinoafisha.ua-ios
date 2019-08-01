@@ -3,3 +3,4 @@
 build/*
 Pods/Headers/Build/*
 xcshareddata
+kinoafisha/S3Secrets_Prod.h
