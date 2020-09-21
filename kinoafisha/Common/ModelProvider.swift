@@ -28,12 +28,12 @@ final class ModelProvider<Model>: ObservableObject where Model: Codable, Model: 
     }
 
     private var loader: XSLTLoader<Model>?
-    var url: URL? {
+    var parsedRequest: ParsedRequest? {
         get {
-            loader?.url
+            loader?.parsedRequest
         }
         set {
-            loader?.url = newValue
+            loader?.parsedRequest = newValue
         }
     }
     
@@ -47,13 +47,11 @@ final class ModelProvider<Model>: ObservableObject where Model: Codable, Model: 
         cancelations.forEach { $0.cancel() }
     }
     
-    init(url: URL?, transformationName: String, fakeModel: Model? = nil) {
+    init(parsedRequest: ParsedRequest?, transformationName: String, fakeModel: Model? = nil) {
         if let fakeModel = fakeModel {
             self.model = fakeModel
-            self.loadingState = .complete
         } else {
-            self.loader = XSLTLoader<Model>(url: url, transformationName: transformationName, resourceURLProvider: (UIApplication.shared.delegate as! AppDelegate).s3SyncManager)
-
+            self.loader = XSLTLoader<Model>(parsedRequest: parsedRequest, transformationName: transformationName, resourceURLProvider: (UIApplication.shared.delegate as! AppDelegate).s3SyncManager)
             createSubscriptions()
         }
     }
@@ -63,12 +61,6 @@ final class ModelProvider<Model>: ObservableObject where Model: Codable, Model: 
             .loadingState
             .receive(on: DispatchQueue.main)
             .share()
-                    
-        subj
-            .sink { state in
-//                print("\(Self.self) \(state)") //for debug
-            }
-            .store(in: &cancelations)
         
         subj
             .map { $0.eraseModel }
@@ -79,7 +71,7 @@ final class ModelProvider<Model>: ObservableObject where Model: Codable, Model: 
         //have the previous state, which might not be exactly correct and expected, so it is debatable
         subj
             .compactMap {
-                $0.model
+                return $0.model
             }
             .assign(to: \.model, on: self)
             .store(in: &cancelations)

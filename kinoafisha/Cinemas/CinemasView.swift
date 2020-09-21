@@ -17,7 +17,7 @@ struct CinemasView : View {
             VStack {
                 if self.cinemasProvider.model != nil {
                     List(self.cinemasProvider.model!.cinemas, id: \.name) { cinema in
-                        NavigationLink(destination: CinemaScheduleView(cinema: cinema, detailsProvider: self.providersContainer.cinemasDetailProvider(url: cinema.detailURL))) {
+                        NavigationLink(destination: CinemaScheduleView(cinema: cinema, detailsProvider: self.providersContainer.cinemasDetailProvider(parsedRequest: cinema.detailParsedRequest))) {
                             CinemaRow(cinema: cinema, imageHolder: self.providersContainer.imageHolder(for: cinema.thumbnailURL, defaultWidth: CinemaRow.thumbWidth, defaultHeight: CinemaRow.thumbHeight))
                         }
                         

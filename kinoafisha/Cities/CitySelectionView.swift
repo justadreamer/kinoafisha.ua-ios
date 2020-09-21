@@ -29,7 +29,7 @@ struct CitySelectionView : View {
             .onAppear {
                 self.citiesProvider.reload()
             }
-            .navigationBarTitle("Кинотеатры города ")
+            .navigationBarTitle("Выберите город:")
             .navigationBarItems(leading:
                 ReloadButton(reload: self.providersContainer.citiesProvider.reload),
                                 trailing:

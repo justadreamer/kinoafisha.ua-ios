@@ -12,12 +12,16 @@ struct CinemaScheduleView: View {
     var cinema: Cinema
     @EnvironmentObject var providersContainer: ProvidersContainer
     @ObservedObject var detailsProvider: ModelProvider<[ScheduleEntry]>
-    
+    var entries: [ScheduleEntry] {
+        self.detailsProvider.model!
+    }
+
     var list: some View {
-        List(detailsProvider.model!) { entry in
+        List(entries) { (entry: ScheduleEntry) in
             if entry.type == .film {
-                if entry.url != nil {
-                    NavigationLink(destination: FilmDetailView(film: nil, detailsLoader: self.providersContainer.filmDetailProvider(url: entry.url!))) {
+                if entry.detailParsedRequest != nil {
+                    //TODO: cookie is lost here:
+                    NavigationLink(destination: FilmDetailView(film: nil, detailsLoader: self.providersContainer.filmDetailProvider(parsedRequest: entry.detailParsedRequest!))) {
                         Text("\(entry.title)")
                             .fontWeight(.semibold)
                             .foregroundColor(.accentColor)

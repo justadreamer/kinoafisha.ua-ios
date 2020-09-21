@@ -11,7 +11,7 @@ import Foundation
 struct Cinema: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case name
-        case detailURL = "link"
+        case detailParsedRequest = "detail_parsed_request"
         case thumbnailURL = "thumbnail"
         case address = "address"
         case phone = "phone"
@@ -20,7 +20,7 @@ struct Cinema: Codable, Equatable {
     }
 
     var name: String
-    var detailURL: URL
+    var detailParsedRequest: ParsedRequest
     var thumbnailURL: URL
     var address: String
     var phone: String

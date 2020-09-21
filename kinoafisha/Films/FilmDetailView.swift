@@ -15,7 +15,8 @@ struct FilmDetailView: View {
     @State var loading: Bool = false
     
     var enrichedFilm : Film? {
-        detailsLoader.model == nil ? film : detailsLoader.model!
+        //print(detailsLoader.model)
+        return detailsLoader.model ?? film
     }
 
     var scheduleText: Text {
@@ -24,7 +25,7 @@ struct FilmDetailView: View {
 
     func content() -> some View {
         List {
-            headingSection(film: (film != nil ? film : enrichedFilm))
+            headingSection(film: enrichedFilm)
             scheduleSection()
             enrichedFilmSection()
             activityIndicator()
@@ -40,9 +41,9 @@ struct FilmDetailView: View {
                 content()
             }
         }
-            .onAppear {
-                self.detailsLoader.reload()
-            }
+        .onAppear {
+            self.detailsLoader.reload()
+        }
             
     }
 
@@ -97,7 +98,8 @@ struct FilmDetailView: View {
             Spacer()
         }
         .onReceive(detailsLoader.objectWillChange) {
-            self.loading = self.detailsLoader.loadingState == .loading
+            //print("\(self.detailsLoader.loadingState)")
+            //self.loading = self.detailsLoader.loadingState == .loading
         }
     }
 }

@@ -40,7 +40,7 @@ enum NoModelLoadingState {
 extension NoModelLoadingState: Equatable {
     static func == (lhs: NoModelLoadingState, rhs: NoModelLoadingState) -> Bool {
         switch (lhs, rhs) {
-        case (.complete,.complete): return true
+        case (.complete, .complete): return true
         case (.loading, .loading): return true
         case (.error, .error): return true
         default:

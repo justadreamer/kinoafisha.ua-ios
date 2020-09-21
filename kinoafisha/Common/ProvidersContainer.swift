@@ -15,14 +15,16 @@ final class ProvidersContainer: ObservableObject {
     var objectWillChange = PassthroughSubject<Void, Never>()
     let userDefaults = UserDefaults.standard
 
-    var citiesProvider = ModelProvider<[City]>(url: URL(string: KinoAfishaBaseURLString + "/cinema"), transformationName: "cities")
-    var filmsProvider = ModelProvider<[Film]>(url: nil, transformationName: "films")
-    var cinemasProvider = ModelProvider<CinemasContainer>(url: nil, transformationName: "cinemas")
-
+    var citiesProvider = ModelProvider<[City]>(parsedRequest: ParsedRequest(url: URL(string: KinoAfishaBaseURLString + "/cinema")!), transformationName: "cities")
+    var filmsProvider = ModelProvider<[Film]>(parsedRequest: nil, transformationName: "films_v2")
+    var cinemasProvider = ModelProvider<CinemasContainer>(parsedRequest: nil, transformationName: "cinemas")
+    var filmProvidersMap: [ParsedRequest: ModelProvider<Film>] = [:]
+    var cinemaProvidersMap: [ParsedRequest: ModelProvider<[ScheduleEntry]>] = [:]
+    
     var selectedCity: City? {
         didSet {
-            filmsProvider.url = selectedCity?.filmURL
-            cinemasProvider.url = selectedCity?.cinemaURL
+            filmsProvider.parsedRequest = selectedCity?.requestFilm
+            cinemasProvider.parsedRequest = selectedCity?.requestCinema
             filmsProvider.forceReload()
             cinemasProvider.forceReload()
             saveSelectedCity()
@@ -65,6 +67,7 @@ final class ProvidersContainer: ObservableObject {
                 userDefaults.removeObject(forKey: selectedCityKey)
                 return
             }
+        
         userDefaults.set(encoded, forKey: selectedCityKey)
     }
     
@@ -83,21 +86,39 @@ final class ProvidersContainer: ObservableObject {
     }
     
     private var imageHolders = [URL:ImageHolder]()
-    func imageHolder(for url: URL, defaultWidth: CGFloat, defaultHeight: CGFloat) -> ImageHolder {
-        if let imageHolder = imageHolders[url] {
+    func imageHolder(for url: URL?, defaultWidth: CGFloat, defaultHeight: CGFloat) -> ImageHolder {
+        if let url = url, let imageHolder = imageHolders[url] {
+            //print("getting imageholder for url: \(url)")
             imageHolder.reload() //whenever requested reload just in case it failed previously
             return imageHolder
         }
+        //print("creating imageholder for url: \(String(describing: url))")
         let imageHolder = ImageHolder(url: url, defaultWidth: defaultWidth, defaultHeight: defaultHeight)
-        imageHolders[url] = imageHolder
+        if let url = url {
+            imageHolders[url] = imageHolder
+        }
         return imageHolder
     }
 
-    func filmDetailProvider(url: URL) -> ModelProvider<Film> {
-        return ModelProvider<Film>(url: url, transformationName: "single_film_v2")
+    func filmDetailProvider(parsedRequest: ParsedRequest) -> ModelProvider<Film> {
+        let provider: ModelProvider<Film>
+        if let p = filmProvidersMap[parsedRequest] {
+            provider = p
+        } else {
+            provider = ModelProvider<Film>(parsedRequest: parsedRequest, transformationName: "single_film_v2")
+            filmProvidersMap[parsedRequest] = provider
+        }
+        return provider
     }
     
-    func cinemasDetailProvider(url: URL) -> ModelProvider<[ScheduleEntry]> {
-        return ModelProvider<[ScheduleEntry]>(url: url, transformationName: "single_cinema")
+    func cinemasDetailProvider(parsedRequest: ParsedRequest) -> ModelProvider<[ScheduleEntry]> {
+        let provider: ModelProvider<[ScheduleEntry]>
+        if let p = cinemaProvidersMap[parsedRequest] {
+            provider = p
+        } else {
+            provider = ModelProvider<[ScheduleEntry]>(parsedRequest: parsedRequest, transformationName: "single_cinema")
+            cinemaProvidersMap[parsedRequest] = provider
+        }
+        return provider
     }
 }

@@ -18,12 +18,13 @@ struct Film: Codable, Equatable {
         case attributes
         case descr = "description"
         case scheduleEntries = "schedule"
-        case detailURL = "detail_url"
+        //case detailURL = "detail_url"
+        case detailParsedRequest = "detail_parsed_request"
     }
     var title: String
     var subtitle: String?
-    var thumbnailURL: URL
-    var detailURL: URL?
+    var thumbnailURL: URL?
+    var detailParsedRequest: ParsedRequest?
     var rating: String
     var votesCount: String
     var attributes: [Attribute]

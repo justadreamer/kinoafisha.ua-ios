@@ -5,7 +5,7 @@
   xmlns:regexp="http://exslt.org/regular-expressions">
 
           "attributes":[
-          <xsl:for-each select=".//div[@class='text']/p">
+          <xsl:for-each select=".//div[@class='movie__details']/p[not(@class = 'countries')]">
             {
               "name":"<xsl:value-of select="regexp:match(./text(),'[^:]*:','')[1]" />",
               "value":"<xsl:choose>

@@ -24,7 +24,7 @@ func Q(_ s: String) -> String {
 }
 
 final class XSLTLoader<Model> where Model: Codable, Model: Equatable{
-    var url: URL?
+    var parsedRequest: ParsedRequest?
     var loadingState = CurrentValueSubject<LoadingState<Model>, Never>(.initial)
     private var transformation: SkyXSLTransformation
     private let urlSession = URLSession.init(configuration: .default)
@@ -35,8 +35,8 @@ final class XSLTLoader<Model> where Model: Codable, Model: Equatable{
         cancellable?.cancel()
     }
 
-    init(url: URL?, transformationName: String, resourceURLProvider: SkyS3ResourceURLProvider) {
-        self.url = url
+    init(parsedRequest: ParsedRequest?, transformationName: String, resourceURLProvider: SkyS3ResourceURLProvider) {
+        self.parsedRequest = parsedRequest
         self.transformation = Self.transformation(name: transformationName, from: resourceURLProvider)
         createSubscription()
     }
@@ -58,12 +58,13 @@ final class XSLTLoader<Model> where Model: Codable, Model: Equatable{
         cancellable?.cancel()
         cancellable =
             reloadSubject.flatMap { () -> AnyPublisher<LoadingState<Model>, Never> in
-                guard let url = self.url else {
+                guard var request = self.parsedRequest?.toURLRequest() else {
                     return Just(LoadingState<Model>.initial)
                         .eraseToAnyPublisher()
                 }
+                request = request.addingSpoofedUA()
                 self.loadingState.value = .loading //side effect, sorry
-                let request = URLRequest.spoofedUA(url: url)
+                
                 return self.urlSession
                     .dataTaskPublisher(for: request)
                     .tryMap { data, response -> LoadingState<Model> in
@@ -81,12 +82,15 @@ final class XSLTLoader<Model> where Model: Codable, Model: Equatable{
     }
     
     func parse(_ data: Data) throws -> Model  {
-        let transformed = try transformation.transformedData(fromHTMLData: data, withParams: [NSString(string: "baseURL"): NSString(string: Q(KinoAfishaBaseURLString))])
+        let transformed = try transformation.transformedData(fromHTMLData: data, withParams: [
+            NSString(string: "baseURL"): NSString(string: Q(KinoAfishaBaseURLString)),
+            NSString(string: "cookie"): NSString(string: Q(parsedRequest?.headers["Cookie"] ?? ""))
+        ])
+
         //for debug output:
-        /*
-        let jsonString = String(data: transformed, encoding: .utf8)!
-        print(jsonString)
-        */
+        //let jsonString = String(data: transformed, encoding: .utf8)!
+        //print(jsonString)
+
         let model = try JSONDecoder().decode(Model.self, from: transformed)
         return model
     }

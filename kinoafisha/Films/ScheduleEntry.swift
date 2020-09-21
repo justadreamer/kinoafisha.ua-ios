@@ -13,7 +13,7 @@ struct ScheduleEntry: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case title
         case type
-        case url = "link"
+        case detailParsedRequest = "detail_parsed_request"
         case showTimes = "show_times"
     }
     
@@ -25,7 +25,7 @@ struct ScheduleEntry: Codable, Equatable {
     
     var title: String
     var type: EntryType
-    var url: URL?
+    var detailParsedRequest: ParsedRequest?
     var showTimes: [String]?
 }
 

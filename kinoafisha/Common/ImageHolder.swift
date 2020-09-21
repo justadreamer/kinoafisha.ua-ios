@@ -12,21 +12,21 @@ import Combine
 
 final class ImageHolder: ObservableObject {
     var objectWillChange = PassthroughSubject<Void,Never>()
-    var url: URL
+    var url: URL?
     
     var errorImage: Image? {
         didSet {
-            withAnimation {
+            //withAnimation {
                 objectWillChange.send()
-            }
+            //}
         }
     }
     
     var image: Image? {
         didSet {
-            withAnimation {
+            //withAnimation {
                 objectWillChange.send()
-            }
+            //}
         }
     }
     
@@ -50,7 +50,7 @@ final class ImageHolder: ObservableObject {
     var width: CGFloat
     var height: CGFloat
 
-    init(url: URL, defaultWidth: CGFloat, defaultHeight: CGFloat) {
+    init(url: URL?, defaultWidth: CGFloat, defaultHeight: CGFloat) {
         self.url = url
         self.width = defaultWidth
         self.height = defaultHeight
@@ -68,8 +68,10 @@ final class ImageHolder: ObservableObject {
         if let _ = image {
             return //if image has been loaded no need to reload
         }
+        guard let url = url else { return }
         cancellation?.cancel()
-        let request = URLRequest.spoofedUA(url: url)
+        let request = URLRequest(url: url).addingSpoofedUA()
+        
         self.errorImage = nil // we reattempt, so if there was any error, let's clear it
         
         cancellation = session

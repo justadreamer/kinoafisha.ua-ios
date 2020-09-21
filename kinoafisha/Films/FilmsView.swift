@@ -21,8 +21,8 @@ struct FilmsView : View {
             VStack {
                 if self.filmsProvider.model != nil {
                     List(self.filmsProvider.model!, id: \.title) { film in
-                        if film.detailURL != nil {
-                            NavigationLink(destination: FilmDetailView(film: film, detailsLoader: self.providersContainer.filmDetailProvider(url: film.detailURL!))) {
+                        if film.detailParsedRequest != nil {
+                            NavigationLink(destination: FilmDetailView(film: film, detailsLoader: self.providersContainer.filmDetailProvider(parsedRequest: film.detailParsedRequest!))) {
                                 self.filmRow(film: film)
                             }
                         } else {
