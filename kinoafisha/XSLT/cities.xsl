@@ -16,7 +16,7 @@
   <xsl:variable name="kinoafishaURL"><xsl:value-of select="$baseURL" /><xsl:value-of select="'/kinoafisha'" /></xsl:variable>
   <xsl:variable name="cinemaURL"><xsl:value-of select="$baseURL" /><xsl:value-of select="'/cinema'" /></xsl:variable>
   [
-    <xsl:for-each select="//ul[@class='cities__list']/li">
+    <xsl:for-each select="//div[contains(@class,'header__cities') and position() = 1]/ul[@class='cities__list']/li">
       <xsl:variable name="cityIdCookie">city_id=<xsl:value-of select="./a/@data-v" /></xsl:variable>
       {
         "name":"<xsl:value-of select="./a"/>",
