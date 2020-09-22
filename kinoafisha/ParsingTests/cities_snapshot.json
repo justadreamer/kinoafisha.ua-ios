@@ -1,0 +1,722 @@
+[
+  {
+    "name": "Киев",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=1"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=1"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Артемовск",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=49"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=49"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Белая Церковь",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=45"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=45"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Бердичев",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=64"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=64"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Бровары",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=35"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=35"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Васильков",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=72"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=72"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Винница",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=7"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=7"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Вишневое",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=75"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=75"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Днепр",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=6"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=6"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Дрогобыч",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=69"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=69"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Житомир",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=17"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=17"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Запорожье",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=9"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=9"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Ивано-Франковск",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=22"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=22"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Ирпень",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=41"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=41"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Каменец-Подольский",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=55"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=55"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Керчь",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=53"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=53"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Кропивницкий",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=23"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=23"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Краматорск",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=48"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=48"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Кременчуг",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=46"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=46"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Кривой Рог",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=30"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=30"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Лубны",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=60"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=60"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Луцк",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=21"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=21"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Львов",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=8"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=8"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Мариуполь",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=32"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=32"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Миргород",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=71"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=71"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Мукачево",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=33"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=33"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Николаев",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=19"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=19"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Никополь",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=61"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=61"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Одесса",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=3"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=3"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Покров",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=76"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=76"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Полтава",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=13"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=13"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Ровно",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=24"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=24"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Севастополь",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=40"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=40"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Симферополь",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=5"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=5"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Стрый",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=70"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=70"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Сумы",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=14"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=14"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Ужгород",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=18"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=18"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Харьков",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=2"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=2"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Херсон",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=15"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=15"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Хмельницкий",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=16"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=16"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Хуст",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=77"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=77"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Черкассы",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=10"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=10"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Чернигов",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=20"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=20"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Черновцы",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=11"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=11"
+      }
+    },
+    "is_default_selection": false
+  },
+  {
+    "name": "Южный",
+    "request_cinema": {
+      "url": "https://kinoafisha.com/cinema",
+      "headers": {
+        "Cookie": "city_id=73"
+      }
+    },
+    "request_kinoafisha": {
+      "url": "https://kinoafisha.com/kinoafisha",
+      "headers": {
+        "Cookie": "city_id=73"
+      }
+    },
+    "is_default_selection": false
+  }
+]
