@@ -89,7 +89,6 @@
 		44C71AFB22E83A3B007A96E4 /* cinemascontainer.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cinemascontainer.json; sourceTree = "<group>"; };
 		44E4D61B1A5DC90100A89982 /* XSLT */ = {isa = PBXFileReference; lastKnownFileType = folder; name = XSLT; path = kinoafisha/XSLT; sourceTree = SOURCE_ROOT; };
 		44E4D61D1A5DD08300A89982 /* S3Secrets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = S3Secrets.h; sourceTree = "<group>"; };
-		44E4D61E1A5DD09900A89982 /* S3Secrets_Example.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = S3Secrets_Example.h; path = ../S3Secrets_Example.h; sourceTree = "<group>"; };
 		44F0483222EC59F300DC187F /* FilmDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailView.swift; sourceTree = "<group>"; };
 		44F0483422EC5C3100DC187F /* FilmScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmScheduleView.swift; sourceTree = "<group>"; };
 		44F0483822ED0B3300DC187F /* CinemaScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaScheduleView.swift; sourceTree = "<group>"; };
@@ -142,7 +141,6 @@
 				4451295A1A09FF0D000364E1 /* LaunchScreen.xib */,
 				44B2EE9E1A0FA207000AFC00 /* Global.h */,
 				44E4D61D1A5DD08300A89982 /* S3Secrets.h */,
-				44E4D61E1A5DD09900A89982 /* S3Secrets_Example.h */,
 				4425EF4022CBE92E00321AFE /* kinoafisha-Bridging-Header.h */,
 				4451294C1A09FF0D000364E1 /* Info.plist */,
 				4451294D1A09FF0D000364E1 /* main.m */,
@@ -243,11 +241,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4451296B1A09FF0D000364E1 /* Build configuration list for PBXNativeTarget "kinoafisha" */;
 			buildPhases = (
+				44AE36B7251BF46700B0B2E4 /* Replace S3Secrets.h with S3Secrets_Prod.h */,
 				DD5ACC0D70E5ABFFFD480ADC /* [CP] Check Pods Manifest.lock */,
 				445129441A09FF0D000364E1 /* Sources */,
 				445129451A09FF0D000364E1 /* Frameworks */,
 				445129461A09FF0D000364E1 /* Resources */,
 				3D0597348DE6AD39F7F189CB /* [CP] Copy Pods Resources */,
+				44AE36B8251BF51100B0B2E4 /* Replace S3Secrets.h with S3Secrets_Empty.h */,
 			);
 			buildRules = (
 			);
@@ -264,7 +264,7 @@
 		445129401A09FF0D000364E1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = justadreamer;
 				TargetAttributes = {
 					445129471A09FF0D000364E1 = {
@@ -326,6 +326,42 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-kinoafisha/Pods-kinoafisha-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		44AE36B7251BF46700B0B2E4 /* Replace S3Secrets.h with S3Secrets_Prod.h */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Replace S3Secrets.h with S3Secrets_Prod.h";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"${PROJECT_DIR}/kinoafisha\"\nif [ -e \"S3Secrets_Prod.h\" ]; then\n    echo \"replacing S3Secrets.h with S3Secrets_Prod.h\"\n    cp S3Secrets_Prod.h S3Secrets.h\nfi\n";
+		};
+		44AE36B8251BF51100B0B2E4 /* Replace S3Secrets.h with S3Secrets_Empty.h */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Replace S3Secrets.h with S3Secrets_Empty.h";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"${PROJECT_DIR}/kinoafisha\"\nif [ -e \"S3Secrets_Empty.h\" ]; then\n    echo \"replacing S3Secrets.h with S3Secrets_Empty.h\"\n    cp S3Secrets_Empty.h S3Secrets.h\nfi\n";
 		};
 		DD5ACC0D70E5ABFFFD480ADC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -424,6 +460,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -450,7 +487,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -481,6 +518,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -500,7 +538,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -575,6 +613,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -594,7 +633,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
