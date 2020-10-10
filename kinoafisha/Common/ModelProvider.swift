@@ -13,7 +13,8 @@ import SwiftUI
 final class ModelProvider<Model>: ObservableObject where Model: Codable, Model: Equatable {
     var objectWillChange = PassthroughSubject<Void, Never>()
     var modelValue = CurrentValueSubject<Model?, Never>(nil)
-
+    var s3SyncManager: SkyS3SyncManager
+    
     var model: Model? {
         didSet {
             modelValue.value = model
@@ -47,11 +48,12 @@ final class ModelProvider<Model>: ObservableObject where Model: Codable, Model: 
         cancelations.forEach { $0.cancel() }
     }
     
-    init(parsedRequest: ParsedRequest?, transformationName: String, fakeModel: Model? = nil) {
+    init(s3SyncManager: SkyS3SyncManager, parsedRequest: ParsedRequest?, transformationName: String, fakeModel: Model? = nil) {
+        self.s3SyncManager = s3SyncManager
         if let fakeModel = fakeModel {
             self.model = fakeModel
         } else {
-            self.loader = XSLTLoader<Model>(parsedRequest: parsedRequest, transformationName: transformationName, resourceURLProvider: (UIApplication.shared.delegate as! AppDelegate).s3SyncManager)
+            self.loader = XSLTLoader<Model>(parsedRequest: parsedRequest, transformationName: transformationName, resourceURLProvider: s3SyncManager)
             createSubscriptions()
         }
     }

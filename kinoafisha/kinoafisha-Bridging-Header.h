@@ -3,5 +3,6 @@
 //
 
 #import "SkyXSLTransformation.h"
-#import "AppDelegate.h"
 #import "SkyS3Sync.h"
+#include "S3Secrets.h"
+#import "Flurry.h"

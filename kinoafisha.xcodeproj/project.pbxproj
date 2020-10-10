@@ -17,8 +17,6 @@
 		4425EF4222CBE92E00321AFE /* CitySelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4425EF4122CBE92E00321AFE /* CitySelectionView.swift */; };
 		44476BD622D11C340066B61D /* CityButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44476BD522D11C340066B61D /* CityButton.swift */; };
 		44476BD822D11CD90066B61D /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44476BD722D11CD90066B61D /* LoadingView.swift */; };
-		4451294E1A09FF0D000364E1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4451294D1A09FF0D000364E1 /* main.m */; };
-		445129511A09FF0D000364E1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 445129501A09FF0D000364E1 /* AppDelegate.m */; };
 		445129591A09FF0D000364E1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 445129581A09FF0D000364E1 /* Images.xcassets */; };
 		4451295C1A09FF0D000364E1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4451295A1A09FF0D000364E1 /* LaunchScreen.xib */; };
 		4466F21C25042399003D15D9 /* ParsedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4466F21B25042399003D15D9 /* ParsedRequest.swift */; };
@@ -35,6 +33,7 @@
 		4498916C22D93FBC002D26B2 /* ScheduleEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4498916B22D93FBC002D26B2 /* ScheduleEntry.swift */; };
 		449CE75022DBAD1C00958CC2 /* ModelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449CE74F22DBAD1C00958CC2 /* ModelProvider.swift */; };
 		44A7BAFA22F030220006D7B3 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A7BAF922F030220006D7B3 /* ActivityIndicator.swift */; };
+		44ADBDA12531CF9800839CCE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ADBDA02531CF9800839CCE /* AppDelegate.swift */; };
 		44AE36BE251BF88F00B0B2E4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AE36BD251BF88F00B0B2E4 /* SettingsView.swift */; };
 		44C03D4C22D504B100F5C246 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C03D4B22D504B100F5C246 /* TabBarView.swift */; };
 		44C03D5022D5215F00F5C246 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C03D4F22D5215F00F5C246 /* WelcomeView.swift */; };
@@ -63,9 +62,6 @@
 		44476BD722D11CD90066B61D /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		445129481A09FF0D000364E1 /* kinoafisha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kinoafisha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4451294C1A09FF0D000364E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4451294D1A09FF0D000364E1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		4451294F1A09FF0D000364E1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		445129501A09FF0D000364E1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		445129581A09FF0D000364E1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4451295B1A09FF0D000364E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		4466F21B25042399003D15D9 /* ParsedRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsedRequest.swift; sourceTree = "<group>"; };
@@ -82,6 +78,7 @@
 		4498916B22D93FBC002D26B2 /* ScheduleEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEntry.swift; sourceTree = "<group>"; };
 		449CE74F22DBAD1C00958CC2 /* ModelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProvider.swift; sourceTree = "<group>"; };
 		44A7BAF922F030220006D7B3 /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		44ADBDA02531CF9800839CCE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = /Users/eugene/projects/kinoafisha/kinoafisha/AppDelegate.swift; sourceTree = "<absolute>"; };
 		44AE36BD251BF88F00B0B2E4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		44B2EE9E1A0FA207000AFC00 /* Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
 		44C03D4B22D504B100F5C246 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
@@ -137,15 +134,13 @@
 				44F0483C22EEEBBC00DC187F /* Cities */,
 				44F0483B22EEDF5600DC187F /* Common */,
 				44F0483A22EEDF4200DC187F /* fixtures */,
-				4451294F1A09FF0D000364E1 /* AppDelegate.h */,
-				445129501A09FF0D000364E1 /* AppDelegate.m */,
+				44ADBDA02531CF9800839CCE /* AppDelegate.swift */,
 				445129581A09FF0D000364E1 /* Images.xcassets */,
 				4451295A1A09FF0D000364E1 /* LaunchScreen.xib */,
 				44B2EE9E1A0FA207000AFC00 /* Global.h */,
 				44E4D61D1A5DD08300A89982 /* S3Secrets.h */,
 				4425EF4022CBE92E00321AFE /* kinoafisha-Bridging-Header.h */,
 				4451294C1A09FF0D000364E1 /* Info.plist */,
-				4451294D1A09FF0D000364E1 /* main.m */,
 				44E4D61B1A5DC90100A89982 /* XSLT */,
 			);
 			path = kinoafisha;
@@ -244,12 +239,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4451296B1A09FF0D000364E1 /* Build configuration list for PBXNativeTarget "kinoafisha" */;
 			buildPhases = (
-				44AE36B7251BF46700B0B2E4 /* Replace S3Secrets.h with S3Secrets_Prod.h */,
 				DD5ACC0D70E5ABFFFD480ADC /* [CP] Check Pods Manifest.lock */,
+				44AE36B7251BF46700B0B2E4 /* Replace S3Secrets.h with S3Secrets_Prod.h */,
 				445129441A09FF0D000364E1 /* Sources */,
 				445129451A09FF0D000364E1 /* Frameworks */,
 				445129461A09FF0D000364E1 /* Resources */,
-				3D0597348DE6AD39F7F189CB /* [CP] Copy Pods Resources */,
 				44AE36B8251BF51100B0B2E4 /* Replace S3Secrets.h with S3Secrets_Empty.h */,
 			);
 			buildRules = (
@@ -312,24 +306,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3D0597348DE6AD39F7F189CB /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-kinoafisha/Pods-kinoafisha-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/HockeySDK/HockeySDKResources.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/HockeySDKResources.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-kinoafisha/Pods-kinoafisha-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		44AE36B7251BF46700B0B2E4 /* Replace S3Secrets.h with S3Secrets_Prod.h */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -394,7 +370,6 @@
 				4498916822D93EEF002D26B2 /* Film.swift in Sources */,
 				44C03D5622D5CA2700F5C246 /* Cinema.swift in Sources */,
 				44C03D5022D5215F00F5C246 /* WelcomeView.swift in Sources */,
-				445129511A09FF0D000364E1 /* AppDelegate.m in Sources */,
 				4498916422D93E66002D26B2 /* FilmsView.swift in Sources */,
 				441B5EAB22E5838900B33D95 /* URLRequest+Additions.swift in Sources */,
 				44476BD622D11C340066B61D /* CityButton.swift in Sources */,
@@ -402,7 +377,6 @@
 				441B5E9F22E3A7BD00B33D95 /* LoadingState.swift in Sources */,
 				44476BD822D11CD90066B61D /* LoadingView.swift in Sources */,
 				448A6C7122D4740000BE7D05 /* SceneDelegate.swift in Sources */,
-				4451294E1A09FF0D000364E1 /* main.m in Sources */,
 				44F0483522EC5C3100DC187F /* FilmScheduleView.swift in Sources */,
 				441B5EAD22E58C8900B33D95 /* ImageHolder.swift in Sources */,
 				4472A41B22D66F84009E2E9C /* XSLTLoader.swift in Sources */,
@@ -423,6 +397,7 @@
 				449CE75022DBAD1C00958CC2 /* ModelProvider.swift in Sources */,
 				4498916C22D93FBC002D26B2 /* ScheduleEntry.swift in Sources */,
 				4425EF4222CBE92E00321AFE /* CitySelectionView.swift in Sources */,
+				44ADBDA12531CF9800839CCE /* AppDelegate.swift in Sources */,
 				44C03D5222D5C9FA00F5C246 /* CinemasView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

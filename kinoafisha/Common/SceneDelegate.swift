@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var fakeFilmsView: some View {
         let jsonData = jsonFixture(name: "films")
         let films = try! JSONDecoder().decode([Film].self, from: jsonData)
-        let filmsProvider = ModelProvider<[Film]>(parsedRequest: nil, transformationName: "", fakeModel: films)
+        let filmsProvider = ModelProvider<[Film]>(s3SyncManager: providersContainer.s3SyncManager, parsedRequest: nil, transformationName: "", fakeModel: films)
         return FilmsView(filmsProvider: filmsProvider)
             .environmentObject(providersContainer)
     }
@@ -31,7 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var fakeCinemasView: some View {
         let jsonData = jsonFixture(name: "cinemascontainer")
         let cinemasContainer = try! JSONDecoder().decode(CinemasContainer.self, from: jsonData)
-        let cinemasProvider = ModelProvider<CinemasContainer>(parsedRequest: nil, transformationName: "", fakeModel: cinemasContainer)
+        let cinemasProvider = ModelProvider<CinemasContainer>(s3SyncManager: providersContainer.s3SyncManager, parsedRequest: nil, transformationName: "", fakeModel: cinemasContainer)
         return CinemasView(cinemasProvider: cinemasProvider)
             .environmentObject(providersContainer)
     }

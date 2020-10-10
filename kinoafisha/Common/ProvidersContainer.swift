@@ -14,11 +14,10 @@ final class ProvidersContainer: ObservableObject {
     var disposeBag = Set<AnyCancellable>()
     var objectWillChange = PassthroughSubject<Void, Never>()
     let userDefaults = UserDefaults.standard
-
-    var citiesProvider = ModelProvider<[City]>(parsedRequest: ParsedRequest(url: URL(string: KinoAfishaBaseURLString + "/cinema")!), transformationName: "cities")
-
-    var filmsProvider = ModelProvider<[Film]>(parsedRequest: nil, transformationName: "films_v2")
-    var cinemasProvider = ModelProvider<CinemasContainer>(parsedRequest: nil, transformationName: "cinemas")
+    let s3SyncManager: SkyS3SyncManager
+    var citiesProvider: ModelProvider<[City]>
+    var filmsProvider: ModelProvider<[Film]>
+    var cinemasProvider: ModelProvider<CinemasContainer>
     var filmProvidersMap: [ParsedRequest: ModelProvider<Film>] = [:]
     var cinemaProvidersMap: [ParsedRequest: ModelProvider<[ScheduleEntry]>] = [:]
     
@@ -38,6 +37,12 @@ final class ProvidersContainer: ObservableObject {
     }
 
     init() {
+        let resourcesURL = Bundle.main.resourceURL!.appendingPathComponent("XSLT")
+        s3SyncManager = SkyS3SyncManager(s3AccessKey: S3AccessKey, secretKey: S3SecretKey, bucketName: S3BucketName, originalResourcesDirectory: resourcesURL)
+        citiesProvider = ModelProvider<[City]>(s3SyncManager: s3SyncManager, parsedRequest: ParsedRequest(url: URL(string: KinoAfishaBaseURLString + "/cinema")!), transformationName: "cities")
+        filmsProvider = ModelProvider<[Film]>(s3SyncManager: s3SyncManager, parsedRequest: nil, transformationName: "films_v2")
+        cinemasProvider = ModelProvider<CinemasContainer>(s3SyncManager: s3SyncManager, parsedRequest: nil, transformationName: "cinemas")
+
         maybeLoadSelectedCity()
 
         citiesProvider
@@ -106,7 +111,7 @@ final class ProvidersContainer: ObservableObject {
         if let p = filmProvidersMap[parsedRequest] {
             provider = p
         } else {
-            provider = ModelProvider<Film>(parsedRequest: parsedRequest, transformationName: "single_film_v2")
+            provider = ModelProvider<Film>(s3SyncManager: s3SyncManager, parsedRequest: parsedRequest, transformationName: "single_film_v2")
             filmProvidersMap[parsedRequest] = provider
         }
         return provider
@@ -117,7 +122,7 @@ final class ProvidersContainer: ObservableObject {
         if let p = cinemaProvidersMap[parsedRequest] {
             provider = p
         } else {
-            provider = ModelProvider<[ScheduleEntry]>(parsedRequest: parsedRequest, transformationName: "single_cinema")
+            provider = ModelProvider<[ScheduleEntry]>(s3SyncManager: s3SyncManager, parsedRequest: parsedRequest, transformationName: "single_cinema")
             cinemaProvidersMap[parsedRequest] = provider
         }
         return provider

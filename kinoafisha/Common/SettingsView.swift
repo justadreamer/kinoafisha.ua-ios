@@ -25,6 +25,12 @@ struct SettingsView: View {
                             .padding()
                     }
                 }
+                #if DEBUG
+                Button("Test crash!", action: {
+                    var a: Int?
+                    _ = a! + 1
+                })
+                #endif
             }
             .navigationBarTitle("Настройки")
             .navigationBarItems(trailing: Button("Закрыть", action: { isPresented = false }))
