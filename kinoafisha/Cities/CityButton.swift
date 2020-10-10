@@ -10,11 +10,16 @@ import SwiftUI
 
 struct CityButton: View {
     @EnvironmentObject var providersContainer: ProvidersContainer
+    @Environment(\.presentationMode) var presentation
+    @Binding var isPresented: Bool
+    
     var city: City
 
     var body: some View {
         Button(action: {
             self.providersContainer.selectedCity = self.city
+            self.presentation.wrappedValue.dismiss()
+            self.isPresented = false
         }) {
             HStack {
                 Text("\(city.name)")

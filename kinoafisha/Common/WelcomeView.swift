@@ -12,8 +12,10 @@ struct WelcomeView : View {
     @EnvironmentObject var providersContainer: ProvidersContainer
     @State var presentOnboarding: Bool
 
-    func presentableCitiesSelectionView() -> CitySelectionView {
-        CitySelectionView(citiesProvider: providersContainer.citiesProvider, presented: $presentOnboarding)
+    func presentableCitiesSelectionView() -> some View {
+        NavigationView {
+            CitySelectionView(citiesProvider: providersContainer.citiesProvider, isPresented: $presentOnboarding)
+        }
     }
 
     var transition: AnyTransition {

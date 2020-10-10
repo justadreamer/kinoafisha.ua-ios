@@ -16,6 +16,7 @@ final class ProvidersContainer: ObservableObject {
     let userDefaults = UserDefaults.standard
 
     var citiesProvider = ModelProvider<[City]>(parsedRequest: ParsedRequest(url: URL(string: KinoAfishaBaseURLString + "/cinema")!), transformationName: "cities")
+
     var filmsProvider = ModelProvider<[Film]>(parsedRequest: nil, transformationName: "films_v2")
     var cinemasProvider = ModelProvider<CinemasContainer>(parsedRequest: nil, transformationName: "cinemas")
     var filmProvidersMap: [ParsedRequest: ModelProvider<Film>] = [:]

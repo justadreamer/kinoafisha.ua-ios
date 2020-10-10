@@ -12,6 +12,11 @@ struct TabBarView : View {
     @State var presentSettings: Bool = false
     @EnvironmentObject var providersContainer: ProvidersContainer
 
+    func settingsModal() -> some View {
+        SettingsView(isPresented: $presentSettings)
+            .environmentObject(providersContainer)
+    }
+
     var body: some View {
         TabView {
             NavigationView {
@@ -40,11 +45,8 @@ struct TabBarView : View {
             }
             .tag(1)
         }
-        .sheet(isPresented: $presentSettings, content: modal)
+        .sheet(isPresented: $presentSettings, content: self.settingsModal)
     }
     
-    func modal() -> some View {
-        CitySelectionView(citiesProvider: providersContainer.citiesProvider, presented: $presentSettings)
-            .environmentObject(providersContainer)
-    }
+    
 }

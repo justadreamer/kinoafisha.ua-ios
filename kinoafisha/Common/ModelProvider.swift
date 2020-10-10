@@ -101,4 +101,9 @@ final class ModelProvider<Model>: ObservableObject where Model: Codable, Model: 
         //reload regardless whether we have the model or not
         self.loader?.reload()
     }
+    
+    //erase model object, so when reload() is called it reloads data
+    func invalidate() {
+        self.model = nil
+    }
 }

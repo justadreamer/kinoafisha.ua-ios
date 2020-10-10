@@ -11,37 +11,23 @@ import SwiftUI
 struct CitySelectionView : View {
     @EnvironmentObject var providersContainer: ProvidersContainer
     @ObservedObject var citiesProvider: ModelProvider<[City]>
-    @Binding var presented: Bool
-
+    @Binding var isPresented: Bool
+    
     var body: some View {
-        NavigationView {
-            LoadingView(state: $citiesProvider.loadingState) {
-                VStack {
-                    if self.citiesProvider.model != nil {
-                        List {
-                            ForEach(self.citiesProvider.model!, id: \.name) { city in
-                                CityButton(city: city)
-                            }
+        LoadingView(state: $citiesProvider.loadingState) {
+            VStack {
+                if self.citiesProvider.model != nil {
+                    List {
+                        ForEach(self.citiesProvider.model!, id: \.name) { city in
+                            CityButton(isPresented: $isPresented, city: city)
                         }
                     }
                 }
             }
-            .onAppear {
-                self.citiesProvider.reload()
-            }
-            .navigationBarTitle("Выберите город:")
-            .navigationBarItems(leading:
-                ReloadButton(reload: self.providersContainer.citiesProvider.reload),
-                                trailing:
-                Button (action: {
-                    withAnimation {
-                        self.presented = false
-                    }
-                    self.providersContainer.delayedViewRefresh()
-                }) {
-                    Text("Готово")
-                }
-            )
         }
+        .onAppear {
+            self.citiesProvider.reload()
+        }
+        .navigationBarTitle("Выберите город:")
     }
 }
