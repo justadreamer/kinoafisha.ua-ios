@@ -1,9 +1,10 @@
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/HockeySDK/HockeySDK-iOS/HockeySDK.embeddedframework"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/iOS"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/FileMD5Hash" "${PODS_ROOT}/Headers/Public/Flurry-iOS-SDK" "${PODS_ROOT}/Headers/Public/ObjectiveSugar" "${PODS_ROOT}/Headers/Public/Ono" "${PODS_ROOT}/Headers/Public/SkyS3Sync" "${PODS_ROOT}/Headers/Public/SkyScraper" "${PODS_ROOT}/Headers/Public/libextobjc" $(SDKROOT)/usr/include/libxml2 /usr/include/libxml2
 LIBRARY_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/AFNetworking" "${PODS_CONFIGURATION_BUILD_DIR}/FileMD5Hash" "${PODS_CONFIGURATION_BUILD_DIR}/Flurry-iOS-SDK" "${PODS_CONFIGURATION_BUILD_DIR}/ObjectiveSugar" "${PODS_CONFIGURATION_BUILD_DIR}/Ono" "${PODS_CONFIGURATION_BUILD_DIR}/SkyS3Sync" "${PODS_CONFIGURATION_BUILD_DIR}/SkyScraper" "${PODS_CONFIGURATION_BUILD_DIR}/libextobjc" "${PODS_ROOT}/Flurry-iOS-SDK/Flurry" "${PODS_ROOT}/SkyScraper/libxslt-with-plugins"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"AFNetworking" -l"FileMD5Hash" -l"Flurry-iOS-SDK" -l"Flurry_7.10.0" -l"ObjectiveSugar" -l"Ono" -l"SkyS3Sync" -l"SkyScraper" -l"c++" -l"iconv" -l"libextobjc" -l"xml2" -l"xslt-with-plugins" -l"z" -framework "CoreGraphics" -framework "CoreTelephony" -framework "CoreText" -framework "Foundation" -framework "HockeySDK" -framework "MobileCoreServices" -framework "QuartzCore" -framework "QuickLook" -framework "Security" -framework "SystemConfiguration" -framework "UIKit" -weak_framework "WatchConnectivity"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"AFNetworking" -l"FileMD5Hash" -l"Flurry-iOS-SDK" -l"Flurry_11.1.1" -l"ObjectiveSugar" -l"Ono" -l"SkyS3Sync" -l"SkyScraper" -l"c++" -l"iconv" -l"libextobjc" -l"sqlite3" -l"xml2" -l"xslt-with-plugins" -l"z" -framework "AppCenter" -framework "AppCenterAnalytics" -framework "AppCenterCrashes" -framework "CoreGraphics" -framework "CoreTelephony" -framework "Foundation" -framework "MobileCoreServices" -framework "Security" -framework "SystemConfiguration" -framework "UIKit"
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
 PODS_ROOT = ${SRCROOT}/Pods
+USE_RECURSIVE_SCRIPT_INPUTS_IN_SCRIPT_PHASES = YES

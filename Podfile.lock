@@ -14,13 +14,18 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - AppCenter (3.3.4):
+    - AppCenter/Analytics (= 3.3.4)
+    - AppCenter/Crashes (= 3.3.4)
+  - AppCenter/Analytics (3.3.4):
+    - AppCenter/Core
+  - AppCenter/Core (3.3.4)
+  - AppCenter/Crashes (3.3.4):
+    - AppCenter/Core
   - FileMD5Hash (2.0.0)
-  - Flurry-iOS-SDK (7.10.0):
-    - Flurry-iOS-SDK/FlurrySDK (= 7.10.0)
-  - Flurry-iOS-SDK/FlurrySDK (7.10.0)
-  - HockeySDK (5.1.4):
-    - HockeySDK/DefaultLib (= 5.1.4)
-  - HockeySDK/DefaultLib (5.1.4)
+  - Flurry-iOS-SDK (11.1.1):
+    - Flurry-iOS-SDK/FlurrySDK (= 11.1.1)
+  - Flurry-iOS-SDK/FlurrySDK (11.1.1)
   - libextobjc (0.6):
     - libextobjc/EXTADT (= 0.6)
     - libextobjc/EXTConcreteProtocol (= 0.6)
@@ -67,17 +72,17 @@ PODS:
   - SkyScraper/Base (1.1)
 
 DEPENDENCIES:
-  - Flurry-iOS-SDK (~> 7.1)
-  - HockeySDK
+  - AppCenter
+  - Flurry-iOS-SDK
   - SkyS3Sync (from `https://github.com/justadreamer/SkyS3Sync`)
   - SkyScraper/Base (from `https://github.com/justadreamer/SkyScraper`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - AFNetworking
+    - AppCenter
     - FileMD5Hash
     - Flurry-iOS-SDK
-    - HockeySDK
     - libextobjc
     - ObjectiveSugar
     - Ono
@@ -98,15 +103,15 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  AppCenter: 0487be185c038ed2ecc5ed38219af1dcd280af23
   FileMD5Hash: 3ed69cc19a21ff4d30ae8833fc104275ad2c7de0
-  Flurry-iOS-SDK: e6975df9e57010d582bf9bed0f6312553cf24bc2
-  HockeySDK: 15afe6bc0a5bfe3a531fd73dbf082095f37dac3b
+  Flurry-iOS-SDK: 8f3f7fce27177002f15f145eede88dc1b9ac0cd0
   libextobjc: aed8b7d2b07f511c1a7ecaacb33ea03e327c69b7
   ObjectiveSugar: a6a25f23d657c19df0a0b972466d5b5ca9f5295c
   Ono: 80b1c686777d3f6d5d5ce6fcac8a74afef4ca197
   SkyS3Sync: b7da721c7119d74b211c15d7b2cf54d6b134b581
   SkyScraper: 188f7ec9e1269ebc13c1c290aa0854d58075cdea
 
-PODFILE CHECKSUM: 6f3329f5220f727bbe8d3f53c21a3b5ad67d4e32
+PODFILE CHECKSUM: 0fe8de333a8149f58899666faec2ee920fe17cc7
 
-COCOAPODS: 1.7.3
+COCOAPODS: 1.9.3

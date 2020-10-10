@@ -6,6 +6,9 @@
 //  Copyright © 2016 Flurry Inc. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
+#import "FlurryConsent.h"
+#import "FlurryCCPA.h"
 
 
 /*!
@@ -21,7 +24,21 @@ typedef enum {
 } FlurryLogLevel;
 
 
+#if !TARGET_OS_WATCH
+
+
 @interface FlurrySessionBuilder : NSObject
+
+/*!
+*@brief An api to send ccpa compliance data to Flurry on the user's choice to opt out or opt in to data sale to third parties.
+*   @since 10.1.0
+*
+*
+* @param value  boolean true if the user wants to opt out of data sale, the default value is false
+*/
+
+- (FlurrySessionBuilder*) withDataSaleOptOut:(BOOL)value;
+
 
 /*!
  *  @brief Explicitly specifies the App Version that Flurry will use to group Analytics data.
@@ -97,22 +114,100 @@ typedef enum {
  */
 - (FlurrySessionBuilder*) withShowErrorInLog:(BOOL) value;
 
-#if !TARGET_OS_WATCH
+
+/*!
+ *  @brief Registers the consent information with the SDK. Consent information is used to determine if the gdpr laws are applicable
+ *  @since 8.5.0
+ *
+ *  Use this method to pass the consent information to the SDK
+ *
+ *  @note This method must be called prior to invoking #startSession:
+ *
+ *  @param consent  The consent information.
+ *                  @see (FlurryConsent#initWithGDPRScope:andConsentStrings:)
+ */
+
+- (FlurrySessionBuilder*) withConsent:(FlurryConsent*)consent;
+
+
 /*!
  *  @brief Enables implicit recording of Apple Store transactions.
  *  @since 7.9.0
  *
- *  This method needs to be called before any transaction is finialized.
+ *  @note This method needs to be called before any transaction is finialized.
  *
- *
- *  @param value YES to enable transaction logging with the default being NO.
+ *  @param value @c YES to enable transaction logging with the default being @c NO.
  *
  */
 
 - (FlurrySessionBuilder*) withIAPReportingEnabled:(BOOL) value;
-#endif
+
+/*!
+ *  @brief Enables opting out of background sessions being counted towards total sessions.
+ *  @since 8.1.0-rc.1
+ *
+ *  @note This method must be called prior to invoking #startSession:.
+ *
+ *  @param value @c NO to opt out of counting background sessions towards total sessions.
+ *  The default value for the session is @c YES
+ *
+ */
+
+- (FlurrySessionBuilder*) withIncludeBackgroundSessionsInMetrics:(BOOL) value;
+
+/*!
+ *  @brief Set the Session Origin for the Flurry session.
+ *  @since 10.0.0
+ *
+ *  This is an optional method that sets the session origin 
+ *
+ *  @param origin The session origin value.
+ */
+- (FlurrySessionBuilder*) withSessionOrigin:(NSString*) origin;
+
+/*!
+ *  @brief Set the Session Origin Version for the Flurry session.
+ *  @since 10.0.0
+ *
+ *  This is an optional method that sets the session origin version
+ *
+ *  @param version The session origin version value.
+ */
+- (FlurrySessionBuilder*) withSessionOriginVerion:(NSString*) version;
+
+/*!
+ *  @brief Set the Session OriginSets Paramters for the Flurry session.
+ *  @since 10.0.0
+ *
+ *  This is an optional method that sets the session origin parameters for origin sets (max key value pairs = 10)
+ *
+ *  @param parameters The session origin parameters.
+ */
+- (FlurrySessionBuilder*) withSessionOriginParameters:(NSDictionary*) parameters;
+
+/*!
+ *  @brief Set the Deeplink for the Flurry session.
+ *  @since 10.0.0
+ *
+ *  This is an optional method that sets the deeplink which started the app and Flurry Session
+ *
+ *  @param deeplink The session deeplink value.
+ */
+- (FlurrySessionBuilder*) withSessionDeeplink:(NSString*) deeplink;
+
+/*!
+ *  @brief Set the Session properties for the Flurry session.
+ *  @since 10.0.0
+ *
+ *  This is an optional method that sets the session properties
+ *
+ *  @param properties The session paramaters.
+ */
+- (FlurrySessionBuilder*) withSessionProperties:(NSDictionary*) properties;
+
 
 #if TARGET_OS_TV
+
 /*!
  *  @brief Sets the minimum duration (in minutes) before a partial session report is sent to Flurry.
  *  @since 7.7.0
@@ -122,7 +217,7 @@ typedef enum {
  *
  *  @note This method must be called prior to invoking #startSession:.
  *
- *  @param duration The period after which a partial session report is sent to Flurry.
+ *  @param value The period after which a partial session report is sent to Flurry.
  */
 - (FlurrySessionBuilder*) withTVSessionReportingInterval:(NSInteger) value;
 
@@ -135,9 +230,11 @@ typedef enum {
  *
  *  @note This method must be called prior to invoking #startSession:.
  *
- *  @param  count The number of events after which partial session report is sent to Flurry.
+ *  @param value The number of events after which partial session report is sent to Flurry.
  */
 - (FlurrySessionBuilder*) withTVEventCountThreshold:(NSInteger) value;
 #endif
 
 @end
+
+#endif
