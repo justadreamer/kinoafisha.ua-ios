@@ -21,7 +21,7 @@ struct TabBarView : View {
         TabView {
             NavigationView {
                 FilmsView(filmsProvider: providersContainer.filmsProvider)
-                .navigationBarTitle("Фильмы \(providersContainer.selectedCity?.name ?? "")")
+                .navigationBarTitle("Фильмы")
                 .navigationBarItems(leading: ReloadButton(reload: self.providersContainer.filmsProvider.forceReload), trailing: SettingsButton(presentSettings: $presentSettings))
             }
             .tabItem {
@@ -34,7 +34,7 @@ struct TabBarView : View {
 
             NavigationView {
                 CinemasView(cinemasProvider: providersContainer.cinemasProvider)
-                    .navigationBarTitle("Кинотеатры \(providersContainer.selectedCity?.name ?? "")")
+                    .navigationBarTitle("Кинотеатры")
                 .navigationBarItems(leading: ReloadButton(reload: self.providersContainer.cinemasProvider.forceReload), trailing: SettingsButton(presentSettings: $presentSettings))
             }
             .tabItem {
@@ -45,6 +45,10 @@ struct TabBarView : View {
             }
             .tag(1)
         }
+        .overlay(
+            Text("\(providersContainer.selectedCity?.name ?? "")")
+                    .font(.footnote),
+            alignment: .top)
         .sheet(isPresented: $presentSettings, content: self.settingsModal)
     }
     
