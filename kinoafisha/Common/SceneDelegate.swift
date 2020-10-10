@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    @State var dummyPresented: Bool = false  //for debug
     var window: UIWindow?
     var providersContainer = ProvidersContainer()
 
@@ -57,6 +57,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 welcomeView
                 //fakeFilmsView //for debug
                 //fakeCinemasView //for debug
+                //SettingsView(isPresented: $dummyPresented).environmentObject(providersContainer) //for debug
             )
             self.window = window
             window.makeKeyAndVisible()

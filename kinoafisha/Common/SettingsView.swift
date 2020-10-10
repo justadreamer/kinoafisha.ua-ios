@@ -12,25 +12,32 @@ struct SettingsView: View {
     @EnvironmentObject var providersContainer: ProvidersContainer
     @Binding var isPresented: Bool
     @State var pushed: Bool = false //dummy to supply as isPresented to CitySelectionView
-
+    var versionString: String {
+        "\(Bundle.main.infoDictionary!["CFBundleShortVersionString"]!).\(Bundle.main.infoDictionary!["CFBundleVersion"]!)"
+    }
+    
     var body: some View {
         NavigationView {
-            List {
-                NavigationLink(destination: CitySelectionView(citiesProvider: providersContainer.citiesProvider, isPresented: $pushed).onAppear { self.pushed = true }) {
-                    HStack {
-                        Text("Город:")
-                            .padding()
-                        Text("\(providersContainer.selectedCity?.name ?? "")")
-                            .fontWeight(.bold)
-                            .padding()
+            VStack {
+                List {
+                    NavigationLink(destination: CitySelectionView(citiesProvider: providersContainer.citiesProvider, isPresented: $pushed).onAppear { self.pushed = true }) {
+                        HStack {
+                            Text("Город:")
+                                .padding()
+                            Text("\(providersContainer.selectedCity?.name ?? "")")
+                                .fontWeight(.bold)
+                                .padding()
+                        }
                     }
+                    #if DEBUG
+                    Button("Test crash!", action: {
+                        var a: Int?
+                        _ = a! + 1
+                    })
+                    #endif
+                    
                 }
-                #if DEBUG
-                Button("Test crash!", action: {
-                    var a: Int?
-                    _ = a! + 1
-                })
-                #endif
+                Text("Версия: \(versionString)")
             }
             .navigationBarTitle("Настройки")
             .navigationBarItems(trailing: Button("Закрыть", action: { isPresented = false }))
