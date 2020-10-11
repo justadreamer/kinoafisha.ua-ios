@@ -82,7 +82,6 @@
 		44ADBDA02531CF9800839CCE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = /Users/eugene/projects/kinoafisha/kinoafisha/AppDelegate.swift; sourceTree = "<absolute>"; };
 		44ADBDBA2532FBAF00839CCE /* HasEmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasEmptyState.swift; sourceTree = "<group>"; };
 		44AE36BD251BF88F00B0B2E4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		44B2EE9E1A0FA207000AFC00 /* Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
 		44C03D4B22D504B100F5C246 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		44C03D4F22D5215F00F5C246 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		44C03D5122D5C9FA00F5C246 /* CinemasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemasView.swift; sourceTree = "<group>"; };
@@ -139,7 +138,6 @@
 				44ADBDA02531CF9800839CCE /* AppDelegate.swift */,
 				445129581A09FF0D000364E1 /* Images.xcassets */,
 				4451295A1A09FF0D000364E1 /* LaunchScreen.xib */,
-				44B2EE9E1A0FA207000AFC00 /* Global.h */,
 				44E4D61D1A5DD08300A89982 /* S3Secrets.h */,
 				4425EF4022CBE92E00321AFE /* kinoafisha-Bridging-Header.h */,
 				4451294C1A09FF0D000364E1 /* Info.plist */,
