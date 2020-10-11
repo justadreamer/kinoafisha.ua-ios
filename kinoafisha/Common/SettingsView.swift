@@ -37,6 +37,14 @@ struct SettingsView: View {
                     #endif
                     
                 }
+                HStack {
+                    Text("Контент: ")
+                    if #available(iOS 14.0, *) {
+                        Link("kionafisha.ua", destination: URL(string: "https://kinoafisha.ua")!)
+                    } else {
+                        Text("kinoafisha.ua")
+                    }
+                }
                 Text("Версия: \(versionString)")
             }
             .navigationBarTitle("Настройки")
