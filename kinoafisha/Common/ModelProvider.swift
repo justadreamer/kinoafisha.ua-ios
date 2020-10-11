@@ -10,11 +10,12 @@ import Foundation
 import Combine
 import SwiftUI
 
-final class ModelProvider<Model>: ObservableObject where Model: Codable, Model: Equatable {
+final class ModelProvider<Model>: ObservableObject where Model: Codable, Model: Equatable, Model: HasEmptyState {
     var objectWillChange = PassthroughSubject<Void, Never>()
     var modelValue = CurrentValueSubject<Model?, Never>(nil)
     var s3SyncManager: SkyS3SyncManager
-    
+    @Published var isEmpty: Bool = false
+
     var model: Model? {
         didSet {
             modelValue.value = model
@@ -89,6 +90,12 @@ final class ModelProvider<Model>: ObservableObject where Model: Codable, Model: 
             .sink(receiveValue: { error in
                 print("\(Self.self) error: \(error)")}
             )
+            .store(in: &cancelations)
+        
+        subj
+            .compactMap { $0.model }
+            .map { $0.isEmpty }
+            .assign(to: \.isEmpty, on: self)
             .store(in: &cancelations)
     }
     

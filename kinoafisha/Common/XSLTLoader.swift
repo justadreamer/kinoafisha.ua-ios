@@ -23,7 +23,7 @@ func Q(_ s: String) -> String {
     "\"\(s)\""
 }
 
-final class XSLTLoader<Model> where Model: Codable, Model: Equatable{
+final class XSLTLoader<Model> where Model: Codable, Model: Equatable, Model: HasEmptyState {
     var parsedRequest: ParsedRequest?
     var loadingState = CurrentValueSubject<LoadingState<Model>, Never>(.initial)
     private var transformation: SkyXSLTransformation

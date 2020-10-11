@@ -17,7 +17,7 @@ struct FilmsView : View {
     }
 
     var body: some View {
-        LoadingView(state: $filmsProvider.loadingState) {
+        LoadingView(state: $filmsProvider.loadingState, isEmpty: $filmsProvider.isEmpty) {
             VStack {
                 if self.filmsProvider.model != nil {
                     List(self.filmsProvider.model!, id: \.title) { film in

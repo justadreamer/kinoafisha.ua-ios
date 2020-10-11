@@ -13,7 +13,7 @@ struct CinemasView : View {
     @EnvironmentObject var providersContainer: ProvidersContainer
 
     var body: some View {
-        LoadingView(state: $cinemasProvider.loadingState) {
+        LoadingView(state: $cinemasProvider.loadingState, isEmpty: $cinemasProvider.isEmpty) {
             VStack {
                 if self.cinemasProvider.model != nil {
                     List(self.cinemasProvider.model!.cinemas, id: \.name) { cinema in

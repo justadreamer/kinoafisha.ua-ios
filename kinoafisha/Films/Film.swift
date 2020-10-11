@@ -31,3 +31,9 @@ struct Film: Codable, Equatable {
     var descr: String?
     var scheduleEntries: [ScheduleEntry]?
 }
+
+extension Film: HasEmptyState {
+    var isEmpty: Bool {
+        false
+    }
+}

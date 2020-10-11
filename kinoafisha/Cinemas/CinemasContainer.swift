@@ -18,3 +18,10 @@ struct CinemasContainer: Codable, Equatable {
     var cityName: String
     var cinemas: [Cinema]
 }
+
+
+extension CinemasContainer: HasEmptyState {
+    var isEmpty: Bool {
+        cinemas.isEmpty
+    }
+}

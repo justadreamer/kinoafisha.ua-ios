@@ -12,6 +12,8 @@ import SwiftUI
 
 struct LoadingView<Content>: View where Content: View {
     @Binding var state: NoModelLoadingState
+    @Binding var isEmpty: Bool
+
     var isLoading: Bool {
         state == NoModelLoadingState.loading
     }
@@ -60,6 +62,19 @@ struct LoadingView<Content>: View where Content: View {
                     .foregroundColor(Color.primary)
                     .cornerRadius(5)
                     .opacity(self.isError ? 1 : 0)
+                
+                VStack {
+                    Text("Нет контента")
+                    Text("\(self.isError ? self.error! : "")")
+                        .multilineTextAlignment(.center)
+                        .lineLimit(nil)
+                }
+                    .padding()
+                    .frame(width: geometry.size.width, height: geometry.size.height)
+                    .background(Color.secondary.colorInvert())
+                    .foregroundColor(Color.primary)
+                    .cornerRadius(5)
+                .opacity(self.isEmpty ? 1 : 0)
             }
         }
     }

@@ -51,7 +51,7 @@ struct CinemaScheduleView: View {
     }
 
     var body: some View {
-        LoadingView(state: $detailsProvider.loadingState) {
+        LoadingView(state: $detailsProvider.loadingState, isEmpty: $detailsProvider.isEmpty) {
             self.contentView
         }
         .navigationBarTitle("\(cinema.name)", displayMode: .inline)

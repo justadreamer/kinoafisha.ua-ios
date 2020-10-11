@@ -36,7 +36,7 @@ struct FilmDetailView: View {
     var body: some View {
         Group {
             if self.enrichedFilm == nil {
-                LoadingView(state: $detailsLoader.loadingState, content: content)
+                LoadingView(state: $detailsLoader.loadingState, isEmpty: $detailsLoader.isEmpty, content: content)
             } else {
                 content()
             }

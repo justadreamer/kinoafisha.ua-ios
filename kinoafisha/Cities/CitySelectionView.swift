@@ -14,7 +14,7 @@ struct CitySelectionView : View {
     @Binding var isPresented: Bool
     
     var body: some View {
-        LoadingView(state: $citiesProvider.loadingState) {
+        LoadingView(state: $citiesProvider.loadingState, isEmpty: $citiesProvider.isEmpty) {
             VStack {
                 if self.citiesProvider.model != nil {
                     List {

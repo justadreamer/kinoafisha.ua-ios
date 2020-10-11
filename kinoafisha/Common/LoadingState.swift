@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum LoadingState<Model> where Model: Decodable, Model: Equatable {
+enum LoadingState<Model> where Model: Decodable, Model: Equatable, Model: HasEmptyState {
     case initial
     case complete(Model)
     case loading
